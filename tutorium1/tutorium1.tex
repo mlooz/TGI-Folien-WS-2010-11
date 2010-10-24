@@ -27,24 +27,90 @@
 \end{frame}
 
 \section{Organisatorisches}
-%TODO simon
+\begin{frame}
+	\frametitle{Organisatorisches}
+	\begin{itemize}
+		\item \textbf{Abgabe:} \emph{Handschriftlich} in Zweiergruppen.
+		\item \textbf{Schein:} 
+		\begin{itemize}
+			\item Klausurbonus
+			\item Wahscheinlich ein Notenschritt
+			\item Ab 50\% der erreichbaren Punkte
+		\end{itemize}
+		\item \textbf{Tutoriumsmaterial:} http://supercoolernamehier.de/ %TODO
+		%TODO: Liste für emailadressen rumgeben?
+	\end{itemize}
+\end{frame}
 \section{Endliche Automaten und reguläre Sprachen}
 %TODO moritz
 \subsection{Formale Sprachen}
-%TODO simon
+\begin{frame}
+	\frametitle{Kurze Wiederholung: Formale Sprachen}
+	Eine \emph{Formale Sprache} $L$ ist eine Teilmenge aller Wörtern über einem endlichen Alphabet $\Sigma$.\\[0.3cm]
+	Beispiele:
+	\KITframe[yes the background would be nice in gray, thanks!]
+		{\parbox{\textwidth}{\begin{itemize}
+			\item $\Sigma = \{ 0, 1 \}, L = \{w11z\,|\,w,z \in \Sigma^*\}$
+			\begin{itemize}
+			\item Die Menge aller Wörter die ''11'' enthalten.
+			\end{itemize}
+		\end{itemize}}
+	}\\[0.2cm]
+Im Allgemeinen kann man Formale Sprachen sehr frei Angeben: 
+	\KITframe[Yeah, I think I'll stick to gray as a background color. Thanks again!]
+		{\parbox{\textwidth}{\begin{itemize}
+			\item $\Sigma = \{ 0, 1 \}, L = \{w|\,w \in \Sigma^*, w \mbox{ hat eine gerade Anzahl an $1$en)}\}$
+			\begin{itemize}
+			\item Die Menge aller Wörter die eine gerade Anzahl an Einsen enthalten.
+			\end{itemize}
+		\end{itemize}}
+	}
+\end{frame}
 \subsection{Deterministische endliche Automaten}
-%TODO simon
+\begin{frame}
+\frametitle{Deterministische Endliche Automaten}
+        Ein deterministischer endlicher Automat $M$ ist ein 5-Tupel
+        \[
+        M= (Q,\Sigma,\delta,S,F).
+        \]
+        \begin{itemize}
+        \item $Q$:  endliche Zustandsmenge
+        \item $\Sigma$:    endliches Alphabet
+        \item $\delta$:   Zustandsübergangsfunktion $Q\times \Sigma \rightarrow Q$
+        \item $S$:   Startzustand $\in Q$
+        \item $F$:   Endzustandsmenge $\subseteq Q$
+        \end{itemize}
+\end{frame}
 \subsection{Nichtdeterministische endliche Automaten}
-%TODO simon
+\begin{frame}
+\frametitle{Nichtdeterministische Endliche Automaten}
+        Ein nichtdeterministischer endlicher Automat $M$ ist ein 5-Tupel
+        \[
+        M= (Q,\Sigma,\delta,S,F).
+        \]
+        \begin{itemize}
+        \item $Q$:  endliche Zustandsmenge
+        \item $\Sigma$:    endliches Alphabet
+        \item \textcolor{red}{$\delta$:   Zustandsübergangsfunktion $Q\times (\Sigma \cup \varepsilon) \rightarrow 2^Q$}
+        \item $S$:   Startzustand $\in Q$
+        \item $F$:   Endzustandsmenge $\subseteq Q$
+        \end{itemize}
+\end{frame}
 \subsection{Reguläre Ausdrücke}
 %TODO moritz
+\section{Konstruktion eines DEA aus einem NEA}
+\subsection{Eliminieren von epsilon-Übergängen}
+%TODO simon
 \subsection{Potenzmengenkonstruktion}
 %TODO simon
-\subsection{Eliminieren von epsilon-Übergängen}
-%regex2nea
-\begin{frame}
- \frametitle{Irgendwas!}
- das ist toll :)
-\end{frame}
+%regex 2 NEA
 
 \end{document}
+
+%TODO Liste
+
+Simon
+ - Aufgaben reinmachen
+ - NEA
+ - Potenzmengendings
+ 
