@@ -5,3 +5,5 @@
 *.out
 *.snm
 *.toc
+*.bak
+.gitignore
