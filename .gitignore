@@ -10,3 +10,5 @@
 *.gif
 *.jpg
 *.png
+*~
+*.backup

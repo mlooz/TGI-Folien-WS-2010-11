@@ -1,8 +1,10 @@
 \documentclass{beamer}
 \usetheme[deutsch]{KIT}
 
-\KITfoot{foo bar}%TODO
+\KITfoot{Tutoriumsmaterial von Simon Stroh und Moritz v. Looz}%TODO
 \usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
 \usenavigationsymbols
 
 \title{Theoretische Grundlagen der Informatik}
@@ -77,7 +79,31 @@ Im Allgemeinen kann man Formale Sprachen sehr frei Angeben:
 	}
 \end{frame}
 \subsection{Reguläre Ausdrücke}
-%TODO Frame to Reg Langs
+\begin{frame}
+ \frametitle{Wiederholung der Wiederholung: Reguläre Sprachen}
+        Eine Sprache \(L\subseteq\Sigma^*\) heisst regulär, wenn für sie eine der folgenden Punkte gilt:
+
+\begin{itemize}
+\item \begin{itemize}Verankerung
+\item \(L = {a}\) mit \(a\in\sigma^*\) oder
+\item \(L = \varnothing \)
+\end{itemize}
+\item \begin{itemize}Induktion: Seien \(L_1\), \(L_2\) reguläre Sprachen
+      \item \(L = L_1 \dot L_2\) oder
+      \item \(L = L_1 \cup L_2\) oder
+      \item \(L = L_1^*\)
+      \end{itemize}
+
+\end{itemize}
+Beispiel:
+\(\Sigma := \{a,b\}\)
+\begin{itemize}
+ \item \(L_1 :=\) Alle Worte, die nur aus einer graden Anzahl as bestehen.
+\item \(L_2 :=\) Alle Worte, die gleich viele as und bs enthalten.
+\item \(L_1\) ist regulär, \(L_2\) nicht.
+\end{itemize}
+\end{frame}
+
 %TODO Frame to Reg Exes
 \subsection{Deterministische endliche Automaten}
 \begin{frame}
@@ -185,7 +211,7 @@ Im Allgemeinen kann man Formale Sprachen sehr frei Angeben:
  zu dem folgenden Zustandsgraphen?
  \begin{center}
    \vspace{-6ex}
-   \includegraphics[scale=.8]{pics/NEA_01}
+   %\includegraphics[scale=.8]{pics/NEA_01} TODO add picture
  \end{center}
 \end{frame}
 \begin{frame}
@@ -193,7 +219,7 @@ Im Allgemeinen kann man Formale Sprachen sehr frei Angeben:
 	$$L = c(b^* \cup a^*c \cup cc^*)$$
  \begin{center}
    \vspace{-6ex}
-   \includegraphics[scale=.8]{pics/NEA_01}
+   %\includegraphics[scale=.8]{pics/NEA_01} TODO add picture
  \end{center}
 	
 \end{frame}
@@ -205,12 +231,30 @@ Im Allgemeinen kann man Formale Sprachen sehr frei Angeben:
 \subsubsection{Schritt 1: Eliminieren von Epsilon-Übergängen}
 \begin{frame}
 	\frametitle{Schritt 1: Eliminierung von $\varepsilon$-Übergängen}
-	%TODO
+	\KITframe[another gray background. Gray is really awesome!] 
+	{\parbox{\textwidth}{
+	    \(q_1, q_2 \in Q\), \(a \in \Sigma\)
+	}}\\[0.2cm]	
+	Für alle Übergänge \(q_2 \in \delta(q_1, a)\) und \(q_2\) enthält \(\varepsilon\)-Übergänge:
+	\begin{enumerate}
+	 \item \(\varepsilon\)-Abschluss von \(q_2\) bilden
+	 \item Gebildeten Abschluss zu \(\delta(q_1, a)\) hinzufügen.
+	 \item \(\varepsilon\)-Übergänge von \(q_2\) entfernen.
+	\end{enumerate}	
+
 \end{frame}
 \subsubsection{Schritt 2: Potenzmengenkonstruktion}
 \begin{frame}
 	\frametitle{Schritt 2: Potenzmengenkonstruktion}
-	%TODO
+	\KITframe[or maybe use grey instead?] 
+	{\parbox{\textwidth}{
+	    \(q_n \in Q\), \(a \in \Sigma\)
+	}}\\[0.2cm]	
+	%Solange 
+	\begin{enumerate}
+	 \item 
+	\end{enumerate}
+
 \end{frame}
 \subsection{Konstruktion eines DEA aus einem NEA}
 %TODO: hier muss noch formatierung + Lösung rein
