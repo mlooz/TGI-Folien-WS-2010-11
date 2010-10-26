@@ -7,13 +7,13 @@
 
 \title{Theoretische Grundlagen der Informatik}
 \subtitle{Tutorium}
+%TODO Authors not displayed :-S 
 \author{Moritz von Looz, Simon Stroh}
 
 \institute[ITI]{Intitute für Theoretische Informatik}
 
-%TODO add something for \TitleImage[height=\titleimageht]{Bilder/bildwand.jpg}
+\TitleImage[height=\titleimageht]{../pics/tmaschine.png}
 
-% Based on http://piratepad.net/UWaMSSxLt6
 \begin{document}
 
 \begin{frame}
@@ -23,30 +23,40 @@
 \begin{frame}
   \frametitle{Übersicht}
   \tableofcontents
-  %TODO: irgendwie sieht die struktur noch nicht soooo gut aus, evtl überarbeiten
 \end{frame}
 
 \section{Organisatorisches}
 \begin{frame}
-	\frametitle{Organisatorisches}
+	\frametitle{Organisatorisches - Zum Übungsbetrieb}
 	\begin{itemize}
 		\item \textbf{Abgabe:} \emph{Handschriftlich} in Zweiergruppen.
 		\item \textbf{Schein:} 
 		\begin{itemize}
 			\item Klausurbonus
-			\item Wahscheinlich ein Notenschritt
+			\item Wahrscheinlich ein Notenschritt
 			\item Ab 50\% der erreichbaren Punkte
 		\end{itemize}
-		\item \textbf{Tutoriumsmaterial:} http://supercoolernamehier.de/ %TODO
-		%TODO: Liste für emailadressen rumgeben?
+		\item Tutoriumsmaterial und Aktueller Punktestand online.
+		\begin{itemize}
+			\item URL wird noch bekanntgegeben
+			\item Wer Punkte online einsehen will, email in Liste eintragen
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Organisatorisches - Zum Tutorium}
+	\begin{itemize}
+		\item Stoff soll wiederholt werdet
+		\item Dabei Fokus auf Übungsbetrieb
+		\item Fragen/Vorschläge/Anmerkungen wilkommen!
+		%\item Wer Tee möchte darf sich bedienen :)
 	\end{itemize}
 \end{frame}
 \section{Endliche Automaten und reguläre Sprachen}
-%TODO moritz
 \subsection{Formale Sprachen}
 \begin{frame}
 	\frametitle{Kurze Wiederholung: Formale Sprachen}
-	Eine \emph{Formale Sprache} $L$ ist eine Teilmenge aller Wörtern über einem endlichen Alphabet $\Sigma$.\\[0.3cm]
+	Eine \emph{Formale Sprache} $L$ ist eine Teilmenge aller Wörtern über einem endlichen Alphabet $\Sigma$. Also $L \subseteq \Sigma^*$\\[0.3cm]
 	Beispiele:
 	\KITframe[yes the background would be nice in gray, thanks!]
 		{\parbox{\textwidth}{\begin{itemize}
@@ -66,6 +76,9 @@ Im Allgemeinen kann man Formale Sprachen sehr frei Angeben:
 		\end{itemize}}
 	}
 \end{frame}
+\subsection{Reguläre Ausdrücke}
+%TODO Frame to Reg Langs
+%TODO Frame to Reg Exes
 \subsection{Deterministische endliche Automaten}
 \begin{frame}
 \frametitle{Deterministische Endliche Automaten}
@@ -80,6 +93,73 @@ Im Allgemeinen kann man Formale Sprachen sehr frei Angeben:
         \item $S$:   Startzustand $\in Q$
         \item $F$:   Endzustandsmenge $\subseteq Q$
         \end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{DEA: Beispiel}%TODO
+\end{frame}
+\begin{frame}
+	\frametitle{DEA: Aufgaben}
+	\begin{enumerate}
+	\item 
+		Lösen Sie folgendes Rätsel mit Hilfe eines deterministischen
+		endlichen Automaten:
+		\begin{quote}
+		  Es stehen drei Wasserkrüge mit einem Fassungsvermögen
+		  von 3, 5 bzw. 7 $l$ zur Verfügung, um eine Wassermenge von
+		  einem Liter abzumessen, d.~h. in einem der Krüge soll sich genau
+		  diese Menge Wassers befinden. Zu Beginn sind der kleinste und
+		  der größte Krug gefüllt. Da Ihr Augenmaß schlecht
+		  ist, darf Wasser nur so von einem Krug in einen anderen
+		  gegossen werden, dass der eine ganz geleert oder der andere
+		  ganz gefüllt wird (ohne dass Wasser verschüttet wird).
+		\end{quote}
+		Geben Sie den Übergangsgraphen eines Automaten an, dessen
+		akzeptierte Sprache genau die zulässigen lösenden
+		Umfüllreihenfolgen kodiert, sowie ein kürzestes Lösungswort.
+	\end{enumerate}
+\end{frame}
+\begin{frame}
+	\frametitle{DEA: Lösung}
+	\begin{enumerate}
+	\item TODO %TODO?
+	\end{enumerate}
+\end{frame}
+\begin{frame}
+	\begin{enumerate}
+	\setcounter{enumi}{1}
+	\item Aufgabe: Konstruiere einen DEA der alle durch 5 teilbaren Zahlen akzeptiert. Als Eingabe erhält der Automat dabei die Zahl in ihrer binären Darstellung. Also ist $\Sigma = \{0, 1\}$. Z.B. soll Automat $10_{10} = 1010_{2}$ akzeptieren, aber $7_{10} = 111_{2}$ ablehnen.
+	\pause \\[10pt]
+	Tip: Restklassen als Zustände modellieren
+	\end{enumerate}
+\end{frame}
+\begin{frame}
+	\frametitle{DEA: Lösung}
+	\begin{enumerate}
+	\setcounter{enumi}{1}
+	\item Idee
+		\begin{itemize}
+		\item $Q = (q_0, q_1, q_2, q_3, q_4)$\\
+		\item $\Sigma = \{0,1\}$
+		\item $\delta(q_n, c) \rightarrow q_{n \cdot 2 + c\mbox{ mod }5}$ mit $c\in\Sigma$\\
+		\item $S = q_0$\\
+		\item $F = \{q_0\}$
+		\end{itemize}
+	\end{enumerate}
+\end{frame}
+\begin{frame}
+\frametitle{DEA: Aufgabe}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Geben Sie einen regulären Ausdruck für die vom DEA mit nachfolgendem Zustandsgraphen erkannte Sprache an:
+\begin{center}\includegraphics[scale=0.7]{pics/dea1.pdf}\end{center}
+\end{enumerate}
+\end{frame}
+\begin{frame}
+	\frametitle{DEA: Lösung}
+	\begin{enumerate}
+	\setcounter{enumi}{2}
+	\item TODO %TODO
+	\end{enumerate}
 \end{frame}
 \subsection{Nichtdeterministische endliche Automaten}
 \begin{frame}
@@ -96,21 +176,77 @@ Im Allgemeinen kann man Formale Sprachen sehr frei Angeben:
         \item $F$:   Endzustandsmenge $\subseteq Q$
         \end{itemize}
 \end{frame}
-\subsection{Reguläre Ausdrücke}
-%TODO moritz
-\section{Konstruktion eines DEA aus einem NEA}
-\subsection{Eliminieren von epsilon-Übergängen}
-%TODO simon
-\subsection{Potenzmengenkonstruktion}
-%TODO simon
-%regex 2 NEA
+\begin{frame}
+	\frametitle{NEA: Beispiel}%TODO
+\end{frame}
+\begin{frame}
+	\frametitle{NEA: Aufgabe}
+ Welche Sprache akzeptiert der nichtdeterministische endliche Automat
+ zu dem folgenden Zustandsgraphen?
+ \begin{center}
+   \vspace{-6ex}
+   \includegraphics[scale=.8]{pics/NEA_01}
+ \end{center}
+\end{frame}
+\begin{frame}
+	\frametitle{NEA: Lösung}
+	$$L = c(b^* \cup a^*c \cup cc^*)$$
+ \begin{center}
+   \vspace{-6ex}
+   \includegraphics[scale=.8]{pics/NEA_01}
+ \end{center}
+	
+\end{frame}
+\begin{frame}
+	\frametitle{Äquivalenz von NEA und DEA}
+	Wir wissen aus der VL: NEA und DEA sind äquivalet.
+	Wie wandelt man nun einen NEA in einen DEA um?
+\end{frame}
+\subsubsection{Schritt 1: Eliminieren von Epsilon-Übergängen}
+\begin{frame}
+	\frametitle{Schritt 1: Eliminierung von $\varepsilon$-Übergängen}
+	%TODO
+\end{frame}
+\subsubsection{Schritt 2: Potenzmengenkonstruktion}
+\begin{frame}
+	\frametitle{Schritt 2: Potenzmengenkonstruktion}
+	%TODO
+\end{frame}
+\subsection{Konstruktion eines DEA aus einem NEA}
+%TODO: hier muss noch formatierung + Lösung rein
+\begin{frame}
+  Über dem Alphabet $\Sigma = \{a,b\}$ sei der reguläre
+  Ausdruck
+  $r := {(a \cup (ab (b)^* ba))^*}$
+  gegeben.
+  \begin{enumerate}
+    \setlength{\itemsep}{0ex}
+  \item Geben Sie einen NEA an, der $L(r)$ erkennt. Begründen Sie
+    kurz die Korrektheit Ihres Automaten, ein formaler
+    Korrektheitsbeweis ist jedoch nicht erforderlich.\\
+    (Hinweis: Es gibt einen NEA mit 3 Zuständen.)
+  \item Konstruieren Sie zu dem von Ihnen angegebenen NEA einen
+    äquivalenten DEA mittels Potenzmengenkonstruktion.
+  \end{enumerate}
+\end{frame}
+\begin{frame}
+Gegeben sei der NEA ${\cal A}=(\{s,q,f\},\{a,b,c\},\delta,s,\{f\})$, wobei
+die Übergangsfunktion $\delta$ gegeben ist durch:
+\begin{center}
+$\begin{array}{r|cccc}
+&\varepsilon & a & b & c\\\hline
+s & \{q,f\} & \emptyset & \{q\} &\{f\}\\
+q &  \emptyset & \{s\} & \{f\} & \{s,q\}\\
+t & \emptyset & \emptyset &  \emptyset &  \emptyset\\
+\end{array}$
+\end{center}
+\begin{enumerate}
+\item Geben Sie zu dem Automaten ${\cal A}$ den Übergangsgraphen an und eliminieren
+Sie die $\varepsilon$-Übergänge.
+\item Ermitteln Sie mittels Potenzmengenkonstruktion den zu ${\cal A}$ äquivalenten
+DEA. Geben Sie hierbei die Übergangsfunktion tabellarisch an.
+\end{enumerate}
+
+\end{frame}
 
 \end{document}
-
-%TODO Liste
-
-Simon
- - Aufgaben reinmachen
- - NEA
- - Potenzmengendings
- 

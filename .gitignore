@@ -6,4 +6,7 @@
 *.snm
 *.toc
 *.bak
-.gitignore
+.*.swp
+*.gif
+*.jpg
+*.png
