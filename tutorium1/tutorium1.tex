@@ -76,14 +76,14 @@ Im Allgemeinen kann man Formale Sprachen sehr frei Angeben:
 		\end{itemize}}
 	}
 \end{frame}
-\subsection{Reguläre Ausdrücke}
+\subsection{Reguläre Sprachen}
 \begin{frame}
  \frametitle{Wiederholung der Wiederholung: Reguläre Sprachen}
         Eine Sprache \(L\subseteq\Sigma^*\) heißt regulär, wenn für sie eine der folgenden Punkte gilt:
 
 \begin{itemize}
 \item \begin{itemize}Verankerung
-\item \(L = {a}\) mit \(a\in\sigma^*\) oder
+\item \(L = {a}\) mit \(a\in\Sigma^*\) oder
 \item \(L = \varnothing \)
 \end{itemize}
 \item \begin{itemize}Induktion: Seien \(L_1\), \(L_2\) reguläre Sprachen
@@ -100,11 +100,6 @@ Beispiel:
 \item \(L_2 :=\) Alle Worte, die gleich viele as und bs enthalten.
 \item \(L_1\) ist regulär, \(L_2\) nicht.
 \end{itemize}
-\end{frame}
-
-\begin{frame}
- \frametitle{Wiederholung der Wiederholung: Reguläre Ausdrücke}
-	%TODO
 \end{frame}
 
 \subsection{Deterministische endliche Automaten}
@@ -144,26 +139,12 @@ Beispiel:
 	\end{enumerate}
 \end{frame}
 \begin{frame}
-	\frametitle{DEA: Lösung}
-	\begin{enumerate}
-	\item Tafel (kommt noch in online Folien)
-	\end{enumerate}
-\end{frame}
-\begin{frame}
 \frametitle{DEA: Aufgabe}
 \begin{enumerate}
 \setcounter{enumi}{1}
 \item Geben Sie einen regulären Ausdruck für die vom DEA mit nachfolgendem Zustandsgraphen erkannte Sprache an:
 \begin{center}\includegraphics[scale=0.7]{pics/dea1.pdf}\end{center}
 \end{enumerate}
-\end{frame}
-\begin{frame}
-	\frametitle{DEA: Lösung}
-	\begin{enumerate}
-	\setcounter{enumi}{1}
-	\item $$L = a(ba)^*(b\cup\varepsilon) \cup b(ab)^*(a\cup\varepsilon)$$
-	\begin{center}\includegraphics[scale=0.7]{pics/dea1.pdf}\end{center}
-	\end{enumerate}
 \end{frame}
 \begin{frame}
 	\begin{enumerate}
@@ -227,31 +208,30 @@ Beispiel:
    \includegraphics[scale=.8]{pics/NEA_01}
  \end{center}
 \end{frame}
-\begin{frame}
-	\frametitle{NEA: Lösung}
-	$$L = c(b^* \cup a^*c \cup cc^*)$$
- \begin{center}
-   \vspace{-6ex}
-   \includegraphics[scale=.8]{pics/NEA_01}
- \end{center}
 	
-\end{frame}
-\subsubsection{Schritt 1: Eliminieren von Epsilon-Übergängen}
-\begin{frame}
-	\frametitle{Schritt 1: Eliminierung von $\varepsilon$-Übergängen}
-	\KITframe[another gray background. Gray is really awesome!] 
-	{\parbox{\textwidth}{
-	    \(q_1, q_2 \in Q\), \(a \in \Sigma\)
-	}}\\[0.2cm]	
-	Für alle Übergänge \(q_2 \in \delta(q_1, a)\) und \(q_2\) enthält \(\varepsilon\)-Übergänge:
-	\begin{enumerate}
-	 \item \(\varepsilon\)-Abschluss von \(q_2\) bilden
-	 \item Gebildeten Abschluss zu \(\delta(q_1, a)\) hinzufügen.
-	 \item \(\varepsilon\)-Übergänge von \(q_2\) entfernen.
-	\end{enumerate}	
-	%TODO Startzustand? :o
-\end{frame}
-\subsubsection{Schritt 2: Potenzmengenkonstruktion}
+%\subsubsection{Schritt 1: Eliminieren von Epsilon-Übergängen}
+%\begin{frame}
+%	\frametitle{Schritt 1: Eliminierung von $\varepsilon$-Übergängen}
+%	\KITframe[Grau grau grau sind alle meine kleider =)] 
+%	{\parbox{\textwidth}{
+%	\vspace{0.2cm}
+%		Erinnerung: Der Epsilon Abschluss $E(q)$ eines Zustandes $q$ ist definiert als die Menge aller Zustände die von $q$ aus durch lediglich Epsilon-Übergänge erreichbar sind. ($q$ selbst zählt auch dazu)
+%	\vspace{0.2cm}
+%	}}\\[0.2cm]	
+%	\KITframe[another gray background. Gray is really awesome!] 
+%	{\parbox{\textwidth}{
+%	\vspace{0.2cm}
+%	    \(q_1, q_2 \in Q\), \(a \in \Sigma\)
+%	\vspace{0.2cm}
+%	}}\\[0.2cm]	
+%	Für alle Übergänge \(q_2 \in \delta(q_1, a)\) und \(q_2\) enthält \(\varepsilon\)-Übergänge:
+%	\begin{enumerate}
+%	 \item \(\varepsilon\)-Abschluss von \(q_2\) bilden
+%	 \item Gebildeten Abschluss zu \(\delta(q_1, a)\) hinzufügen.
+%	 \item \(\varepsilon\)-Übergänge von \(q_2\) entfernen.
+%	\end{enumerate}	
+%\end{frame}
+\subsubsection{Potenzmengenkonstruktion}
 \frame{
 \frametitle{Potenzmengenkonstruktion}
 Jeder nichtdeterministische endliche Automat hat einen äquivalenten deterministischen endlichen Automat.
@@ -321,8 +301,33 @@ Ein \textcolor{red}{neuer Zustand} entsteht, wenn man von einem alten Zustand du
 \end{figure}
 
 }
+\frame{
+\frametitle{Potenzmengenkonstruktion}
+Die Einträge der ersten Spalte sind die neuen Zustände. Alle Mengen die einen Endzustand enthalten, sind wiederum im neuen Automaten Endzustände
+\begin{figure}[H]
+\begin{center}
+ \begin{tikzpicture}[node distance=1.7cm]
+ \tikzstyle{every node}=[circle, thick, minimum size = 7mm]
+ \tikzstyle{normal}=[draw]
+ \node[normal] 	(q0)		{\{$q_0$\}};
+ \node[normal] 	(q1)	[right of=q0] {\{$q_1$\}};
+ \node[normal,double,node distance=2.4cm]		(q2)	[right of=q1]{\{$q_1, q_2$\}};
+ \node[normal]	(f) at (1,-1)	{$\emptyset$};
+ \node 		(s) 	[left of =q0, xshift=0.5cm]	{};
+  \draw[->](q0) to node[above]{y}(q1);
+  \draw[->](s) to (q0);
+  \draw[->](q0) to node[below]{x}(f);
+  \draw[->,loop above](q1) to node[above]{y}(q1);
+  \draw[->,bend left](q1) to node[above]{x}(q2);
+  \draw[->, bend left](q2) to node[below]{y}(q1);
+  \draw[->, loop right](q2) to node[right]{x}(q2);
+  \draw[->, loop right](f) to node[right]{y,x}(f);
+\end{tikzpicture}
+\end{center}
+\end{figure}
+
+}
 \subsection{Konstruktion eines DEA aus einem NEA}
-%TODO: hier muss noch formatierung + Lösung rein
 \begin{frame}
   \frametitle{NEA2DEA: Aufgaben}
   Über dem Alphabet $\Sigma = \{a,b\}$ sei der reguläre
@@ -339,48 +344,7 @@ Ein \textcolor{red}{neuer Zustand} entsteht, wenn man von einem alten Zustand du
     äquivalenten DEA mittels Potenzmengenkonstruktion.
   \end{enumerate}
 \end{frame}
-
-\begin{frame}
-	\frametitle{NEA2DEA: Lösung}
-	\begin{enumerate}
-	\item Ein NEA der die Sprache des Regulären Ausdrucks ${(a \cup (ab (b)^* ba))^*}$ akzeptiert ist:\\
-  
-	\begin{center}
-	\begin{figure}
-	\begin{tikzpicture}[node distance=2cm]	
-	\node[circle,draw,double] (q_0) {$q_0$};
-	\node[circle,draw,right of=q_0] (q_1) {$q_1$};
-	\node[circle,draw,right of=q_1] (q_2) {$q_2$};
-	\draw[->] (-1,0) -- (q_0);
-	\draw (q_0) edge [loop above] node {$a$} (q_0);
-	\draw[->] (q_0) edge [bend left] node [above] {$a$} (q_1);	
-	\draw[->] (q_1) edge [bend left] node [below] {$a$} (q_0);	
-	\draw[->] (q_1) edge [bend left] node [above] {$b$} (q_2);	
-	\draw[->] (q_2) edge [bend left] node [below] {$b$} (q_1);	
-	\draw (q_2) edge [loop above] node {$b$} (q_2);
-	\end{tikzpicture}	
-	\end{figure}
-	\end{center}
-	\end{enumerate}
-\end{frame}
-
-\begin{frame}
-	\frametitle{NEA2DEA: Lösung}
-	\begin{enumerate}
-	\setcounter{enumi}{1}
-	\item Wende Potenzmengenkonstruktion an:\\
-	\begin{center}
-	$\begin{array}{r|cc}
-	\,& a & b \\\hline
-	q_0 & \{q_0, q_1\} & \emptyset\\ \pause
-	\{q_0, q_1\} &  \{q_0, q_1\}& \{q_3\} \\ \pause
-	q_3	&	\emptyset   & \{q_2,q_3\} \\ \pause
-	\{q_2,q_3\}	&	q_1	&	\{q_2,q_3\}\\ \pause
-	\emptyset & \emptyset & \emptyset \\
-	\end{array}$
-	\end{center}
-	\end{enumerate}
-\end{frame}
+\end{document}
 
 \begin{frame}
 	\frametitle{NEA2DEA: Aufgaben}
@@ -401,12 +365,4 @@ Sie die $\varepsilon$-Übergänge.
 DEA. Geben Sie hierbei die Übergangsfunktion tabellarisch an.
 \end{enumerate}
 \end{frame}
-\begin{frame}
-	\frametitle{NEA2DEA: Lösungen}
-	\begin{enumerate}
-		\item Tafel\pause
-		\item Auch Tafel
-	\end{enumerate}
-\end{frame}
 
-\end{document}
