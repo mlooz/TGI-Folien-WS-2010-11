@@ -94,12 +94,14 @@ Im Allgemeinen kann man Formale Sprachen sehr frei Angeben:
 
 \end{itemize}
 Beispiel:
-\(\Sigma := \{a,b\}\)
-\begin{itemize}
- \item \(L_1 :=\) Alle Worte, die nur aus einer graden Anzahl as bestehen.
-\item \(L_2 :=\) Alle Worte, die gleich viele as und bs enthalten.
-\item \(L_1\) ist regulär, \(L_2\) nicht.
-\end{itemize}
+\(\Sigma = \{a,b\}\)
+	\KITframe[Yeah, I think I'll stick to gray as a background color. Thanks again!]
+		{\parbox{\textwidth}{\begin{itemize}
+		\item \(L_1 = \{w| w \in \Sigma^*, w \mbox{w besteht aus einer graden Anzahl $a$s}\)
+		\item \(L_2 =\{w| w \in \Sigma^*, w \mbox{w enthält gleich viele $a$s und $b$s.}\)		
+		\end{itemize}}
+	}
+	\(L_1\) ist regulär, \(L_2\) nicht.
 \end{frame}
 
 \subsection{Deterministische endliche Automaten}
@@ -143,7 +145,7 @@ Beispiel:
 \begin{enumerate}
 \setcounter{enumi}{1}
 \item Geben Sie einen regulären Ausdruck für die vom DEA mit nachfolgendem Zustandsgraphen erkannte Sprache an:
-\begin{center}\includegraphics[scale=0.7]{pics/dea1.pdf}\end{center}
+\begin{center}\includegraphics[scale=0.7]{../pics/dea1.pdf}\end{center}
 \end{enumerate}
 \end{frame}
 \begin{frame}
@@ -205,7 +207,7 @@ Beispiel:
  zu dem folgenden Zustandsgraphen?
  \begin{center}
    \vspace{-6ex}
-   \includegraphics[scale=.8]{pics/NEA_01}
+   \includegraphics[scale=.8]{../pics/NEA_01}
  \end{center}
 \end{frame}
 	
@@ -223,7 +225,7 @@ Beispiel:
 %	\vspace{0.2cm}
 %	    \(q_1, q_2 \in Q\), \(a \in \Sigma\)
 %	\vspace{0.2cm}
-%	}}\\[0.2cm]	
+%	}}\\[0.2cm]
 %	Für alle Übergänge \(q_2 \in \delta(q_1, a)\) und \(q_2\) enthält \(\varepsilon\)-Übergänge:
 %	\begin{enumerate}
 %	 \item \(\varepsilon\)-Abschluss von \(q_2\) bilden
