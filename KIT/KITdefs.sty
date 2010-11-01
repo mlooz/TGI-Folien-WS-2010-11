@@ -1,0 +1,242 @@
+%%
+%% This is file `KITdefs.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% KITgeneral.dtx  (with options: `definitions')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2010 by Klaus Braune <klaus.braune@kit.edu>,
+%% Steinbuch Centre for Computing (SCC) at Karlsruhe Institute of Technology (KIT)
+%% 
+%% 
+%% This file may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, either version 1.2 of this license
+%% or (at your option) any later version.  The latest version of this
+%% license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.2 or later is part of all distributions of LaTeX version
+%% 1999/12/01 or later.
+%% 
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\RequirePackage{rcs}
+\RCS $Date: 2010/03/31 15:52:05 $
+\RCS $Revision: 1.0 $
+\ProvidesPackage{KITdefs}
+    [\RCSRawDate\space v\RCSRevision\space Common KIT specific definitions]
+
+\RequirePackage{tikz}
+\newcommand{\KIT@name@D}{Karlsruher Institut f\"ur Technologie (KIT)}
+\newcommand{\KIT@name@E}{Karlsruhe Institute of Technology (KIT)}
+\newcommand{\KIT@text@D}{KIT -- Universit\"at des Landes Baden-W\"urttemberg
+  und nationales Forschungszentrum in der Helmholtz-Gemeinschaft}
+\newcommand{\KIT@text@E}{KIT -- University of the State of Baden-Wuerttemberg
+  and National Laboratory of the Helmholtz Association}
+\gdef\KIT@Web{www.kit.edu}
+\let\KIT@www=\KIT@Web
+\newcommand{\KITURL}[1]{\gdef\KIT@Web{{#1}}}
+\let\KITWWW=\KITURL
+\let\KIT@WebTxt=\relax
+\gdef\KIT@wtext@D{Web}
+\gdef\KIT@wtext@E{Web}
+\newsavebox{\KIT@titimg}
+\newlength{\KIT@titimgwd}
+\newcommand{\KIT@pgftext}[5][KITblack]{%
+  \textcolor{#1}{\fontfamily{\KIT@fam}\fontsize{#2}{#3}%
+    \fontseries{#4}\upshape#5}
+}
+\newcommand{\KITtitleimage}[2][\relax]{%
+  \ifx#1\relax
+    \sbox{\KIT@titimg}{\includegraphics[width=\KIT@titimgwd]{#2}}
+  \else
+    \sbox{\KIT@titimg}{\includegraphics[#1,width=\KIT@titimgwd]{#2}}
+  \fi}
+\let\KITtitelbild=\KITtitleimage
+\newcommand{\TitleImage}[2][\relax]{%
+  \ifx#1\relax
+    \sbox{\KIT@titimg}{\includegraphics{#2}}
+  \else
+    \sbox{\KIT@titimg}{\includegraphics[#1]{#2}}
+  \fi}
+\gdef\KIT@logo@clrD{kit_logo_de_4c_positiv}
+\gdef\KIT@logo@bwD{kit_logo_de_1c_schwarz}
+\gdef\KIT@logo@iclrD{kit_logo_de_4c_negativ}
+\gdef\KIT@logo@ibwD{kit_logo_de_1c_weiss}
+\gdef\KIT@logo@clrE{kit_logo_en_4c_positiv}
+\gdef\KIT@logo@bwE{kit_logo_en_1c_schwarz}
+\gdef\KIT@logo@iclrE{kit_logo_en_4c_negativ}
+\gdef\KIT@logo@ibwE{kit_logo_en_1c_weiss}
+\gdef\KIT@logo{KITlogo_RGB_frutiger_RGB}
+\gdef\KIT@logos{KITlogo_sw_frutiger_CMYK}
+\gdef\KIT@logow{KITlogo_weiss_frutiger_CMYK}
+\gdef\KIT@logowg{KITlogo_weiss_gruen_frutiger_CMYK}
+\gdef\KIT@logo@clrOZ{KITlogo_4c_frutiger_CMYK-OZ}
+\let\KIT@logoOZ=\KIT@logo@clrOZ
+\gdef\KIT@logo@bwOZ{KITlogo_sw_frutiger_CMYK-OZ}
+\let\KIT@logoOZs=\KIT@logo@bwOZ
+\gdef\KIT@logo@iclrOZ{KITlogo_4c_weiss_frutiger_CMYK-OZ}
+\gdef\KIT@logo@ibwOZ{KITlogo_weiss_frutiger_CMYK-OZ}
+\let\KIT@logoOZw=\KIT@logo@ibwOZ
+\gdef\FZK@logo{FZK-logo-re-SW}
+\gdef\UKA@logo{Wortbildmarke_schwarz}
+\let\FZKlogo=\FZK@logo
+\let\KITlogo=\KIT@logo
+\let\UKAlogo=\UKA@logo
+\gdef\KIT@today@TD{\number\day.\space\ifcase\month\or Januar\or Februar\or
+  {M\"arz}\or April\or Mai\or Juni\or Juli\or August\or September\or Oktober\or
+  November\or Dezember\fi\space\number\year}
+\gdef\KIT@today@TE{\ifcase\month\or January\or February\or March\or April\or
+  May\or June\or July\or August\or September\or October\or November\or
+  December\fi\space\number\day,\space\number\year}
+\let\ttoday=\KIT@today@TD
+\gdef\KIT@today@ND{%
+  \ifnum\number\day<10{0}\fi\number\day.%
+  \ifnum\number\month<10{0}\fi\number\month.%
+  \ifnum\number\year<10{0}\fi\number\year}
+\gdef\KIT@today@NE{%
+  \ifnum\number\year<10{0}\fi\number\year-%
+  \ifnum\number\month<10{0}\fi\number\month-%
+  \ifnum\number\day<10{0}\fi\number\day}
+\let\ntoday=\KIT@today@ND
+\gdef\@date{\phantom{0}}
+\gdef\KIT@date{\ttoday}
+\let\KIT@DatTxt=\relax
+\gdef\DateNumbers{\gdef\KIT@date{\ntoday}}
+\gdef\DateText{\gdef\KIT@date{\ttoday}}
+\gdef\date#1{\gdef\KIT@date{#1}}
+\let\Datum=\date
+\newcommand{\KIT@German}{%
+  \let\KIT@name=\KIT@name@D
+  \let\KIT@text=\KIT@text@D
+  \let\KIT@WebTxt=\KIT@wtext@D
+  \let\ntoday=\KIT@today@ND
+  \let\ttoday=\KIT@today@TD
+  }
+\newcommand{\KIT@English}{%
+  \let\KIT@name=\KIT@name@E
+  \let\KIT@text=\KIT@text@E
+  \let\KIT@WebTxt=\KIT@wtext@E
+  \let\ntoday=\KIT@today@NE
+  \let\ttoday=\KIT@today@TE
+  }
+\KIT@German
+\newlength{\KIT@Framewd}
+\newlength{\KIT@RFramewd}
+\newlength{\KIT@Linewd}
+\newlength{\KIT@MFllx}
+\newlength{\KIT@MFlly}
+\newlength{\KIT@MFurx}
+\newlength{\KIT@MFury}
+\newcommand{\KIT@MFrame}[1][0mm]{%
+  \fill[KITmframe] (\KIT@MFllx,\KIT@MFury)
+    -- (\KIT@MFllx,\KIT@MFlly) -- (\KIT@MFurx,\KIT@MFlly)
+    -- (\KIT@MFurx,\KIT@MFury) -- (\KIT@MFllx,\KIT@MFury)
+    -- (\KIT@MFllx+\KIT@Framewd,\KIT@MFury-\KIT@Framewd)
+    -- (\KIT@MFurx-2\KIT@Framewd,\KIT@MFury-\KIT@Framewd)
+    arc( 90:  0:\KIT@Framewd)
+    -- (\KIT@MFurx-\KIT@Framewd,\KIT@MFlly+\KIT@Framewd+#1)
+    -- (2\KIT@Framewd,\KIT@MFlly+\KIT@Framewd+#1)
+    arc(270:180:\KIT@Framewd)
+    -- (\KIT@MFllx+\KIT@Framewd,\KIT@MFury-\KIT@Framewd) -- cycle;
+  }
+\newcommand{\KIT@MFrameMOD}[1][0mm]{%
+  \fill[KITmframe] (0mm,\paperheight)
+    -- (0mm,0mm) -- (\paperwidth,0mm)
+    -- (\paperwidth,\paperheight) -- (0mm,\paperheight)
+    -- (\KIT@Framewd,\paperheight-\KIT@Framewd)
+    -- (\paperwidth-2\KIT@Framewd,\paperheight-\KIT@Framewd)
+    arc( 90:  0:\KIT@Framewd)
+    -- (\paperwidth-\KIT@Framewd,\KIT@Framewd+#1)
+    -- (2\KIT@Framewd,\KIT@Framewd+#1)
+    arc(270:180:\KIT@Framewd)
+    -- (\KIT@Framewd,\paperheight-\KIT@Framewd) -- cycle;
+  }
+\newcommand{\KIT@MFrameRA}[1][0mm]{%
+  \draw[KITrframe,line width=\KIT@RFramewd] (\KIT@MFllx+#1,\KIT@MFury)
+    -- (\KIT@MFllx+#1,\KIT@MFlly+\KIT@Framewd)
+    arc(180:270:\KIT@Framewd)
+    -- (\KIT@MFurx+#1,\KIT@MFlly)
+    -- (\KIT@MFurx+#1,\KIT@MFury-\KIT@Framewd)
+    arc(  0: 90:\KIT@Framewd) -- cycle;
+  }
+\newcommand{\KIT@MFhdr}[5][0mm]{%
+  \fill[KITheadbg] (#2+#1,#5)
+    -- (#2+#1,#5-\KIT@MFHdh)
+    -- (#4+#1,#5-\KIT@MFHdh)
+    -- (#4+#1,#5-\KIT@Framewd)
+    arc(0:90:\KIT@Framewd) -- cycle;
+  }
+\newcommand{\KIT@marksymbol}[1][KITgreen]{%
+  \tikz \filldraw[#1] (0cm,7cm)
+    -- (0cm,2cm) arc(180:270:2cm) -- (7cm,0cm)
+    -- (7cm,5cm) arc(  0: 90:2cm) -- cycle;}
+\let\KITmark=\KIT@marksymbol
+\newcommand{\KIT@mark}{\resizebox{1ex}{1ex}{\KIT@marksymbol}}
+\newsavebox{\KIT@sbx}
+\newlength{\vgdist}
+\setlength{\vgdist}{0mm}
+\newlength{\KIT@tlen}
+\newlength{\KIT@tlenA}
+\newcommand{\KIT@Box}[1][\relax]{%
+  \KIT@tlen=\ht\KIT@sbx%
+  \KIT@tlenA=\dp\KIT@sbx%
+  \addtolength{\KIT@tlen}{\KIT@tlenA}%   height of image
+  \addtolength{\KIT@tlen}{2\vgdist}%     height of image + distance
+  \KIT@tlenA=\wd\KIT@sbx%                width of image
+  \addtolength{\KIT@tlenA}{2\vgdist}%    width of image + distance
+  \begin{tikzpicture}
+     \clip (0pt,\KIT@tlen+2\KIT@Linewd)
+       -- (0pt,\KIT@Framewd+.5\KIT@Linewd)
+       arc(180:270:\KIT@Framewd+.5\KIT@Linewd)
+       -- (\KIT@tlenA+2\KIT@Linewd,0pt)
+       -- (\KIT@tlenA+2\KIT@Linewd,\KIT@tlen-\KIT@Framewd+1.5\KIT@Linewd)
+       arc(0:90:\KIT@Framewd+.5\KIT@Linewd) -- cycle;
+     \ifx#1\relax\relax\else
+       \fill[KITblack15] (.5\KIT@Linewd,.5\KIT@Linewd)
+         rectangle (\KIT@tlenA+1.5\KIT@Linewd,\KIT@tlen+1.5\KIT@Linewd);
+     \fi
+     \pgftext[at=\pgfpoint{\vgdist+\KIT@Linewd}{\vgdist+\KIT@Linewd},left,bottom]{%
+       \usebox{\KIT@sbx}}
+     \draw[KITblack50,line width=\KIT@Linewd]
+       (.5\KIT@Linewd,\KIT@tlen+1.5\KIT@Linewd)
+       -- (.5\KIT@Linewd,\KIT@Framewd+.5\KIT@Linewd)
+       arc(180:270:\KIT@Framewd)
+       -- (\KIT@tlenA+1.5\KIT@Linewd,.5\KIT@Linewd)
+       -- (\KIT@tlenA+1.5\KIT@Linewd,\KIT@tlen-\KIT@Framewd+1.5\KIT@Linewd)
+       arc(0:90:\KIT@Framewd) -- cycle;
+  \end{tikzpicture}%
+}
+\newcommand{\KITimage}[2][\relax]{%
+  \ifx#1\relax
+    \sbox{\KIT@sbx}{\includegraphics{#2}}
+  \else
+    \sbox{\KIT@sbx}{\includegraphics[#1]{#2}}
+  \fi
+  \KIT@Box%
+}
+\let\KITbild=\KITimage
+\newcommand{\KITvectorgraphics}[2][\relax]{%
+  \ifx#1\relax
+    \sbox{\KIT@sbx}{\includegraphics{#2}}
+  \else
+    \sbox{\KIT@sbx}{\includegraphics[#1]{#2}}
+  \fi
+  \KIT@Box[bg]%
+}
+\let\KITvektorgrafik=\KITvectorgraphics
+\newcommand{\KITframe}[2][\relax]{%
+  \sbox{\KIT@sbx}{#2}
+  \ifx#1\relax
+    \KIT@Box%
+  \else
+    \KIT@Box[bg]%
+  \fi%
+}
+\let\KITrahmen=\KITframe
+\endinput
+%%
+%% End of file `KITdefs.sty'.

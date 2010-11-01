@@ -1,0 +1,77 @@
+%%
+%% This is file `KITcolors.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% KITgeneral.dtx  (with options: `colors')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2010 by Klaus Braune <klaus.braune@kit.edu>,
+%% Steinbuch Centre for Computing (SCC) at Karlsruhe Institute of Technology (KIT)
+%% 
+%% 
+%% This file may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, either version 1.2 of this license
+%% or (at your option) any later version.  The latest version of this
+%% license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.2 or later is part of all distributions of LaTeX version
+%% 1999/12/01 or later.
+%% 
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\RequirePackage{rcs}
+\RCS $Date: 2010/03/31 15:52:05 $
+\RCS $Revision: 1.0 $
+\ProvidesPackage{KITcolors}
+    [\RCSRawDate\space v\RCSRevision\space KIT specific color definitions]
+
+\RequirePackage{xcolor}
+\definecolor{KITgreen}  {cmyk}{  1,0,.60,0} % 100% green
+\definecolor{KITgreen70}{cmyk}{.70,0,.42,0} %  70% green
+\definecolor{KITgreen50}{cmyk}{.50,0,.30,0} %  50% green
+\definecolor{KITgreen30}{cmyk}{.30,0,.18,0} %  30% green
+\definecolor{KITgreen15}{cmyk}{.15,0,.09,0} %  15% green
+\definecolor{KITblue}  {cmyk}{.80,.500,0,0} % 100% blue
+\definecolor{KITblue70}{cmyk}{.56,.350,0,0} %  70% blue
+\definecolor{KITblue50}{cmyk}{.40,.250,0,0} %  50% blue
+\definecolor{KITblue30}{cmyk}{.24,.150,0,0} %  30% blue
+\definecolor{KITblue15}{cmyk}{.12,.075,0,0} %  15% blue
+\definecolor{KITblack}  {cmyk}{0,0,0,  1} % 100% black
+\definecolor{KITblack70}{cmyk}{0,0,0,.70} %  70% black
+\definecolor{KITblack50}{cmyk}{0,0,0,.50} %  50% black
+\definecolor{KITblack30}{cmyk}{0,0,0,.30} %  30% black
+\definecolor{KITblack15}{cmyk}{0,0,0,.15} %  15% black
+\definecolor{KITolive}{RGB}{130,190,60}
+\definecolor{KITyellow}{RGB}{250,230,20}
+\definecolor{KITred}{RGB}{160,30,40}
+\definecolor{KITmagenta}{RGB}{160,0,120}
+\definecolor{KITseablue}{RGB}{50,80,140}
+\definecolor{KITcyan}{RGB}{80,170,230}
+\definecolor{KITorange}{RGB}{220,160,30}
+\definecolor{KITbrown}{RGB}{160,130,50}
+\colorlet{KITrframe}{KITblack50}
+\colorlet{KITmframe}{KITblack15}
+\newif\ifKIT@bw\KIT@bwtrue
+\newcommand{\SW}{%
+  \KIT@bwtrue
+  \colorlet{KITheadbg}{KITblack50}
+  \ifKIT@De\let\KIT@logo=\KIT@logo@bwD\else\let\KIT@logo=\KIT@logo@bwE\fi
+  \renewcommand{\labelitemi}{\resizebox{1ex}{1ex}{\KIT@marksymbol[KITblack]}}
+}
+\let\BW=\SW
+\newcommand{\Color}{%
+  \KIT@bwfalse
+  \colorlet{KITheadbg}{KITblue}
+  \ifKIT@De\gdef\KIT@logo{\KIT@logo@clrD}
+    \else\gdef\KIT@logo{\KIT@logo@clrE}
+    \fi
+  \let\labelitemi=\KIT@mark
+}
+\let\Farbe=\Color
+\endinput
+%%
+%% End of file `KITcolors.sty'.

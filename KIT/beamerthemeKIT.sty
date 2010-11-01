@@ -1,0 +1,163 @@
+%%
+%% This is file `beamerthemeKIT.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% KITbeamer.dtx  (with options: `base,grid')
+%% 
+%% This is a generated file.
+%% 
+%% 
+%% Copyright (C) 2010 by Klaus Braune <klaus.braune@kit.edu>,
+%% Steinbuch Centre for Computing (SCC) at Karlsruhe Institute of Technology (KIT)
+%% 
+%% 
+%% This file may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, either version 1.2 of this license
+%% or (at your option) any later version.  The latest version of this
+%% license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.2 or later is part of all distributions of LaTeX version
+%% 1999/12/01 or later.
+%% 
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\RequirePackage{rcs}
+\RCS $Date: 2010/07/07 14:35:17 $
+\RCS $Revision: 1.0 $
+\ProvidesPackage{beamerthemeKIT}
+    [\RCSRawDate\space v\RCSRevision\space Base part of the beamer theme KIT]
+\RequirePackage{mathpazo}
+%\RequirePackage{uarial}
+\RequirePackage{helvet}
+\let\KIT@fam=\sfdefault
+\RequirePackage{tikz}
+\newif\ifKIT@grid
+\KIT@gridfalse
+\mode<presentation>
+\RequirePackage{KITcolors}
+\RequirePackage{KITdefs}
+\newlength{\K@mm}
+\setlength{\K@mm}{0.003937007874015748031\paperwidth}
+\newlength{\K@pt}
+\setlength{\K@pt}{0.3514598035145980351\K@mm}
+\addtolength{\oddsidemargin}{-2.4mm}
+\addtolength{\oddsidemargin}{-4\K@mm}
+\setlength{\textwidth}{232.0\K@mm}
+\setlength{\headsep}{23\K@mm}
+\setlength{\KIT@titimgwd}{248\K@mm}
+\let\titleimagewd=\KIT@titimgwd
+\newlength{\titleimageht}\setlength{\titleimageht}{74\K@mm}
+\setlength{\KIT@Framewd}{3\K@mm}
+\setlength{\KIT@RFramewd}{.5\K@mm}
+\setlength{\KIT@Linewd}{.5\K@pt}
+\setlength{\KIT@MFllx}{0\K@mm}
+\setlength{\KIT@MFlly}{0\K@mm}
+\setlength{\KIT@MFurx}{254\K@mm}
+\setlength{\KIT@MFury}{190.5\K@mm}
+\newcommand{\KIT@MFodd}{10\K@mm}
+\newcommand{\KIT@MFHdh}{0\K@mm}
+\newcommand{\KIT@MFbadd}{12\K@mm}
+\setlength{\leftmargini}{13.93329pt}
+\setlength{\leftmarginii}{16.06725pt}
+\setlength{\leftmarginiii}{16.06725pt}
+\setlength{\leftmarginiv}{6.40mm}
+\setlength{\leftmarginv}{6.40mm}
+\setlength{\leftmarginvi}{0.00mm}
+\newlength{\labelsep@itemi}
+\setlength{\labelsep@itemi}{6.89763pt}
+\newlength{\labelsep@itemii}
+\setlength{\labelsep@itemii}{5.475pt}
+\newlength{\labelsep@itemiii}
+\setlength{\labelsep@itemiii}{3.76784pt}
+\newlength{\labelsep@itemiv}
+\setlength{\labelsep@itemiv}{4.33688pt}
+\let\labelsep@itemv=\labelsep@itemiv
+\let\labelsep@itemvi=\labelsep@itemv
+\newlength{\labelsep@enumi}
+\setlength{\labelsep@enumi}{\labelsep@itemi}
+\addtolength{\labelsep@enumi}{-2\K@mm}
+\newlength{\labelsep@enumii}
+\setlength{\labelsep@enumii}{\labelsep@itemii}
+\addtolength{\labelsep@enumii}{-1.7\K@mm}
+\newlength{\labelsep@enumiii}
+\setlength{\labelsep@enumiii}{\labelsep@itemiii}
+\addtolength{\labelsep@enumiii}{-1.4\K@mm}
+\newlength{\labelsep@enumiv}
+\setlength{\labelsep@enumiv}{\labelsep@itemiv}
+\addtolength{\labelsep@enumiv}{-1.25\K@mm}
+\let\labelsep@enumv=\labelsep@itemv
+\let\labelsep@enumvi=\labelsep@itemvi
+\newlength{\item@indenti}
+\setlength{\item@indenti}{0pt}
+\let\item@indentii=\item@indenti
+\let\item@indentiii=\item@indenti
+\let\item@indentiv=\item@indenti
+\let\item@indentv=\item@indenti
+\newlength{\item@indentvi}
+\setlength{\item@indentvi}{-\labelsep@itemiv}
+\let\enum@indenti=\item@indenti
+\let\enum@indentii=\item@indentii
+\let\enum@indentiii=\item@indentiii
+\let\enum@indentiv=\item@indentiv
+\let\enum@indentv=\item@indentv
+\let\enum@indentvi=\item@indentvi
+\newcommand{\heading}[1]{%
+  \vspace{4.9\K@pt}\par{\KIT@fnt@hdr#1}
+}
+\DeclareOption{deutsch}{\AtEndOfPackage{\German}%
+  \def\KIT@babelopts{english,ngerman}}
+\DeclareOption{german}{\AtEndOfPackage{\German}%
+  \def\KIT@babelopts{english,ngerman}}
+\DeclareOption{ngerman}{\AtEndOfPackage{\German}%
+  \def\KIT@babelopts{english,ngerman}}
+\DeclareOption{germanb}{\AtEndOfPackage{\German}%
+  \def\KIT@babelopts{english,ngerman}}
+\DeclareOption{englisch}{\AtEndOfPackage{\English}%
+  \def\KIT@babelopts{ngerman,english}}
+\DeclareOption{english}{\AtEndOfPackage{\English}%
+  \def\KIT@babelopts{ngerman,english}}
+\DeclareOption{UKenglish}{\AtEndOfPackage{\English}%
+  \def\KIT@babelopts{ngerman,english}}
+\DeclareOption{USenglish}{\AtEndOfPackage{\English}%
+  \def\KIT@babelopts{ngerman,english}}
+\def\KIT@babelopts{english,ngerman}
+\DeclareOption{16pt}{\input{KIT16.clo}}
+\DeclareOption{18pt}{\input{KIT18.clo}}
+\DeclareOption{20pt}{\input{KIT20.clo}}
+\DeclareOption{22pt}{\input{KIT22.clo}}
+\DeclareOption{24pt}{\input{KIT24.clo}}
+\newif\ifKIT@usefoot\KIT@usefootfalse
+\DeclareOption{usefoot}{\KIT@usefoottrue}
+\newif\ifKIT@titlepage@z\KIT@titlepage@zfalse
+\DeclareOption{titlepage0}{\KIT@titlepage@ztrue}
+\ExecuteOptions{20pt}
+\ProcessOptions
+\PassOptionsToPackage{\KIT@babelopts}{babel}
+\gdef\English{%
+  \KIT@English
+  \gdef\KIT@logo{\KIT@logo@clrE}
+}
+
+\gdef\German{%
+  \KIT@German
+  \gdef\KIT@logo{\KIT@logo@clrD}
+}
+\let\Deutsch=\German
+\newcommand{\KITfoot}[1]{\KIT@usefoottrue\gdef\KIT@foot{#1}}
+\let\KIT@foot=\relax
+\newcommand{\usenavigationsymbols}[1][fHb]{\xdef\KIT@nav@syms{#1!}}
+\let\KIT@nav@syms=\relax
+\usefonttheme{KIT}
+\usecolortheme{KIT}
+\useinnertheme{KIT}
+\useoutertheme{KIT}
+\DateNumbers
+\AtBeginDocument{\normalsize\raggedbottom}
+\mode
+<all>
+\endinput
+%%
+%% End of file `beamerthemeKIT.sty'.

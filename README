@@ -1,0 +1,8 @@
+README - damit github glücklich ist ^^
+
+Hier finden sich die Latex Quellen für das Tutorium das Simon Stroh und Moritz v. Looz im WS 2010/11 am KIT halten.
+Alles was zum compilen der Folien benötigt wird sollte dabei sein.
+
+HOWTO
+
+Bis wir eine Makefile haben, kann man die Folien einfach mit ./build.sh generieren. :)

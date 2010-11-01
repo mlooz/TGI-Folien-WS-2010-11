@@ -1,0 +1,119 @@
+%%
+%% This is file `beamerouterthemeKIT.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% KITbeamer.dtx  (with options: `outer,gridouter')
+%% 
+%% This is a generated file.
+%% 
+%% 
+%% Copyright (C) 2010 by Klaus Braune <klaus.braune@kit.edu>,
+%% Steinbuch Centre for Computing (SCC) at Karlsruhe Institute of Technology (KIT)
+%% 
+%% 
+%% This file may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, either version 1.2 of this license
+%% or (at your option) any later version.  The latest version of this
+%% license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.2 or later is part of all distributions of LaTeX version
+%% 1999/12/01 or later.
+%% 
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\RequirePackage{rcs}
+\RCS $Date: 2010/07/07 14:35:17 $
+\RCS $Revision: 1.0 $
+\ProvidesPackage{beamerouterthemeKIT}
+    [\RCSRawDate\space v\RCSRevision\space Outer part of the beamer theme KIT]
+
+\mode<presentation>
+\setbeamertemplate{navigation symbols}{}
+\newif\ifKIT@ins@warn
+\KIT@ins@warntrue
+\setbeamertemplate{frametitle}{\vspace*{\KIT@FHeadHt}}
+\newlength{\KIT@FHeadHt}
+\newlength{\KIT@FHeadDp}
+\newlength{\KIT@FStdTitHt}
+\settoheight{\KIT@FStdTitHt}{{\KIT@fnt@framtitl Q}}
+\AtBeginDocument{
+  \addtobeamertemplate{background}{}{%
+    \global\KIT@FHeadHt=0\K@mm
+    \begin{tikzpicture}
+      \useasboundingbox (-4.415748mm, 0.000mm) rectangle (123.584252mm,96.000mm);
+      \KIT@MFrame[\KIT@MFbadd]
+      \pgftext[at=\pgfpoint{243\K@mm}{180.5\K@mm},right,top]
+        {\pgfimage[interpolate=true,width=30\K@mm]{\KIT@logo}}
+      \pgftext[at=\pgfpoint{11\K@mm}{172.5\K@mm},left,base]
+        {\parbox[t]{194\K@mm}{\raggedright%
+           \KIT@fnt@framtitl\insertframetitle\rule{0pt}{0pt}\\[4\K@pt]
+           \KIT@fnt@framsubtit\insertframesubtitle}}
+      \pgftext[at=\pgfpoint{6\K@mm}{8.35\K@mm},left,base]
+        {\KIT@fnt@page\vphantom{0}\insertframenumber}
+      \ifKIT@usefoot
+        \ifx\KIT@foot\relax
+          \pgftext[at=\pgfpoint{17\K@mm}{8.35\K@mm},left,base]
+            {\KIT@fnt@foot\vphantom{0}\KIT@date}
+          \pgftext[at=\pgfpoint{37\K@mm}{8.35\K@mm},left,base]
+            {\KIT@fnt@foot\vphantom{0}%
+             \parbox[t]{130\K@mm}{%
+               \mbox{\insertshortauthor}: \insertshorttitle}}
+          \pgftext[at=\pgfpoint{243\K@mm}{8.35\K@mm},right,base]
+            {\KIT@fnt@foot\vphantom{0}%
+             \parbox[t]{80\K@mm}{%
+               \ifx\beamer@shortinstitute\relax\insertinstitute
+               \else\insertshortinstitute\fi}}
+        \else
+          \pgftext[at=\pgfpoint{17\K@mm}{8.35\K@mm},left,base]
+            {\KIT@fnt@foot\vphantom{0}\KIT@foot}
+        \fi
+      \fi
+      \ifx\KIT@nav@syms\relax \relax
+      \else
+        \pgftext[at=\pgfpoint{251\K@mm}{15\K@mm},bottom,right]
+          {\color{KITblack50}%
+           \setbeamercolor*{navigation symbols}{fg=KITblack50}%
+           \setbeamercolor*{navigation symbols dimmed}{fg=KITblack30}%
+           \expandafter\KIT@ins@nav\KIT@nav@syms
+          }
+      \fi
+    \end{tikzpicture}%
+    }
+  \def\KIT@ins@nav#1{%
+    \if#1!\let\@next=\relax\else
+    \if#1s\hbox{\insertslidenavigationsymbol}%
+          \let\@next=\KIT@ins@nav\else
+    \if#1f\hbox{\insertframenavigationsymbol}%
+          \let\@next=\KIT@ins@nav\else
+    \if#1H\hbox{\insertsectionnavigationsymbol}%
+          \let\@next=\KIT@ins@nav\else
+    \if#1h\hbox{\insertsubsectionnavigationsymbol}%
+          \let\@next=\KIT@ins@nav\else
+    \if#1d\hbox{\insertdocnavigationsymbol}%
+          \let\@next=\KIT@ins@nav\else
+    \if#1b\hbox{\insertbackfindforwardnavigationsymbol}%
+          \let\@next=\KIT@ins@nav\else
+          \ifKIT@ins@warn
+            \PackageWarning{beamerKIT}{Invalid navigation symbol key `#1' has been ignored}%
+            \message{To avoid the warning use only the keys^^J
+              \@spaces `s' to insert the slide navigation symbol^^J
+              \@spaces `f' to insert the frame navigation symbol^^J
+              \@spaces `H' to insert the section navigation symbol^^J
+              \@spaces `h' to insert the subsection navigation symbol^^J
+              \@spaces `d' to insert the doc navigation symbol and^^J
+              \@spaces `b' to insert the backward - find - forward symbols.^^J}%
+            \global\KIT@ins@warnfalse
+          \fi
+          \let\@next=\KIT@ins@nav
+    \fi\fi\fi\fi\fi\fi\fi
+    \@next
+  }
+}
+\mode
+<all>
+\endinput
+%%
+%% End of file `beamerouterthemeKIT.sty'.

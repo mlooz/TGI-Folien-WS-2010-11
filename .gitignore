@@ -7,8 +7,5 @@
 *.toc
 *.bak
 .*.swp
-*.gif
-*.jpg
-*.png
 *~
 *.backup

@@ -13,3 +13,6 @@ export TEXINPUTS="$TEXINPUTS:KIT/"
 for a in `seq 3`; do 
 	pdflatex slides
 done
+#cleanup
+rm *.aux *.log *.nav *.out  *.snm *.toc
+
