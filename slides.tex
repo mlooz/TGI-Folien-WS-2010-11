@@ -5,6 +5,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{automata}
 \usenavigationsymbols
 
 \title{Theoretische Grundlagen der Informatik}
@@ -145,7 +147,22 @@ Beispiel:
 \begin{enumerate}
 \setcounter{enumi}{1}
 \item Geben Sie einen regulären Ausdruck für die vom DEA mit nachfolgendem Zustandsgraphen erkannte Sprache an:
-%\begin{center}\includegraphics[scale=0.7]{../pics/dea1.pdf}\end{center}
+\begin{center}
+\begin{tikzpicture}[node distance=2cm,shorten >=1pt,auto]
+\node[state,initial,initial where=above]   (q_0)                {$q_0$};
+\node[state]           (q_1) [left of=q_0]  {$q_1$};
+\node[state,accepting] (q_2) [below of=q_0] {$q_2$};
+\node[state,accepting] (q_3) [left of=q_2]  {$q_3$};
+\path[->]	(q_0) 	edge 			node {$b$} 		(q_2)
+			edge 			node {$c$} 		(q_1)
+			edge 			node {$a$} 		(q_3)
+		(q_1)	edge [loop above]	node {$a$,$b$,$c$}	()
+		(q_2)	edge [bend left]	node {$a$}		(q_3)
+			edge [bend left=90,looseness=2.2]	node {$b$,$c$}		(q_1)
+		(q_3)	edge			node {$a$,$c$}		(q_1)
+			edge			node {$b$}		(q_2);
+\end{tikzpicture}
+\end{center}
 \end{enumerate}
 \end{frame}
 \begin{frame}
@@ -205,10 +222,25 @@ Beispiel:
 	\frametitle{NEA: Aufgabe}
  Welche Sprache akzeptiert der nichtdeterministische endliche Automat
  zu dem folgenden Zustandsgraphen?
- \begin{center}
-   \vspace{-6ex}
-  % \includegraphics[scale=.8]{../pics/NEA_01}
- \end{center}
+\begin{center}
+\vspace{-0.7cm}
+\begin{tikzpicture}[scale=0.6,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_0)                {$q_0$};
+\node[state]           (q_2) [right of=q_0]  {$q_2$};
+\node[state,accepting] (q_1) [above of=q_2] {$q_1$};
+\node[state,accepting] (q_3) [below of=q_2]  {$q_3$};
+\node[state,accepting] (q_4) [right of=q_2]  {$q_4$};
+\path[->]	(q_0) 	edge 			node {$c$} 		(q_1)
+			edge 			node {$c$} 		(q_2)
+			edge 			node {$c$} 		(q_3)
+		(q_1)	edge [loop above]	node {$c$}		()
+			edge 			node {$c$}		(q_4)
+		(q_2)	edge [loop above]	node {$b$}		()
+			edge 			node {$b$}		(q_4)
+		(q_3)	edge [loop above]	node {$a$}		()
+			edge			node {$c$}		(q_4);
+\end{tikzpicture}
+\end{center}
 \end{frame}
 	
 %\subsubsection{Schritt 1: Eliminieren von Epsilon-Übergängen}
@@ -346,7 +378,6 @@ Die Einträge der ersten Spalte sind die neuen Zustände. Alle Mengen die einen 
     äquivalenten DEA mittels Potenzmengenkonstruktion.
   \end{enumerate}
 \end{frame}
-\end{document}
 
 \begin{frame}
 	\frametitle{NEA2DEA: Aufgaben}
@@ -367,4 +398,58 @@ Sie die $\varepsilon$-Übergänge.
 DEA. Geben Sie hierbei die Übergangsfunktion tabellarisch an.
 \end{enumerate}
 \end{frame}
+%Pumpin' Lemma
+\begin{frame}
+\frametitle{Pumping Lemma}
+\begin{exampleblock}{Pumping Lemma}
+Sei $L$ eine reguläre Sprache, dann existiert eine Zahl $n \in \mathbb{N}$, so dass für jedes wort $w \in L$ mit $\left|w \right| > n$ eine Darstellung $$w = uvx,$$
+so dass folgende Eigenschaften erfüllt sind:
 
+\begin{enumerate}
+\item $v \neq \lambda $ 
+\item $\left|uv\right| \leq n$ 
+\item Für alle $i \in \mathbb{N}_0$ gilt: $uv^iw \in L$
+\end{enumerate}
+\end{exampleblock}
+\end{frame}
+\begin{frame}
+\frametitle{Pumping Lemma: Übersicht}
+\begin{itemize}
+\item Für jede Reguläre Sprache gilt das Pumping-Lemma, nicht jede Sprache für die das Pumping-Lemma gilt ist regulär!
+\item In der Übung wird üblicherweise die Kontraposition des Pumping-Lemmas verwendet. Man zeigt für eine Sprache, dass das Pumping-Lemma \emph{nicht} erfüllt ist, und daraus folgt, dass diese Sprache \emph{nicht} regulär sein kann.
+\begin{itemize}
+\item Konkret: Finden wir für \emph{jedes} $n$ \emph{ein} $w$ mit $\left|w\right| > n$, so dass für \emph{jede} Darstellung $w = uvx$ mit $v \neq \lambda$ sowie $\left|wv\right| \leq n$, ein $i \in \mathbb{N}_0$ mit $uv^iw \notin L$, dann ist $L$ nicht regulär.
+\item \textbf{Wichtig:} Alle Quantoren werden umgekehrt.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Beispiel}
+Sei $\Sigma = \{a, b\}$ und $L = \{a^nb^n\,|\,n\geq0\}$. (Also $L = \{\varepsilon,ab, aabb, aaabbb, \ldots\}$)
+\begin{enumerate}
+\item Für ein $n$ wähle das Wort $w = a^nb^n$.
+\item Es ist also $\left|w\right| > n$.
+\item Nun ist aber für \emph{jede} Darstellung $w = uvx$ mit $\left|uv\right| \leq n$ und $v \neq \varepsilon$ $v = a^m$ mit $m \geq 0$. Demnach ist $uv^0x = a^lb^n \neq L$, da $l < n$.
+\item Daher kann $L$ nicht regulär sein.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Pumping Lemma: Aufgaben}
+Welche der folgenden Sprachen sind regulär? Begründen Sie Ihre Antwort.
+
+\begin{enumerate}
+\item $L=\{a^kc^lb^k \mid k, l \geq 0 \}$
+\item Die Menge aller Wörter über $\{0, 1\}$, sodass auf jede Null eine Eins folgt
+\item Die Menge der Wörter über $\{0, 1\}$, die die Form $w\bar{w}$ haben, wobei $\bar{w}$ aus $w$ gebildet
+wird, indem alle Nullen durch Einsen und alle Einsen durch Nullen ersetzt werden; so ist etwa 
+$\overline{011}=100$ und $011100$ ein Beispiel für ein Wort dieser Sprache
+\end{enumerate}
+
+\end{frame}
+
+
+\input{includes/disclaimer}
+\end{document}
