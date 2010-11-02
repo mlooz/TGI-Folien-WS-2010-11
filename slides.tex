@@ -682,7 +682,61 @@ Hier sind $q_2$ und $q_3$ äquivalent. Warum?
   \end{itemize}
  \end{block}
 \end{frame}
-%TODO Nerode-Relation
+\begin{frame}
+ \frametitle{Konstruktion der Äquivalenzklassen}
+ \begin{block}{}
+  \begin{enumerate}
+   \item Fasse alle Zustände $q_i \in Q$ in eine Klasse zusammen.
+   \item $\varepsilon$ trennt Zustände aus $F$ von denen aus $Q \backslash F$
+   \item Für Zustandspaare $p, q$ in einer Klasse und
+   Worte $w\in \Sigma^*$ mit wachsender Länge: 
+    \begin{enumerate}
+    \item falls $[\delta(p, w)] != [\delta(q, w)]$ trenne die Zustände $q$ und $p$. (w ist Zeuge)
+    \item breche ab falls sich für eine Wortlänge keine weiteren Zeugen finden.
+    \end{enumerate}
+  \end{enumerate}
+ \end{block}
+\end{frame}
+\begin{frame}
+ \frametitle{Beispiel $Q'$}
+ \vspace{-1cm}
+ \begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[scale=0.5,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_1)                {$q_1$};
+\node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+\node[state,accepting] (q_3) [right of=q_2] {$q_3$};
+
+\path[->]	(q_1) 	edge 			node {$a$} 		(q_2)
+		(q_2)	edge 			node {$b$}		(q_3)
+		(q_3)	edge [loop above]	node {$b$}		();
+\end{tikzpicture}
+\end{center}
+\end{figure}
+ \begin{block}{Anfangs}
+  $\{q_1, q_2, q_3\}$
+ \end{block}
+ \pause
+ \begin{block}{Zeugen der Länge 0: $\varepsilon$}
+  $\{q_1\} \{q_2, q_3\}$
+ \end{block}
+  \pause
+  \begin{block}{Zeugen der Länge 1: a, b}
+   $a$ oder $b$ trennen keine Zustände mehr voneinander $\rightarrow$ Abbruch.
+  \end{block}
+%hier vielleicht noch ein groesseres Beispiel hin?
+\end{frame}
+\begin{frame}
+ \frametitle{Nerode-Relation}
+ \begin{block}{Definition 2.25}
+ Für eine Sprache \(L \subseteq \Sigma^*\) ist die \emph{Nerode-Relation} \(R_L\) definiert durch:
+  
+  für \(x, y \in \Sigma^*\) ist genau dann wenn \((xz \in L \leftrightarrow yz \in L)\) für alle $z \in \Sigma^*$ gilt.
+ \end{block}
+  \begin{block}{Erinnerung}
+   Die minimale Anzahl an Zuständen eines endlichen Automaten einer Sprache $L \subseteq \Sigma^*$ entspricht dem Index der Nerode-Relation.
+  \end{block}
+\end{frame}
 \begin{frame}
 \frametitle{Aufgabe zur Nerode-Relation}
 Bestimmen Sie die Äquivalenzklassen der Nerode-Relation zur Sprache $L=\{a^ib^jc^k \mid i,j,k \in \mathbb{N}_{>0} \}$ über dem Alphabet $\Sigma=\{a,b,c\}$.
@@ -698,8 +752,20 @@ zur Sprache
 
 an, und konstruieren Sie den Automaten der Nerode-Relation.
 \end{frame}
-%TODO RAM
-%TODO Turingmaschine, DTM
+\begin{frame}
+ %TODO RAM
+\end{frame}
+
+\begin{frame}
+\frametitle{Turingmaschine}
+Im Gegensatz zur Random Access Machine ist eine Turingmaschine nicht so einfach nachzubauen.
+%TODO Turingmaschine
+\begin{block}{Definition}
+ 
+\end{block}
+
+\end{frame}
+
 \begin{frame}
 \frametitle{Turingmaschine}
  \label{sec:busy_beaver}
