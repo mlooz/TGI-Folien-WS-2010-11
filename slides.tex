@@ -386,6 +386,9 @@ DEA. Geben Sie hierbei die Übergangsfunktion tabellarisch an.
 	 \item äquivalent = akzeptiert die selbe Sprache.
 	\end{itemize}
 	\end{block}
+	\begin{block}{Erinnerung}
+		Der \(\varepsilon\)-Abschluss $E(q)$ eines Zustandes $q$ ist definiert als die Menge aller Zustände, die von $q$ aus durch lediglich \(\varepsilon\)-Übergänge erreichbar sind. ($q$ selbst zählt auch dazu)
+	\end{block}
 \end{frame}
 \begin{frame}
 \frametitle{Eliminierung von $\varepsilon$-Übergängen}
@@ -395,24 +398,17 @@ DEA. Geben Sie hierbei die Übergangsfunktion tabellarisch an.
 	 \begin{itemize}
 	 \item \(\tilde{Q} :=(Q \backslash F)\cup\tilde{F}\)
 	 \item \(\tilde{s} := s\)
+	 \item \(\tilde{F} := \{q|E(q)\cap F \neq \emptyset\}\)
+	 \item \[\tilde{\delta}(q,a) := 
+	 \begin{cases}
+	  {q}			& \text{falls $a = \varepsilon$} \\
+	 \delta(E(q),a)	& \text{sonst}
+	 \end{cases}\]
 	 \end{itemize}
 	\end{block}
-
-	\begin{block}{Erinnerung}
-		Der Epsilon Abschluss $E(q)$ eines Zustandes $q$ ist definiert als die Menge aller Zustände die von $q$ aus durch lediglich Epsilon-Übergänge erreichbar sind. ($q$ selbst zählt auch dazu)
-	\end{block}
-	\KITframe[another gray background. Gray is really awesome!] 
-	{\parbox{\textwidth}{
-	\vspace{0.2cm}
-	    \(q_1, q_2 \in Q\), \(a \in \Sigma\)
-	\vspace{0.2cm}
-	}}\\[0.2cm]
-	Für alle Übergänge \(q_2 \in \delta(q_1, a)\) und \(q_2\) enthält \(\varepsilon\)-Übergänge:
-	\begin{enumerate}
-	 \item \(\varepsilon\)-Abschluss von \(q_2\) bilden
-	 \item Gebildeten Abschluss zu \(\delta(q_1, a)\) hinzufügen.
-	 \item \(\varepsilon\)-Übergänge von \(q_2\) entfernen.
-	\end{enumerate}	
+\end{frame}
+\begin{frame}	
+	
 \end{frame}
 
 %Pumpin' Lemma
