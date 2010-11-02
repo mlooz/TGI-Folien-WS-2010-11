@@ -753,17 +753,49 @@ zur Sprache
 an, und konstruieren Sie den Automaten der Nerode-Relation.
 \end{frame}
 \begin{frame}
+\vspace{-2cm}
+\begin{block}{Registermaschine}
+Annährend realistisches Rechnermodell. Bestehend aus:
+ \begin{itemize}
+  \item Befehlszähler (b)
+  \item Akkumulator 
+  \item Register (= Speicher)
+  \item Programm
+ \end{itemize}
+Der Speicher der Registermaschine ist unendlich und eindeutig adressierbar.
+\includegraphics{pics/RAM}
+\end{block}
  %TODO RAM
 \end{frame}
 
 \begin{frame}
 \frametitle{Turingmaschine}
-Im Gegensatz zur Random Access Machine ist eine Turingmaschine nicht so einfach nachzubauen.
-%TODO Turingmaschine
-\begin{block}{Definition}
- 
+Eine Registermaschine ist zwar physikalischen Rechnern ähnlich, aber unhandlich um damit Beweise zu führen.
+Daher ist ein abstrakteres Modell hilfreich \\
+$\rightarrow$ Turingmaschine.
+\pause
+\begin{block}{Turingmaschine}
+Die Turingmaschine besteht aus einem beidseitig \emph{unendlichen} Eingabe- und Rechenband
+mit einem freibeweglichen Lese-/Schreibkopf, der von einer \emph{endlichen} Kontrolle gesteuert wird. 
 \end{block}
-
+\end{frame}
+\begin{frame}
+\vspace{-1cm}
+\begin{block}{Definiton}
+Eine Turingmaschine wird definiert als:
+ \begin{itemize}
+ \item $Q$, eine endliche Zustandsmenge
+ \item $\Sigma$, einem endlichen Eingabealphabet
+ \item $\sqcup$, einem Blanksymbol mit $\sqcup \notin \Sigma$
+ \item $\Gamma$, einem endlichen Bandalphabet mit $\Sigma \cup\{\sqcup\} \subseteq \Gamma$
+ \item $s \in Q$, einem Startzustand
+ \item $\delta: Q\times\Gamma \rightarrow Q\times\Gamma\times\{L, R, N\}$
+ \item $F \subseteq Q$, einer Menge an Endzuständen
+ \end{itemize}
+\end{block}
+\begin{block}{Bemerkung}
+ Für $q\in F$ gilt: $\forall a \in \Gamma: \delta(q, a) = (q, a, N)$, d.h. die Berechnung der Turingmaschine stoppt.
+\end{block}
 \end{frame}
 
 \begin{frame}
