@@ -406,9 +406,21 @@ DEA. Geben Sie hierbei die Übergangsfunktion tabellarisch an.
 	 \end{cases}\]
 	 \end{itemize}
 	\end{block}
+	\begin{block}{Eigenschaften von \(\tilde{A}\)}
+	 \(L(\tilde{A}) = L(A)\), und \(|\tilde{Q}| \leq |Q|\).
+	\end{block}
+
 \end{frame}
+%TODO Beispiel!
 \begin{frame}	
-	
+\frametitle{Aufgaben zu \(\varepsilon\)-Übergängen}
+Sei $A=(Q,\Sigma, \delta, s, \{q_f\})$ ein NEA, derart dass es keine zu $s$ hinführenden und keine von $q_f$ ausgehenden Übergänge gibt. Beschreiben Sie für jede der folgenden Modifikationen von A die akzeptierte Sprache als Modifikation von $L=L(A)$:
+\begin{enumerate}
+\item Der Automat, der aus A konstruiert wird, indem $\varepsilon$-Übergänge von $s$ zu jedem Zustand hinzugefügt werden, der von $s$ aus auf einem Pfad erreichbar ist, dessen Beschriftungen sowohl Symbole aus $\Sigma$ als auch $\varepsilon$ enthalten können.
+\item Der Automat, der aus A konstruiert wird, indem von jedem Zustand $\varepsilon$-Übergänge nach $q_f$ hinzugefügt werden, von dem aus $q_f$ auf irgendeinem Pfad erreichbar ist.
+\item Der Automat, der aus A konstruiert wird, indem die unter (a) und (b) geforderten Modifikationen ausgeführt werden.
+\end{enumerate}
+
 \end{frame}
 
 %Pumpin' Lemma
