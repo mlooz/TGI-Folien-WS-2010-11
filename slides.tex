@@ -633,6 +633,7 @@ Nein!
 \end{frame}
 \begin{frame}
  \frametitle{Äquivalenz}
+ \vspace{-1cm}
  \begin{block}{Aus der Vorlesung}
   \begin{itemize}
    \item Zwei Zustände haben dasselbe Akzeptanzverhalten, wenn es für das Erreichen eines Endzustandes durch Abarbeiten eines Wortes $w$
@@ -681,14 +682,45 @@ Hier sind $q_2$ und $q_3$ äquivalent. Warum?
   \end{itemize}
  \end{block}
 \end{frame}
+%TODO Nerode-Relation
 \begin{frame}
-%Konstruktion
+\frametitle{Aufgabe zur Nerode-Relation}
+Bestimmen Sie die Äquivalenzklassen der Nerode-Relation zur Sprache $L=\{a^ib^jc^k \mid i,j,k \in \mathbb{N}_{>0} \}$ über dem Alphabet $\Sigma=\{a,b,c\}$.
 \end{frame}
+\begin{frame}
+ Sei $\Sigma = \{a,b,c\}.$ Geben Sie die Äquivalenzklassen der Nerode-Relation
+zur Sprache
 
-%Nerode-Relation
-%Registermaschine
-%DTM
-%Turingmaschine
+\begin{quote}
+  $L = \{w \in \Sigma^*: |w|_a \equiv 0 \textup{ mod } 2 \textup{ und } |w|_b
+  \equiv |w|_c \equiv 1 \textup{ mod } 2\}$
+\end{quote}
 
+an, und konstruieren Sie den Automaten der Nerode-Relation.
+\end{frame}
+%TODO RAM
+%TODO Turingmaschine, DTM
+\begin{frame}
+\frametitle{Turingmaschine}
+ \label{sec:busy_beaver}
+
+Konstruieren Sie eine Turingmaschine, die aus drei Zuständen (plus einem
+weiteren Haltezustand $q_f$) besteht und folgendes Verhalten hat:
+\begin{quote}
+  Angesetzt auf ein leeres Band schreibt sie möglichst viele ${\tt 1}$
+  hintereinander und \textbf{hält} nach endlich vielen Schritten.
+\end{quote}
+Die Turingmaschine soll folgende Alphabete verwenden: $\Sigma = \{{\tt 1}\},
+\Gamma = \Sigma \cup \{{\tt 0}\}$.  Insbesondere ist also ${\tt 0}$ das
+Blanksymbol.
+
+Welche Konfigurationen durchläuft die Maschine, wenn Sie auf dem leeren Band
+gestartet wird?  Welche Konfigurationen durchläuft die Maschine bei Eingabe
+des Wortes {\tt 101}?
+\end{frame}
+\begin{frame}
+ Geben Sie eine wohldokumentierte Turingmaschine an, die zwei durch Blank
+getrennte Binärworte aus $\{0,1\}^*$ addiert.
+\end{frame}
 \input{includes/disclaimer}
 \end{document}
