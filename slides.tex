@@ -357,25 +357,6 @@ Die Einträge der ersten Spalte sind die neuen Zustände. Alle Mengen die einen 
   \end{enumerate}
 \end{frame}
 
-\begin{frame}
-	\frametitle{NEA2DEA: Aufgaben}
-Gegeben sei der NEA ${\cal A}=(\{s,q,f\},\{a,b,c\},\delta,s,\{f\})$, wobei
-die Übergangsfunktion $\delta$ gegeben ist durch:
-\begin{center}
-$\begin{array}{r|cccc}
-&\varepsilon & a & b & c\\\hline
-s & \{q,f\} & \emptyset & \{q\} &\{f\}\\
-q &  \emptyset & \{s\} & \{f\} & \{s,q\}\\
-f & \emptyset & \emptyset &  \emptyset &  \emptyset\\
-\end{array}$
-\end{center}
-\begin{enumerate}
-\item Geben Sie zu dem Automaten ${\cal A}$ den Übergangsgraphen an und eliminieren
-Sie die $\varepsilon$-Übergänge.
-\item Ermitteln Sie mittels Potenzmengenkonstruktion den zu ${\cal A}$ äquivalenten
-DEA. Geben Sie hierbei die Übergangsfunktion tabellarisch an.
-\end{enumerate}
-\end{frame}
 
 \begin{frame}
 	\frametitle{Eliminierung von $\varepsilon$-Übergängen}
@@ -396,7 +377,7 @@ DEA. Geben Sie hierbei die Übergangsfunktion tabellarisch an.
 	Zu einem NEA \(A := (Q, \Sigma, \delta, s, F)\) mit \(\varepsilon\)-Übergängen konstruieren wir einen 
 	  äquivalenten NEA \(\tilde{A} := (\tilde{Q}, \Sigma, \tilde{\delta}, \tilde{s}, \tilde{F})\) mit
 	 \begin{itemize}
-%	 \item \(\tilde{Q} := Q\)
+	 \item \(\tilde{Q} := Q\)
 	 \item \(\tilde{s} := s\)
 	 \item \(\tilde{F} := \{q|E(q)\cap F \neq \emptyset\}\)
 	 \item \[\tilde{\delta}(q,a) := 
@@ -411,16 +392,115 @@ DEA. Geben Sie hierbei die Übergangsfunktion tabellarisch an.
 	\end{block}
 
 \end{frame}
-%TODO Beispiel!
+\begin{frame}
+	\frametitle{NEA2DEA: Aufgaben}
+Gegeben sei der NEA ${\cal A}=(\{s,q,f\},\{a,b,c\},\delta,s,\{f\})$, wobei
+die Übergangsfunktion $\delta$ gegeben ist durch:
+\begin{center}
+$\begin{array}{r|cccc}
+&\varepsilon & a & b & c\\\hline
+s & \{q,f\} & \emptyset & \{q\} &\{f\}\\
+q &  \emptyset & \{s\} & \{f\} & \{s,q\}\\
+f & \emptyset & \emptyset &  \emptyset &  \emptyset\\
+\end{array}$
+\end{center}
+\begin{enumerate}
+\item Geben Sie zu dem Automaten ${\cal A}$ den Übergangsgraphen an und eliminieren
+Sie die $\varepsilon$-Übergänge.
+\item Ermitteln Sie mittels Potenzmengenkonstruktion den zu ${\cal A}$ äquivalenten
+DEA. Geben Sie hierbei die Übergangsfunktion tabellarisch an.
+\end{enumerate}
+\end{frame}
 \begin{frame}	
 \frametitle{Aufgaben zu \(\varepsilon\)-Übergängen}
 Sei $A=(Q,\Sigma, \delta, s, \{q_f\})$ ein NEA, derart dass es keine zu $s$ hinführenden und keine von $q_f$ ausgehenden Übergänge gibt. Beschreiben Sie für jede der folgenden Modifikationen von A die akzeptierte Sprache als Modifikation von $L=L(A)$:
 \begin{enumerate}
 \item Der Automat, der aus A konstruiert wird, indem $\varepsilon$-Übergänge von $s$ zu jedem Zustand hinzugefügt werden, der von $s$ aus auf einem Pfad erreichbar ist, dessen Beschriftungen sowohl Symbole aus $\Sigma$ als auch $\varepsilon$ enthalten können.
 \item Der Automat, der aus A konstruiert wird, indem von jedem Zustand $\varepsilon$-Übergänge nach $q_f$ hinzugefügt werden, von dem aus $q_f$ auf irgendeinem Pfad erreichbar ist.
-\item Der Automat, der aus A konstruiert wird, indem die unter (a) und (b) geforderten Modifikationen ausgeführt werden.
+\item Der Automat, der aus A konstruiert wird, indem die unter (1) und (2) geforderten Modifikationen ausgeführt werden.
 \end{enumerate}
 
+\end{frame}
+
+\begin{frame}
+\frametitle{Konstruktion eines RA aus einem DEA}
+Wir wissen, jeder DEA hat einen Regulären Ausdruck, der genau die Sprache beschreibt, die der Automat akzeptiert, wie konstruiert man nun diesen RA aus dem DEA?\\[0.6cm]
+\textbf{Idee:} Betrachte die Sprachen $L_{q_r,i,q_t}$, definiert als \( w \in \Sigma^*\) mit $w$ überführt $q_r$ in $q_t$ unter Benutzung der Zwischenzustände $\{q_1,\ldots,q_i\}$
+\begin{itemize}
+\item Es ist $L = \cup_{f\in F} L_{s,n,f}$
+\item Es ist weiterhin $L_{q_r,i+1,q_t} = L_{q_r,i,q_t} \cup (L_{q_r,i,q_{i+1}}(L_{q_{i+1},i,q_{i+1}})^*L_{q_{i+1},i,q_t})$
+\item Letztlich ist: $L_{q_r, 0, q_t}$ immer regulär, das sind die Zeichen mit denen man ohne weitere Zustände zu verwenden von $q_r$ nach $q_t$ kommt (sowie $\varepsilon$ falls $r = t$).
+\item Unter Benutzung dieser Punkte, kann man nun einen Regulären Ausdruck zu einem DEA Konstruieren.
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Beispiele zum Verständnis}
+\vspace{-1cm}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=0.6,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_1)                {$q_1$};
+\node[state,accepting] (q_2) [right of=q_0] {$q_2$};
+\path[->]	(q_1) 	edge 			node {$0$} 		(q_2)
+			edge [loop above]	node {$1$}		()
+		(q_2)	edge [loop above]	node {$0$,$1$}		();
+\end{tikzpicture}
+\end{center}
+\end{figure}
+Was sind hier jeweils:
+\begin{itemize}
+\item $L_{q_1,0,q_1}$\pause $ = (1\cup\varepsilon)$
+\item $L_{q_1,0,q_2}$\pause $ = (0)$
+\item $L_{q_1,1,q_1}$\pause $ = (1^*)$
+\item $L_{q_2,1,q_2}$\pause $ = (0\cup1\cup\varepsilon)$
+\item $L_{q_2,2,q_2}$\pause $ = (0\cup1)^*$
+\item $L_{q_1,2,q_2}$\pause $ = 1^*0(0\cup1)^*$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Ausführliche Konstruktion}
+\vspace{-1cm}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=0.6,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_1)                {$q_1$};
+\node[state,accepting] (q_2) [right of=q_0] {$q_2$};
+\path[->]	(q_1) 	edge 			node {$0$} 		(q_2)
+			edge [loop above]	node {$1$}		()
+		(q_2)	edge [loop above]	node {$0$,$1$}		();
+\end{tikzpicture}
+\end{center}
+\end{figure}
+\begin{enumerate}
+\item $L_{q_1,2,q_2} = L_{q_1,1,q_2}\cup(L_{q_1,1,q_2}(L_{q_2,1,q_2})^*L_{q_2,1,q_2})$
+\item $L_{q_1,1,q_2} = L_{q_1,0,q_2}\cup(L_{q_1,0,q_1}(L_{q_1,0,q_1})^*L_{q_1,0,q_2}) = 0\cup((1\cup\varepsilon)(1\cup\varepsilon)^*0)$
+\item $L_{q_2,1,q_2} = L_{q_2,0,q_2}\cup(L_{q_2,0,q_1}(L_{q_1,0,q_1})^*L_{q_1,0,q_2})$ $ = (0\cup1\cup\varepsilon)$
+\item Also: $L_{q_1,2,q_2} = 0\cup(1\cup\varepsilon)(1\cup\varepsilon)^*0\cup((0\cup((1\cup\varepsilon)(1\cup\varepsilon)^*0))(0\cup1\cup\varepsilon)^*(0\cup1\cup\varepsilon))$
+\item Vereinfacht: $1^*0(0\cup1)^*$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Aufgabe}
+Bestimmen Sie  mit dem im Beweis von Satz 2.14 verwendeten Verfahren die 
+reguläre Sprache, die folgender deterministische endliche Automat erkennt:
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=0.6,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_1)                {$q_1$};
+\node[state] (q_2) [right of=q_1] {$q_2$};
+\node[state,accepting] (q_3) [right of=q_2] {$q_3$};
+
+\path[->]	(q_1) 	edge 			node {$a$} 		(q_2)
+			edge [loop above]	node {$b$}		()
+		(q_2)	edge [bend right]	node [above] {$a$}		(q_1)
+			edge 			node {$b$}		(q_3)
+		(q_3)	edge [loop above]	node {$b$}		()
+			edge [bend left]	node {$a$}		(q_1);
+\end{tikzpicture}
+\end{center}
+\end{figure}
 \end{frame}
 
 %Pumpin' Lemma
@@ -433,7 +513,7 @@ so dass folgende Eigenschaften erfüllt sind:
 \begin{enumerate}
 \item $v \neq \lambda $ 
 \item $\left|uv\right| \leq n$ 
-\item Für alle $i \in \mathbb{N}_0$ gilt: $uv^iw \in L$
+\item Für alle $i \in \mathbb{N}_0$ gilt: $uv^ix \in L$
 \end{enumerate}
 \end{exampleblock}
 \end{frame}
@@ -443,7 +523,7 @@ so dass folgende Eigenschaften erfüllt sind:
 \item Für jede Reguläre Sprache gilt das Pumping-Lemma, nicht jede Sprache für die das Pumping-Lemma gilt ist regulär!
 \item In der Übung wird üblicherweise die Kontraposition des Pumping-Lemmas verwendet. Man zeigt für eine Sprache, dass das Pumping-Lemma \emph{nicht} erfüllt ist, und daraus folgt, dass diese Sprache \emph{nicht} regulär sein kann.
 \begin{itemize}
-\item Konkret: Finden wir für \emph{jedes} $n$ \emph{ein} $w$ mit $\left|w\right| > n$, so dass für \emph{jede} Darstellung $w = uvx$ mit $v \neq \lambda$ sowie $\left|wv\right| \leq n$, ein $i \in \mathbb{N}_0$ mit $uv^iw \notin L$, dann ist $L$ nicht regulär.
+\item Konkret: Finden wir für \emph{jedes} $n$ \emph{ein} $w$ mit $\left|w\right| > n$, so dass für \emph{jede} Darstellung $w = uvx$ mit $v \neq \lambda$ sowie $\left|wv\right| \leq n$, ein $i \in \mathbb{N}_0$ mit $uv^ix \notin L$, dann ist $L$ nicht regulär.
 \item \textbf{Wichtig:} Alle Quantoren werden umgekehrt.
 \end{itemize}
 \end{itemize}
