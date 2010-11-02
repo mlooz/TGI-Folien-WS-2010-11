@@ -242,29 +242,7 @@ Beispiel:
 \end{tikzpicture}
 \end{center}
 \end{frame}
-	
-%\subsubsection{Schritt 1: Eliminieren von Epsilon-Übergängen}
-%\begin{frame}
-%	\frametitle{Schritt 1: Eliminierung von $\varepsilon$-Übergängen}
-%	\KITframe[Grau grau grau sind alle meine kleider =)] 
-%	{\parbox{\textwidth}{
-%	\vspace{0.2cm}
-%		Erinnerung: Der Epsilon Abschluss $E(q)$ eines Zustandes $q$ ist definiert als die Menge aller Zustände die von $q$ aus durch lediglich Epsilon-Übergänge erreichbar sind. ($q$ selbst zählt auch dazu)
-%	\vspace{0.2cm}
-%	}}\\[0.2cm]	
-%	\KITframe[another gray background. Gray is really awesome!] 
-%	{\parbox{\textwidth}{
-%	\vspace{0.2cm}
-%	    \(q_1, q_2 \in Q\), \(a \in \Sigma\)
-%	\vspace{0.2cm}
-%	}}\\[0.2cm]
-%	Für alle Übergänge \(q_2 \in \delta(q_1, a)\) und \(q_2\) enthält \(\varepsilon\)-Übergänge:
-%	\begin{enumerate}
-%	 \item \(\varepsilon\)-Abschluss von \(q_2\) bilden
-%	 \item Gebildeten Abschluss zu \(\delta(q_1, a)\) hinzufügen.
-%	 \item \(\varepsilon\)-Übergänge von \(q_2\) entfernen.
-%	\end{enumerate}	
-%\end{frame}
+
 \subsubsection{Potenzmengenkonstruktion}
 \frame{
 \frametitle{Potenzmengenkonstruktion}
@@ -398,6 +376,45 @@ Sie die $\varepsilon$-Übergänge.
 DEA. Geben Sie hierbei die Übergangsfunktion tabellarisch an.
 \end{enumerate}
 \end{frame}
+
+\begin{frame}
+	\frametitle{Eliminierung von $\varepsilon$-Übergängen}
+	\begin{block}{Satz 2.13 (Skript)}
+	\begin{itemize}
+	 \item Zu jedem nichtdeterministischen endlichen Automaten mit \(\varepsilon\)-Übergängen gibt es einen äquivalenten nichtdeterministischen
+	 endlichen Automaten ohne \(\varepsilon\)-Übergänge, der nicht mehr Zustände hat.
+	 \item äquivalent = akzeptiert die selbe Sprache.
+	\end{itemize}
+	\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Eliminierung von $\varepsilon$-Übergängen}
+	\begin{block}{Konstruktion}
+	Zu einem NEA \(A := (Q, \Sigma, \delta, s, F)\) mit \(\varepsilon\)-Übergängen konstruieren wir einen 
+	  äquivalenten NEA \(\tilde{A} := (\tilde{Q}, \Sigma, \tilde{\delta}, \tilde{s}, \tilde{F})\) mit
+	 \begin{itemize}
+	 \item \(\tilde{Q} :=(Q \backslash F)\cup\tilde{F}\)
+	 \item \(\tilde{s} := s\)
+	 \end{itemize}
+	\end{block}
+
+	\begin{block}{Erinnerung}
+		Der Epsilon Abschluss $E(q)$ eines Zustandes $q$ ist definiert als die Menge aller Zustände die von $q$ aus durch lediglich Epsilon-Übergänge erreichbar sind. ($q$ selbst zählt auch dazu)
+	\end{block}
+	\KITframe[another gray background. Gray is really awesome!] 
+	{\parbox{\textwidth}{
+	\vspace{0.2cm}
+	    \(q_1, q_2 \in Q\), \(a \in \Sigma\)
+	\vspace{0.2cm}
+	}}\\[0.2cm]
+	Für alle Übergänge \(q_2 \in \delta(q_1, a)\) und \(q_2\) enthält \(\varepsilon\)-Übergänge:
+	\begin{enumerate}
+	 \item \(\varepsilon\)-Abschluss von \(q_2\) bilden
+	 \item Gebildeten Abschluss zu \(\delta(q_1, a)\) hinzufügen.
+	 \item \(\varepsilon\)-Übergänge von \(q_2\) entfernen.
+	\end{enumerate}	
+\end{frame}
+
 %Pumpin' Lemma
 \begin{frame}
 \frametitle{Pumping Lemma}
