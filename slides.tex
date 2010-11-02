@@ -559,7 +559,8 @@ $\overline{011}=100$ und $011100$ ein Beispiel für ein Wort dieser Sprache
 %Der Automat hier ist vom vorherigen Beispiel kopiert, aber er sollte den Zweck erfüllen.
 \begin{frame}
  \frametitle{Minimierung von DEAs}
- \begin{figure}[t]
+ \begin{block}{Beispielautomat \(A = (Q, \Sigma, \delta, s, F)\)}
+ \begin{figure}[H]
 \begin{center}
 \begin{tikzpicture}[scale=0.5,node distance=1.9cm,shorten >=1pt,auto]
 \node[state,initial]   (q_1)                {$q_1$};
@@ -574,12 +575,13 @@ $\overline{011}=100$ und $011100$ ein Beispiel für ein Wort dieser Sprache
 \end{tikzpicture}
 \end{center}
 \end{figure}
-Kann dieser Automat auf einen anderen Automaten zurückgeführt werden, der die gleiche Sprache akzeptiert aber weniger Zustände hat?
-\pause
-%Definition ``überflüssig''
-%gerichteter Graph, Tiefensuche?
-\\
+\end{block}
+Kann $A$ auf einen Automaten $A' = (Q', \Sigma, \delta', s', F')$ mit $L(A) = L(A')$ und $|Q'| \le |Q|$ überführt werden?
+\end{frame}
+\begin{frame}
+\frametitle{Minimierung von DEAs}
 $q_4$ ist nicht vom Startzustand aus erreichbar
+\begin{block}{Entferne \(q_4\)}
  \begin{figure}[h]
 \begin{center}
 \begin{tikzpicture}[scale=0.5,node distance=1.9cm,shorten >=1pt,auto]
@@ -593,26 +595,13 @@ $q_4$ ist nicht vom Startzustand aus erreichbar
 \end{tikzpicture}
 \end{center}
 \end{figure}
-\end{frame}
-\begin{frame}
-\frametitle{Minimierung von DEAs}
-\begin{block}{Schon minimal?}
-\begin{figure}[H]
-\begin{center}
-\begin{tikzpicture}[scale=0.6,node distance=1.9cm,shorten >=1pt,auto]
-\node[state,initial]   (q_1)                {$q_1$};
-\node[state,accepting] (q_2) [right of=q_1] {$q_2$};
-\node[state,accepting] (q_3) [right of=q_2] {$q_3$};
-
-\path[->]	(q_1) 	edge 			node {$a$} 		(q_2)
-		(q_2)	edge 			node {$b$}		(q_3)
-		(q_3)	edge [loop above]	node {$b$}		();
-\end{tikzpicture}
-\end{center}
-\end{figure}
 \end{block}
 \pause
-\begin{block}{Nein!}
+Schon minimal?
+\end{frame}
+\begin{frame}
+Nein!
+\begin{block}{Automat \(A'' = (Q'', \Sigma, \delta'', s, F'')\)}
  \begin{figure}[H]
 \begin{center}
 \begin{tikzpicture}[scale=0.6,node distance=1.9cm,shorten >=1pt,auto]
@@ -625,6 +614,9 @@ $q_4$ ist nicht vom Startzustand aus erreichbar
 \end{center}
 \end{figure}
 \end{block}
+\begin{block}{}
+ Akzeptierte Sprache: \(L(A) = L(A') = L(A'') = L(ab^*) \)
+\end{block}
 \end{frame}
 \begin{frame}
  \frametitle{Methodischer Ansatz}
@@ -634,26 +626,69 @@ $q_4$ ist nicht vom Startzustand aus erreichbar
 \begin{block}{Vorgehen}
  \begin{enumerate}
   \item Tiefensuche durchführen um nicht erreichbare Zustände zu finden.
-  \item Diese entfernen
-  \item Aus den restlichen Zuständen den Äquivalenzklassenautomaten bilden
+  \item Diese entfernen.
+  \item Aus den restlichen Zuständen den Äquivalenzklassenautomaten bilden.
  \end{enumerate}
 \end{block}
 \end{frame}
 \begin{frame}
+ \frametitle{Äquivalenz}
+ \begin{block}{Aus der Vorlesung}
+  \begin{itemize}
+   \item Zwei Zustände haben dasselbe Akzeptanzverhalten, wenn es für das Erreichen eines Endzustandes durch Abarbeiten eines Wortes $w$
+   unerheblich ist, aus welchem der beiden Zustände wir starten.
+  \end{itemize}
+ \end{block}
+ \begin{block}{Definition (Äquivalenz):}
+  Zwei Zustände $p$ und $q$ eines deterministischen endlichen Automaten heißen \emph{äquivalent} ($p \equiv $q),
+  wenn für alle Wörter $w\in\Sigma^*$ gilt:
+  \[
+   \delta(p, w)\in F \leftrightarrow \delta(q, w)\in F
+  \]
+  Offensichtlich ist $\equiv$ eine Äquivalenzrelation. Mit $[p]$ bezeichnen wir die Äquivalenzklasse der zu $p$ äquivalenten Zustände.
+ \end{block}
+\end{frame}
+\begin{frame}
+ \frametitle{Beispiel}
+ \begin{block}{Zurück zu $Q'$}
+ \begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[scale=0.5,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_1)                {$q_1$};
+\node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+\node[state,accepting] (q_3) [right of=q_2] {$q_3$};
+
+\path[->]	(q_1) 	edge 			node {$a$} 		(q_2)
+		(q_2)	edge 			node {$b$}		(q_3)
+		(q_3)	edge [loop above]	node {$b$}		();
+\end{tikzpicture}
+\end{center}
+\end{figure}
+Hier sind $q_2$ und $q_3$ äquivalent. Warum?
+\end{block}
+\end{frame}
+\begin{frame}
  \frametitle{Äquivalenzklassenautomat}
- 
+ \begin{block}{Definition aus der Vorlesung (Äquivalenzklassenautomat)}
+  Zu einem DEA \(A = (Q, \Sigma, \delta, s, F)\) definieren wir den Äquivalenzklassenautomaten 
+  \(A^\equiv = (Q^\equiv, \Sigma^\equiv, \delta^\equiv, s^\equiv, F^\equiv)\) durch:
+  \begin{itemize}
+   \item $Q^\equiv := {[q]|q\in Q}$
+   \item $\Sigma^\equiv := \Sigma$
+   \item $\delta\equiv([q], a) := [\delta(q, a)]$
+   \item $s\equiv := [s]$
+   \item $F\equiv:= {[f]|f\in F}$
+  \end{itemize}
+ \end{block}
+\end{frame}
+\begin{frame}
+%Konstruktion
 \end{frame}
 
-
-
-
-%Äquivalenzklassenautomat und Minimierung von Automaten.
-%Nichtoptimaler Beispielautomat (Kette von $b$s), nicht erreichbare Zustände
-%Tiefensuche
-%Äquivalenzklassenautomat
-%Erinnerung: Eine Äquivalenzrelation heißt wohldefiniert, wenn es für die Relation unwichtig ist, welche Vertreter der Äquivalenzklasse gewählt werden.
-%Konstruktion des Äquivalenzklassenautomaten
-%(Nerode-Relation?)
+%Nerode-Relation
+%Registermaschine
+%DTM
+%Turingmaschine
 
 \input{includes/disclaimer}
 \end{document}
