@@ -555,6 +555,105 @@ $\overline{011}=100$ und $011100$ ein Beispiel für ein Wort dieser Sprache
 
 \end{frame}
 
+\subsection{Minimierung und Äquivalenzklassenautomat}
+%Der Automat hier ist vom vorherigen Beispiel kopiert, aber er sollte den Zweck erfüllen.
+\begin{frame}
+ \frametitle{Minimierung von DEAs}
+ \begin{figure}[t]
+\begin{center}
+\begin{tikzpicture}[scale=0.5,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_1)                {$q_1$};
+\node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+\node[state,accepting] (q_3) [right of=q_2] {$q_3$};
+\node[state,accepting] (q_4) [right of=q_3] {$q_4$};
+
+\path[->]	(q_1) 	edge 			node {$a$} 		(q_2)
+		(q_2)	edge 			node {$b$}		(q_3)
+		(q_3)	edge [loop above]	node {$b$}		()
+		(q_4)	edge			node {$b$}		(q_3);
+\end{tikzpicture}
+\end{center}
+\end{figure}
+Kann dieser Automat auf einen anderen Automaten zurückgeführt werden, der die gleiche Sprache akzeptiert aber weniger Zustände hat?
+\pause
+%Definition ``überflüssig''
+%gerichteter Graph, Tiefensuche?
+\\
+$q_4$ ist nicht vom Startzustand aus erreichbar
+ \begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[scale=0.5,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_1)                {$q_1$};
+\node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+\node[state,accepting] (q_3) [right of=q_2] {$q_3$};
+
+\path[->]	(q_1) 	edge 			node {$a$} 		(q_2)
+		(q_2)	edge 			node {$b$}		(q_3)
+		(q_3)	edge [loop above]	node {$b$}		();
+\end{tikzpicture}
+\end{center}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Minimierung von DEAs}
+\begin{block}{Schon minimal?}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=0.6,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_1)                {$q_1$};
+\node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+\node[state,accepting] (q_3) [right of=q_2] {$q_3$};
+
+\path[->]	(q_1) 	edge 			node {$a$} 		(q_2)
+		(q_2)	edge 			node {$b$}		(q_3)
+		(q_3)	edge [loop above]	node {$b$}		();
+\end{tikzpicture}
+\end{center}
+\end{figure}
+\end{block}
+\pause
+\begin{block}{Nein!}
+ \begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=0.6,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_1)                {$q_1$};
+\node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+
+\path[->]	(q_1) 	edge 			node {$a$} 		(q_2)
+		(q_2)	edge [loop above]	node {$b$}		();
+\end{tikzpicture}
+\end{center}
+\end{figure}
+\end{block}
+\end{frame}
+\begin{frame}
+ \frametitle{Methodischer Ansatz}
+ \begin{block}{Definition}
+  Zustände eines (deterministischen) endlichen Automaten, die vom Anfangszustand aus nicht erreichbar sind, heißen überflüssig.
+ \end{block}
+\begin{block}{Vorgehen}
+ \begin{enumerate}
+  \item Tiefensuche durchführen um nicht erreichbare Zustände zu finden.
+  \item Diese entfernen
+  \item Aus den restlichen Zuständen den Äquivalenzklassenautomaten bilden
+ \end{enumerate}
+\end{block}
+\end{frame}
+\begin{frame}
+ \frametitle{Äquivalenzklassenautomat}
+ 
+\end{frame}
+
+
+
+
+%Äquivalenzklassenautomat und Minimierung von Automaten.
+%Nichtoptimaler Beispielautomat (Kette von $b$s), nicht erreichbare Zustände
+%Tiefensuche
+%Äquivalenzklassenautomat
+%Erinnerung: Eine Äquivalenzrelation heißt wohldefiniert, wenn es für die Relation unwichtig ist, welche Vertreter der Äquivalenzklasse gewählt werden.
+%Konstruktion des Äquivalenzklassenautomaten
+%(Nerode-Relation?)
 
 \input{includes/disclaimer}
 \end{document}
