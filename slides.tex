@@ -763,7 +763,31 @@ Annährend realistisches Rechnermodell. Bestehend aus:
   \item Programm
  \end{itemize}
 Der Speicher der Registermaschine ist unendlich und eindeutig adressierbar.
-\includegraphics{images/RAM}
+\vspace{0.25cm}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+\node[draw] at (0,0) {Programm};
+\node at (0,-1) {Befehlszähler};
+\node[draw] at (2,-1) {$b$};
+\node at (0,-2) {Akkumulator};
+\node at (5,-0.8) {Speicher};
+\node[draw] at (2,-2) {$c(0)$};
+\draw (3.5,-1.8) rectangle (4.5,-1.2);
+\node at (4,-1.5) {$c(1)$};
+\draw (4.5,-1.8) rectangle (5.5,-1.2);
+\node at (5,-1.5) {$c(2)$};
+\draw (5.5,-1.8) rectangle (6.5,-1.2);
+\node at (6,-1.5) {$c(3)$};
+\draw (6.5,-1.8) -- (7.5,-1.8);
+\node at (7,-1.5) {\ldots};
+\draw (6.5,-1.2) -- (7.5,-1.2);
+\draw (-1.5,-2.5) rectangle (3,-0.5);
+\draw[<->,thick] (0,-0.28) -- (0,-0.4) -- (2,-0.4) -- (2,-0.75);
+\draw[<->,thick] (2.45,-2) -- (3.25,-2) -- (3.25,-1.5) -- (3.5,-1.5);
+\end{tikzpicture}
+\end{center}
+\end{figure}
 \end{block}
  %TODO RAM
 \end{frame}
