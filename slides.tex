@@ -388,7 +388,7 @@ Die Einträge der ersten Spalte sind die neuen Zustände. Alle Mengen die einen 
 	 \end{itemize}
 	\end{block}
 	\begin{block}{Eigenschaften von \(\tilde{A}\)}
-	 \(L(\tilde{A}) = L(A)\), und \(|\tilde{Q}| \leq |Q|\).
+	 \(L(\tilde{A}) = L(A)\), und \(|\tilde{Q}| = |Q|\).
 	\end{block}
 
 \end{frame}
@@ -507,14 +507,13 @@ reguläre Sprache, die folgender deterministische endliche Automat erkennt:
 \begin{frame}
 \frametitle{Pumping Lemma}
 \begin{exampleblock}{Pumping Lemma}
-Sei $L$ eine reguläre Sprache, dann existiert eine Zahl $n \in \mathbb{N}$, so dass für jedes wort $w \in L$ mit $\left|w \right| > n$ eine Darstellung $$w = uvx,$$
-so dass folgende Eigenschaften erfüllt sind:
+Sei $L$ eine reguläre Sprache, dann existiert eine Zahl $n \in \mathbb{N}$, so dass für jedes wort $w \in L$ mit $\left|w \right| > n$ eine Darstellung $$w = uvx$$ existiert, so dass folgende Eigenschaften erfüllt sind:
 
 \begin{enumerate}
-\item $v \neq \lambda $ 
+\item $v \neq \varepsilon$ 
 \item $\left|uv\right| \leq n$ 
-\item Für alle $i \in \mathbb{N}_0$ gilt: $uv^ix \in L$
 \end{enumerate}
+So folgt: Für alle $i \in \mathbb{N}_0$ gilt: $uv^ix \in L$
 \end{exampleblock}
 \end{frame}
 \begin{frame}
@@ -523,7 +522,7 @@ so dass folgende Eigenschaften erfüllt sind:
 \item Für jede Reguläre Sprache gilt das Pumping-Lemma, nicht jede Sprache für die das Pumping-Lemma gilt ist regulär!
 \item In der Übung wird üblicherweise die Kontraposition des Pumping-Lemmas verwendet. Man zeigt für eine Sprache, dass das Pumping-Lemma \emph{nicht} erfüllt ist, und daraus folgt, dass diese Sprache \emph{nicht} regulär sein kann.
 \begin{itemize}
-\item Konkret: Finden wir für \emph{jedes} $n$ \emph{ein} $w$ mit $\left|w\right| > n$, so dass für \emph{jede} Darstellung $w = uvx$ mit $v \neq \lambda$ sowie $\left|wv\right| \leq n$, ein $i \in \mathbb{N}_0$ mit $uv^ix \notin L$, dann ist $L$ nicht regulär.
+\item Konkret: Finden wir für \emph{jedes} $n$ \emph{ein} $w$ mit $\left|w\right| > n$, so dass für \emph{jede} Darstellung $w = uvx$ mit $v \neq \varepsilon$ sowie $\lef|uv\right| \leq n$, ein $i \in \mathbb{N}_0$ mit $uv^ix \notin L$, dann ist $L$ nicht regulär.
 \item \textbf{Wichtig:} Alle Quantoren werden umgekehrt.
 \end{itemize}
 \end{itemize}
@@ -541,7 +540,7 @@ Sei $\Sigma = \{a, b\}$ und $L = \{a^nb^n\,|\,n\geq0\}$. (Also $L = \{\varepsilo
 
 \end{frame}
 
-\begin{frame}
+%\begin{frame}
 \frametitle{Pumping Lemma: Aufgaben}
 Welche der folgenden Sprachen sind regulär? Begründen Sie Ihre Antwort.
 
