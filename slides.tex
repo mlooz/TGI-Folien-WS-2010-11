@@ -388,7 +388,7 @@ Die Einträge der ersten Spalte sind die neuen Zustände. Alle Mengen die einen 
 	 \end{itemize}
 	\end{block}
 	\begin{block}{Eigenschaften von \(\tilde{A}\)}
-	 \(L(\tilde{A}) = L(A)\), und \(|\tilde{Q}| \leq |Q|\).
+	 \(L(\tilde{A}) = L(A)\), und \(|\tilde{Q}| = |Q|\).
 	\end{block}
 
 \end{frame}
@@ -507,14 +507,13 @@ reguläre Sprache, die folgender deterministische endliche Automat erkennt:
 \begin{frame}
 \frametitle{Pumping Lemma}
 \begin{exampleblock}{Pumping Lemma}
-Sei $L$ eine reguläre Sprache, dann existiert eine Zahl $n \in \mathbb{N}$, so dass für jedes wort $w \in L$ mit $\left|w \right| > n$ eine Darstellung $$w = uvx,$$
-so dass folgende Eigenschaften erfüllt sind:
+Sei $L$ eine reguläre Sprache, dann existiert eine Zahl $n \in \mathbb{N}$, so dass für jedes wort $w \in L$ mit $\left|w \right| > n$ eine Darstellung $$w = uvx$$ existiert, so dass folgende Eigenschaften erfüllt sind:
 
 \begin{enumerate}
-\item $v \neq \lambda $ 
+\item $v \neq \varepsilon$ 
 \item $\left|uv\right| \leq n$ 
-\item Für alle $i \in \mathbb{N}_0$ gilt: $uv^ix \in L$
 \end{enumerate}
+So folgt: Für alle $i \in \mathbb{N}_0$ gilt: $uv^ix \in L$
 \end{exampleblock}
 \end{frame}
 \begin{frame}
@@ -523,7 +522,7 @@ so dass folgende Eigenschaften erfüllt sind:
 \item Für jede Reguläre Sprache gilt das Pumping-Lemma, nicht jede Sprache für die das Pumping-Lemma gilt ist regulär!
 \item In der Übung wird üblicherweise die Kontraposition des Pumping-Lemmas verwendet. Man zeigt für eine Sprache, dass das Pumping-Lemma \emph{nicht} erfüllt ist, und daraus folgt, dass diese Sprache \emph{nicht} regulär sein kann.
 \begin{itemize}
-\item Konkret: Finden wir für \emph{jedes} $n$ \emph{ein} $w$ mit $\left|w\right| > n$, so dass für \emph{jede} Darstellung $w = uvx$ mit $v \neq \lambda$ sowie $\left|wv\right| \leq n$, ein $i \in \mathbb{N}_0$ mit $uv^ix \notin L$, dann ist $L$ nicht regulär.
+\item Konkret: Finden wir für \emph{jedes} $n$ \emph{ein} $w$ mit $\left|w\right| > n$, so dass für \emph{jede} Darstellung $w = uvx$ mit $v \neq \varepsilon$ sowie $\left|uv\right| \leq n$, ein $i \in \mathbb{N}_0$ mit $uv^ix \notin L$, dann ist $L$ nicht regulär.
 \item \textbf{Wichtig:} Alle Quantoren werden umgekehrt.
 \end{itemize}
 \end{itemize}
@@ -555,6 +554,294 @@ $\overline{011}=100$ und $011100$ ein Beispiel für ein Wort dieser Sprache
 
 \end{frame}
 
+\subsection{Minimierung und Äquivalenzklassenautomat}
+%Der Automat hier ist vom vorherigen Beispiel kopiert, aber er sollte den Zweck erfüllen.
+\begin{frame}
+ \frametitle{Minimierung von DEAs}
+ \begin{block}{Beispielautomat \(A = (Q, \Sigma, \delta, s, F)\)}
+ \begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=0.5,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_1)                {$q_1$};
+\node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+\node[state,accepting] (q_3) [right of=q_2] {$q_3$};
+\node[state,accepting] (q_4) [right of=q_3] {$q_4$};
 
+\path[->]	(q_1) 	edge 			node {$a$} 		(q_2)
+		(q_2)	edge 			node {$b$}		(q_3)
+		(q_3)	edge [loop above]	node {$b$}		()
+		(q_4)	edge			node {$b$}		(q_3);
+\end{tikzpicture}
+\end{center}
+\end{figure}
+\end{block}
+Kann $A$ auf einen Automaten $A' = (Q', \Sigma, \delta', s', F')$ mit $L(A) = L(A')$ und $|Q'| \le |Q|$ überführt werden?
+\end{frame}
+\begin{frame}
+\frametitle{Minimierung von DEAs}
+$q_4$ ist nicht vom Startzustand aus erreichbar
+\begin{block}{Entferne \(q_4\)}
+ \begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[scale=0.5,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_1)                {$q_1$};
+\node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+\node[state,accepting] (q_3) [right of=q_2] {$q_3$};
+
+\path[->]	(q_1) 	edge 			node {$a$} 		(q_2)
+		(q_2)	edge 			node {$b$}		(q_3)
+		(q_3)	edge [loop above]	node {$b$}		();
+\end{tikzpicture}
+\end{center}
+\end{figure}
+\end{block}
+\pause
+Schon minimal?
+\end{frame}
+\begin{frame}
+Nein!
+\begin{block}{Automat \(A'' = (Q'', \Sigma, \delta'', s, F'')\)}
+ \begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=0.6,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_1)                {$q_1$};
+\node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+
+\path[->]	(q_1) 	edge 			node {$a$} 		(q_2)
+		(q_2)	edge [loop above]	node {$b$}		();
+\end{tikzpicture}
+\end{center}
+\end{figure}
+\end{block}
+\begin{block}{}
+ Akzeptierte Sprache: \(L(A) = L(A') = L(A'') = L(ab^*) \)
+\end{block}
+\end{frame}
+\begin{frame}
+ \frametitle{Methodischer Ansatz}
+ \begin{block}{Definition}
+  Zustände eines (deterministischen) endlichen Automaten, die vom Anfangszustand aus nicht erreichbar sind, heißen überflüssig.
+ \end{block}
+\begin{block}{Vorgehen}
+ \begin{enumerate}
+  \item Tiefensuche durchführen um nicht erreichbare Zustände zu finden.
+  \item Diese entfernen.
+  \item Aus den restlichen Zuständen den Äquivalenzklassenautomaten bilden.
+ \end{enumerate}
+\end{block}
+\end{frame}
+\begin{frame}
+ \frametitle{Äquivalenz}
+ \vspace{-1cm}
+ \begin{block}{Aus der Vorlesung}
+  \begin{itemize}
+   \item Zwei Zustände haben dasselbe Akzeptanzverhalten, wenn es für das Erreichen eines Endzustandes durch Abarbeiten eines Wortes $w$
+   unerheblich ist, aus welchem der beiden Zustände wir starten.
+  \end{itemize}
+ \end{block}
+ \begin{block}{Definition (Äquivalenz):}
+  Zwei Zustände $p$ und $q$ eines deterministischen endlichen Automaten heißen \emph{äquivalent} ($p \equiv $q),
+  wenn für alle Wörter $w\in\Sigma^*$ gilt:
+  \[
+   \delta(p, w)\in F \leftrightarrow \delta(q, w)\in F
+  \]
+  Offensichtlich ist $\equiv$ eine Äquivalenzrelation. Mit $[p]$ bezeichnen wir die Äquivalenzklasse der zu $p$ äquivalenten Zustände.
+ \end{block}
+\end{frame}
+\begin{frame}
+ \frametitle{Beispiel}
+ \begin{block}{Zurück zu $Q'$}
+ \begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[scale=0.5,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_1)                {$q_1$};
+\node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+\node[state,accepting] (q_3) [right of=q_2] {$q_3$};
+
+\path[->]	(q_1) 	edge 			node {$a$} 		(q_2)
+		(q_2)	edge 			node {$b$}		(q_3)
+		(q_3)	edge [loop above]	node {$b$}		();
+\end{tikzpicture}
+\end{center}
+\end{figure}
+Hier sind $q_2$ und $q_3$ äquivalent. Warum?
+\end{block}
+\end{frame}
+\begin{frame}
+ \frametitle{Äquivalenzklassenautomat}
+ \begin{block}{Definition aus der Vorlesung (Äquivalenzklassenautomat)}
+  Zu einem DEA \(A = (Q, \Sigma, \delta, s, F)\) definieren wir den Äquivalenzklassenautomaten 
+  \(A^\equiv = (Q^\equiv, \Sigma^\equiv, \delta^\equiv, s^\equiv, F^\equiv)\) durch:
+  \begin{itemize}
+   \item $Q^\equiv := {[q]|q\in Q}$
+   \item $\Sigma^\equiv := \Sigma$
+   \item $\delta\equiv([q], a) := [\delta(q, a)]$
+   \item $s\equiv := [s]$
+   \item $F\equiv:= {[f]|f\in F}$
+  \end{itemize}
+ \end{block}
+\end{frame}
+\begin{frame}
+ \frametitle{Konstruktion der Äquivalenzklassen}
+ \begin{block}{}
+  \begin{enumerate}
+   \item Fasse alle Zustände $q_i \in Q$ in eine Klasse zusammen.
+   \item $\varepsilon$ trennt Zustände aus $F$ von denen aus $Q \backslash F$
+   \item Für Zustandspaare $p, q$ in einer Klasse und
+   Worte $w\in \Sigma^*$ mit wachsender Länge: 
+    \begin{enumerate}
+    \item falls $[\delta(p, w)] != [\delta(q, w)]$ trenne die Zustände $q$ und $p$. (w ist Zeuge)
+    \item breche ab falls sich für eine Wortlänge keine weiteren Zeugen finden.
+    \end{enumerate}
+  \end{enumerate}
+ \end{block}
+\end{frame}
+\begin{frame}
+ \frametitle{Beispiel $Q'$}
+ \vspace{-1cm}
+ \begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[scale=0.5,node distance=1.9cm,shorten >=1pt,auto]
+\node[state,initial]   (q_1)                {$q_1$};
+\node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+\node[state,accepting] (q_3) [right of=q_2] {$q_3$};
+
+\path[->]	(q_1) 	edge 			node {$a$} 		(q_2)
+		(q_2)	edge 			node {$b$}		(q_3)
+		(q_3)	edge [loop above]	node {$b$}		();
+\end{tikzpicture}
+\end{center}
+\end{figure}
+ \begin{block}{Anfangs}
+  $\{q_1, q_2, q_3\}$
+ \end{block}
+ \pause
+ \begin{block}{Zeugen der Länge 0: $\varepsilon$}
+  $\{q_1\} \{q_2, q_3\}$
+ \end{block}
+  \pause
+  \begin{block}{Zeugen der Länge 1: a, b}
+   $a$ oder $b$ trennen keine Zustände mehr voneinander $\rightarrow$ Abbruch.
+  \end{block}
+%hier vielleicht noch ein groesseres Beispiel hin?
+\end{frame}
+\begin{frame}
+ \frametitle{Nerode-Relation}
+ \begin{block}{Definition 2.25}
+ Für eine Sprache \(L \subseteq \Sigma^*\) ist die \emph{Nerode-Relation} \(R_L\) definiert durch:
+  
+  für \(x, y \in \Sigma^*\) ist genau dann wenn \((xz \in L \leftrightarrow yz \in L)\) für alle $z \in \Sigma^*$ gilt.
+ \end{block}
+  \begin{block}{Erinnerung}
+   Die minimale Anzahl an Zuständen eines endlichen Automaten einer Sprache $L \subseteq \Sigma^*$ entspricht dem Index der Nerode-Relation.
+  \end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Aufgabe zur Nerode-Relation}
+Bestimmen Sie die Äquivalenzklassen der Nerode-Relation zur Sprache $L=\{a^ib^jc^k \mid i,j,k \in \mathbb{N}_{>0} \}$ über dem Alphabet $\Sigma=\{a,b,c\}$.
+\end{frame}
+\begin{frame}
+ Sei $\Sigma = \{a,b,c\}.$ Geben Sie die Äquivalenzklassen der Nerode-Relation
+zur Sprache
+
+\begin{quote}
+  $L = \{w \in \Sigma^*: |w|_a \equiv 0 \textup{ mod } 2 \textup{ und } |w|_b
+  \equiv |w|_c \equiv 1 \textup{ mod } 2\}$
+\end{quote}
+
+an, und konstruieren Sie den Automaten der Nerode-Relation.
+\end{frame}
+\begin{frame}
+\vspace{-2cm}
+\begin{block}{Registermaschine}
+Annährend realistisches Rechnermodell. Bestehend aus:
+ \begin{itemize}
+  \item Befehlszähler (b)
+  \item Akkumulator 
+  \item Register (= Speicher)
+  \item Programm
+ \end{itemize}
+Der Speicher der Registermaschine ist unendlich und eindeutig adressierbar.
+\vspace{0.25cm}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+\node[draw] at (0,0) {Programm};
+\node at (0,-1) {Befehlszähler};
+\node[draw] at (2,-1) {$b$};
+\node at (0,-2) {Akkumulator};
+\node at (5,-0.8) {Speicher};
+\node[draw] at (2,-2) {$c(0)$};
+\draw (3.5,-1.8) rectangle (4.5,-1.2);
+\node at (4,-1.5) {$c(1)$};
+\draw (4.5,-1.8) rectangle (5.5,-1.2);
+\node at (5,-1.5) {$c(2)$};
+\draw (5.5,-1.8) rectangle (6.5,-1.2);
+\node at (6,-1.5) {$c(3)$};
+\draw (6.5,-1.8) -- (7.5,-1.8);
+\node at (7,-1.5) {\ldots};
+\draw (6.5,-1.2) -- (7.5,-1.2);
+\draw (-1.5,-2.5) rectangle (3,-0.5);
+\draw[<->,thick] (0,-0.28) -- (0,-0.4) -- (2,-0.4) -- (2,-0.75);
+\draw[<->,thick] (2.45,-2) -- (3.25,-2) -- (3.25,-1.5) -- (3.5,-1.5);
+\end{tikzpicture}
+\end{center}
+\end{figure}
+\end{block}
+ %TODO RAM
+\end{frame}
+
+\begin{frame}
+\frametitle{Turingmaschine}
+Eine Registermaschine ist zwar physikalischen Rechnern ähnlich, aber unhandlich um damit Beweise zu führen.
+Daher ist ein abstrakteres Modell hilfreich \\
+$\rightarrow$ Turingmaschine.
+\pause
+\begin{block}{Turingmaschine}
+Die Turingmaschine besteht aus einem beidseitig \emph{unendlichen} Eingabe- und Rechenband
+mit einem freibeweglichen Lese-/Schreibkopf, der von einer \emph{endlichen} Kontrolle gesteuert wird. 
+\end{block}
+\end{frame}
+\begin{frame}
+\vspace{-1cm}
+\begin{block}{Definiton}
+Eine Turingmaschine wird definiert als:
+ \begin{itemize}
+ \item $Q$, eine endliche Zustandsmenge
+ \item $\Sigma$, einem endlichen Eingabealphabet
+ \item $\sqcup$, einem Blanksymbol mit $\sqcup \notin \Sigma$
+ \item $\Gamma$, einem endlichen Bandalphabet mit $\Sigma \cup\{\sqcup\} \subseteq \Gamma$
+ \item $s \in Q$, einem Startzustand
+ \item $\delta: Q\times\Gamma \rightarrow Q\times\Gamma\times\{L, R, N\}$
+ \item $F \subseteq Q$, einer Menge an Endzuständen
+ \end{itemize}
+\end{block}
+\begin{block}{Bemerkung}
+ Für $q\in F$ gilt: $\forall a \in \Gamma: \delta(q, a) = (q, a, N)$, d.h. die Berechnung der Turingmaschine stoppt.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Turingmaschine}
+ \label{sec:busy_beaver}
+
+Konstruieren Sie eine Turingmaschine, die aus drei Zuständen (plus einem
+weiteren Haltezustand $q_f$) besteht und folgendes Verhalten hat:
+\begin{quote}
+  Angesetzt auf ein leeres Band schreibt sie möglichst viele ${\tt 1}$
+  hintereinander und \textbf{hält} nach endlich vielen Schritten.
+\end{quote}
+Die Turingmaschine soll folgende Alphabete verwenden: $\Sigma = \{{\tt 1}\},
+\Gamma = \Sigma \cup \{{\tt 0}\}$.  Insbesondere ist also ${\tt 0}$ das
+Blanksymbol.
+
+Welche Konfigurationen durchläuft die Maschine, wenn Sie auf dem leeren Band
+gestartet wird?  Welche Konfigurationen durchläuft die Maschine bei Eingabe
+des Wortes {\tt 101}?
+\end{frame}
+\begin{frame}
+ Geben Sie eine wohldokumentierte Turingmaschine an, die zwei durch Blank
+getrennte Binärworte aus $\{0,1\}^*$ addiert.
+\end{frame}
 \input{includes/disclaimer}
 \end{document}
