@@ -45,6 +45,10 @@ BUILD_STRATEGY		?= pdflatex
 # # immune to changes to the locale in the user environment.
 export LC_ALL		?= C
 #
+# Set the TEXINPUTS var so latex can find the KIT theme
+export TEXINPUTS	?= KIT/:
+
+
 #
 # If you specify sources here, all other files with the same suffix
 # will be treated as if they were _include_ files.
