@@ -9,6 +9,7 @@
 \usetikzlibrary{automata}
 \usenavigationsymbols
 
+
 \title{Theoretische Grundlagen der Informatik}
 \subtitle{Tutorium}
 \author{Moritz von Looz, Simon Stroh}
@@ -723,8 +724,124 @@ Hier sind $q_2$ und $q_3$ äquivalent. Warum?
   \begin{block}{Zeugen der Länge 1: a, b}
    $a$ oder $b$ trennen keine Zustände mehr voneinander $\rightarrow$ Abbruch.
   \end{block}
-%hier vielleicht noch ein groesseres Beispiel hin?
 \end{frame}
+
+\frame{
+  \frametitle{Automaten-Minimierung: Beispiel, Methode 1}
+%   \begin{center}
+%   (Benötigt wird ein vollständiger DEA.)
+%   \end{center}
+  \begin{figure}[H]
+  \begin{center}
+  \begin{tikzpicture}[node distance=1.8cm]
+  \tikzstyle{every node}=[circle,thick,minimum size=7mm]
+  \tikzstyle{normal}=[draw]
+
+
+  \node[normal,double]  (q0)                      {$q_0$};
+  \node[normal]         (q1)  [above right of=q0] {$q_1$};
+  \node[normal]         (q2)  [right of=q1]       {$q_2$};
+  \node[normal]         (q3)  [below right of=q0] {$q_3$};
+  \node[normal]         (q4)  [right of=q3]       {$q_4$};
+  
+  \node (start) [left of=q0,xshift=0.5cm] {};
+  
+  \draw[->] (start) to (q0);
+
+  \draw[->,bend left] (q0)  to node[above] {1} (q1);
+  \draw[->,loop below] (q0)  to node [below] {0} (q0);
+
+  \draw[->,bend left] (q1)  to node[below] {1} (q0);
+  \draw[->] (q1)  to node[above] {0} (q2);
+
+  \draw[->] (q2) to node[above] {0} (q3);
+  \draw[->,loop right] (q2) to node[right] {1} (q2);
+
+  \draw[->] (q3)  to node[above] {1} (q0);
+  \draw[->,bend left] (q3)  to node[above] {0} (q4);
+  
+  \draw[->,bend left] (q4)  to node[below] {0} (q3);
+  \draw[->] (q4)  to node[right] {1} (q2);
+
+  \end{tikzpicture}
+  \end{center}
+  \end{figure}
+}
+
+\frame{
+  \frametitle{Minimierung, Ausführlicheres Beispiel/Aufgabe}
+  \begin{figure}[H]
+  \begin{center}
+  \begin{tikzpicture}
+
+  \node (a0) {$\{q_0\}$};
+  \node[right of=a0,xshift=2cm] (b0) {\{$q_1$, $q_2$, $q_3$, $q_4$\}};
+
+  \end{tikzpicture}
+  \end{center}
+  \end{figure}
+}
+
+\frame{
+  \frametitle{Minimierung, Ausführlicheres Beispiel}
+  \begin{figure}[H]
+  \begin{center}
+  \begin{tikzpicture}
+
+  \node (a0) {$\{q_0\}$};
+  \node[right of=a0,xshift=2cm] (b0) {\{$q_1$, $q_2$, $q_3$, $q_4$\}};
+
+  \node[below of=a0,yshift=-1cm] (a1) {$\{q_0\}$};
+  \node[right of=a1,xshift=1cm] (b1) {\{$q_1$, $q_3$\}};
+  \node[right of=b1,xshift=1cm] (c1) {\{$q_2$, $q_4$\}};
+
+  \draw[->] (a1) to node[left] {0} (a0);
+  \draw[->] (a1) to node[above] {1} (b0);
+  \draw[->] (b1) to node[left] {1} (a0);
+  \draw[->] (b1) to node[left] {0} (b0);
+  \draw[->] (c1) to node[right] {0,1} (b0);
+
+  \end{tikzpicture}
+  \end{center}
+  \end{figure}
+}
+\frame{
+  \frametitle{Minimierung, Ausführlicheres Beispiel}
+  \begin{figure}[H]
+  \begin{center}
+  \begin{tikzpicture}
+
+  \node (a0) {$\{q_0\}$};
+  \node[right of=a0,xshift=2cm] (b0) {\{$q_1$, $q_2$, $q_3$, $q_4$\}};
+
+  \node[below of=a0,yshift=-1cm] (a1) {$\{q_0\}$};
+  \node[right of=a1,xshift=1cm] (b1) {\{$q_1$, $q_3$\}};
+  \node[right of=b1,xshift=1cm] (c1) {\{$q_2$, $q_4$\}};
+
+  \node[below of=a1,yshift=-1cm] (a2) {$\{q_0\}$};
+  \node[right of=a2,xshift=1cm] (b2) {\{$q_1$, $q_3$\}};
+  \node[right of=b2,xshift=1cm] (c2) {\{$q_2$, $q_4$\}};
+
+  \draw[->] (a1) to node[left] {0} (a0);
+  \draw[->] (a1) to node[above] {1} (b0);
+  \draw[->] (b1) to node[left] {1} (a0);
+  \draw[->] (b1) to node[left] {0} (b0);
+  \draw[->] (c1) to node[right] {0,1} (b0);
+
+  \draw[->] (a2) to node[left] {0} (a1);
+  \draw[->] (a2) to node[left] {1} (b1);
+  \draw[->] (b2) to node[left] {0} (c1);
+  \draw[->] (b2) to node[left] {1} (a1);
+  \draw[->] (c2) to node[left] {0} (b1);
+  \draw[->] (c2) to node[left] {1} (c1);
+
+  \end{tikzpicture}
+  \end{center}
+  \end{figure}
+}
+
+
+
 \begin{frame}
  \frametitle{Nerode-Relation}
  \begin{block}{Definition 2.25}
@@ -820,6 +937,30 @@ Eine Turingmaschine wird definiert als:
  Für $q\in F$ gilt: $\forall a \in \Gamma: \delta(q, a) = (q, a, N)$, d.h. die Berechnung der Turingmaschine stoppt.
 \end{block}
 \end{frame}
+
+\frame{
+	\frametitle{Graph einer Turingmaschine}
+	\begin{center}
+	\begin{tikzpicture}[node distance=2.25cm,auto]
+	\node(q0)[draw,circle,thick]{$q_0$};
+	\node (s) [node distance=1cm,left of =q0]{};
+	\node(q1)[draw,circle,thick,right of=q0]{$q_1$};
+	\node(qx)[right of=q1]{\dots};
+
+	\path[->]       (s) edge (q0)
+	                (q0) edge[bend left] node{$(a,b,L)$} (q1)
+			                (q1) edge[bend left] node{\dots} (qx);
+					\end{tikzpicture}
+					\end{center}
+
+					Dabei steht die Kantenbeschriftung ``$(a,b,L)$'' für den Übergang $\delta(q_0,a) =
+					(q_1,b,L)$.
+
+					\vspace{2mm}
+					Falls es für einen gegebenen Zustand und ein gegebenes
+					Symbol keinen Zustandsübergang gibt, bricht die Maschine die Berechnung ab. 
+}
+
 
 \begin{frame}
 \frametitle{Turingmaschine}
