@@ -69,7 +69,7 @@
 			\end{itemize}
 		\end{itemize}}
 	}\\[0.2cm]
-Im Allgemeinen kann man Formale Sprachen sehr frei Angeben: 
+Im Allgemeinen kann man Formale Sprachen sehr frei angeben: 
 	\KITframe[Yeah, I think I'll stick to gray as a background color. Thanks again!]
 		{\parbox{\textwidth}{\begin{itemize}
 			\item $\Sigma = \{ 0, 1 \}, L = \{w|\,w \in \Sigma^*, w \mbox{ hat eine gerade Anzahl an $1$en}\}$
@@ -674,11 +674,11 @@ Hier sind $q_2$ und $q_3$ äquivalent. Warum?
   Zu einem DEA \(A = (Q, \Sigma, \delta, s, F)\) definieren wir den Äquivalenzklassenautomaten 
   \(A^\equiv = (Q^\equiv, \Sigma^\equiv, \delta^\equiv, s^\equiv, F^\equiv)\) durch:
   \begin{itemize}
-   \item $Q^\equiv := {[q]|q\in Q}$
+   \item $Q^\equiv := \{[q]|q\in Q\}$
    \item $\Sigma^\equiv := \Sigma$
    \item $\delta\equiv([q], a) := [\delta(q, a)]$
    \item $s\equiv := [s]$
-   \item $F\equiv:= {[f]|f\in F}$
+   \item $F\equiv:= \{[f]|f\in F\}$
   \end{itemize}
  \end{block}
 \end{frame}
@@ -847,7 +847,7 @@ Hier sind $q_2$ und $q_3$ äquivalent. Warum?
  \begin{block}{Definition 2.25}
  Für eine Sprache \(L \subseteq \Sigma^*\) ist die \emph{Nerode-Relation} \(R_L\) definiert durch:
   
-  für \(x, y \in \Sigma^*\) ist genau dann wenn \((xz \in L \leftrightarrow yz \in L)\) für alle $z \in \Sigma^*$ gilt.
+  für \(x, y \in \Sigma^*\) ist $x$ $R_L$ $y$ genau dann wenn \((xz \in L \leftrightarrow yz \in L)\) für alle $z \in \Sigma^*$ gilt.
  \end{block}
   \begin{block}{Erinnerung}
    Die minimale Anzahl an Zuständen eines endlichen Automaten einer Sprache $L \subseteq \Sigma^*$ entspricht dem Index der Nerode-Relation.
