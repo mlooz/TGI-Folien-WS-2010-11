@@ -1001,26 +1001,39 @@ getrennte Binärworte aus $\{0,1\}^*$ addiert.
 \end{frame}
 
 \begin{frame}
- \frametitle{Beispiel}
+ \frametitle{Beispiel zur Akzeptanz}
  \begin{itemize}
-  \item $\Sigma := \{a, b\}$
-  \item $\Gamma := \Sigma \cup \{A, B\}$
+  \item $\Sigma := \{a, b\}$  
   \item $F := \{q_4\}$
  \end{itemize}
 
  \begin{tikzpicture}[node distance=2cm,auto]
-  \node(q0)[draw,circle,thick]{$q_0$};
-  \node (s) [node distance=1cm,left of =q0]{};
-  \node(q1)[draw,circle,thick,right of=q0]{$q_1$};
-  \node(q2)[draw,circle,thick,right of=q1]{$q_2$};
-  \node(q3)[draw,circle,thick,right of=q2]{$q_3$};
-  \node(q4)[draw,circle,thick,right of=q3]{$q_4$};
-  \path[->]       (s) edge (q0)
-	          (q0) edge node{$(a|A,R)$} (q1)
+  \node(q0)[state,initial]{$q_0$};
+  \node(q1)[state,right of=q0]{$q_1$};
+  \node(q2)[state,right of=q1]{$q_2$};
+  \node(q3)[state,right of=q2]{$q_3$};
+  \node(q4)[state,above of=q3]{$q_4$};
+  \node(q5)[state,accepting,below of=q0]{$q_4$};
+  \path[->]       (q0) edge node{$(a|\sqcup,R)$} (q1)
+	          (q0) edge node{$(\sqcup|\sqcup,N)$} (q5)
 	          (q1) edge[loop above] node{$(a|a,R)$} ()
-	          (q1) edge node{$ $} (q2);
+	          (q1) edge node{$(b|b,R)$} (q2)
+	          (q1) edge node{$(\sqcup|\sqcup,N)$} (q5)
+	          (q2) edge[loop below] node{$(b|b,R)$} ()
+	          (q2) edge node{$(\sqcup|\sqcup,L)$} (q3)
+	          (q3) edge node{$(b|\sqcup,L)$} (q4)
+	          (q4) edge[loop above] node{$(a|a,L), (b|b,L)$} ()
+	          (q4) edge[bend right] node{$(\sqcup|\sqcup,R)$} (q0);
  \end{tikzpicture}
+ \end{frame}
 
+\begin{frame}
+ \frametitle{Sprache}
+ \begin{itemize}
+  \item $aab$ wird von der TM akzeptiert.
+  \item $abb$ nicht.
+  \item Die akzeptierte Sprache ist $L(TM) := \{a^kb^l| k >= l\}$
+ \end{itemize}
 \end{frame}
 
 
