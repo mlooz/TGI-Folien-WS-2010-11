@@ -1045,6 +1045,16 @@ getrennte Binärworte aus $\{0,1\}^*$ addiert.
 %TODO Beispiel für Entscheidbarkeit
 
 \begin{frame}
+\frametitle{Universelle Turingmaschine}
+\begin{block}{Gödelnummer}
+Jede Turingmaschine lässt sich eindeutig als Zahl kodieren. Eine solche Kodierung einer Turingmaschine nennen wir eine Gödelnummer dieser Turingmaschine. Wir vereinbaren weiterhin, dass alle gemäß unserer Kodierung ungültigen Gödelnummern einer TM zugeordnet werden, die alle Eingaben ablehnt.
+\end{block}
+\begin{block}{Universelle Turingmaschine}
+Es existieren Turingmaschinen, die jede andere Turingmaschine bei Angabe der Entsprechenden Gödelnummer (also einer Kodierung), simulieren können. Diese TM erhält als Eingabe die Kodierung einer TM sowie eine Eingabe für die zu simulierende TM, und gibt die Ausgabe der simulierten TM aus.
+\end{block}
+\end{frame}
+
+\begin{frame}
 \frametitle{Aufgaben zur Entscheidbarkeit}
  Seien $L_1$ und $L_2$ zwei Sprachen über einem Alphabet $\Sigma$.
 Beweisen Sie:
@@ -1069,9 +1079,7 @@ Hinweis: Nimm an, $L'$ sei semi-entscheidbar, und folgere daraus, dass
 dann $L$ entscheidbar ist. 
 \end{frame}
 
-%TODO Universelle Turingmaschinen
 
-\section*{}
 \begin{frame}
  \frametitle{Halteproblem}
  Zeigen Sie, dass das Halteproblem semi-entscheidbar ist.
@@ -1212,10 +1220,6 @@ Zeigen Sie informell, dass diese von einer einfachen
 Turingmaschine mit Zeitaufwand $O(T^2(n))$ simuliert werden kann.\\
 \end{frame}
 
-% Entscheidbarkeit und Semi-Entscheidbarkeit
-% Beispiel & Aufgabe
-% Universelle TM
-% Äquivalent
 % Satz von Rice
 \begin{frame}
 \frametitle{Satz von Rice}
