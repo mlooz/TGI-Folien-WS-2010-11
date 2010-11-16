@@ -1225,10 +1225,50 @@ Kann man die Entscheidbarkeit der folgenden Mengen mithilfe des Satzes von Rice 
 \item Alle Turingmaschinen die überhaupt etwas auf das Band schreiben.
 \end{itemize}
 \end{frame}
+\begin{frame}
+\frametitle{Postsches Korrespondenzproblem}
+Gegeben sei einer Folge von Paaren $((x_1, y_1), (x_2, y_2), \ldots, (x_n,y_n))$ von nichtleeren Worten über einem endlichen Alphabet. Dies nennt man eine \textbf{Instanz} des PKP.
+Eine nicht-leere Folge $I = i_1, i_2, \ldots, i_n$ von indices $\{1, \ldots, m\}$ heißt Lösung zu $P$, wenn $x_{i_1}x_{i_2}\ldots{}x_{i_n} = y_{i_1}y_{i_2}\ldots{}y_{i_n}$.
+\begin{block}{Beispiel}
+\begin{displaymath}
+\{ {a \choose aba}, {ab \choose bb}, {baa \choose aa} \}
+\end{displaymath}
 
-% Post'sches Korrespondenzproblem
-% Aufgaben
-% Beispiel mit Schwerem PCP
+Lösung: $1,3,2,3$
+\begin{displaymath}
+{a \choose aba}, {baa \choose aa}, {ab \choose bb}, {baa \choose aa}
+\end{displaymath}
+
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Aufgabe}
+\begin{enumerate}
+\item Finde eine Lösung für folgende Instanz des Post'schen Korrespondenzproblems: 
+\[ ((aa, a), (b, aa), (a, aab)) \]
+  \item Zeigen Sie, dass folgende Instanz des Post'schen Korrespondenzproblems
+        keine Lösung hat:
+
+        \[ ((ab, b), (bba, abb), (ab, ba), (a, abb)) \]
+
+  \item Zeigen Sie, dass das Post'sche Korrespondenzproblem für Wörter
+über einem Alphabet mit nur einem Symbol entscheidbar ist.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Aufgabe}
+Finde eine Lösung für folgendes PCP
+$$ ((001,0),(01,011),(01,101),(10,001)) $$
+\pause
+Eine kürzeste Lösung hat mindestens die Länge 66, z.B:
+\begin{center}
+$ I_1 = $(2,4,3,4,4,2,1,2,4,3,4,3,4,4,3,4,4,2,1,4,\\
+4,2,1,3,4,1,1,3,4,4,4,2,1,2,1,1,1,3,4,3,4,1,2,\\
+1,4,4,2,1,4,1,1,3,4,1,1,3,1,1,3,1,2,1,4,1,1,3)
+\end{center}
+\end{frame}
 
 \input{includes/disclaimer}
 \end{document}
