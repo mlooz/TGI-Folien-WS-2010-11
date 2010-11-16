@@ -984,5 +984,176 @@ des Wortes {\tt 101}?
  Geben Sie eine wohldokumentierte Turingmaschine an, die zwei durch Blank
 getrennte Binärworte aus $\{0,1\}^*$ addiert.
 \end{frame}
+
+% TM Erweiterungen
+\begin{frame}
+\frametitle{Erweiterungen von Turingmaschinen}
+\begin{block}{Erweiterungen}
+Es gibt mehrere, zu Turingmaschienen (bzgl. Berechenbarkeit) äquivalente Berechnungsmodelle, die der Turingmaschine sehr ähnlich sind. Man spricht hier von Erweiterungen von Turingmaschinen. Diese verwendet man gerne in z.B. Beweisen, da sie oft Übersichtlicher sind.
+\end{block}
+\end{frame}
+% Mehrkopf
+\begin{frame}
+\frametitle{Mehrkopf Turingmaschienen}
+\vspace{-2cm}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=0.3]
+\draw (-8,1) -- (8,1);
+\draw (-8,-1) -- (8,-1);
+\draw (7,1) -- (7,-1);
+\draw (5,1) -- (5,-1);
+\draw (3,1) -- (3,-1);
+\draw (1,1) -- (1,-1);
+\draw (-1,1) -- (-1,-1);
+\draw (-3,1) -- (-3,-1);
+\draw (-5,1) -- (-5,-1);
+\draw (-7,1) -- (-7,-1);
+\node[draw,circle] (tm) at (0,-6) {TM};
+\draw[->] (tm) -- (0,0);
+\draw[->,bend left] (tm) -- (-4,0);
+\draw[->,bend right] (tm) -- (4,0);
+\end{tikzpicture}
+\end{center}
+\end{figure}
+Eine Mehrkopf Turingmaschiene hat mehrere Lese-/Schreibeköpfe. Die Zustandsänderung hängt nun von dem gelesenen Zeichen aller Köpfe ab und kann auch alle Köpfe verschieben bzw. mit allen gleichzeitig schreiben.
+\begin{block}{Änderungen in der Definition}
+$$ \delta: Q \times \Gamma^n \rightarrow Q \times \Gamma^n \times \{L,N,R\}^n$$
+\end{block}
+\end{frame}
+
+% Mehrband
+\begin{frame}
+\frametitle{Mehrband Turingmaschienen}
+\vspace{-2cm}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=0.3]
+\draw (-8,4) -- (8,4);
+\draw (-8,2) -- (8,2);
+\draw (7,4) -- (7,2);
+\draw (5,4) -- (5,2);
+\draw (3,4) -- (3,2);
+\draw (1,4) -- (1,2);
+\draw (-1,4) -- (-1,2);
+\draw (-3,4) -- (-3,2);
+\draw (-5,4) -- (-5,2);
+\draw (-7,4) -- (-7,2);
+
+\draw (-8,1) -- (8,1);
+\draw (-8,-1) -- (8,-1);
+\draw (7,1) -- (7,-1);
+\draw (5,1) -- (5,-1);
+\draw (3,1) -- (3,-1);
+\draw (1,1) -- (1,-1);
+\draw (-1,1) -- (-1,-1);
+\draw (-3,1) -- (-3,-1);
+\draw (-5,1) -- (-5,-1);
+\draw (-7,1) -- (-7,-1);
+
+\draw (-8,1) -- (8,1);
+\draw (-8,-1) -- (8,-1);
+\draw (7,1) -- (7,-1);
+\draw (5,1) -- (5,-1);
+\draw (3,1) -- (3,-1);
+\draw (1,1) -- (1,-1);
+\draw (-1,1) -- (-1,-1);
+\draw (-3,1) -- (-3,-1);
+\draw (-5,1) -- (-5,-1);
+\draw (-7,1) -- (-7,-1);
+\node[draw,circle] (tm) at (0,-6) {TM};
+\draw[->] (tm) -- (0,0);
+\end{tikzpicture}
+\end{center}
+\end{figure}
+Eine Mehrband Turingmaschiene hat mehrere Bänder. Die Zustandsänderung kann nun auch auf ein anderes Band wechseln. Dabei wird immer auf die zuletzt eingenommene Position auf dem anderen Band gewechselt 
+\begin{block}{Änderungen in der Definition}
+$$ \delta: Q \times \Gamma \times \{1, \ldots, n\} \rightarrow Q \times \Gamma \times \{L,N,R\} \times \{1, \ldots, n\}$$
+\end{block}
+\end{frame}
+% Mehrdim
+\begin{frame}
+\frametitle{Mehrkopf Turingmaschienen}
+\vspace{-2cm}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=0.3]
+\draw[step=2cm,xshift=1cm,yshift=1cm] (-7.5,-7.5) grid (5.5,5.5);
+\node[draw,circle,fill=white] (tm) at (0,-6) {TM};
+\draw[->] (tm) -- (0,0);
+\end{tikzpicture}
+\end{center}
+\end{figure}
+Eine Mehrdimensionale Turingmaschine hat ein Mehrdimensionales Band, der Kopf kann sich dann in allen verfügbaren Dimensionen bewegen.
+\begin{block}{Änderungen in der Definition (für Dimension 2)}
+$$ \delta: Q \times \Gamma \rightarrow Q \times \Gamma \times \{L,N,R,U,D\}$$
+\end{block}
+\end{frame}
+
+% Beispiel (if time)
+% Aufgabe
+\begin{frame}
+\frametitle{Aufgabe}
+\vspace{-1cm}
+Eine $k$-Band-Turingmaschine ist eine Turingmaschine mit $k$
+Arbeitsbändern und der Übergangsfunktion
+
+\[ \delta: Q \times \Gamma \times \{1, \ldots, k\} \to
+Q \times \Gamma \times \{L, R, N\} \times \{1, \ldots, k\}, \]
+
+wobei $\delta(q, a, i) = (p, b, X, j)$ bedeute:
+
+\begin{quote}
+  Wenn sich die Maschine im Zustand $q$ befindet und
+  auf Band $i$ das Symbol $a$ liest, so springt die Maschine in Zustand $p$,
+  überschreibt $a$ mit $b$, der Lese-Schreib-Kopf bewegt sich auf Band $i$
+  gemäß $X$ und springt auf Band $j$ an die Stelle, an der er sich
+  auf diesem Band zuletzt befunden hat.
+\end{quote}
+
+Die Eingabe befinde sich auf Band 1, und im Zustand $s$ befinde sich der
+Kopf an der ersten Stelle der Eingabe. Die Stelle, auf die der Kopf bei einem
+Wechsel auf ein bis dahin unbenutztes Band springt, sei
+festgelegt.
+Eine solche 2-Band-Turingmaschine habe nun Zeitaufwand $T(n)$.
+Zeigen Sie informell, dass diese von einer einfachen
+Turingmaschine mit Zeitaufwand $O(T^2(n))$ simuliert werden kann.\\
+\end{frame}
+
+% Entscheidbarkeit und Semi-Entscheidbarkeit
+% Beispiel & Aufgabe
+% Universelle TM
+% Äquivalent
+% Satz von Rice
+\begin{frame}
+\frametitle{Satz von Rice}
+Der Satz von Rice sagt aus, dass es unmöglich ist eine nichttrivial eigenschaft von Turingmaschinen algorithmisch zu entscheiden.
+\begin{block}{Formale Version}
+Es sei R die Klasse aller Turing-berechenbaren Funktionen und $S$ eine beliebige nichttriviale (das bedeutet $S \neq \emptyset$ und $S \neq R$) Teilmenge davon. Dann ist die Sprache
+$$ C_S = \{ i |\text{ die von $M_i$ berechnete Funktion liegt in $S$} \} $$
+Unentscheidbar. 
+\end{block}
+\end{frame}
+% Beispiel
+\begin{frame}
+\frametitle{Beispiel}
+Die Klasse aller Programme die etwas auf einem Rechner tun, das der Benutzer nicht möchte (das ist eine Teilmenge der Turingberechenbaren Funktionen) ist unentscheidbar. Daraus folgt, dass es keinen perfekten Virenscanner geben kann!
+\end{frame}
+
+% Aufgabe
+\begin{frame}
+\frametitle{Aufgabe}
+Kann man die Entscheidbarkeit der folgenden Mengen mithilfe des Satzes von Rice bestimmen?
+\begin{itemize}
+\item Alle Turingmaschienen die nur $0$ aufs Band Schreiben.
+\item Alle Turingmaschienen die genau eine $0$ aufs Band Schreiben.
+\item Alle Turingmaschienen die überhaupt etwas auf das Band schreiben.
+\end{itemize}
+\end{frame}
+
+% Post'sches Korrespondenzproblem
+% Aufgaben
+% Beispiel mit Schwerem PCP
+
 \input{includes/disclaimer}
 \end{document}
