@@ -985,16 +985,67 @@ des Wortes {\tt 101}?
 getrennte Binärworte aus $\{0,1\}^*$ addiert.
 \end{frame}
 
+%Entscheidbarkeit
+\section*{}
+\begin{frame}
+ \frametitle{Definitionen zur TM (Vorlesung)}
+ \begin{enumerate}
+  \item Eine TM \emph{akzeptiert} eine Eingabe $w \in \Sigma^*$, wenn sie nach Lesen von $w$ in einem Zustand aus $F$ stoppt.
+  \item Sie \emph{akzeptiert} eine Sprache $L \subseteq \Sigma^*$ genau dann, wenn sie ausschließlich Wörter $w$ aus $L$ als Eingabe akzeptiert.
+  \item Eine Sprache $L \subseteq \Sigma^*$ heißt rekursiv oder entscheidbar, wenn es eine Turingmaschine gibt, die auf allen Eingaben stoppt und
+	ein Wort $w \in \Sigma^*$ genau dann akzeptiert, wenn $w \in L$ gilt.
+  \item Eine Sprache $L \subseteq \Sigma^*$ heißt \emph{rekursiv-aufzählbar} oder \emph{semi-entscheidbar}, wenn es eine Turingmaschine gibt, 
+	die genau $w$ genau dann akzeptiert, wenn $w \in L$ gilt. Das Verhalten der Turingmaschine für Eingaben $w \not\in L$ ist damit nicht definiert.
+	Sie stoppt entweder nicht in einem Endzustand oder aber stoppt garnicht.
+ \end{enumerate}
+\end{frame}
+
+%TODO Beispiel für nicht entscheidbare Probleme
+%TODO Universelle Turingmaschinen
+%TODO Beispiel für Entscheidbarkeit
+
+
+\begin{frame}
+\frametitle{Aufgaben zur Entscheidbarkeit}
+ Seien $L_1$ und $L_2$ zwei Sprachen über einem Alphabet $\Sigma$.
+Beweisen Sie:
+\begin{enumerate}
+\item Ist $L_1$ entscheidbar, so ist auch $L_1^c$ entscheidbar.
+\item Sind $L_1$ und $L_2$ entscheidbar, so ist auch $L_1\cup L_2$ entscheidbar.
+\item Sind $L_1$ und $L_2$ entscheidbar, so ist auch $L_1\backslash L_2$ entscheidbar.
+\item Ist $L_1$ entscheidbar, so ist auch die Sprache 
+$$\min(L_1):=\{x\in L_1\mid \text{kein echtes Präfix von $x$ ist in }L_1 \}$$
+entscheidbar.
+\end{enumerate}
+\end{frame}
+
+\section*{}
+\begin{frame}
+ \frametitle{Aufgabe zur Semi-Entscheidbarkeit}
+Sei $L$ eine semi-entscheidbare Sprache, die nicht entscheidbar ist. Ist die
+Sprache $L'=\{0w:w \in L\} \cup \{1w: w \not\in L\}$ entscheidbar,
+semi-entscheidbar oder keins von beiden?
+
+Hinweis: Nimm an, $L'$ sei semi-entscheidbar, und folgere daraus, dass
+dann $L$ entscheidbar ist. 
+\end{frame}
+
+\section*{}
+\begin{frame}
+ \frametitle{Halteproblem}
+ Zeigen Sie, dass das Halteproblem semi-entscheidbar ist.
+\end{frame}
+
 % TM Erweiterungen
 \begin{frame}
 \frametitle{Erweiterungen von Turingmaschinen}
 \begin{block}{Erweiterungen}
-Es gibt mehrere, zu Turingmaschienen (bzgl. Berechenbarkeit) äquivalente Berechnungsmodelle, die der Turingmaschine sehr ähnlich sind. Man spricht hier von Erweiterungen von Turingmaschinen. Diese verwendet man gerne in z.B. Beweisen, da sie oft Übersichtlicher sind.
+Es gibt mehrere, zu Turingmaschinen (bzgl. Berechenbarkeit) äquivalente Berechnungsmodelle, die der Turingmaschine sehr ähnlich sind. Man spricht hier von Erweiterungen von Turingmaschinen. Diese verwendet man gerne in z.B. Beweisen, da sie oft Übersichtlicher sind.
 \end{block}
 \end{frame}
 % Mehrkopf
 \begin{frame}
-\frametitle{Mehrkopf Turingmaschienen}
+\frametitle{Mehrkopf-Turingmaschinen}
 \vspace{-2cm}
 \begin{figure}[H]
 \begin{center}
@@ -1016,7 +1067,7 @@ Es gibt mehrere, zu Turingmaschienen (bzgl. Berechenbarkeit) äquivalente Berech
 \end{tikzpicture}
 \end{center}
 \end{figure}
-Eine Mehrkopf Turingmaschiene hat mehrere Lese-/Schreibeköpfe. Die Zustandsänderung hängt nun von dem gelesenen Zeichen aller Köpfe ab und kann auch alle Köpfe verschieben bzw. mit allen gleichzeitig schreiben.
+Eine Mehrkopf-Turingmaschine hat mehrere Lese-/Schreibeköpfe. Die Zustandsänderung hängt nun von dem gelesenen Zeichen aller Köpfe ab und kann auch alle Köpfe verschieben bzw. mit allen gleichzeitig schreiben.
 \begin{block}{Änderungen in der Definition}
 $$ \delta: Q \times \Gamma^n \rightarrow Q \times \Gamma^n \times \{L,N,R\}^n$$
 \end{block}
@@ -1024,7 +1075,7 @@ $$ \delta: Q \times \Gamma^n \rightarrow Q \times \Gamma^n \times \{L,N,R\}^n$$
 
 % Mehrband
 \begin{frame}
-\frametitle{Mehrband Turingmaschienen}
+\frametitle{Mehrband-Turingmaschinen}
 \vspace{-2cm}
 \begin{figure}[H]
 \begin{center}
@@ -1066,14 +1117,14 @@ $$ \delta: Q \times \Gamma^n \rightarrow Q \times \Gamma^n \times \{L,N,R\}^n$$
 \end{tikzpicture}
 \end{center}
 \end{figure}
-Eine Mehrband Turingmaschiene hat mehrere Bänder. Die Zustandsänderung kann nun auch auf ein anderes Band wechseln. Dabei wird immer auf die zuletzt eingenommene Position auf dem anderen Band gewechselt 
+Eine Mehrband-Turingmaschine hat mehrere Bänder. Die Zustandsänderung kann nun auch auf ein anderes Band wechseln. Dabei wird immer auf die zuletzt eingenommene Position auf dem anderen Band gewechselt 
 \begin{block}{Änderungen in der Definition}
 $$ \delta: Q \times \Gamma \times \{1, \ldots, n\} \rightarrow Q \times \Gamma \times \{L,N,R\} \times \{1, \ldots, n\}$$
 \end{block}
 \end{frame}
 % Mehrdim
 \begin{frame}
-\frametitle{Mehrkopf Turingmaschienen}
+\frametitle{Mehrkopf Turingmaschinen}
 \vspace{-2cm}
 \begin{figure}[H]
 \begin{center}
@@ -1145,9 +1196,9 @@ Die Klasse aller Programme die etwas auf einem Rechner tun, das der Benutzer nic
 \frametitle{Aufgabe}
 Kann man die Entscheidbarkeit der folgenden Mengen mithilfe des Satzes von Rice bestimmen?
 \begin{itemize}
-\item Alle Turingmaschienen die nur $0$ aufs Band Schreiben.
-\item Alle Turingmaschienen die genau eine $0$ aufs Band Schreiben.
-\item Alle Turingmaschienen die überhaupt etwas auf das Band schreiben.
+\item Alle Turingmaschinen die nur $0$ aufs Band Schreiben.
+\item Alle Turingmaschinen die genau eine $0$ aufs Band Schreiben.
+\item Alle Turingmaschinen die überhaupt etwas auf das Band schreiben.
 \end{itemize}
 \end{frame}
 
