@@ -948,12 +948,12 @@ Eine Turingmaschine wird definiert als:
 	\node(qx)[right of=q1]{\dots};
 
 	\path[->]       (s) edge (q0)
-	                (q0) edge[bend left] node{$(a,b,L)$} (q1)
+	                (q0) edge[bend left] node{$(a|b,L)$} (q1)
 			                (q1) edge[bend left] node{\dots} (qx);
 					\end{tikzpicture}
 					\end{center}
 
-					Dabei steht die Kantenbeschriftung ``$(a,b,L)$'' für den Übergang $\delta(q_0,a) =
+					Dabei steht die Kantenbeschriftung ``$(a|b,L)$'' für den Übergang $\delta(q_0,a) =
 					(q_1,b,L)$.
 
 					\vspace{2mm}
@@ -992,7 +992,7 @@ getrennte Binärworte aus $\{0,1\}^*$ addiert.
  \begin{enumerate}
   \item Eine TM \emph{akzeptiert} eine Eingabe $w \in \Sigma^*$, wenn sie nach Lesen von $w$ in einem Zustand aus $F$ stoppt.
   \item Sie \emph{akzeptiert} eine Sprache $L \subseteq \Sigma^*$ genau dann, wenn sie ausschließlich Wörter $w$ aus $L$ als Eingabe akzeptiert.
-  \item Eine Sprache $L \subseteq \Sigma^*$ heißt rekursiv oder entscheidbar, wenn es eine Turingmaschine gibt, die auf allen Eingaben stoppt und
+  \item Eine Sprache $L \subseteq \Sigma^*$ heißt \emph{rekursiv} oder \emph{entscheidbar}, wenn es eine Turingmaschine gibt, die auf allen Eingaben stoppt und
 	ein Wort $w \in \Sigma^*$ genau dann akzeptiert, wenn $w \in L$ gilt.
   \item Eine Sprache $L \subseteq \Sigma^*$ heißt \emph{rekursiv-aufzählbar} oder \emph{semi-entscheidbar}, wenn es eine Turingmaschine gibt, 
 	die genau $w$ genau dann akzeptiert, wenn $w \in L$ gilt. Das Verhalten der Turingmaschine für Eingaben $w \not\in L$ ist damit nicht definiert.
@@ -1000,10 +1000,32 @@ getrennte Binärworte aus $\{0,1\}^*$ addiert.
  \end{enumerate}
 \end{frame}
 
-%TODO Beispiel für nicht entscheidbare Probleme
-%TODO Universelle Turingmaschinen
-%TODO Beispiel für Entscheidbarkeit
+\begin{frame}
+ \frametitle{Beispiel}
+ \begin{itemize}
+  \item $\Sigma := \{a, b\}$
+  \item $\Gamma := \Sigma \cup \{A, B\}$
+  \item $F := \{q_4\}$
+ \end{itemize}
 
+ \begin{tikzpicture}[node distance=2cm,auto]
+  \node(q0)[draw,circle,thick]{$q_0$};
+  \node (s) [node distance=1cm,left of =q0]{};
+  \node(q1)[draw,circle,thick,right of=q0]{$q_1$};
+  \node(q2)[draw,circle,thick,right of=q1]{$q_2$};
+  \node(q3)[draw,circle,thick,right of=q2]{$q_3$};
+  \node(q4)[draw,circle,thick,right of=q3]{$q_4$};
+  \path[->]       (s) edge (q0)
+	          (q0) edge node{$(a|A,R)$} (q1)
+	          (q1) edge[loop above] node{$(a|a,R)$} ()
+	          (q1) edge node{$ $} (q2);
+ \end{tikzpicture}
+
+\end{frame}
+
+
+%TODO Beispiel für nicht entscheidbare Probleme
+%TODO Beispiel für Entscheidbarkeit
 
 \begin{frame}
 \frametitle{Aufgaben zur Entscheidbarkeit}
@@ -1029,6 +1051,8 @@ semi-entscheidbar oder keins von beiden?
 Hinweis: Nimm an, $L'$ sei semi-entscheidbar, und folgere daraus, dass
 dann $L$ entscheidbar ist. 
 \end{frame}
+
+%TODO Universelle Turingmaschinen
 
 \section*{}
 \begin{frame}
@@ -1178,7 +1202,7 @@ Turingmaschine mit Zeitaufwand $O(T^2(n))$ simuliert werden kann.\\
 % Satz von Rice
 \begin{frame}
 \frametitle{Satz von Rice}
-Der Satz von Rice sagt aus, dass es unmöglich ist eine nichttrivial eigenschaft von Turingmaschinen algorithmisch zu entscheiden.
+Der Satz von Rice sagt aus, dass es unmöglich ist eine nichttriviale Eigenschaft von Turingmaschinen algorithmisch zu entscheiden.
 \begin{block}{Formale Version}
 Es sei R die Klasse aller Turing-berechenbaren Funktionen und $S$ eine beliebige nichttriviale (das bedeutet $S \neq \emptyset$ und $S \neq R$) Teilmenge davon. Dann ist die Sprache
 $$ C_S = \{ i |\text{ die von $M_i$ berechnete Funktion liegt in $S$} \} $$
