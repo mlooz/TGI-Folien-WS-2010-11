@@ -1221,14 +1221,14 @@ Die Klasse aller Programme die etwas auf einem Rechner tun, das der Benutzer nic
 Kann man die Entscheidbarkeit der folgenden Mengen mithilfe des Satzes von Rice bestimmen?
 \begin{itemize}
 \item Alle Turingmaschinen die nur $0$ aufs Band Schreiben.
-\item Alle Turingmaschinen die genau eine $0$ aufs Band Schreiben.
+\item Alle Turingmaschinen die im ersten Schritt genau eine $0$ aufs Band Schreiben und im zweiten Schritt anhalten. 
 \item Alle Turingmaschinen die überhaupt etwas auf das Band schreiben.
 \end{itemize}
 \end{frame}
 \begin{frame}
 \frametitle{Postsches Korrespondenzproblem}
 Gegeben sei einer Folge von Paaren $((x_1, y_1), (x_2, y_2), \ldots, (x_n,y_n))$ von nichtleeren Worten über einem endlichen Alphabet. Dies nennt man eine \textbf{Instanz} des PKP.
-Eine nicht-leere Folge $I = i_1, i_2, \ldots, i_n$ von indices $\{1, \ldots, m\}$ heißt Lösung zu $P$, wenn $x_{i_1}x_{i_2}\ldots{}x_{i_n} = y_{i_1}y_{i_2}\ldots{}y_{i_n}$.
+Eine nicht-leere Folge $I = i_1, i_2, \ldots, i_m$ von indices $\{1, \ldots, n\}$ heißt Lösung zu $P$, wenn $x_{i_1}x_{i_2}\ldots{}x_{i_m} = y_{i_1}y_{i_2}\ldots{}y_{i_m}$.
 \begin{block}{Beispiel}
 \begin{displaymath}
 \{ {a \choose aba}, {ab \choose bb}, {baa \choose aa} \}
