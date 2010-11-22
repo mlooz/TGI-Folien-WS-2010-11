@@ -1318,6 +1318,33 @@ Für $b\in \mathbb{N}$ bezeichne $s_b$ das Kodierungsschema, welches Zahlen zur 
 Zeigen Sie, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich \textit{PRIMES} äquivalent sind.
 \end{frame}
 
+% TM klasse P
+\begin{frame}
+\frametitle{Die Klasse $\mathcal{P}$}
+Die Klasse $\mathcal{P}$ ist definiert als die Menge aller Sprachen, die von einer (deterministischen) Turingmaschine deren Zeitkomplexität höchstens Polynomial ist entschieden werden können.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sind folgende Sprachen in \mathcal{P}?}
+\begin{itemize}
+\item Die Wörter der deutschen Sprache
+\item Die ungraden Zahlen
+\item Eine reguläre Sprache $L$
+\item Die PCPs die eine Lösung haben
+\item Die unär kodierten Primzahlen
+\item Die binär kodierten Primzahlen
+\end{itemize}
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Bekannte Sprachen in \mathcal{P} sind:}
+%\begin{itemize}
+%\item 2-Färbbare Graphen
+%\item Existenz eines Eulerzykluses
+%\end{itemize}
+%\end{frame}
+
 \begin{frame}
  \frametitle{Laufzeitbetrachtung}
  Betrachten Sie $L_1 := L[\text{\textit{PRIMES}},s_1]$. 
@@ -1325,6 +1352,16 @@ Ein naiver Algorithmus für \textit{PRIMES} könnte alle Zahlen $2,3,\ldots,p-1$
 Beschreiben Sie kurz in Worten die Arbeitsweise einer \textbf{deterministischen} Turing-Maschine, die diesen Algorithmus implementiert und damit $L_1$ entscheidet. 
 Geben Sie die Laufzeit Ihrer Turing-Maschine asymptotisch an. Ist $L_1$ in $\mathcal{P}$? Begründen Sie gegebenenfalls, warum $L_1$ in $\mathcal{P}$ ist.
 \end{frame}
+
+% NDTMs mit Orakelmodul
+% Kurz angesprochen andere Definitionen:
+%% TM mit Nichtdeterministischen übergängen
+% Konzept TM mit "lösungsrater und Verifier"
+% NP als Klasse
+% co-NP?
+% NP vollständigkeit
+% Polyreduktionen
+% Polytransformationen mit NPCness
 
 \begin{frame}
 \frametitle{$\mathcal{NP}$}
