@@ -1299,5 +1299,44 @@ $ I_1 = $(2,4,3,4,4,2,1,2,4,3,4,3,4,4,3,4,4,2,1,4,\\
 \end{center}
 \end{frame}
 
+%TODO: Definition + Beispiel zu Optimierungsproblemen
+\begin{frame}
+ \frametitle{Optimierungsproblem}
+ Gegeben sei ein Graph $G=(V,E)$ mit $V:=\{1,\ldots,n\}$ und $E\subseteq \{\{u,v\} \mid u,v \in V, u\neq v\}$. Weiter seien $c:E \rightarrow \mathbb{R}^+$ eine Längenfunktion auf den Kanten des Graphen sowie $s\in V$ ein ausgewiesener Start- und $t\in V$ ein ausgewiesener Zielknoten. 
+Ein Pfad von $s$ nach $t$ ist eine Folge von Kanten $p = \{i_1,i_2\},\{i_2,i_3\},\ldots,\{i_{k-2},i_{k-1}\},\{i_{k-1},i_k\}$ mit $\{i_j, i_{j+1}\} \in E$ und $i_1=s$ sowie $i_k=t$. 
+Die Länge des Pfades sei definiert als die Summe der Längen aller Kanten auf dem Pfad. 
+Betrachten Sie die Menge der Pfade, die von $s$ nach $t$ führen, und formulieren Sie ein naheliegendes Optimierungsproblem. 
+Formulieren Sie ein zu Ihrem Optimierungsproblem gehörendes Entscheidungsproblem.
+\end{frame}
+
+\begin{frame}
+ \frametitle{Kodierungsschemata}
+ Das Entscheidungsproblem \textit{PRIMES} besteht darin, zu entscheiden, ob es sich bei einer gegebenen natürlichen Zahl $p>1$ um eine Primzahl handelt. 
+Eine Probleminstanz von \textit{PRIMES} wird also durch eine natürliche Zahl kodiert. 
+Für $b\in \mathbb{N}$ bezeichne $s_b$ das Kodierungsschema, welches Zahlen zur Basis $b$ darstellt.
+
+Zeigen Sie, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich \textit{PRIMES} äquivalent sind.
+\end{frame}
+
+\begin{frame}
+ \frametitle{Laufzeitbetrachtung}
+ Betrachten Sie $L_1 := L[\text{\textit{PRIMES}},s_1]$. 
+Ein naiver Algorithmus für \textit{PRIMES} könnte alle Zahlen $2,3,\ldots,p-1$ darauf hin überprüfen, ob sie die gegebene Zahl $p$ teilen. 
+Beschreiben Sie kurz in Worten die Arbeitsweise einer \textbf{deterministischen} Turing-Maschine, die diesen Algorithmus implementiert und damit $L_1$ entscheidet. 
+Geben Sie die Laufzeit Ihrer Turing-Maschine asymptotisch an. Ist $L_1$ in $\mathcal{P}$? Begründen Sie gegebenenfalls, warum $L_1$ in $\mathcal{P}$ ist.
+\end{frame}
+
+\begin{frame}
+\frametitle{$\mathcal{NP}$}
+ Betrachten Sie die Sprache $L_{10}^c := L[\text{\textit{PRIMES}},s_{10}]^c$ der \textit{zusammengesetzten} Zahlen in Dezimaldarstellung. 
+Beschreiben Sie grob in Worten die Arbeitsweise einer \textbf{nichtdeterministischen} Turing-Maschine, die $L_{10}^c$ entscheidet. 
+Ein Unterprogramm für die Division von Dezimalzahlen mit polynomieller Laufzeit sei gegeben und kann von Ihrer Turing-Maschine aufgerufen werden. 
+Ist $L_{10}^c$ in $\mathcal{NP}$? Begründen Sie gegebenenfalls, warum $L_{10}^c$ in $\mathcal{NP}$ ist.
+
+\medskip
+\textit{Hinweis:} Überlegen Sie sich, was Ihre Turing-Maschine in der Orakel-Phase sinnvollerweise auf das Band schreiben könnte.
+\end{frame}
+
+
 \input{includes/disclaimer}
 \end{document}
