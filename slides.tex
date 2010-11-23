@@ -1464,12 +1464,12 @@ $10\#101\#11 \#001\#010 \#010\#010 \#011\#001 \#100\#010 \#101\#010$
 \begin{frame}
 \frametitle{Die Klasse $\mathcal{P}$}
 Die Klasse $\mathcal{P}$ ist definiert als die Menge aller Sprachen, die von einer (deterministischen) Turingmaschine, deren Zeitkomplexität höchstens polynomial ist, entschieden werden können.\\[6pt]
-\textbf{Anmerkung:} Da eine RAM Maschine in Polyzeit von einer TM simuliert werden kann, kann man (auf einer abstrakteren Ebene) i.A. Komplexitäten von bekannten Algorithmen in Beweisen verwenden.
 \end{frame}
 
 \begin{frame}
 \frametitle{Beispiel}
-Die folgende Sprache ist in $\mathcal{P}$: Die gerichteter Graphen zusammen mit einem Start- und einem Endknoten, so dass der Endknoten vom Startknoten aus über die Kanten erreichbar ist.\\[6pt]
+\textbf{Anmerkung:} Da eine RAM Maschine in Polyzeit von einer TM simuliert werden kann, kann man (auf einer abstrakteren Ebene) i.A. Komplexitäten von bekannten Algorithmen in Beweisen verwenden.\\[10pt]
+Die folgende Sprache ist in $\mathcal{P}$: Die gerichteten Graphen zusammen mit einem Start- und einem Endknoten, so dass der Endknoten vom Startknoten aus über die Kanten erreichbar ist.\\[6pt]
 \textbf{Grober Beweis:}	Tiefensuche ist in $\mathcal{O}(|\mathcal{V}| + |\mathcal{E}|)$
 \end{frame}
 
@@ -1496,33 +1496,33 @@ Geben Sie die Laufzeit Ihrer Turing-Maschine asymptotisch an. Ist $L_1$ in $\mat
 % NDTMs mit Orakelmodul
 \begin{frame}
 \frametitle{Nichtdeterministische Turingmaschinen}
-\begin{block}{Alternative aus der Vorlesung}
+\begin{block}{Version aus der Vorlesung}
 Wir definieren eine nichtdeterministische Turingmaschine als Erweiterung einer deterministischen. Wir erweiteren die TM um ein \emph{Orakelmodul}, das bevor der deterministischen Berechnung Zeichen auf das Band links von der Eingabe schreibt, danach verfährt die Maschine wie eine Normale TM. Die NDTM akzeptiert genau die Wörter, für die es eine Ausgabe des Orakelmoduls gibt, sodass der deterministische Anteil der Machine die Wort akzeptiert.
 \end{block}
 \end{frame}
 \begin{frame}
-\frametitle{Nichtdeterministische Turingmaschinen: Alternativen}
-Es gibt weitere äquivalente Definitionen von NDTMs. Man kann auch analog zu nichtdeterministischen endlichen Automaten NDTM als normale Turingmaschinen mit nicht eindeutiger Übergangsfunktion definieren.\\
+\frametitle{Nichtdeterministische Turingmaschinen: Anmerkung}
+Es gibt weitere dazu äquivalente Definitionen von NDTMs: Man kann auch analog zu nichtdeterministischen endlichen Automaten, die NDTM als normale Turingmaschinen mit nicht eindeutiger Übergangsfunktion definieren, diese akzeptiert dann ebenfalls analog wenn ein akzeptierender Pfad existiert.\\
 \end{frame}
 % NP als Klasse
+
 \begin{frame}
 \frametitle{$\mathcal{NP}$}
 \begin{block}{$\mathcal{NP}$}
-$\mathcal{NP}$ ist (analog zu $\mathcal{P}$ die klasse aller Sprachen die von einer Nichtdeterministischen Turingmaschine in Polyzeit erkannt werden.
+$\mathcal{NP}$ ist (analog zu $\mathcal{P}$) die Klasse aller Sprachen die von einer nichtdeterministischen Turingmaschine in Polyzeit erkannt werden.
+\end{block}\\[10pt]
 \textbf{Anmerkung}: Die Frage ob $\mathcal{P} = \mathcal{NP}$ oder nicht ist ein großes, offenes Problem.
-\end{block}
 \end{frame}
+
 \begin{frame}
-\frametitle{Polyreduktionen}
-\begin{block}{Definition (Vorlesung)}
-Eine polynomiale Transformation einer Sprache $L_1$ in eine Sprache $L_2$ ist eine Funktion $f: \Sigma^*_1 \rightarrow \Sigma^*_2$ mit den Eigenschaften:
+\frametitle{Grundidee: $\mathcal{NP}$-Entscheider}
+Üblicherweise geht eine TM die ein Problem aus $\mathcal{NP}$ entscheidet folgendermaßen vor: 
 \begin{enumerate}
-\item Es existiert eine polynomiale deterministische Turing-Maschine, die $f$ berechnet
-\item für alle $x$ gilt: $x \in L_1 \iff f(x) \in  L_2$
+\item Rate Sogenannten "Zeugen" für $x \in L$ (Nichtdeterministisch)
+\item Überprüfe ob Zeuge korrekt. (in Polyzeit)
+\item Falls ja, halte mit Ausgabe $x \in L$
 \end{enumerate}
-Wir schreiben dann $L_1 \propto L_2$ ($L_1$ ist polynomial transformierbar in (reduzierbar auf) $L_2$ ).
-\end{block}
-\textbf{Anmerkung}: In welche Richtung das $\propto$ Symbol zeigt kann man sich folgerndermaßen  merken: $L_2$ ist das "schwerere" Problem, kann man $L_2$ entscheiden, kann man mit polynomiellen Aufwand auch $L_1$ entscheiden.
+Man spricht daher auch von den \emph{effizient verifizierbaren} Entscheidungsproblemen. 
 \end{frame}
 
 \begin{frame}
@@ -1534,6 +1534,19 @@ Ist $L_{10}^c$ in $\mathcal{NP}$? Begründen Sie gegebenenfalls, warum $L_{10}^c
 
 \medskip
 \textit{Hinweis:} Überlegen Sie sich, was Ihre Turing-Maschine in der Orakel-Phase sinnvollerweise auf das Band schreiben könnte.
+\end{frame}
+
+\begin{frame}
+\frametitle{Polyreduktionen}
+\begin{block}{Definition (Vorlesung)}
+Eine polynomiale Transformation einer Sprache $L_1$ in eine Sprache $L_2$ ist eine Funktion $f: \Sigma^*_1 \rightarrow \Sigma^*_2$ mit den Eigenschaften:
+\begin{enumerate}
+\item Es existiert eine polynomiale deterministische Turing-Maschine, die $f$ berechnet
+\item für alle $x$ gilt: $x \in L_1 \iff f(x) \in  L_2$
+\end{enumerate}
+Wir schreiben dann $L_1 \propto L_2$ ($L_1$ ist polynomial transformierbar in (reduzierbar auf) $L_2$ ).
+\end{block}
+\textbf{Anmerkung}: In welche Richtung das $\propto$ Symbol zeigt kann man sich folgerndermaßen  merken: $L_2$ ist das "schwerere" Problem, kann man $L_2$ entscheiden, kann man mit polynomiellen Aufwand auch $L_1$ entscheiden.
 \end{frame}
 
 % NP vollständigkeit
