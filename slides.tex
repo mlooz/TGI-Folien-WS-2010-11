@@ -1400,10 +1400,26 @@ Es gibt weitere äquivalente Definitionen von NDTMs. Man kann auch analog zu nic
 $\mathcal{NP}$ ist (analog zu $\mathcal{P}$ die klasse aller Sprachen die von einer Nichtdeterministischen Turingmaschine in Polyzeit erkannt werden.
 \end{block}
 \end{frame}
+\frametitle{Polyreduktionen}
+\begin{block}{Definition (Vorlesung)}
+Eine polynomiale Transformation einer Sprache $L_1$ in eine Sprache $L_2$ ist eine Funktion $f: \Sigma^*_1 \rightarrow \Sigma^*_2$ mit den Eigenschaften:
+\begin{enumerate}
+\item Es existiert eine polynomiale deterministische Turing-Maschine, die $f$ berechnet
+\item für alle $x$ gilt: $x \in L_1 \iff f(x) \in  L_2$
+\end{enumerate}
+Wir schreiben dann $L_1 \propto L_2$ ($L_1$ ist polynomial transformierbar in (reduzierbar auf) $L_2$ ).
+\end{block}
+\textbf{Anmerkung}: In welche Richtung das $\propto$ Symbol zeigt kann man sich folgerndermaßen  merken: $L_2$ ist das "schwerere" Problem, kann man $L_2$ entscheiden, kann man mit polynomiellen Aufwand auch $L_1$ entscheiden.
+\end{frame}
 % NP vollständigkeit
-
-% Polyreduktionen
-% Polytransformationen mit NPCness
+\begin{frame}
+\frametitle{$\mathcal{NP}$-Vollständigkeit}
+\begin{block}{$\mathcal{NP}$-Vollständigkeit}
+Eine Sprache $L_1$ ist $\mathcal{NP}$-Vollständig ($\mathcal{NP}C$) gdw. 
+\[\forall L_2 \in \mathcal{NP} \,\, : \,\, L_2 \propto L_1\]
+\end{block}
+\textbf{Anmerkung}: In diesem Sinne sind die Probleme aus $NPC$ die "schwersten" der $\mathcal{NP}$ Sprachen.
+\end{frame}
 
 \begin{frame}
 \frametitle{$\mathcal{NP}$}
