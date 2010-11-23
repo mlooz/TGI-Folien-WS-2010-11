@@ -1299,7 +1299,19 @@ $ I_1 = $(2,4,3,4,4,2,1,2,4,3,4,3,4,4,3,4,4,2,1,4,\\
 \end{center}
 \end{frame}
 
-%TODO: Definition + Beispiel zu Optimierungsproblemen
+\begin{frame}
+ \frametitle{Optimierungsproblem und Entscheidungsproblem}
+ \begin{block}{Beispiel}
+  \begin{enumerate}
+   \item Die Aufgabe, aus einem gegebenen Blech möglichst viele sternförmige Weihnachtsplätzchen zu gewinnen, ist ein Optimierungsproblem.
+   \item Die Frage, ob aus diesem Blech mindestens k Plätzchen gewonnen werden können, ist das zugehörige Entscheidungsproblem.
+  \end{enumerate}
+ \end{block}
+ \begin{block}{Überlegung}
+  Wie kann man mit einer Turingmaschine, welche das Entscheidungsproblem löst, das Optimierungsproblem lösen?
+ \end{block}
+\end{frame}
+
 \begin{frame}
  \frametitle{Optimierungsproblem}
  Gegeben sei ein Graph $G=(V,E)$ mit $V:=\{1,\ldots,n\}$ und $E\subseteq \{\{u,v\} \mid u,v \in V, u\neq v\}$. Weiter seien $c:E \rightarrow \mathbb{R}^+$ eine Längenfunktion auf den Kanten des Graphen sowie $s\in V$ ein ausgewiesener Start- und $t\in V$ ein ausgewiesener Zielknoten. 
@@ -1309,14 +1321,19 @@ Betrachten Sie die Menge der Pfade, die von $s$ nach $t$ führen, und formuliere
 Formulieren Sie ein zu Ihrem Optimierungsproblem gehörendes Entscheidungsproblem.
 \end{frame}
 
-%TODO Definition zu Kodierungsschemata
-
 \begin{frame}
  \frametitle{Kodierungsschemata (VL)}
- \begin{block}{Definition Kodierungsschemata}
+ \begin{block}{Definition Kodierungsschema}
  Ein \emph{Kodierungsschema} s ordnet jedem Problembeispiel eines Problems eine Zeichenkette oder Kodierung über einem Alphabet $\Sigma$ zu. 
  Die Inputlänge eines Problembeispiels ist die Anzahl der Symbole seiner Kodierung.
  Dabei gibt es natürliche verschiedene Kodierungsschemata für ein bestimmtes Problem.
+ \end{block}
+ \begin{block}{Äquivalenz}
+  Zwei Kodierungsschemata $s_1$, $s_2$ heißen \emph{äquivalent} bezüglich eines Problems $\Pi$, falls es Polynome p1, p2 gibt, so dass gilt:
+  \[
+   (|s_1(I)| = n \rightarrow |s_2(I)| \leq p_2(n))\mbox{ und } |s_2(I) = m \rightarrow |s_1(I)| \leq p_1(m))
+  \]
+für alle Problembeispiele I von $\Pi$.
  \end{block}
 \end{frame}
 
@@ -1327,6 +1344,10 @@ Eine Probleminstanz von \textit{PRIMES} wird also durch eine natürliche Zahl ko
 Für $b\in \mathbb{N}$ bezeichne $s_b$ das Kodierungsschema, welches Zahlen zur Basis $b$ darstellt.
 
 Zeigen Sie, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich \textit{PRIMES} äquivalent sind.
+
+\begin{block}{Überlegung}
+ Welches Kodierungsschema c wäre zu a, b nicht äquivalent? Warum nicht?
+\end{block}
 \end{frame}
 
 % TM klasse P
