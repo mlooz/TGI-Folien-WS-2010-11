@@ -1313,6 +1313,45 @@ $ I_1 = $(2,4,3,4,4,2,1,2,4,3,4,3,4,4,3,4,4,2,1,4,\\
 \end{frame}
 
 \begin{frame}
+ \begin{block}{Überlegung}
+  Wie kann man mit einer Turingmaschine, welche das Entscheidungsproblem löst, das Optimierungsproblem lösen?
+ \end{block}
+\begin{block}{Strategie}
+ \begin{enumerate}
+  \item Zunächst mit binärer Suche das maximale k herausfinden.
+  \item Eine Formplatzierung festlegen, danach vorherigen Schritt wiederholen. Wenn sich das k gesenkt hat, war die Platzierung falsch. 
+  Wenn nicht, war sie richtig
+  \item Wiederhole bis alle Formen platziert sind.
+ \end{enumerate}
+\end{block}
+\end{frame}
+
+
+%TODO: Grafik
+
+\begin{frame}
+ \frametitle{Entscheidungsproblem}
+ \begin{block}{TUT}
+  Gegeben seien eine Tutoriumsliste mit m Tutorien und Tutoriumswahlen von n Studenten. Jedes Tutorium kann nur l Teilnehmer haben.
+ Das Entscheidungsproblem \textit{TUT} besteht darin, zu entscheiden, ob alle Studenten ihr Wunschtutorium bekommen können.
+ \end{block}
+ \begin{itemize}
+  \item Formuliere n ähnliche Entscheidungsproblem
+  \item Formuliere das zugehörige Optimierungsproblem
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \begin{block}{Ähnliche Entscheidungsprobleme}
+  \textit{TUT-k}: Können mindestens k Studenten ihr Wunschtutorium bekommen.
+  Lässt sich für $0 \leq k \leq n$ formulieren.
+ \end{block}
+ \begin{block}{Optimierungsproblem}
+  Finde die Belegung, welche die Anzahl der gewählten Zuteilungen maximiert.
+ \end{block}
+\end{frame}
+
+\begin{frame}
  \frametitle{Optimierungsproblem}
  Gegeben sei ein Graph $G=(V,E)$ mit $V:=\{1,\ldots,n\}$ und $E\subseteq \{\{u,v\} \mid u,v \in V, u\neq v\}$. Weiter seien $c:E \rightarrow \mathbb{R}^+$ eine Längenfunktion auf den Kanten des Graphen sowie $s\in V$ ein ausgewiesener Start- und $t\in V$ ein ausgewiesener Zielknoten. 
 Ein Pfad von $s$ nach $t$ ist eine Folge von Kanten $p = \{i_1,i_2\},\{i_2,i_3\},\ldots,\{i_{k-2},i_{k-1}\},\{i_{k-1},i_k\}$ mit $\{i_j, i_{j+1}\} \in E$ und $i_1=s$ sowie $i_k=t$. 
@@ -1349,6 +1388,25 @@ Zeigen Sie, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich 
  Welches Kodierungsschema c wäre zu a, b nicht äquivalent? Warum nicht?
 \end{block}
 \end{frame}
+
+\begin{frame}
+\frametitle{Kodierung von TUT}
+ \begin{block}{Wiederholung: TUT}
+  Gegeben seien eine Tutoriumsliste mit m Tutorien und Tutoriumswahlen von n Studenten. Jedes Tutorium kann nur l Teilnehmer haben.
+ Das Entscheidungsproblem \textit{TUT} besteht darin, zu entscheiden, ob alle Studenten ihr Wunschtutorium bekommen können.
+ \end{block}
+ \begin{block}{Überlegung}
+ Wie sähe ein mögliches Kodierungsschema auf dem Alphabet $\Sigma = \{0,1,\#\}$ aus?
+ \end{block}
+\end{frame}
+
+\begin{frame}
+ \begin{block}{Kodierung}
+ $m\#n\#l$ gefolgt von $#i#j \mbox{ für } 1 \leq i \leq n$, falls Teilnehmer i Tutorium j gewählt hat.
+ \end{block}
+
+\end{frame}
+
 
 % TM klasse P
 \begin{frame}
@@ -1415,7 +1473,6 @@ Ist $L_{10}^c$ in $\mathcal{NP}$? Begründen Sie gegebenenfalls, warum $L_{10}^c
 \medskip
 \textit{Hinweis:} Überlegen Sie sich, was Ihre Turing-Maschine in der Orakel-Phase sinnvollerweise auf das Band schreiben könnte.
 \end{frame}
-
 
 \input{includes/disclaimer}
 \end{document}
