@@ -1412,6 +1412,13 @@ Zeigen Sie, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich 
 \begin{frame}
 \frametitle{Die Klasse $\mathcal{P}$}
 Die Klasse $\mathcal{P}$ ist definiert als die Menge aller Sprachen, die von einer (deterministischen) Turingmaschine, deren Zeitkomplexität höchstens polynomial ist, entschieden werden können.
+\textbf{Anmerkung:} Da eine RAM Maschine in Polyzeit von einer TM simuliert werden kann, kann man (auf einer abstrakteren Ebene) i.A. Komplexitäten von bekannten Algorithmen in Beweisen verwenden.
+\end{frame}
+
+\begin{frame}
+\frametitle{Beispiel}
+Die folgende Sprache ist in $\mathcal{P}$: Die gerichteter Graphen zusammen mit einem Start- und einem Endknoten, so dass der Endknoten vom Startknoten aus über die Kanten erreichbar ist.\\
+\textbf{Grober Beweis:}	Tiefensuche ist in $\mathcal{O}(|\mathcal{V}| + |\mathcal{E}|)$
 \end{frame}
 
 \begin{frame}
@@ -1426,14 +1433,6 @@ Die Klasse $\mathcal{P}$ ist definiert als die Menge aller Sprachen, die von ein
 \end{itemize}
 \end{frame}
 
-%\begin{frame}
-%\frametitle{Bekannte Sprachen in \mathcal{P} sind:}
-%\begin{itemize}
-%\item 2-Färbbare Graphen
-%\item Existenz eines Eulerzykluses
-%\end{itemize}
-%\end{frame}
-
 \begin{frame}
  \frametitle{Laufzeitbetrachtung}
  Betrachten Sie $L_1 := L[\text{\textit{PRIMES}},s_1]$. 
@@ -1445,7 +1444,9 @@ Geben Sie die Laufzeit Ihrer Turing-Maschine asymptotisch an. Ist $L_1$ in $\mat
 % NDTMs mit Orakelmodul
 \begin{frame}
 \frametitle{Nichtdeterministische Turingmaschinen}
-Wir definieren eine nichtdeterministische Turingmaschine als Erweiterung einer deterministischen. Wir erweiteren die TM um ein \emph{Orakelmodul}, das bevor der deterministischen Berechnung Zeichen auf das Band links von der Eingabe schreibt, danach verfährt die Maschine wie eine Normale TM. Die NDTM akzeptiert genau die Wörter, für die es eine Ausgabe des Orakelmoduls gibt, sodass der deterministische Anteil der Machine die Wort akzeptiert.%TODO: rewrite if possible, this is highly confusing ^^
+\begin{block}{Alternative aus der Vorlesung}
+Wir definieren eine nichtdeterministische Turingmaschine als Erweiterung einer deterministischen. Wir erweiteren die TM um ein \emph{Orakelmodul}, das bevor der deterministischen Berechnung Zeichen auf das Band links von der Eingabe schreibt, danach verfährt die Maschine wie eine Normale TM. Die NDTM akzeptiert genau die Wörter, für die es eine Ausgabe des Orakelmoduls gibt, sodass der deterministische Anteil der Machine die Wort akzeptiert.
+\end{block}
 \end{frame}
 \begin{frame}
 \frametitle{Nichtdeterministische Turingmaschinen: Alternativen}
