@@ -1300,11 +1300,31 @@ $ I_1 = $(2,4,3,4,4,2,1,2,4,3,4,3,4,4,3,4,4,2,1,4,\\
 \end{frame}
 
 \begin{frame}
+ \frametitle{Probleme}
+ \begin{block}{Definition (Skript)}
+ Ein \emph{Problem $\Pi$} ist gegeben durch:
+ \begin{enumerate}
+  \item eine allgemeine Beschreibung aller vorkommenden Parameter;
+  \item eine genaue Beschreibung der Eigenschaften, welche die Lösung haben soll
+ \end{enumerate}
+ \end{block}
+ Ein \emph{Problembeispiel} \textit{I} \emph{(Instanz)} von $\Pi$ erhalten wir, indem wir die Parameter von $\Pi$ festlegen.
+\end{frame}
+
+\begin{frame}
+ \frametitle{Entscheidungsproblem}
+ \begin{block}{Definition}
+  Ein Entscheidungsproblem ist ein Problem, bei dem die Lösung aus ``Ja'' oder ``Nein'' besteht. 
+  Entscheidungsprobleme lassen sich gut auf Sprachen abbilden.
+ \end{block}
+\end{frame}
+
+\begin{frame}
  \frametitle{Optimierungsproblem und Entscheidungsproblem}
  \begin{block}{Beispiel}
   \begin{enumerate}
    \item Die Aufgabe, aus einem gegebenen Blech möglichst viele sternförmige Weihnachtsplätzchen zu gewinnen, ist ein Optimierungsproblem.
-   \item Die Frage, ob aus diesem Blech mindestens k Plätzchen gewonnen werden können, ist das zugehörige Entscheidungsproblem.
+   \item Die Frage, ob aus diesem Blech mindestens k Plätzchen gewonnen werden können, ist ein zugehöriges Entscheidungsproblem.
   \end{enumerate}
  \end{block}
  \begin{block}{Überlegung}
@@ -1405,6 +1425,7 @@ Zeigen Sie, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich 
 \end{frame}
 
 \begin{frame}
+\frametitle{Kodierung von TUT}
 \begin{block}{Beispiel}
  Gegeben sei eine Instanz \textit{I} von TUT mit 2 Tutorien, 5 Studenten, einer maximalen Teilnehmerzahl von 3 und folgenden Wahlen:
  \begin{enumerate}
@@ -1418,6 +1439,23 @@ Zeigen Sie, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich 
 \pause
 \begin{block}{Kodierung}
 $10\#101\#11 \#001\#010 \#010\#010 \#011\#001 \#100\#010 \#101\#010$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{TUT}
+\begin{block}{Beispiel}
+ Gegeben sei eine Instanz \textit{I} von TUT mit 2 Tutorien, 5 Studenten, einer maximalen Teilnehmerzahl von 3 und folgenden Wahlen:
+ \begin{enumerate}
+  \item Student 1 wählt Tutorium 2
+  \item Student 2 wählt Tutorium 2
+  \item Student 3 wählt Tutorium 1
+  \item Student 4 wählt Tutorium 2
+  \item Student 5 wählt Tutorium 2
+ \end{enumerate}
+\end{block}
+\begin{block}{Optimierungsproblem}
+ Was ist hier eine Lösung des Optimierungsproblems? 
 \end{block}
 \end{frame}
 
