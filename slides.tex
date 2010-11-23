@@ -1309,6 +1309,17 @@ Betrachten Sie die Menge der Pfade, die von $s$ nach $t$ führen, und formuliere
 Formulieren Sie ein zu Ihrem Optimierungsproblem gehörendes Entscheidungsproblem.
 \end{frame}
 
+%TODO Definition zu Kodierungsschemata
+
+\begin{frame}
+ \frametitle{Kodierungsschemata (VL)}
+ \begin{block}{Definition Kodierungsschemata}
+ Ein \emph{Kodierungsschema} s ordnet jedem Problembeispiel eines Problems eine Zeichenkette oder Kodierung über einem Alphabet $\Sigma$ zu. 
+ Die Inputlänge eines Problembeispiels ist die Anzahl der Symbole seiner Kodierung.
+ Dabei gibt es natürliche verschiedene Kodierungsschemata für ein bestimmtes Problem.
+ \end{block}
+\end{frame}
+
 \begin{frame}
  \frametitle{Kodierungsschemata}
  Das Entscheidungsproblem \textit{PRIMES} besteht darin, zu entscheiden, ob es sich bei einer gegebenen natürlichen Zahl $p>1$ um eine Primzahl handelt. 
@@ -1321,12 +1332,11 @@ Zeigen Sie, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich 
 % TM klasse P
 \begin{frame}
 \frametitle{Die Klasse $\mathcal{P}$}
-Die Klasse $\mathcal{P}$ ist definiert als die Menge aller Sprachen, die von einer (deterministischen) Turingmaschine deren Zeitkomplexität höchstens Polynomial ist entschieden werden können.
-\end{block}
+Die Klasse $\mathcal{P}$ ist definiert als die Menge aller Sprachen, die von einer (deterministischen) Turingmaschine, deren Zeitkomplexität höchstens polynomial ist, entschieden werden können.
 \end{frame}
 
 \begin{frame}
-\frametitle{Sind folgende Sprachen in \mathcal{P}?}
+\frametitle{Sind folgende Sprachen in $\mathcal{P}$?}
 \begin{itemize}
 \item Die Wörter der deutschen Sprache
 \item Die ungraden Zahlen
