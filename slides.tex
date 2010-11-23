@@ -1402,9 +1402,23 @@ Zeigen Sie, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich 
 
 \begin{frame}
  \begin{block}{Kodierung}
- $m\#n\#l$ gefolgt von $#i#j \mbox{ für } 1 \leq i \leq n$, falls Teilnehmer i Tutorium j gewählt hat.
+ $m\#n\#l$ gefolgt von $\#i\#j \mbox{ für } 1 \leq i \leq n$, falls Teilnehmer i Tutorium j gewählt hat.
  \end{block}
-
+\begin{block}{Beispiel}
+ Gegeben sei eine Instanz \textit{I} von TUT mit 3 Tutorien, 10 Studenten, einer maximalen Teilnehmerzahl von 4 und folgenden Wahlen:
+ \begin{enumerate}
+  \item Student 1 wählt Tutorium 2
+  \item Student 2 wählt Tutorium 3
+  \item Student 3 wählt Tutorium 1
+  \item Student 4 wählt Tutorium 2
+  \item Student 5 wählt Tutorium 2
+  \item Student 6 wählt Tutorium 2
+  \item Student 7 wählt Tutorium 1
+  \item Student 8 wählt Tutorium 1
+  \item Student 9 wählt Tutorium 3
+  \item Student 10 wählt Tutorium 2
+ \end{enumerate}
+\end{block}
 \end{frame}
 
 
@@ -1459,6 +1473,7 @@ Es gibt weitere äquivalente Definitionen von NDTMs. Man kann auch analog zu nic
 $\mathcal{NP}$ ist (analog zu $\mathcal{P}$ die klasse aller Sprachen die von einer Nichtdeterministischen Turingmaschine in Polyzeit erkannt werden.
 \end{block}
 \end{frame}
+\begin{frame}
 \frametitle{Polyreduktionen}
 \begin{block}{Definition (Vorlesung)}
 Eine polynomiale Transformation einer Sprache $L_1$ in eine Sprache $L_2$ ist eine Funktion $f: \Sigma^*_1 \rightarrow \Sigma^*_2$ mit den Eigenschaften:
