@@ -1391,7 +1391,7 @@ Formulieren Sie ein zu Ihrem Optimierungsproblem gehörendes Entscheidungsproble
  \begin{block}{Äquivalenz}
   Zwei Kodierungsschemata $s_1$, $s_2$ heißen \emph{äquivalent} bezüglich eines Problems $\Pi$, falls es Polynome p1, p2 gibt, so dass gilt:
   \[
-   (|s_1(I)| = n \rightarrow |s_2(I)| \leq p_2(n))\mbox{ und } |s_2(I) = m \rightarrow |s_1(I)| \leq p_1(m))
+   (|s_1(I)| = n \rightarrow |s_2(I)| \leq p_2(n))\mbox{ und } |s_2(I)| = m \rightarrow |s_1(I)| \leq p_1(m))
   \]
 für alle Problembeispiele I von $\Pi$.
  \end{block}
@@ -1497,37 +1497,44 @@ Geben Sie die Laufzeit Ihrer Turing-Maschine asymptotisch an. Ist $L_1$ in $\mat
 \begin{frame}
 \frametitle{Nichtdeterministische Turingmaschinen}
 \begin{block}{Alternative aus der Vorlesung}
-Wir definieren eine nichtdeterministische Turingmaschine als Erweiterung einer deterministischen. Wir erweiteren die TM um ein \emph{Orakelmodul}, das bevor der deterministischen Berechnung Zeichen auf das Band links von der Eingabe schreibt, danach verfährt die Maschine wie eine Normale TM. Die NDTM akzeptiert genau die Wörter, für die es eine Ausgabe des Orakelmoduls gibt, sodass der deterministische Anteil der Machine die Wort akzeptiert.
+Wir definieren eine nichtdeterministische Turingmaschine als Erweiterung einer deterministischen.
+Wir erweiteren die TM um ein \emph{Orakelmodul}, das bevor der deterministischen Berechnung Zeichen auf das Band links von der Eingabe schreibt,
+danach verfährt die Maschine wie eine Normale TM.
+Die NDTM akzeptiert genau die Wörter, für die es eine Ausgabe des Orakelmoduls gibt,
+sodass der deterministische Anteil der Machine das Wort akzeptiert.
 \end{block}
 \end{frame}
 \begin{frame}
 \frametitle{Nichtdeterministische Turingmaschinen: Alternativen}
-Es gibt weitere äquivalente Definitionen von NDTMs. Man kann auch analog zu nichtdeterministischen endlichen Automaten NDTM als normale Turingmaschinen mit nicht eindeutiger Übergangsfunktion definieren.\\
+Es gibt weitere äquivalente Definitionen von NDTMs.
+Man kann auch analog zu nichtdeterministischen endlichen Automaten NDTM als normale Turingmaschinen mit nicht eindeutiger Übergangsfunktion definieren.\\
 \end{frame}
 % NP als Klasse
 \begin{frame}
 \frametitle{$\mathcal{NP}$}
 \begin{block}{$\mathcal{NP}$}
-$\mathcal{NP}$ ist (analog zu $\mathcal{P}$ die klasse aller Sprachen die von einer Nichtdeterministischen Turingmaschine in Polyzeit erkannt werden.
+$\mathcal{NP}$ ist (analog zu $\mathcal{P}$) die Klasse aller Sprachen die von einer Nichtdeterministischen Turingmaschine in Polyzeit erkannt werden.
 \end{block}
 \end{frame}
 \begin{frame}
 \frametitle{Polyreduktionen}
 \begin{block}{Definition (Vorlesung)}
-Eine polynomiale Transformation einer Sprache $L_1$ in eine Sprache $L_2$ ist eine Funktion $f: \Sigma^*_1 \rightarrow \Sigma^*_2$ mit den Eigenschaften:
+Eine polynomiale Transformation einer Sprache $L_1$ in eine Sprache $L_2$ ist eine Funktion
+$f: \Sigma^*_1 \rightarrow \Sigma^*_2$ mit den Eigenschaften:
 \begin{enumerate}
 \item Es existiert eine polynomiale deterministische Turing-Maschine, die $f$ berechnet
 \item für alle $x$ gilt: $x \in L_1 \iff f(x) \in  L_2$
 \end{enumerate}
 Wir schreiben dann $L_1 \propto L_2$ ($L_1$ ist polynomial transformierbar in (reduzierbar auf) $L_2$ ).
 \end{block}
-\textbf{Anmerkung}: In welche Richtung das $\propto$ Symbol zeigt kann man sich folgerndermaßen  merken: $L_2$ ist das "schwerere" Problem, kann man $L_2$ entscheiden, kann man mit polynomiellen Aufwand auch $L_1$ entscheiden.
+\textbf{Anmerkung}: In welche Richtung das $\propto$ Symbol zeigt kann man sich folgerndermaßen  merken:
+$L_2$ ist das "schwerere" Problem. Kann man $L_2$ entscheiden, so kann man mit polynomiellen Aufwand auch $L_1$ entscheiden.
 \end{frame}
 % NP vollständigkeit
 \begin{frame}
 \frametitle{$\mathcal{NP}$-Vollständigkeit}
 \begin{block}{$\mathcal{NP}$-Vollständigkeit}
-Eine Sprache $L_1$ ist $\mathcal{NP}$-Vollständig ($\mathcal{NP}C$) gdw. 
+Eine Sprache $L_1$ ist $\mathcal{NP}$-Vollständig ($\mathcal{NP}-C$) gdw. 
 \[\forall L_2 \in \mathcal{NP} \,\, : \,\, L_2 \propto L_1\]
 \end{block}
 \textbf{Anmerkung}: In diesem Sinne sind die Probleme aus $NPC$ die "schwersten" der $\mathcal{NP}$ Sprachen.
