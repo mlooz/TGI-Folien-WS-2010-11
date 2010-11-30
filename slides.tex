@@ -1775,7 +1775,8 @@ Seien nun noch $b_k$ die Kästchen die zum Block $k$ gehören und $B$ die Menge 
 Betrachte nun die Folgende Menge: $U := R \times C \cup R \times V \cup C \times V \cup B \times V$, $U$ ist unsere Menge $X$ (aus der Formulierung des EXACT-COVER problems).\\
 Definiere: $S_{ijkl} := \{(r_i,c_j),(r_i,v_l),(c_j,v_l),(b_k,v_l)\} \subset U$.\\[8pt]
 Wird $S_{ijkl}$ in die Lösung aufgenommen, so kodiert dies, dass im Kästchen $s_{ij}$ im Block $b_k$ der Wert $v_l$ steht.\\
-Die Menge aller $S_{ijkl}$ ist unsere Menge an Teilmengen.% jedes der Paare garantiert eine der Bedingungen für Sudoku: Es darf etwa nur eine Zahl in einem Kästchen stehen und jede Zahl darf in jeder Reihe, Spalte und in jedem Block nur einmal erscheinen. 
+Die Menge $M$ aller $S_{ijkl}$ ist unsere Menge an Teilmengen.\\
+Um zu garantieren das in einem bestimmten Feld $s_{i'j'}$ eine bestimmte Zahl $v_{l'}$ steht, kann man einfach die $S_{ijkl}$ mit $i = i'$ und $j = j'$ sowie $l \neq l'$ aus $M$ entfernen.
 \end{frame}
 
 \begin{frame}
