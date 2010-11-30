@@ -1544,6 +1544,24 @@ Ist $L_{10}^c$ in $\mathcal{NP}$? Begründen Sie gegebenenfalls, warum $L_{10}^c
 \textit{Hinweis:} Überlegen Sie sich, was Ihre Turing-Maschine in der Orakel-Phase sinnvollerweise auf das Band schreiben könnte.
 \end{frame}
 
+
+% Unentscheidbarkeit universelle Sprache
+\begin{frame}
+\frametitle{Unentscheidbarkeit ohne Rice}
+\begin{block}{Universelle Sprache (Vorlesung)}
+Die Universelle Sprache ist definiert als: $L_u := \{wv | v \in L(T_w)\}$
+\end{block}
+Also: Die Menge aller wörter $wv$ so dass $T_w$ das Wort $v$ akzeptiert und hält.
+\end{frame}
+
+\begin{frame}
+\frametitle{Unentscheidbarkeit ohne Rice}
+\begin{block}{Erinnerung: Diagonalsprache}
+Die Diagonalsprache $L_d$ ist definiert als: $L_d := \mathcal{M}_i$ akzeptiert $w_i$ nicht
+\end{block}
+Um zu zeigen, dass $L_u$ unentscheidbar ist, wollen wir zeigen, dass wir, wenn wir $L_u$ entscheiden könnten auch $L_d^c$entscheiden können.
+\end{frame}
+
 \begin{frame}
 \frametitle{Polyreduktionen}
 \begin{block}{Definition (Vorlesung)}
@@ -1559,17 +1577,192 @@ Wir schreiben dann $L_1 \propto L_2$ ($L_1$ ist polynomial transformierbar in (r
 $L_2$ ist das "schwerere" Problem. Kann man $L_2$ entscheiden, so kann man mit polynomiellen Aufwand auch $L_1$ entscheiden.
 \end{frame}
 
+
 % NP vollständigkeit
 \begin{frame}
-\frametitle{$\mathcal{NP}$-Vollständigkeit}
-\begin{block}{$\mathcal{NP}$-Vollständigkeit}
-Eine Sprache $L_1$ ist $\mathcal{NP}$-Vollständig ($\mathcal{NP}-C$) gdw. 
+\frametitle{$\mathcal{NP}$-Härte}
+\begin{block}{$\mathcal{NP}$-Härte}
+Eine Sprache $L_1$ ist $\mathcal{NP}$-Hart (oder schwer)  gdw. 
 \[\forall L_2 \in \mathcal{NP} \,\, : \,\, L_2 \propto L_1\]
 \end{block}
-\textbf{Anmerkung}: In diesem Sinne sind die Probleme aus $NPC$ die "schwersten" der $\mathcal{NP}$ Sprachen.
+\textbf{Anmerkung}: In diesem Sinne sind die $\mathcal{NP}$-Harten Probleme schwerer oder mindestens so schwer zu lösen wie alle $\mathcal{NP}$ Sprachen.
 \end{frame}
 
+% Polyreduktion ist Trasitiv, daher ist NPC cool
+\begin{frame}
+\frametitle{Transitivität von Polyreduktionen und $\mathcal{NP}$}
+Polynomiale Transformationen sind offensichtlich transitiv, d.h. wenn $L_1 \propto L_2$ und $L_2 \propto L_3$ dann gilt auch $L_1 \propto L_3$.\\[8pt]
+Ist $L_3 \in \mathcal{NP}$, so wissen wir, dass auch $L_1$ sowie $L_2 \in \mathcal{NP}$, man sagt wir haben $L_1$ und $L_2$ auf $L_3$ polynomiell reduziert.\\[8pt]
+Gegeben eine Sprache $L_N$, von der wir wissen das sie $\mathcal{NP}$-Schwer ist, was wäre ein möglicher Ansatz um für eine weitere Sprache $L_X$ die $\mathcal{NP}$-Härte zu beweisen?\\\pause
+Man zeigt $L_N \propto L_X$
+\end{frame}
 
+\begin{frame}
+\frametitle{$\mathcal{NP}$-Vollständigkeit}
+Eine Sprache $L$ ist $\mathcal{NP}$-Vollständig genau dann, wenn
+$$L \in \mathcal{NP}$$ sowie $$L\mbox{ ist $\mathcal{NP}$-Hart}$$
+Damit sind die $\mathcal{NP}$-Vollständigen Probleme, die ,,schwersten'' Probleme aus $\mathcal{NP}$.\\
+Interesannt ist $\mathcal{NP}$ vorallem da man aus Aussagen über diese Probleme viel über alle Probleme aus $\mathcal{NP}$ aussagen kann. Ist etwa $SAT \in \mathcal{P}$ so wäre $\mathcal{P} = \mathcal{NP}$, (warum?)
+\end{frame}
+
+% NPC Beweis CLIQUE
+\begin{frame}
+\frametitle{CLIQUE}
+\begin{block}{Problem}
+\textbf{Gegeben:} Graph $G = (V, E)$ und ein Parameter $K \leq |V|$\\
+\textbf{Problem:} Gibt es in G eine Clique der Größe mindestens $K$?
+\end{block}
+\begin{block}{Errinerung:}
+Eine Clique ist ein vollständig verbundener Teilgraph, also eine Menge $V' \subset V$, so dass für alle $i,j \in V'$ mit $i\neq j$ gilt:$(i, j) \in E$.
+\end{block}
+\textit{Dieses Problem ist $\mathcal{NP}$-Vollständg}
+\end{frame}
+
+\begin{frame}
+\frametitle{CLIQUE Beispiel}
+\vspace{-1cm}
+\begin{figure}[H]
+\begin{tikzpicture}[scale=1.8]
+\tikzstyle{every node}=[circle, thick, minimum size = 7mm, draw]
+\draw node (v1) at (0,2) {1};
+\draw node (v2) at (1,2) {2};
+\draw node (v3) at (2,2) {3};
+\draw node (v4) at (0,1) {4};
+\draw node (v5) at (1,1) {5};
+\draw node (v6) at (2,1) {6};
+\draw node (v7) at (0,0) {7};
+\draw node (v8) at (1,0) {8};
+\draw node (v9) at (2,0) {9};
+\draw (v1) to (v4);
+\draw (v1) to (v8);
+\draw (v1) to [bend left] (v9);
+\draw (v1) to (v5);
+\draw (v1) to (v6);
+\draw (v2) to (v4);
+\draw (v2) to (v7);
+\draw (v2) to [bend right] (v8);
+\draw (v2) to (v9);
+\draw (v2) to (v6);
+\draw (v3) to (v4);
+\draw (v3) to [bend left] (v7);
+\draw (v3) to (v5);
+\draw (v3) to (v8);
+\draw (v3) to [bend left] (v9);
+\draw (v4) to (v8);
+\draw (v4) to (v9);
+\draw (v5) to (v7);
+\draw (v5) to (v9);
+\draw (v6) to (v7);
+\draw (v6) to (v8);
+\end{tikzpicture}
+\end{figure}
+\begin{itemize}
+\item Hat dieser Graph eine 3-CLIQUE?\pause
+\item Hat dieser Graph eine 4-CLIQUE?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{$\mathcal{NP}$-Vollständigkeitsbeweis}
+$CLIQUE \in \mathcal{NP}$: Übung\\
+Wir Zeigen $3SAT \propto CLIQUE$. (warum?)\\\pause
+Wir müssen eine Polynomielle Transformation einer $3SAT$ Instanz in eine $CLIQUE$ Instanz angeben. (warum?)\\
+\end{frame}
+
+\begin{frame}
+\frametitle{$\mathcal{NP}$-Vollständigkeitsbeweis}
+Sei $C = \{c_1, \ldots, c_n\}$ eine $3SAT$-Instanz mit 
+$$ c_i = x_{i1} \vee x_{i2} \vee x_{i3} \mbox{ mit } x_{ij} \in \{u_1,\ldots,u_m,\bar{u_1},\ldots,\bar{u_m}\} $$
+Konstruiere eine CLIQUE-Instanz $(G = (V, E), K)$ folgendermaßen:
+$$V = (v_{1,1}, v_{1,2}, v_{1,3}, v_{2,1},\ldots,v_{n,1},v_{n,2},v_{n,3})$$
+$$E = {(v_{i,j},v_{k,l})| (i \neq k \wedge x_{i,j} \neq \bar{x_{k,l}} )}$$%TODO Bar sucks, \lineover or smth?
+$$K = n$$
+\end{frame}
+
+\begin{frame}
+$$V = (v_{1,1}, v_{1,2}, v_{1,3}, v_{2,1},\ldots,v_{n,1},v_{n,2},v_{n,3})$$
+Jeder Knoten steht also für ein Literal in der $3SAT$ Instanz. 
+$$E = {(v_{i,j},v_{k,l})| (i \neq k \wedge x_{i,j} \neq \bar{x_{k,l}} )}$$%TODO Bar sucks, \lineover or smth?
+Zwei Knoten sind verbunden, wenn sie gleichzeitig erfüllbar sind und nicht in der gleichen klausel stehen. 
+$$K = n$$
+und wir suchen nach einer $CLIQUE$ der Größe $n$.\\
+\end{frame}
+\begin{frame}
+\frametitle{$\mathcal{NP}$-Vollständigkeitsbeweis}
+Wenn also eine $n-CLIQUE$ existiert, so heißt dies, wir haben $n$ erfüllbare Literale, die alle in jeweils unterschiedlichen Formeln stehen (Da ja alle untereinander verbunden sind). Das liefert uns eine erfüllende Wahrheitsbelegung. Eine $n$-$CLIQUE$ existiert also genau dann wenn es für die $3SAT$ Instanz eine erfüllende Wahrheitsbelegung gibt.\\
+Da $CLIQUE$ $\mathcal{NP}$-schwer ist und in $\mathcal{NP}$ liegt, ist also $CLIQUE$ $\mathcal{NP}$-Vollständig.
+\end{frame}
+
+\begin{frame}
+\frametitle{Allgemeines zu $NP$-Vollständigkeitsbeweise}
+In der Regel ist es schwer zu zeigen, dass ein Problem $\mathcal{NP}$-schwer/hart ist, aber leicht zu zeigen, dass ein Problem in $\mathcal{NP}$ liegt.\\[8pt]
+Da man üblicherweise ein $\mathcal{NP}$-Vollständiges Problem als Vorrausetzung für die Reduktion benötigt (Ausnahme: Satz von Cook), lohnt es sich einige kennen zu lernen.
+\end{frame}
+
+\begin{frame}
+\frametitle{SAT}
+\begin{block}{Problem}
+\textbf{Gegeben:} Menge $U$ von Variablen\\
+Menge $C$ von Klauseln über $U$\\
+\textbf{Frage:} Existiert eine erfüllende Wahrheitsbelegung von $C$?
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{3-SAT}
+\begin{block}{Problem}
+\textbf{Gegeben:} Menge $U$ von Variablen\\
+Menge $C$ von Klauseln über $U$, jede Klausel enthält genau \emph{drei} Literale\\
+\textbf{Frage:} Existiert eine erfüllende Wahrheitsbelegung von $C$?
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{MAX2SAT}
+\begin{block}{Problem}
+\textbf{Gegeben:} Menge $U$ von Variablen\\
+Menge $C$ von Klauseln über $U$, wobei jede Klausel genau zwei Literale enthält\\
+Zahl $K \in \mathbb{N}$\\
+\textbf{Frage:} Existiert eine Wahrheitsbelegung, die mindestens $K$ Klauseln erfüllt.
+\end{block}
+\end{frame}
+%% - COLOR
+\begin{frame}
+\frametitle{COLOR}
+%TODO
+\begin{block}{Problem}
+\textbf{Gegeben:} Graph $G = (V, E)$ und ein Parameter $K \in \mathbb{N}$\\
+\textbf{Frage:} Gibt es eine Knotenfärbung von $G$ mit höchstens $K$ Farben, so dass zwei adjazente Knoten verschiedene Farben besitzen?
+\end{block}
+\end{frame}
+%% - EXACT COVER
+\begin{frame}
+\frametitle{EXACT COVER}
+%TODO
+\begin{block}{Problem}
+\textbf{Gegeben:} Eine Menge $\mathcal{S}$ von Teilmengen einer Menge $X$\\
+\textbf{Frage:} Gibt es ein Teilmenge $\mathcal{S}^*$ von $\mathcal{S}$, so dass jedes Element aus $X$ in genau einem der $s \in \mathcal{S}^*$ enthalten ist
+\end{block}
+%TODO EXAMPLE, laik sudoku etc.
+\end{frame}
+%% - SUBSET-SUM
+\begin{frame}
+\frametitle{SUBSET-SUM}
+\begin{block}{Problem}
+\textbf{Gegeben:} Eine Menge $S$ von Ganzzahlen\\
+Eine Ganzzahl $n$.
+\textbf{Frage:} Gibt es eine Teilmenge $S^*$, so dass die Summe der Elemente der Teilmenge $n$ ist?
+\end{block}
+\end{frame}
+%% - PARTITION
+\begin{frame}
+\frametitle{PARTITION}
+%TODO
+\begin{block}{Problem}
+\textbf{Gegeben:} Eine Menge von Natürlichen Zahlen\\
+\textbf{Frage:} Kann man diese Zahlen in zwei Gruppen aufteilen, so dass die Summe der Zahlen in den beiden Gruppen jeweils gleich ist?
+\end{block}
+\end{frame}
+
+%% Ein paar worte zu KARP
 
 \input{includes/disclaimer}
 \end{document}
