@@ -1551,24 +1551,32 @@ Ist $L_{10}^c$ in $\mathcal{NP}$? Begründen Sie gegebenenfalls, warum $L_{10}^c
 \begin{block}{Universelle Sprache (Vorlesung)}
 Die Universelle Sprache ist definiert als: $L_u := \{wv | v \in L(T_w)\}$
 \end{block}
-Also: Die Menge aller wörter $wv$ so dass $T_w$ das Wort $v$ akzeptiert und hält.
+Also: Die Menge aller Wörter $wv$ so dass $T_w$ das Wort $v$ akzeptiert und hält.
 \end{frame}
 
 \begin{frame}
 \frametitle{Unentscheidbarkeit ohne Rice}
+\begin{block}{Universelle Sprache (Vorlesung)}
+Die Universelle Sprache ist definiert als: $L_u := \{wv | v \in L(T_w)\}$
+\end{block}
 \begin{block}{Erinnerung: Diagonalsprache}
 Die Diagonalsprache $L_d$ ist definiert als: $L_d := \mathcal{M}_i$ akzeptiert $w_i$ nicht
 \end{block}
-Um zu zeigen, dass $L_u$ unentscheidbar ist, wollen wir zeigen, dass wir, wenn wir $L_u$ entscheiden könnten auch $L_d^c$entscheiden können.
+Um zu zeigen, dass $L_u$ unentscheidbar ist, wollen wir wie folgt vorgehen: Wie nehmen an wir könnten $L_u$ entscheiden und zeigen, dass wir unter dieser Vorraussetzung auch $L_d^c$ entscheiden können.
+\begin{itemize}
+\item Annahme: Es existierte eine TM $\mathcal{M}$, die $L_u$ Entscheiden kann.
+\item Für eine Instanz aus $L_d^c$, berechne $w_i$ und übergebe $\mathcal{M}$ das Wort: $<M_i>w_i$
+\item Gebe das Ergebnis von $\mathcal{M}$ aus
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Polyreduktionen}
 \begin{block}{Definition (Vorlesung)}
-Eine polynomiale Transformation einer Sprache $L_1$ in eine Sprache $L_2$ ist eine Funktion
+Eine polynomielle Transformation einer Sprache $L_1$ in eine Sprache $L_2$ ist eine Funktion
 $f: \Sigma^*_1 \rightarrow \Sigma^*_2$ mit den Eigenschaften:
 \begin{enumerate}
-\item Es existiert eine polynomiale deterministische Turing-Maschine, die $f$ berechnet
+\item Es existiert eine polynomielle deterministische Turing-Maschine, die $f$ berechnet
 \item für alle $x$ gilt: $x \in L_1 \iff f(x) \in  L_2$
 \end{enumerate}
 Wir schreiben dann $L_1 \propto L_2$ ($L_1$ ist polynomial transformierbar in (reduzierbar auf) $L_2$ ).
@@ -1585,14 +1593,14 @@ $L_2$ ist das "schwerere" Problem. Kann man $L_2$ entscheiden, so kann man mit p
 Eine Sprache $L_1$ ist $\mathcal{NP}$-Hart (oder schwer)  gdw. 
 \[\forall L_2 \in \mathcal{NP} \,\, : \,\, L_2 \propto L_1\]
 \end{block}
-\textbf{Anmerkung}: In diesem Sinne sind die $\mathcal{NP}$-Harten Probleme schwerer oder mindestens so schwer zu lösen wie alle $\mathcal{NP}$ Sprachen.
+\textbf{Anmerkung}: In diesem Sinne sind die $\mathcal{NP}$-harten Probleme schwerer oder mindestens so schwer zu lösen wie alle $\mathcal{NP}$ Sprachen.
 \end{frame}
 
 % Polyreduktion ist Trasitiv, daher ist NPC cool
 \begin{frame}
 \frametitle{Transitivität von Polyreduktionen und $\mathcal{NP}$}
 Polynomiale Transformationen sind offensichtlich transitiv, d.h. wenn $L_1 \propto L_2$ und $L_2 \propto L_3$ dann gilt auch $L_1 \propto L_3$.\\[8pt]
-Ist $L_3 \in \mathcal{NP}$, so wissen wir, dass auch $L_1$ sowie $L_2 \in \mathcal{NP}$, man sagt wir haben $L_1$ und $L_2$ auf $L_3$ polynomiell reduziert.\\[8pt]
+Ist $L_3 \in \mathcal{NP}$, so wissen wir, dass auch $L_1$ sowie $L_2 \in \mathcal{NP}$, man sprich auch davon $L_1$ und $L_2$ auf $L_3$ polynomiell reduziert zu haben.\\[8pt]
 Gegeben eine Sprache $L_N$, von der wir wissen das sie $\mathcal{NP}$-Schwer ist, was wäre ein möglicher Ansatz um für eine weitere Sprache $L_X$ die $\mathcal{NP}$-Härte zu beweisen?\\\pause
 Man zeigt $L_N \propto L_X$
 \end{frame}
@@ -1605,7 +1613,6 @@ Damit sind die $\mathcal{NP}$-Vollständigen Probleme, die ,,schwersten'' Proble
 Interesannt ist $\mathcal{NP}$ vorallem da man aus Aussagen über diese Probleme viel über alle Probleme aus $\mathcal{NP}$ aussagen kann. Ist etwa $SAT \in \mathcal{P}$ so wäre $\mathcal{P} = \mathcal{NP}$, (warum?)
 \end{frame}
 
-% NPC Beweis CLIQUE
 \begin{frame}
 \frametitle{CLIQUE}
 \begin{block}{Problem}
@@ -1706,6 +1713,10 @@ Da man üblicherweise ein $\mathcal{NP}$-Vollständiges Problem als Vorrausetzun
 Menge $C$ von Klauseln über $U$\\
 \textbf{Frage:} Existiert eine erfüllende Wahrheitsbelegung von $C$?
 \end{block}
+\begin{itemize}
+\item \emph{Das} Standardproblem.
+\item Es gibt viele hochoptimierte "SAT-Solver", steht man in der Praxis vor einem $\mathcal{NP}$-Problem, kann es sich anbieten die Transformation auf $SAT$ durchzuführen.
+\end{itemize}
 \end{frame}
 \begin{frame}
 \frametitle{3-SAT}
@@ -1714,6 +1725,9 @@ Menge $C$ von Klauseln über $U$\\
 Menge $C$ von Klauseln über $U$, jede Klausel enthält genau \emph{drei} Literale\\
 \textbf{Frage:} Existiert eine erfüllende Wahrheitsbelegung von $C$?
 \end{block}
+\begin{itemize}
+\item Bietet sich bei Reduktion eher an als $SAT$, da übersichtlicher
+\end{itemize}
 \end{frame}
 \begin{frame}
 \frametitle{MAX2SAT}
@@ -1724,26 +1738,28 @@ Zahl $K \in \mathbb{N}$\\
 \textbf{Frage:} Existiert eine Wahrheitsbelegung, die mindestens $K$ Klauseln erfüllt.
 \end{block}
 \end{frame}
-%% - COLOR
 \begin{frame}
 \frametitle{COLOR}
-%TODO
 \begin{block}{Problem}
 \textbf{Gegeben:} Graph $G = (V, E)$ und ein Parameter $K \in \mathbb{N}$\\
 \textbf{Frage:} Gibt es eine Knotenfärbung von $G$ mit höchstens $K$ Farben, so dass zwei adjazente Knoten verschiedene Farben besitzen?
 \end{block}
+\begin{itemize}
+\item Nur $\mathcal{NPC}$ für $K \geq 3$ (sonst in $\mathcal{P}$).
+\end{itemize}
 \end{frame}
-%% - EXACT COVER
 \begin{frame}
 \frametitle{EXACT COVER}
-%TODO
 \begin{block}{Problem}
 \textbf{Gegeben:} Eine Menge $\mathcal{S}$ von Teilmengen einer Menge $X$\\
 \textbf{Frage:} Gibt es ein Teilmenge $\mathcal{S}^*$ von $\mathcal{S}$, so dass jedes Element aus $X$ in genau einem der $s \in \mathcal{S}^*$ enthalten ist
 \end{block}
-%TODO EXAMPLE, laik sudoku etc.
 \end{frame}
-%% - SUBSET-SUM
+
+\begin{frame}
+\frametitle{Sudoku}
+\end{frame}
+
 \begin{frame}
 \frametitle{SUBSET-SUM}
 \begin{block}{Problem}
@@ -1755,14 +1771,39 @@ Eine Ganzzahl $n$.
 %% - PARTITION
 \begin{frame}
 \frametitle{PARTITION}
-%TODO
 \begin{block}{Problem}
 \textbf{Gegeben:} Eine Menge von Natürlichen Zahlen\\
 \textbf{Frage:} Kann man diese Zahlen in zwei Gruppen aufteilen, so dass die Summe der Zahlen in den beiden Gruppen jeweils gleich ist?
 \end{block}
 \end{frame}
+\begin{frame}
+\frametitle{Und viele mehr!}
+Es gibt (sehr) viele Probleme von denen man weiß, dass sie $NP$-Vollständig sind, es gibt ein "Klassisches" Paper von Richard Karp in dem 21 Probleme vorgestelt wurden die großteils recht bekannt sind.\\
+Wer nicht genug bekommen kann, darf in "Introduction to the Theory of Computation" von "Michael Sipser" schauen, dort gibt es ~200.\\[10pt]
+Es kann durchaus nützlich sein zu wissen, dass ein Problem $\mathcal{NP}$-Vollständig ist, dann kann man aufhören nach einem effizienten Algorithmus zu suchen.
+\end{frame}
 
-%% Ein paar worte zu KARP
+\begin{frame}
+\frametitle{Aufgabe}
+Gehen Sie bei dieser Aufgabe durchweg von der Annahme $\mathcal{P} \neq \mathcal{NP}$ aus.
+\begin{tabbing}
+\textbf{Problem:} 4-COLOR\\
+\textit{Gegeben:} \= Ein ungerichteter Graph $G = (V,E)$\\
+\textit{Gesucht:} \> Gibt es eine Färbung der Knoten $V$, sodass je zwei durch eine Kante \\
+\> aus $E$ miteinander verbundene Knoten unterschiedlich gefärbt sind,\\
+\> wenn nur vier unterschiedliche Farben zur Verfügung stehen?
+\end{tabbing}
+
+Zeigen Sie, dass 4-COLOR $\mathcal{NP}$-vollständig ist!\\[8pt]
+\underline{Hinweis:}\\
+Es kann hilfreich sein, wenn Sie die $\mathcal{NP}$-
+Vollständigkeit des Dreifärbbarkeitsproblems 3-COLOR verwenden.
+\end{frame}
 
 \input{includes/disclaimer}
 \end{document}
+
+TODO:
+ - Alles nochmal sorgfältig durchlesen/überarbeiten
+ - Sudoku als Exact Cover Beispiel formulieren
+ - bar fixen bein CLIQUE
