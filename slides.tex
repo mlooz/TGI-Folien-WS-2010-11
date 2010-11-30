@@ -1747,7 +1747,7 @@ Zahl $K \in \mathbb{N}$\\
 \textbf{Frage:} Gibt es eine Knotenfärbung von $G$ mit höchstens $K$ Farben, so dass zwei adjazente Knoten verschiedene Farben besitzen?
 \end{block}
 \begin{itemize}
-\item Nur $\mathcal{NPC}$ für $K \geq 3$ (sonst in $\mathcal{P}$).
+\item Bei festem $K$ nur $\mathcal{NPC}$ für $K \geq 3$ (sonst in $\mathcal{P}$).
 \end{itemize}
 \end{frame}
 \begin{frame}
@@ -1760,13 +1760,29 @@ Zahl $K \in \mathbb{N}$\\
 
 \begin{frame}
 \frametitle{Sudoku}
+Sudoku lässt sich als EXACT-COVER Instanz formulieren!\\
+Definiere:\\
+Sei $V = \{1,2,\ldots,9\}$ die Menge der möglichen Lösungen für ein Kästchen.
+Sei $S = \{s_{11}, s_{12},\ldots,s_{19},s_{21},\ldots,s_{99}\}$ die Menge der Sudoku Kästchen.
+Seien weiterhin $r_i = \{s_{i1}, s_{i2}, \ldots s_{i9}\}$ eine Reihe und $R$ die Menge der Reihen.
+Analog sei $c_i = \{s_{1i}, s_{2i}, \ldots, s_{9i}\}$ eine Spalte und $C$ die Menge der Spalten.
+Seien nun noch $b_k$ die Kästchen die zum Block $k$ gehören und $B$ die Menge der Blöcke.
+%Hier sollte man alles mal an die Tafel schreiben, sonst ist das zu unübersichtlich ^^
+\end{frame}
+
+\begin{frame}
+\frametitle{Sudoku}
+Betrachte nun die Folgende Menge: $U := R \times C \cup R \times V \cup C \times V \cup B \times V$, $U$ ist unsere Menge $X$ (aus der Formulierung des EXACT-COVER problems).\\
+Definiere: $S_{ijkl} := \{(r_i,c_j),(r_i,v_l),(c_j,v_l),(b_k,v_l)\} \subset U$.\\[8pt]
+Wird $S_{ijkl}$ in die Lösung aufgenommen, so kodiert dies, dass im Kästchen $s_{ij}$ im Block $b_k$ der Wert $v_l$ steht.\\
+Die Menge aller $S_{ijkl}$ ist unsere Menge an Teilmengen.% jedes der Paare garantiert eine der Bedingungen für Sudoku: Es darf etwa nur eine Zahl in einem Kästchen stehen und jede Zahl darf in jeder Reihe, Spalte und in jedem Block nur einmal erscheinen. 
 \end{frame}
 
 \begin{frame}
 \frametitle{SUBSET-SUM}
 \begin{block}{Problem}
 \textbf{Gegeben:} Eine Menge $S$ von Ganzzahlen\\
-Eine Ganzzahl $n$.
+Eine Ganzzahl $n$.\\
 \textbf{Frage:} Gibt es eine Teilmenge $S^*$, so dass die Summe der Elemente der Teilmenge $n$ ist?
 \end{block}
 \end{frame}
@@ -1807,5 +1823,4 @@ Vollständigkeit des Dreifärbbarkeitsproblems 3-COLOR verwenden.
 
 TODO:
  - Alles nochmal sorgfältig durchlesen/überarbeiten
- - Sudoku als Exact Cover Beispiel formulieren
  - bar fixen bein CLIQUE
