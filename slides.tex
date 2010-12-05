@@ -1391,7 +1391,7 @@ Formulieren Sie ein zu Ihrem Optimierungsproblem gehörendes Entscheidungsproble
  \begin{block}{Äquivalenz}
   Zwei Kodierungsschemata $s_1$, $s_2$ heißen \emph{äquivalent} bezüglich eines Problems $\Pi$, falls es Polynome p1, p2 gibt, so dass gilt:
   \[
-   (|s_1(I)| = n \rightarrow |s_2(I)| \leq p_2(n))\mbox{ und } |s_2(I)| = m \rightarrow |s_1(I)| \leq p_1(m))
+   (|s_1(I)| = n \Rightarrow |s_2(I)| \leq p_2(n))\mbox{ und } (|s_2(I)| = m \Rightarrow |s_1(I)| \leq p_1(m))
   \]
 für alle Problembeispiele I von $\Pi$.
  \end{block}
@@ -1832,6 +1832,73 @@ Zeigen Sie, dass 4-COLOR $\mathcal{NP}$-vollständig ist!\\[8pt]
 Es kann hilfreich sein, wenn Sie die $\mathcal{NP}$-
 Vollständigkeit des Dreifärbbarkeitsproblems 3-COLOR verwenden.
 \end{frame}
+
+\begin{frame}
+\frametitle{Aufgabe}
+Betrachten Sie das Problem INDEPENDENT SET (IS):
+
+\begin{itemize}
+ \item Gegeben: Graph $G=(V, E)$, Parameter $K \leq |V|$
+ \item Frage: Gibt es eine unabhängige Menge der Größe $K$ in $G$, d.h.~ eine Menge $V' \subseteq V$, mit $|V'| \geq K$, so dass $\{v, w\} \notin E$ für alle $v, w \in V'$? 
+\end{itemize}
+Beweisen Sie die $\mathcal{NP}$-Vollständigkeit von IS. Gehen Sie dabei wie folgt vor:
+\begin{enumerate}
+ \item Zeigen Sie: IS $\in \mathcal{NP}$.
+ \item Zeigen Sie: $V'$ Clique in $G \Longleftrightarrow$ $V'$ unabhängige Menge in $\overline{G}=(V, \overline{E})$, wobei \\
+$\overline{E}= \{\{v, w\} \mid v, w \in V, \{v, w\} \notin E\}$
+ \item Zeigen Sie, dass IS $\mathcal{NP}$-schwer ist.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Aufgabe}
+Ein Vertex-Cover eines Graphen $G=(V,E)$ ist eine Teilmenge $V'\subseteq V$, so
+dass jede Kante aus $E$ zu mindestens einem Knoten aus $V'$ inzident ist.
+
+Das Problem \textsc{VERTEX COVER} besteht nun darin zu entscheiden, ob es
+für einen Graphen $G=(V,E)$ und einen Parameter $k \leq |V|$ ein Vertex-Cover
+der Größe höchstens $k$ gibt.
+
+Zeige, dass \textsc{VERTEX COVER} $\cal{NP}$-vollständig ist. 
+\end{frame}
+
+\begin{frame}
+\frametitle{Aufgabe}
+Gegeben sei folgende Instanz $I=(M, w, c, W, C)$ von KNAPSACK:
+
+\begin{itemize}
+\item $M := \{x_1, \ldots, x_7\}$
+\item Gewichtsfunktion $w$ und die Kostenfunktion $c$ sind durch folgende Tabelle gegeben:
+
+\begin{center}
+\begin{tabular}{l|l|l|l|l|l|l|l}
+	  &$x_1$ &$x_2$ &$x_3$ 	&$x_4$ 	&$x_5$ 	&$x_6$ 	&$x_7$\\ 	
+  \hline
+	w &6	 &6	&5	&5	&3	&4	&1\\
+  \hline
+	c &8	 &10	&8	&8	&5	&6	&2\\
+\end{tabular}
+\end{center}
+\item Die obere Schranke für das Gewicht sei $W:=12$
+\end{itemize}
+
+Für welche $C$ ist $I$ eine Ja-Instanz?  
+\end{frame}
+
+\begin{frame}
+\frametitle{Aufgabe}
+Jedes Jahr in der Vorweihnachtszeit steht die badische Hausfrau vor dem folgenden PLÄTZCHENDOSENPROBLEM(PDP):
+
+\hspace{1cm}\parbox{0.8\textwidth}{Das während der Adventszeit liebevoll hergestellte Weihnachtsgebäck soll bis zum Verzehr in Plätzchendosen gelagert werden.
+Es stehe eine bestimmte Anzahl gleichartiger Dosen mit einem gewissen Fassungsvermögen(Volumen) zur Verfügung, und es sei das Volumen jedes Plätzchens bekannt.
+
+Können die Plätzchen so auf die Dosen verteilt werden, dass bei allen Dosen der Deckel noch zugeht?}
+\begin{enumerate}
+ \item Geben Sie eine formale Definition des PDP als Entscheidungsproblem an, wobei Sie der Einfachheit halber annehmen können, dass die Form der Plätzchen vernachlässigbar sei (es ist also lediglich verlangt, dass das Gesamtvolumen der Plätzchen in einer Dose deren Fassungsvermögen nicht überschreitet).
+ \item Zeigen Sie die $\mathcal{NP}$-Vollständigkeit des PDP.
+\end{enumerate}
+\end{frame}
+
 
 \input{includes/disclaimer}
 \end{document}
