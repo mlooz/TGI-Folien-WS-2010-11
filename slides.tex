@@ -1886,8 +1886,14 @@ Ist $I$ eine JA-Instanz?
 \begin{block}{Exponentieller Ansatz}
  Teste alle $2^4 = 16$ mögliche Teilmengen $M' \subseteq M$, ob sie die Bedingung erfüllen. 
 \end{block}
-\begin{block}{Polynomieller Ansatz - nicht immer optimal}
- Sortiere die Elemente in $M$ nach ihre 
+\begin{block}{Greedy-Ansatz - nicht immer optimal}
+ Sortiere die Elemente $i \in M$ nach dem Verhältnis $c(i)/w(i)$. 
+ Füge so lange Elemente mit dem besten Verhältnis aller $i \not\in M'$ zu $M'$ hinzu, solange $\sum_{i \in M'} w(i) \leq W$ mit dem hinzugefügten Element noch gilt.
+ Informell: So viele, wie in den Rucksack hineinpassen.
+\end{block}
+\pause
+\begin{block}{}
+ Welchen dieser Ansätze verfolgt eine NDTM?
 \end{block}
 
 \end{frame}
