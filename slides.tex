@@ -1843,7 +1843,40 @@ Vollständigkeit des Dreifärbbarkeitsproblems 3-COLOR verwenden.
 \textbf{Frage:}
 Können die Objekte so auf die Behälter verteilt werden, dass keiner der Behälter Objekte enthält deren Gewicht in der Summe $b$ übersteigt?
 \end{block}
+\end{frame}
 
+\begin{frame}
+ \frametitle{KNAPSACK}
+ Gegeben:(M, w, c, W, C)
+ \begin{itemize}
+  \item endliche Menge von Objekten $M$
+  \item Gewichtsfunktion $w:M \rightarrow \mathbb{N}_0$
+  \item Kostenfunktion $c:M \rightarrow \mathbb{N}_0$
+  \item $W$, $C$ $\in M$
+ \end{itemize}
+Frage: Existiert eine Teilmenge $M' \subseteq M$ mit $\sum_{a\in M'} w(a) \leq W$ und $\sum_{a\in  M'} c(a) \geq C$?
+\pause
+
+Was wären das zugehörige Optimalwertproblem und Optimierungsproblem?
+\end{frame}
+
+\begin{frame}
+ \frametitle{KNAPSACK - Beispiel}
+ Gegeben: Instanz $I$ von KNAPSACK mit $M = {i_1, i_2, i_3, i_4}$
+  \begin{center}
+\begin{tabular}{l|l|l|l|l}
+	  &$x_1$ &$x_2$ &$x_3$ 	&$x_4$\\
+  \hline
+	w &10	 &5	&5	&8\\
+  \hline
+	c &7	 &10	&5	&8\\	
+\end{tabular}
+\end{center}
+\begin{itemize}
+ \item $W$ = 15
+ \item $C$ = 18
+\end{itemize}
+Ist $I$ eine JA-Instanz?
 \end{frame}
 
 \begin{frame}
