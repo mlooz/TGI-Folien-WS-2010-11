@@ -1865,7 +1865,7 @@ Was wären das zugehörige Optimalwertproblem und Optimierungsproblem?
  Gegeben: Instanz $I$ von KNAPSACK mit $M = {i_1, i_2, i_3, i_4}$
   \begin{center}
 \begin{tabular}{l|l|l|l|l}
-	  &$x_1$ &$x_2$ &$x_3$ 	&$x_4$\\
+	  &$i_1$ &$i_2$ &$i_3$ 	&$i_4$\\
   \hline
 	w &10	 &5	&5	&8\\
   \hline
@@ -1878,6 +1878,20 @@ Was wären das zugehörige Optimalwertproblem und Optimierungsproblem?
 \end{itemize}
 Ist $I$ eine JA-Instanz?
 \end{frame}
+
+\begin{frame}
+\begin{block}{Orakel}
+  $M' = \{i_2$, $i_4\}$ ist eine gültige Lösung. $I$ ist somit eine Ja-Instanz.
+ \end{block}
+\begin{block}{Exponentieller Ansatz}
+ Teste alle $2^4 = 16$ mögliche Teilmengen $M' \subseteq M$, ob sie die Bedingung erfüllen. 
+\end{block}
+\begin{block}{Polynomieller Ansatz - nicht immer optimal}
+ Sortiere die Elemente in $M$ nach ihre 
+\end{block}
+
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Aufgabe}
