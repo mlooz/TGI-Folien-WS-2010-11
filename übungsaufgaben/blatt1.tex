@@ -1,7 +1,9 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{tikz}
+\usepackage[top=4cm,bottom=3cm,left=3cm,right=3cm]{geometry}
 \usetikzlibrary{automata}
+
 
 \usepackage{float}
 \begin{document}
@@ -9,42 +11,66 @@
 \author{Simon Stroh und Moritz von Looz}
 \maketitle
 \section{Endliche Automaten}
-Gegeben sei folgender endlicher Automat:
+Gegeben sei folgender nichtdeterministischer endlicher Automat:
+\begin{center}
 \begin{figure}[H]
 \begin{tikzpicture}[node distance=2cm,shorten >=1pt,auto]
 \node[state,initial] 	(q_0)			{$q_0$};
-\node[state,accepting]	(q_1)	[right of=q_0]	{$q_1$};
-\path[->]		(q_0)	edge [bend left]	node	{$a$}	(q_1);
+\node[state]		(q_1)	[right of=q_0]	{$q_1$};
+\node[state]		(q_2)	[right of=q_1]	{$q_2$};
+\node[state,accepting]	(q_3)	[right of=q_2]	{$q_3$};
+\path[->]		(q_0)	edge 			node	{$0$}		(q_1)
+				edge [bend left]	node	{$1$}		(q_2)
+				edge [loop above]	node	{$1$}		()
+			(q_1)	edge [bend left]	node	{$\varepsilon$}	(q_0)
+				edge [bend left]	node	{$0$}		(q_3)
+			(q_2)	edge 			node	{$0$}		(q_1)
+				edge			node	{$0$}		(q_3)
+			(q_3)	edge [bend left]	node	{$\varepsilon$}	(q_0);
 \end{tikzpicture}
 \end{figure}
+\end{center}
 \begin{enumerate}
 \item Bilde einen äquivalenten, minimalen DEA.
-\item Was sind die Äquivalenzklassen für diesen Automaten bezüglich der Neroderelation?
+\item Was sind die Äquivalenzklassen für diesen Automaten bezüglich der Nerode-Relation?
 \item Bilde einen Regulären Ausdruck der die gleiche Sprache akzeptiert wie der Automat.
+\item Folgt aus $L$ regulär das $L^R$ regulär ist? (Dabei ist $L^R$ die Menge der wörter in $L$, rückwärts)
 \end{enumerate}
 \section{Pumping Lemma}
 Zeige oder Wiederlege die regulärität folgender Sprachen:
 \begin{enumerate}
-\item TODO 
-\item TODO
+\item $\{a^ib^j | i \leq j\}$
+\item $\{w | w\mbox{ enthält nicht die Zeichenkette } abc \mbox{ oder }cba\}$
+\item $\{a^ib^j | i \geq j\}$
+\item $\{www | w \in \Sigma^* \}$
+\item $\{w | w\mbox{ enthält nicht genau zweimal }a\}$
+\item $\{w | w\mbox{ ist kein Palindrom }\}$
+\item Sei $\Sigma = \{0,1,+,=\}$ und $L = \{x=y+z | x,y,z \mbox{ Sind binäre Integer und }x = y + z\}$
 \end{enumerate}
-\section{Turingmaschinen}
+\section{Turingmaschinen und Entscheidbarkeit}
 \begin{enumerate}
-\item TODO %was mit Gödelnummern
-\item TODO %TM varianten
+\item Wieviele verschiedene Sprachen gibt es? Wie steht das im Verhältnis zu der Anzahl der Turingmaschinen? Kann man dadurch eine Aussage über die Existenz von nichtentscheidbaren Sprachen machen?
+\item Schreibe jeweils eine Turingmaschine, die die folgenden Sprachen erkennt:
+\begin{enumerate}
+\item $\{a^ib^i\}$
+\item $\{a^ib^j\ | i \leq j\}$
+\item $\{w | w\mbox{ enthält nicht die Zeichenkette } abc \mbox{ oder }cba\}$
+\item Sei $\Sigma = \{0,1,+,=\}$ und $L = \{x=y+z | x,y,z \}$
 \end{enumerate}
-\section{Entscheidbarkeit}
-\begin{enumerate}
-\item TODO %Nichtentscheidbare Sprachen
-\item TODO %Halteproblem
-\item TODO %Rice
-\item TODO %PCP
-\item TODO %Semientscheidbare
+\item Zeige, dass eine Sprache entscheidbar ist gdw. eine Turingmaschine existiert, die bei Eingabe eines Wortes der Sprache das Lexikografisch nächste Wort ausgibt.
+\item Zeige, dass eine Sprache semientscheidbar ist gdw. eine Turingmaschine existiert, die bei Eingabe eines Wortes der Sprache, das nächste Wort der Sprache bezüglich einer festen Ordnung ausgibt.
+\item Formuliere das Problem der Entscheidung ob ein Endlicher Automat und ein Regulärer Ausdruck äquivalent sind als Sprache und zeige, dass diese Sprache entscheidbar ist.
+\item Finde eine Lösung für folgendes PCP: $\{(ab,abab),(b,a),(aba,b),(aa,a)\}$
+\item Zeige das eine TM die auf den Teil des Bandes, auf dem die Eingabe steht nicht schreiben kann, nur reguläre Sprachen erkennen kann.
 \end{enumerate}
 \section{Komplexitätsklassen}
 \begin{enumerate}
-\item TODO %NDTM
-\item TODO %Kodierungsschemata
-\item TODO %NP & NPC
+\item Folgt aus $A \propto B$ und $B$ regulär, dass A auch regulär ist? 
+\item Zeige: aus $A \propto co-A$ und $A$ semientscheidbar folgt, dass $A$ entscheidbar ist. Zeige auch: $A$ muss semientscheidbar sein durch Angabe einer Sprache $B$ mit $B \propto co-B$, aber $B$ nicht entscheidbar.
+\item Gibt es eine unentscheidbare Teilmenge von $1^*$?
+\item Zeige das $\mathcal{P}$ und $\mathcal{NP}$ jeweils unter Konkatenation und Vereinigung abgeschlossen sind. 
+\item Zeige, dass wenn $\mathcal{P} = \mathcal{NP}$ gilt, dass ein polyzeit Algorithmus zum faktorisieren von Zahlen existiert.
+\item Zeige, dass wenn $\mathcal{P} = \mathcal{NP}$ gilt, dass ein polyzeit Algorithmus zum finden der größten Clique in einem Graphen existiert
+\item Sei DOPPEL-SAT $= \{\Phi | \Phi\mbox{ hat mindestens zwei erfüllende Belegungen}\}$, zeige das DOPPEL-SAT $\in \mathcal{NPC}$
 \end{enumerate}
 \end{document}
