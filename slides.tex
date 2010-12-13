@@ -1966,5 +1966,38 @@ Zeige, dass \textsc{VERTEX COVER} $\cal{NP}$-vollständig ist.
 \end{frame}
 
 
+%Komplementsprachen, NPI
+\begin{frame}
+\frametitle{Aufgabe}
+Betrachten Sie das Problem NEAR TAUT: Gegeben sei ein Boolescher Ausdruck $A$. Es ist zu entscheiden, ob es höchstens eine Belegung der Variablen gibt, so dass $A$ falsch wird.
+\begin{enumerate}
+ \item Formulieren Sie das komplementäre Problem co-NEAR TAUT.
+ \item Zeigen Sie, dass NEAR TAUT in co-$\mathcal{NP}$ liegt.
+\end{enumerate}
+\end{frame}
+%Pseudopolynomialealgorithmen & Starke NP-Vollständigkeit
+\begin{frame}
+\frametitle{Aufgabe}
+Das Entscheidungsproblem \textit{PRIMES} besteht darin, zu entscheiden, ob es sich bei einer gegebenen natürlichen Zahl $p>1$ um eine Primzahl handelt. 
+Eine Probleminstanz von \textit{PRIMES} wird also durch eine natürliche Zahl kodiert. 
+Ein naiver Algorithmus für \textit{PRIMES} könnte alle Zahlen $2,3,\ldots,p-1$ darauf hin überprüfen, ob sie die gegebene Zahl $p$ teilen. 
+Zeigen Sie, dass dieser Algorithmus pseudo-polynomial ist 
+(Geben Sie dazu eine Schranke für die Laufzeit an, die polynomial in der Länge der Eingabe und der größten vorkommenden Zahl ist).
+\end{frame}
+%Suchprobleme, Aufzählungsprobleme
+%NP-Schwere von Suchproblemen
+%Orakelturingmaschinen
+%Integer Programming
+\begin{frame}
+\frametitle{Aufgabe}
+%TODO: Rename to proper def.
+Sei $G=(V, E)$ ein ungerichter Graph und $K \leq |V|$ eine natürliche Zahl. 
+Ein \emph{Vertex Cover} von $G$ ist eine Teilmenge $C \subseteq V$, so dass jeder Knoten $v$ entweder selbst in $C$ ist oder zu einem Knoten $w$ in $C$ adjazent ist. 
+Gibt es ein Vertex Cover von $G$, das höchstens $k$ Knoten enthält?
+
+Formulieren Sie VERTEX COVER als \emph{Integer Program} 
+Hinweis: Nehmen Sie dabei an, dass alle Koeffizienten $a_{ij}, b_i, c_j, B$ sowie die Variablen $x_i$ in $\mathbb{Z}$ liegen, das bedeutet, es sind auch negative Koeffizienten erlaubt.  
+\end{frame}
+
 \input{includes/disclaimer}
 \end{document}
