@@ -1965,6 +1965,7 @@ der Größe höchstens $k$ gibt.
 Zeige, dass \textsc{VERTEX COVER} $\cal{NP}$-vollständig ist. 
 \end{frame}
 
+\section{8. Tutoriumsvorschlag}
 \begin{frame}
  \frametitle{Suchprobleme}
  \begin{block}{Definition}
@@ -1981,6 +1982,53 @@ Zeige, dass \textsc{VERTEX COVER} $\cal{NP}$-vollständig ist.
   \item $\emptyset$ sonst
  \end{itemize}
 \end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{CLIQUE als Suchproblem}
+ \begin{block}{Aufgabe}
+  Formuliere CLIQUE als Suchproblem.
+ \end{block}
+ \pause
+ \begin{block}{CLIQUE-Suchproblem (Variante 2)}
+  \begin{itemize}
+   \item \textbf{Gegeben: } Graph $G = (V,E)$, Parameter $k\in \mathbb{N}$ 
+   \item \textbf{Aufgabe: } Gib eine Clique in $G$ mit Kardinalität $k$ an, falls diese existiert.
+  \end{itemize}
+ \end{block}
+ \end{frame}
+ 
+ \begin{frame}
+ \frametitle{CLIQUE als Aufzählungsproblem}
+  \begin{block}{Aufgabe}
+  Formuliere CLIQUE als Aufzählungsproblem.
+\end{block}
+\pause
+\begin{block}{CLIQUE-Aufzählungsproblem}
+ 
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Aufzählungsprobleme}
+ \begin{block}{Definition}
+  Ein \emph{Aufzählungsproblem} $\Pi$ ist gegeben durch
+  \begin{itemize}
+   \item die Menge der Problembeispiele $D_\Pi$
+   \item für $I \in D_\Pi$ die Menge $S_\Pi(I)$ aller Lösungen von $I$
+  \end{itemize}
+  \end{block}
+  \begin{block}{Lösung}  
+  Die \emph{Lösung} der Instanz $I$ eines Aufzählungsproblem $\Pi$ besteht in der Angabe der Kardinalität $|S_\Pi(I)|$ von $\Pi$.
+ \end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{$\mathcal{NP}$-Schwere von Suchproblemen}
+ \begin{block}{Definition}
+  Ein Suchproblem $\Pi$ heißt $\mathcal{NP}$-schwer, falls es eine $\mathcal{NP}$-vollständige Sprache $L$ gibt mit $L \propto_T \Pi$
+ \end{block}
 \end{frame}
 
 
