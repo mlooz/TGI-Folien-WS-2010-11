@@ -1966,73 +1966,7 @@ Zeige, dass \textsc{VERTEX COVER} $\cal{NP}$-vollständig ist.
 \end{frame}
 
 \section{8. Tutoriumsvorschlag}
-\begin{frame}
- \frametitle{Suchprobleme}
- \begin{block}{Definition}
-  Ein Suchproblem $\Pi$ wird beschrieben durch
-  \begin{itemize}
-   \item die Menge der Problembeispiele oder Instanzen $D_\Pi$
-   \item für $I\in D_\Pi$ die Menge $S_\Pi(I)$ \emph{aller} Lösungen von $I$.
-  \end{itemize}
- \end{block}
-\begin{block}{Lösung}
- Die Lösung eines beliebigen Suchproblems für eine Instanz $D_\Pi$ ist
- \begin{itemize}
-  \item ein beliebiges Element aus $S_\Pi(I)$ falls $S_\Pi(I) \not = \emptyset$
-  \item $\emptyset$ sonst
- \end{itemize}
-\end{block}
-\end{frame}
-
-\begin{frame}
- \frametitle{CLIQUE als Suchproblem}
- \begin{block}{Aufgabe}
-  Formuliere CLIQUE als Suchproblem.
- \end{block}
- \pause
- \begin{block}{CLIQUE-Suchproblem (Variante 2)}
-  \begin{itemize}
-   \item \textbf{Gegeben: } Graph $G = (V,E)$, Parameter $k\in \mathbb{N}$ 
-   \item \textbf{Aufgabe: } Gib eine Clique in $G$ mit Kardinalität $k$ an, falls diese existiert.
-  \end{itemize}
- \end{block}
- \end{frame}
- 
- \begin{frame}
- \frametitle{CLIQUE als Aufzählungsproblem}
-  \begin{block}{Aufgabe}
-  Formuliere CLIQUE als Aufzählungsproblem.
-\end{block}
-\pause
-\begin{block}{CLIQUE-Aufzählungsproblem}
- 
-\end{block}
-\end{frame}
-
-
-\begin{frame}
- \frametitle{Aufzählungsprobleme}
- \begin{block}{Definition}
-  Ein \emph{Aufzählungsproblem} $\Pi$ ist gegeben durch
-  \begin{itemize}
-   \item die Menge der Problembeispiele $D_\Pi$
-   \item für $I \in D_\Pi$ die Menge $S_\Pi(I)$ aller Lösungen von $I$
-  \end{itemize}
-  \end{block}
-  \begin{block}{Lösung}  
-  Die \emph{Lösung} der Instanz $I$ eines Aufzählungsproblem $\Pi$ besteht in der Angabe der Kardinalität $|S_\Pi(I)|$ von $\Pi$.
- \end{block}
-\end{frame}
-
-\begin{frame}
- \frametitle{$\mathcal{NP}$-Schwere von Suchproblemen}
- \begin{block}{Definition}
-  Ein Suchproblem $\Pi$ heißt $\mathcal{NP}$-schwer, falls es eine $\mathcal{NP}$-vollständige Sprache $L$ gibt mit $L \propto_T \Pi$
- \end{block}
-\end{frame}
-
-
-%Komplementsprachen, NPI
+\subsection{Komplementsprachen}
 \begin{frame}
 \frametitle{Komplementsprachen}
 \begin{block}{Definition}
@@ -2049,13 +1983,12 @@ Aufgabe: Beschreibe $co$-$SUBSET-SUM$
 \frametitle{co- und so...}
 \begin{block}{Anmerkungen}
 \begin{itemize}
-\item Ob $\mathcal{NP} \eq co-\mathcal{NP}$ ist eine offene Frage.
+\item Ob $\mathcal{NP} = co-\mathcal{NP}$ ist eine offene Frage.
 \item $\mathcal{NP} \neq co-\mathcal{NP}$ impliziert $\mathcal{P} \neq \mathcal{NP}$ 
 \item Für $L \in \mathcal{NPC}$ gilt: $L \in co-\mathcal{NP} \iff \mathcal{NP} =  co-\mathcal{NP}$
 \end{itemize}
 \end{block}
 \end{frame}
-
 
 \begin{frame}
 \frametitle{NPI}
@@ -2096,7 +2029,7 @@ Zeigen Sie, dass dieser Algorithmus pseudo-polynomial ist
 (Geben Sie dazu eine Schranke für die Laufzeit an, die polynomial in der Länge der Eingabe und der größten vorkommenden Zahl ist).
 \end{frame}
 
-%Orakelturingmaschinen
+\subsection{Orakelturingmaschinen}
 \begin{frame}
 \frametitle{Orakelturingmaschinen}
 \begin{block}{Definition}
@@ -2130,6 +2063,73 @@ Ein Beweiß für eine der beiden Aussagen darf also nicht mit Orakel weiterhin f
 %Suchprobleme, Aufzählungsprobleme
 %NP-Schwere von Suchproblemen
 %Integer Programming
+\subsection{Suchprobleme}
+\begin{frame}
+ \frametitle{Suchprobleme}
+ \begin{block}{Definition}
+  Ein Suchproblem $\Pi$ wird beschrieben durch
+  \begin{itemize}
+   \item die Menge der Problembeispiele oder Instanzen $D_\Pi$
+   \item für $I\in D_\Pi$ die Menge $S_\Pi(I)$ \emph{aller} Lösungen von $I$.
+  \end{itemize}
+ \end{block}
+\begin{block}{Lösung}
+ Die Lösung eines beliebigen Suchproblems für eine Instanz $D_\Pi$ ist
+ \begin{itemize}
+  \item ein beliebiges Element aus $S_\Pi(I)$ falls $S_\Pi(I) \not = \emptyset$
+  \item $\emptyset$ sonst
+ \end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{$\mathcal{NP}$-Schwere von Suchproblemen}
+ \begin{block}{Definition}
+  Ein Suchproblem $\Pi$ heißt $\mathcal{NP}$-schwer, falls es eine $\mathcal{NP}$-vollständige Sprache $L$ gibt mit $L \propto_T \Pi$
+ \end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{CLIQUE als Suchproblem}
+ \begin{block}{Aufgabe}
+  Formuliere CLIQUE als Suchproblem.
+ \end{block}
+ \pause
+ \begin{block}{CLIQUE-Suchproblem (Variante 2)}
+  \begin{itemize}
+   \item \textbf{Gegeben: } Graph $G = (V,E)$, Parameter $k\in \mathbb{N}$ 
+   \item \textbf{Aufgabe: } Gib eine Clique in $G$ mit Kardinalität $k$ an, falls diese existiert.
+  \end{itemize}
+ \end{block}
+ \end{frame}
+ 
+ \subsection{Aufzählungsprobleme}
+\begin{frame}
+ \frametitle{Aufzählungsprobleme}
+ \begin{block}{Definition}
+  Ein \emph{Aufzählungsproblem} $\Pi$ ist gegeben durch
+  \begin{itemize}
+   \item die Menge der Problembeispiele $D_\Pi$
+   \item für $I \in D_\Pi$ die Menge $S_\Pi(I)$ aller Lösungen von $I$
+  \end{itemize}
+  \end{block}
+  \begin{block}{Lösung}  
+  Die \emph{Lösung} der Instanz $I$ eines Aufzählungsproblem $\Pi$ besteht in der Angabe der Kardinalität $|S_\Pi(I)|$ von $\Pi$.
+ \end{block}
+\end{frame}
+
+ \begin{frame}
+ \frametitle{CLIQUE als Aufzählungsproblem}
+  \begin{block}{Aufgabe}
+  Formuliere CLIQUE als Aufzählungsproblem.
+\end{block}
+\pause
+\begin{block}{CLIQUE-Aufzählungsproblem}
+ 
+\end{block}
+\end{frame}
+
+\subsection{Integer Programming}
 \begin{frame}
 \frametitle{Aufgabe}
 Sei $G=(V, E)$ ein ungerichter Graph und $K \leq |V|$ eine natürliche Zahl. 
