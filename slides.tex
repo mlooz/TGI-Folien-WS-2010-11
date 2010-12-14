@@ -2083,7 +2083,7 @@ Dann ist
  \pause
  \begin{block}{CLIQUE-Suchproblem (Variante 2)}
   \begin{itemize}
-   \item \textbf{Gegeben: } Graph $G = (V,E)$, Parameter $k\in \mathbb{N}$ 
+   \item \textbf{Gegeben: } Graph $G = (V,E)$, Parameter $k\in \mathbb{N}$
    \item \textbf{Aufgabe: } Gib eine Clique in $G$ mit Kardinalität $k$ an, falls diese existiert.
   \end{itemize}
  \end{block}
@@ -2111,11 +2111,32 @@ Dann ist
 \end{block}
 \pause
 \begin{block}{CLIQUE-Aufzählungsproblem}
- 
+Eine Möglichkeit:
+\begin{itemize}
+ \item \textbf{Gegeben: } Graph $G = (V,E)$, Parameter $k\in \mathbb{N}$
+ \item \textbf{Gesucht: } Anzahl der Cliquen in $G$ mit mindestens $k$ Knoten.
+ \end{itemize}
 \end{block}
 \end{frame}
 
 \subsection{Integer Programming}
+\begin{frame}
+ \frametitle{Integer Programming}
+ \begin{block}{Definition (aus der Vorlesung)}
+ \textbf{Gegeben: }
+ \begin{itemize}
+  \item $a_{ij} \in \mathbb{N}_0$
+  \item $b_i, c_j \in \mathbb{N}_0, 1 \leq i \leq m, 1 \leq j \leq n$
+  \item $B\in \mathbb{N}_0$
+ \end{itemize}
+\textbf{Frage: }\\
+Existieren $x_1, ..., x_n \in \mathbb{N}_0$, so dass\\
+ $\sum_{j=1}^n c_k \cdot x_j = B$ und \\
+ $\sum_{j=1}^n a_{ij} \cdot x_j \leq b_i$ für $1 \leq i \leq m$?
+ \end{block}
+\end{frame}
+
+
 \begin{frame}
 \frametitle{Aufgabe}
 Sei $G=(V, E)$ ein ungerichter Graph und $K \leq |V|$ eine natürliche Zahl. 
