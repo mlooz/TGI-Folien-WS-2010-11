@@ -1993,8 +1993,21 @@ $\mbox{co-}L := \Sigma^*\backslash L$
 \end{block}
 Für eine Klasse von Sprachen, wie $\mathcal{P}$, definieren wir die "$co$" Klasse (wie z.B. $co-P$, als Menge der Komplemente (und nicht etwa als Komplement der Klasse).\\[8pt]
 Beispiele: $co-3SAT$: Die Aussagenlogischen Formeln mit 3 Variablen pro Klausel, die nicht erfüllbar sind.\\
-$co-P = P$ 
+$co-P = P$\\[8pt]
+Aufgabe: Beschreibe $co$-$SUBSET-SUM$
 \end{frame}
+
+\begin{frame}
+\frametitle{co- und so...}
+\begin{block}{Anmerkungen}
+\begin{itemize}
+\item Ob $\mathcal{NP} \eq co-\mathcal{NP}$ ist eine offene Frage.
+\item $\mathcal{NP} \neq co-\mathcal{NP}$ impliziert $\mathcal{P} \neq \mathcal{NP}$ 
+\item Für $L \in \mathcal{NPC}$ gilt: $L \in co-\mathcal{NP} \iff \mathcal{NP} =  co-\mathcal{NP}$
+\end{itemize}
+\end{block}
+\end{frame}
+
 
 \begin{frame}
 \frametitle{NPI}
@@ -2004,9 +2017,8 @@ $\mathcal{NP}$-Intermediate := $\mathcal{NP} \backslash (\mathcal{NPC} \cup \mat
 $$ $$ % Yes, I am fully aware of the uglyness involved here
 Da $\mathcal{NPI} \neq \emptyset \iff \mathcal{P} \neq \mathcal{P}$, sind natürlich keine Probleme aus $\mathcal{NPI}$ bekannt, es gibt jedoch einige Kandidaten:\\
 Graphisomorphie, Faktorisieren sowie diskrete Logarithmen.\\
-Aufgrund ihrer Eigenschaften sind diese Probleme in der Kryptographie alle von großer bedeutung.
+Aufgrund ihrer Eigenschaften sind diese Probleme in der Kryptographie alle von großer Bedeutung.
 \end{frame}
-%TODO: if time, graphisomorph example plus krypto example
 
 
 \begin{frame}
@@ -2050,8 +2062,8 @@ Kommt die Orakel-TM in den Zustand $q_f$, so wird der Inhalt des Orakelbandes vo
 Sei $\mathcal{P}^L$, die Klasse aller Entscheidungsprobleme die in Polynomieller Zeit von einer deterministischen Orakel-Turingmaschine mit Orakel für die charaktaristische Funktion der Sprache $L$ entschieden werden können.\\
 Dann ist
 \begin{itemize}
-\item $SAT \in \mathcal{P}^SAT$
-\item $TSP \in \mathcal{P}^SAT$ 
+\item $SAT \in \mathcal{P}^{SAT}$
+\item $TSP \in \mathcal{P}^{SAT}$ 
 \item $H_0 \in \mathcal{P}^{H_0}$
 \end{itemize}
 \end{frame}
