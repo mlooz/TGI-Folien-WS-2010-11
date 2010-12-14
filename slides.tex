@@ -1965,6 +1965,24 @@ der Größe höchstens $k$ gibt.
 Zeige, dass \textsc{VERTEX COVER} $\cal{NP}$-vollständig ist. 
 \end{frame}
 
+\begin{frame}
+ \frametitle{Suchprobleme}
+ \begin{block}{Definition}
+  Ein Suchproblem $\Pi$ wird beschrieben durch
+  \begin{itemize}
+   \item die Menge der Problembeispiele oder Instanzen $D_\Pi$
+   \item für $I\in D_\Pi$ die Menge $S_\Pi(I)$ \emph{aller} Lösungen von $I$.
+  \end{itemize}
+ \end{block}
+\begin{block}{Lösung}
+ Die Lösung eines beliebigen Suchproblems für eine Instanz $D_\Pi$ ist
+ \begin{itemize}
+  \item ein beliebiges Element aus $S_\Pi(I)$ falls $S_\Pi(I) \not = \emptyset$
+  \item $\emptyset$ sonst
+ \end{itemize}
+\end{block}
+\end{frame}
+
 
 %Komplementsprachen, NPI
 \begin{frame}
@@ -2003,10 +2021,10 @@ Betrachten Sie das Problem NEAR TAUT: Gegeben sei ein Boolescher Ausdruck $A$. E
 \begin{frame}
 \frametitle{Pseudopolynomielle Algorithmen}
 \begin{block}{Definition}
-Ein Algorithmus wird pseudopolynimiell genannt, wenn seine Laufzeit in Polynom im numerischen Wert der Eingabe (und eben nicht der Länge der Eingabe) ist.
+Ein Algorithmus wird pseudopolynimiell genannt, wenn seine Laufzeit ein Polynom im numerischen Wert der Eingabe (und eben nicht der Länge der Eingabe) ist.
 \end{block}
-Ein Problem heißt schwach $\matcal{NP}$-Vollständig, wenn es $\mathcal{NP}$-Vollständig ist und ein pseudopolynimieller Algorithmus der das Problem entscheidet existiert.\\
-Existiert ein solcher Algorithmus nicht, so spricht man von einem Stark $\mathcal{NP}$-Vollständigen Problem.
+Ein Problem heißt schwach $\mathcal{NP}$-vollständig, wenn es $\mathcal{NP}$-Vollständig ist und ein pseudopolynimieller Algorithmus der das Problem entscheidet existiert.\\
+Existiert ein solcher Algorithmus nicht, so spricht man von einem Stark $\mathcal{NP}$-vollständigen Problem.
 \end{frame}
 
 \begin{frame}
