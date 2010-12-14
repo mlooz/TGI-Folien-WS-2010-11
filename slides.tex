@@ -2083,6 +2083,23 @@ Ein Beweiß für eine der beiden Aussagen darf also nicht mit Orakel weiterhin f
 \end{frame}
 
 \begin{frame}
+\frametitle{Suchprobleme als Relationen}
+Ein Suchprobleme kann man auch als Relation auffassen, für $\Pi$ sei
+$$ R_\Pi := \{ (x,s) | x \in D_\Pi, s\in S_\Pi(x)\}$$
+Eine Funktion $f: \Sigma^* \rightarrow \Sigma^*$ realisiert eine Relation $R$, wenn für alle $x \in \Sigma^*$ gilt:
+$$f(x) = \begin{cases}
+\epsilon, & \nexists y \in \Sigma^*\backslash\epsilon : (x,y) \in R\\
+y, & \mbox{sonst, mit beliebigem }y:(x,y) \in R
+\end{cases}$$
+Ein Algorithmus löst das durch $R_\Pi$ beschriebene Suchproblem $\Pi$, wenn er eine Funktion berechnet, die $R_\Pi$ relaisiert.
+\end{frame}
+
+\begin{frame}
+\frametitle{Turingreduzierbarkeit}
+
+\end{frame}
+
+\begin{frame}
  \frametitle{$\mathcal{NP}$-Schwere von Suchproblemen}
  \begin{block}{Definition}
   Ein Suchproblem $\Pi$ heißt $\mathcal{NP}$-schwer, falls es eine $\mathcal{NP}$-vollständige Sprache $L$ gibt mit $L \propto_T \Pi$
