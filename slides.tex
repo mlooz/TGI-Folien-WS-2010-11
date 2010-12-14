@@ -1981,7 +1981,7 @@ $co-P = P$
 \begin{frame}
 \frametitle{NPI}
 \begin{block}{Definition}
-$\mathcal{NP}$-Intermediate := $\mathcal{NP} \backslash \{\mathcal{NPC} \cup \mathcal{P}\}$
+$\mathcal{NP}$-Intermediate := $\mathcal{NP} \backslash (\mathcal{NPC} \cup \mathcal{P})$
 \end{block}
 $$ $$ % Yes, I am fully aware of the uglyness involved here
 Da $\mathcal{NPI} \neq \emptyset \iff \mathcal{P} \neq \mathcal{P}$, sind natürlich keine Probleme aus $\mathcal{NPI}$ bekannt, es gibt jedoch einige Kandidaten:\\
@@ -2006,7 +2006,7 @@ Betrachten Sie das Problem NEAR TAUT: Gegeben sei ein Boolescher Ausdruck $A$. E
 Ein Algorithmus wird pseudopolynimiell genannt, wenn seine Laufzeit in Polynom im numerischen Wert der Eingabe (und eben nicht der Länge der Eingabe) ist.
 \end{block}
 Ein Problem heißt schwach $\matcal{NP}$-Vollständig, wenn es $\mathcal{NP}$-Vollständig ist und ein pseudopolynimieller Algorithmus der das Problem entscheidet existiert.\\
-Existiert ein solcher Algorithmus nicht, so spricht man von einem Stark $\mathcal{NP}$-Vollständigen Problem.
+Existiert ein solcher Algorithmus nicht, so spricht man von einem stark $\mathcal{NP}$-Vollständigen Problem.
 \end{frame}
 
 \begin{frame}
@@ -2017,8 +2017,14 @@ Ein naiver Algorithmus für \textit{PRIMES} könnte alle Zahlen $2,3,\ldots,p-1$
 Zeigen Sie, dass dieser Algorithmus pseudo-polynomial ist 
 (Geben Sie dazu eine Schranke für die Laufzeit an, die polynomial in der Länge der Eingabe und der größten vorkommenden Zahl ist).
 \end{frame}
+
 %Orakelturingmaschinen
 \begin{frame}
+\frametitle{Orakelturingmaschinen}
+\begin{block}{Definition}
+Eine Orakel-Turing-Maschine zum Orakel $G: \Sigma^* \rightarrow \Sigma^*$ ist eine Turingmaschine erweitert durch ein ausgezeichnetes Orakelband, sowie zwei zusätzlichen Zuständen $q_f$ und $q_a$. Diese TM verhält sich für alle Zustände außer $q_f$ und $q_a$ verhält sich diese TM wie eine normale TM.\\
+Kommt die Orakel-TM in den Zustand $q_f$, so wird der Inhalt des Orakelbandes von der Anfangsposition bis zur aktuellen Position des Kopfes auf dem Orakelband ersetzt durch seinen Funktionswert bzgl. $G$ und der Kopf an den Anfang des Orakelbandes zurückgesetzt.
+\end{block}
 \end{frame}
 
 
