@@ -2096,7 +2096,13 @@ Ein Algorithmus löst das durch $R_\Pi$ beschriebene Suchproblem $\Pi$, wenn er 
 
 \begin{frame}
 \frametitle{Turingreduzierbarkeit}
-
+\begin{block}{Definition}
+Seien $R, R'$ Relationen über $\Sigma^*$. Eine Turing-Reduktion $\propto_T$ von $R$ auf $R'$, ist eine Orakel-Turing-Maschine $\mathcal{M}$
+\begin{itemize}
+\item deren Orakel die Relation $R'$ realisiert
+\item die selbst in polynomialer Zeit die Funktion $f$ berechnet, die $R$ realisiert. 
+\end{itemize}
+\end{block}
 \end{frame}
 
 \begin{frame}
