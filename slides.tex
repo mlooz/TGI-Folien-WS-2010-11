@@ -2017,7 +2017,7 @@ Betrachten Sie das Problem NEAR TAUT: Gegeben sei ein Boolescher Ausdruck $A$. E
 Ein Algorithmus wird pseudopolynimiell genannt, wenn seine Laufzeit ein Polynom im numerischen Wert der Eingabe (und eben nicht der Länge der Eingabe) ist.
 \end{block}
 Ein Problem heißt schwach $\mathcal{NP}$-vollständig, wenn es $\mathcal{NP}$-vollständig ist und ein pseudopolynimieller Algorithmus der das Problem entscheidet existiert.\\
-Existiert ein solcher Algorithmus nicht, so spricht man von einem Stark $\mathcal{NP}$-vollständigen Problem.
+Existiert ein solcher Algorithmus nicht, so spricht man von einem stark $\mathcal{NP}$-vollständigen Problem.
 \end{frame}
 
 \begin{frame}
@@ -2046,9 +2046,23 @@ Dann ist
 \item $SAT \in \mathcal{P}^{SAT}$
 \item $TSP \in \mathcal{P}^{SAT}$ 
 \item $H_0 \in \mathcal{P}^{H_0}$
+\item Trotz ähnlicher Bennenung hat eine Nichtdeterministische Turingmaschine nichts mit Orakelturingmaschienen zu tun!
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{Kurzer Exkurs}
+Einer der Hauptgründe, warum die $P \stackrel{?}{=} NP$ Frage so schwer ist, is das bekannt ist, das es zwei Sprachen $A$ und $B$ gibt, für die gilt:
+\begin{enumerate}
+\item $\mathcal{P}^A = \mathcal{NP}^A$
+\item $\mathcal{P}^B \neq \mathcal{NP}^B$
+\end{enumerate}
+Ein Beweiß für eine der beiden Aussagen darf also nicht mit Orakel weiterhin funktionieren.
+\end{frame}
+
+%Suchprobleme, Aufzählungsprobleme
+%NP-Schwere von Suchproblemen
+%Integer Programming
 \subsection{Suchprobleme}
 \begin{frame}
  \frametitle{Suchprobleme}
@@ -2065,6 +2079,29 @@ Dann ist
   \item ein beliebiges Element aus $S_\Pi(I)$ falls $S_\Pi(I) \not = \emptyset$
   \item $\emptyset$ sonst
  \end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Suchprobleme als Relationen}
+Ein Suchprobleme kann man auch als Relation auffassen, für $\Pi$ sei
+$$ R_\Pi := \{ (x,s) | x \in D_\Pi, s\in S_\Pi(x)\}$$
+Eine Funktion $f: \Sigma^* \rightarrow \Sigma^*$ realisiert eine Relation $R$, wenn für alle $x \in \Sigma^*$ gilt:
+$$f(x) = \begin{cases}
+\epsilon, & \nexists y \in \Sigma^*\backslash\epsilon : (x,y) \in R\\
+y, & \mbox{sonst, mit beliebigem }y:(x,y) \in R
+\end{cases}$$
+Ein Algorithmus löst das durch $R_\Pi$ beschriebene Suchproblem $\Pi$, wenn er eine Funktion berechnet, die $R_\Pi$ relaisiert.
+\end{frame}
+
+\begin{frame}
+\frametitle{Turingreduzierbarkeit}
+\begin{block}{Definition}
+Seien $R, R'$ Relationen über $\Sigma^*$. Eine Turing-Reduktion $\propto_T$ von $R$ auf $R'$, ist eine Orakel-Turing-Maschine $\mathcal{M}$
+\begin{itemize}
+\item deren Orakel die Relation $R'$ realisiert
+\item die selbst in polynomialer Zeit die Funktion $f$ berechnet, die $R$ realisiert. 
+\end{itemize}
 \end{block}
 \end{frame}
 
