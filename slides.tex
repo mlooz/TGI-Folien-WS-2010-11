@@ -1968,6 +1968,30 @@ Zeige, dass \textsc{VERTEX COVER} $\cal{NP}$-vollständig ist.
 
 %Komplementsprachen, NPI
 \begin{frame}
+\frametitle{Komplementsprachen}
+\begin{block}{Definition}
+Zu einer Sprache $L \subseteq \Sigma^*$ definieren wir $co-L$ als das Komplement der Sprache, also
+$\mbox{co-}L := \Sigma^*\backslash L$
+\end{block}
+Für eine Klasse von Sprachen, wie $\mathcal{P}$, definieren wir die "$co$" Klasse (wie z.B. $co-P$, als Menge der Komplemente (und nicht etwa als Komplement der Klasse).\\[8pt]
+Beispiele: $co-3SAT$: Die Aussagenlogischen Formeln mit 3 Variablen pro Klausel, die nicht erfüllbar sind.\\
+$co-P = P$ 
+\end{frame}
+
+\begin{frame}
+\frametitle{NPI}
+\begin{block}{Definition}
+$\mathcal{NP}$-Intermediate := $\mathcal{NP} \backslash \{\mathcal{NPC} \cup \mathcal{P}\}$
+\end{block}
+$$ $$ % Yes, I am fully aware of the uglyness involved here
+Da $\mathcal{NPI} \neq \emptyset \iff \mathcal{P} \neq \mathcal{P}$, sind natürlich keine Probleme aus $\mathcal{NPI}$ bekannt, es gibt jedoch einige Kandidaten:\\
+Graphisomorphie, Faktorisieren sowie diskrete Logarithmen.\\
+Aufgrund ihrer Eigenschaften sind diese Probleme in der Kryptographie alle von großer bedeutung.
+\end{frame}
+%TODO: if time, graphisomorph example plus krypto example
+
+
+\begin{frame}
 \frametitle{Aufgabe}
 Betrachten Sie das Problem NEAR TAUT: Gegeben sei ein Boolescher Ausdruck $A$. Es ist zu entscheiden, ob es höchstens eine Belegung der Variablen gibt, so dass $A$ falsch wird.
 \begin{enumerate}
@@ -1975,7 +1999,16 @@ Betrachten Sie das Problem NEAR TAUT: Gegeben sei ein Boolescher Ausdruck $A$. E
  \item Zeigen Sie, dass NEAR TAUT in co-$\mathcal{NP}$ liegt.
 \end{enumerate}
 \end{frame}
-%Pseudopolynomialealgorithmen & Starke NP-Vollständigkeit
+%Pseudopolynomielle Algorithmen & Starke NP-Vollständigkeit
+\begin{frame}
+\frametitle{Pseudopolynomielle Algorithmen}
+\begin{block}{Definition}
+Ein Algorithmus wird pseudopolynimiell genannt, wenn seine Laufzeit in Polynom im numerischen Wert der Eingabe (und eben nicht der Länge der Eingabe) ist.
+\end{block}
+Ein Problem heißt schwach $\matcal{NP}$-Vollständig, wenn es $\mathcal{NP}$-Vollständig ist und ein pseudopolynimieller Algorithmus der das Problem entscheidet existiert.\\
+Existiert ein solcher Algorithmus nicht, so spricht man von einem Stark $\mathcal{NP}$-Vollständigen Problem.
+\end{frame}
+
 \begin{frame}
 \frametitle{Aufgabe}
 Das Entscheidungsproblem \textit{PRIMES} besteht darin, zu entscheiden, ob es sich bei einer gegebenen natürlichen Zahl $p>1$ um eine Primzahl handelt. 
@@ -1984,9 +2017,13 @@ Ein naiver Algorithmus für \textit{PRIMES} könnte alle Zahlen $2,3,\ldots,p-1$
 Zeigen Sie, dass dieser Algorithmus pseudo-polynomial ist 
 (Geben Sie dazu eine Schranke für die Laufzeit an, die polynomial in der Länge der Eingabe und der größten vorkommenden Zahl ist).
 \end{frame}
+%Orakelturingmaschinen
+\begin{frame}
+\end{frame}
+
+
 %Suchprobleme, Aufzählungsprobleme
 %NP-Schwere von Suchproblemen
-%Orakelturingmaschinen
 %Integer Programming
 \begin{frame}
 \frametitle{Aufgabe}
