@@ -2040,7 +2040,7 @@ Kommt die Orakel-TM in den Zustand $q_f$, so wird der Inhalt des Orakelbandes vo
 
 \begin{frame}
 \frametitle{Beispiele}
-Sei $\mathcal{P}^L$, die Klasse aller Entscheidungsprobleme die in Polynomieller Zeit von einer deterministischen Orakel-Turingmaschine mit Orakel für die charaktaristische Funktion der Sprache $L$ entschieden werden können.\\
+Sei $\mathcal{P}^L$, die Klasse aller Entscheidungsprobleme die in Polynomieller Zeit von einer deterministischen Orakel-Turingmaschine mit Orakel für die charakteristische Funktion der Sprache $L$ entschieden werden können.\\
 Dann ist
 \begin{itemize}
 \item $SAT \in \mathcal{P}^{SAT}$
@@ -2050,15 +2050,15 @@ Dann ist
 \end{itemize}
 \end{frame}
 
-\begin{frame}
-\frametitle{Kurzer Exkurs}
-Einer der Hauptgründe, warum die $P \stackrel{?}{=} NP$ Frage so schwer ist, ist das bekannt ist, das es zwei Sprachen $A$ und $B$ gibt, für die gilt:
-\begin{enumerate}
-\item $\mathcal{P}^A = \mathcal{NP}^A$
-\item $\mathcal{P}^B \neq \mathcal{NP}^B$
-\end{enumerate}
-Ein Beweis für eine der beiden Aussagen darf also nicht mit Orakel weiterhin funktionieren.
-\end{frame}
+%\begin{frame}
+%\frametitle{Kurzer Exkurs}
+%Einer der Hauptgründe, warum die $P \stackrel{?}{=} NP$ Frage so schwer ist, ist das bekannt ist, das es zwei Sprachen $A$ und $B$ gibt, für die gilt:
+%\begin{enumerate}
+%\item $\mathcal{P}^A = \mathcal{NP}^A$
+%\item $\mathcal{P}^B \neq \mathcal{NP}^B$
+%\end{enumerate}
+%Ein Beweis für eine der beiden Aussagen darf also nicht mit Orakel weiterhin funktionieren.
+%\end{frame}
 
 %Suchprobleme, Aufzählungsprobleme
 %NP-Schwere von Suchproblemen
@@ -2158,7 +2158,7 @@ Eine Möglichkeit:
 
 \subsection{Integer Programming}
 \begin{frame}
- \frametitle{Integer Programming}
+ \frametitle{INTEGER PROGRAMMING}
  \begin{block}{Definition (aus der Vorlesung)}
  \textbf{Gegeben: }
  \begin{itemize}
@@ -2173,15 +2173,51 @@ Existieren $x_1, ..., x_n \in \mathbb{N}_0$, so dass\\
  \end{block}
 \end{frame}
 
+\begin{frame}
+ \begin{block}{Eigenschaften von INTEGER PROGRAMMING}
+ \begin{itemize}
+  \item INTEGER PROGRAMMING ist $\mathcal{NP}$-vollständig.
+  \item Viele andere Probleme lassen sich leicht als INTEGER PROGRAMMING-Problem formulieren.
+ \end{itemize}
+ \end{block}
+\end{frame}
 
 \begin{frame}
 \frametitle{Aufgabe}
 Sei $G=(V, E)$ ein ungerichter Graph und $K \leq |V|$ eine natürliche Zahl. 
-Ein \emph{DOMINATING SAET} von $G$ ist eine Teilmenge $C \subseteq V$, so dass jeder Knoten $v$ entweder selbst in $C$ ist oder zu einem Knoten $w$ in $C$ adjazent ist. 
+Ein \emph{DOMINATING SET} von $G$ ist eine Teilmenge $C \subseteq V$, so dass jeder Knoten $v$ entweder selbst in $C$ ist oder zu einem Knoten $w$ in $C$ adjazent ist. 
 Gibt es ein Vertex Cover von $G$, das höchstens $k$ Knoten enthält?
 
 Formulieren Sie DOMINATING SET als \emph{Integer Program} 
-Hinweis: Nehmen Sie dabei an, dass alle Koeffizienten $a_{ij}, b_i, c_j, B$ sowie die Variablen $x_i$ in $\mathbb{Z}$ liegen, das bedeutet, es sind auch negative Koeffizienten erlaubt.  
+Hinweis: Nehmen Sie dabei an, dass alle Koeffizienten $a_{ij}, b_i, c_j, B$ sowie die Variablen $x_i$ in $\mathbb{Z}$ liegen. Das bedeutet, dass auch negative Koeffizienten erlaubt sind.  
+\end{frame}
+
+
+\begin{frame}
+Sei $G=(\Sigma,V,S,R)$ die CH-2-Grammatik mit $\Sigma = \{a,b\}$, $V=\{A,B,C,D,E,S\}$ und der folgenden Regelmenge $R$:
+\begin{eqnarray*}
+S & \rightarrow & A \;|\; aAa  \;|\; bBb  \;|\; \varepsilon \\
+A & \rightarrow & C \;|\; a \\
+B & \rightarrow & C \;|\; b \\
+C & \rightarrow & CDE \;|\; \varepsilon \\
+D & \rightarrow & A \;|\; B \;|\; ab \\
+E & \rightarrow & S
+\end{eqnarray*}
+Bestimme eine Grammatik $G'$ für $L(G)$ in Chomsky-Normalform.
+\end{frame}
+
+\begin{frame}
+\begin{enumerate}
+\item Bestimme eine möglichst kurze Grammatik $G_R$ für reguläre Ausdrücke über dem Alphabet $\Sigma = \{0,1\}$ mit maximalem Chomsky-Typ.
+\item Bestimme einen Ableitungsbaum für das Wort $1^* \cup (01)^*$. 
+\item Ist die Grammatik eindeutig? Diskutiere, ob es eine eindeutige Grammatik für reguläre Ausdrücke geben kann, falls die angegebene Grammatik inhärent mehrdeutig ist.
+\item Normalisiere $G_R$ und 
+\item überprüfe die Zugehörigkeit des Ausdrucks $1^*\cup (01)^*$ zu $L(G_R)$ mit dem CYK-Algorithmus.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+Modifiziere den CYK-Algorithmus so, dass er nicht einfach nur feststellt, ob eine Eingabe in der Sprache enthalten ist, sondern zusätzlich einen Syntaxbaum ermittelt.
 \end{frame}
 
 \input{includes/disclaimer}
