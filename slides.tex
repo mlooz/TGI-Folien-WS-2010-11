@@ -2192,6 +2192,235 @@ Formulieren Sie DOMINATING SET als \emph{Integer Program}
 Hinweis: Nehmen Sie dabei an, dass alle Koeffizienten $a_{ij}, b_i, c_j, B$ sowie die Variablen $x_i$ in $\mathbb{Z}$ liegen. Das bedeutet, dass auch negative Koeffizienten erlaubt sind.  
 \end{frame}
 
+\frame{
+\frametitle{Chomsky-Normalform}
+CYK wird verwendet zur Lösung des Wortproblems für kontextfreie Sprachen (CH-2).
+Um CYK anzuwenden, muss die gegebene Grammatik erst in Chomsky-Normalform gebracht werden.
+\
+\begin{exampleblock}{Chomsky-Normalform}
+Eine CH-2-Grammatik \textit{G} $= \mathcal{(T,V,S,P) }$ ist in Chomsky-Normalform,  wenn jede Produktion aus $\mathcal{P}$ eine der folgenden Formen hat:
+\begin{itemize}
+\item $\mathcal{S} \rightarrow \lambda$
+\item  $A \rightarrow BC$
+\item  $A \rightarrow a$
+\end{itemize}
+Wobei gilt $\mathcal{S}$ ist Startsymbol $\in \mathcal{V}$, $A,B,C\in\mathcal{V}$ und $a \in \mathcal{T}$.
+Falls $\mathcal{S} \rightarrow \lambda$ dazugehört, darf $\mathcal{S}$ nicht auf der rechten Seite einer Produktion vorkommen.
+\end{exampleblock}
+\emph{Bemerkung}: Da $\mathcal{S} \in \mathcal{V}$, ist somit natürlich auch $\mathcal{S} \rightarrow BC \mid a$ möglich.
+}
+
+
+%\subsection{Umwandlung in Chomsky-Normalform}
+\frame{
+\frametitle{Umwandlung in Chomsky-Normalform}
+\begin{enumerate}
+\item Für alle $\textcolor{red}{a} \in \mathcal{T}$ und für alle Produktionen auf deren rechter Seite $\textcolor{red}{a}$ vorkommt 
+(außer für $V  \rightarrow \textcolor{red}{a}$, mit $V \in\mathcal{V}$),
+wird jedes Vorkommen von $\textcolor{red}{a}$ durch ein \emph{neues} Nichtterminalsymbol $\textcolor{blue}{A}$ ersetzt
+%(und $A$ in die Variablenmenge aufgenommen)
+und die Produktion $\textcolor{blue}{A} \rightarrow \textcolor{red}{a}$ wird hinzugefügt.
+\end{enumerate}
+
+\begin{exampleblock}{Umwandlungsbeispiel (Schritt 1 von 3)}
+\begin{columns}[c]
+\begin{column}{0.3\textwidth}
+\begin{align*}
+\mathcal{S} &\rightarrow XY\\
+X &\rightarrow \textcolor{red}{a}X\textcolor{red}{b} \mid \lambda\\
+Y &\rightarrow \textcolor{red}{cc}Y \mid \lambda
+\end{align*}
+\end{column}
+%
+\
+\begin{column}{0.05\textwidth}
+$\Rightarrow$
+\end{column}
+%
+\begin{column}{0.3\textwidth}
+\begin{align*}
+\mathcal{S} &\rightarrow XY\\
+X &\rightarrow \textcolor{blue}{A}X\textcolor{blue}{B} \mid \lambda\\
+Y &\rightarrow \textcolor{blue}{CC}Y \mid \lambda\\
+\textcolor{blue}{A} &\rightarrow \textcolor{red}{a}\\
+\textcolor{blue}{B} &\rightarrow \textcolor{red}{b}\\
+\textcolor{blue}{C} &\rightarrow \textcolor{red}{c}\\
+\end{align*}
+\end{column}
+\end{columns}
+\end{exampleblock}
+}
+
+
+
+
+
+\frame{
+\frametitle{Umwandlung in Chomsky-Normalform}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item %Die Grammatik $\lambda$-frei machen, d. h. $\lambda$ darf nur bei $\mathcal{S} \rightarrow \lambda$ vorkommen.
+In diesem Schritt werden alle Produktionen der Form $\textcolor{red}{V} \rightarrow \textcolor{red}{\lambda}$
+f"ur $V \in \mathcal{V}, V \not= \mathcal{S}$ entfernt. Dazu müssen diese Produktion aber
+vorher \emph{rekursiv} durch ihre ``Vorwegnahme'' mit den anderen Produktionen
+``verschmolzen'' werden, es wird also für jede Produktion mit einem der obigen $V$
+auf der rechten Seite eine \textcolor{blue}{neue Produktion} ohne dieses $V$ hinzugefügt.
+\end{enumerate}
+
+\begin{exampleblock}{Umwandlungsbeispiel (Schritt 2 von 3)}
+\begin{columns}[c]
+\begin{column}{0.3\textwidth}
+\begin{align*}
+\mathcal{S} &\rightarrow XY\\
+\textcolor{red}{X} &\rightarrow AXB \mid \textcolor{red}{\lambda}\\
+\textcolor{red}{Y} &\rightarrow CCY \mid \textcolor{red}{\lambda}\\
+A &\rightarrow a\\
+B &\rightarrow b\\
+C &\rightarrow c\\
+\end{align*}
+\end{column}
+%
+\
+\begin{column}{0.05\textwidth}
+$\Rightarrow$
+\end{column}
+%
+\begin{column}{0.3\textwidth}
+\begin{align*}
+\textcolor{blue}{\mathcal{S}} &\rightarrow XY \mid \textcolor{blue}{X} \mid  \textcolor{blue}{Y} \mid \textcolor{blue}{\lambda}\\
+\textcolor{blue}{X} &\rightarrow AXB \mid \textcolor{blue}{AB} \\
+\textcolor{blue}{Y} &\rightarrow CCY \mid \textcolor{blue}{CC}\\
+A &\rightarrow a\\
+B &\rightarrow b\\
+C &\rightarrow c\\
+\end{align*}
+\end{column}
+\end{columns}
+\end{exampleblock}
+}
+
+
+
+\frame{
+\frametitle{Umwandlung in Chomsky-Normalform}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Für rechte Seiten mit nur \textcolor{red}{einer
+einzigen oder mehr als zwei Variablen} gilt:
+Bei einzelnen Variablen werden diese Produktionen wieder durch ihre ``Vorwegnahme'' mit
+den anderen Produktionen ``verschmolzen''. Für Produktionen mit mehr als zwei
+Variablen rechts werden \textcolor{blue}{ \emph{neue} Nichterminale} eingeführt
+und dazu \textcolor{blue}{passende Produktionen} hinzugefügt.
+\end{enumerate}
+
+\begin{exampleblock}{Umwandlungsbeispiel (Schritt 3 von 3)}
+\begin{columns}[c]
+\begin{column}{0.3\textwidth}
+\begin{align*}
+\mathcal{S} &\rightarrow XY \mid \textcolor{red}{X} \mid  \textcolor{red}{Y} \mid \lambda\\
+X &\rightarrow \textcolor{red}{AXB} \mid AB \\
+Y &\rightarrow \textcolor{red}{CCY} \mid CC\\
+A &\rightarrow a\\
+B &\rightarrow b\\
+C &\rightarrow c\\
+\end{align*}
+\end{column}
+%
+\
+\begin{column}{0.05\textwidth}
+$\Rightarrow$
+\end{column}
+%
+\begin{column}{0.3\textwidth}
+\begin{align*}
+\mathcal{S} &\rightarrow XY \mid \textcolor{blue}{FB} \mid \textcolor{blue}{AB} \mid  \textcolor{blue}{GY}\mid \textcolor{blue}{CC} \mid \lambda\\
+X &\rightarrow \textcolor{blue}{FB} \mid AB \\
+Y &\rightarrow \textcolor{blue}{GY} \mid CC\\
+\textcolor{blue}{F} &\rightarrow \textcolor{blue}{AX}\\
+\textcolor{blue}{G} &\rightarrow \textcolor{blue}{CC}\\
+A &\rightarrow a\\
+B &\rightarrow b\\
+C &\rightarrow c\\
+\end{align*}
+\end{column}
+\end{columns}
+\end{exampleblock}
+}
+
+\newcommand{\cyksymbol}[3]
+{
+  \draw (#2*#1-#1*0.5,-0.25) node {#3};
+}
+\newcommand{\cykfield}[4]
+{
+  \draw 	(#2*#1-#1+#3*#1*0.5-#1*0.5 , #3*0.5-0.5) rectangle
+		(#2*#1 +#3*#1*0.5-#1*0.5,  #3*0.5    );
+  \draw 	(#2*#1-#1+#3*#1*0.5       ,#3*0.5-0.5+0.25) node{$#4$};
+}
+
+\frame{
+\frametitle{CYK}
+Gegeben sei die Grammatik \textit{G} $= \mathcal{(T,V,S,P) }$  mit den folgenden Produktionen aus $\mathcal{P}$:
+\begin{align*}
+\mathcal{S} &\rightarrow XY \mid FB \mid AB \mid  GY\mid CC \mid \lambda\\
+X &\rightarrow FB \mid AB \\
+Y &\rightarrow GY \mid CC\\
+F &\rightarrow AX\\
+G &\rightarrow CC\\
+A &\rightarrow a\\
+B &\rightarrow b\\
+C &\rightarrow c\\
+\end{align*}
+Ist das Wort $abcccc$ in der Sprache $\mathcal{L}(\textit{G})$?
+}
+
+\frame{
+\frametitle{CYK}
+\begin{center}
+\begin{tikzpicture}[line width=1pt]
+\def\breite{1.3}
+
+\cyksymbol{\breite}{1}{a}
+\cyksymbol{\breite}{2}{b}
+\cyksymbol{\breite}{3}{c}
+\cyksymbol{\breite}{4}{c}
+\cyksymbol{\breite}{5}{c}
+\cyksymbol{\breite}{6}{c}
+
+\cykfield{\breite}{1}{1}{A}
+\cykfield{\breite}{2}{1}{B}
+\cykfield{\breite}{3}{1}{C}
+\cykfield{\breite}{4}{1}{C}
+\cykfield{\breite}{5}{1}{C}
+\cykfield{\breite}{6}{1}{C}
+
+\cykfield{\breite}{1}{2}{\mathcal{S},X}
+\cykfield{\breite}{2}{2}{}
+\cykfield{\breite}{3}{2}{\mathcal{S},Y,G}
+\cykfield{\breite}{4}{2}{\mathcal{S},Y,G}
+\cykfield{\breite}{5}{2}{\mathcal{S},Y,G}
+
+
+\cykfield{\breite}{1}{3}{}
+\cykfield{\breite}{2}{3}{}
+\cykfield{\breite}{3}{3}{}
+\cykfield{\breite}{4}{3}{}
+
+
+\cykfield{\breite}{1}{4}{\mathcal{S}}
+\cykfield{\breite}{2}{4}{}
+\cykfield{\breite}{3}{4}{\mathcal{S},Y}
+
+\cykfield{\breite}{1}{5}{}
+\cykfield{\breite}{2}{5}{}
+
+\cykfield{\breite}{1}{6}{\mathcal{S}}
+\end{tikzpicture}
+\end{center}
+
+In der Spitze steht das Startsymbol $\mathcal{S}$, also kann man das Wort mit den gegebenen Produktionen ableiten.
+Es ist somit in der Sprache enthalten.
+}
 
 \begin{frame}
 Sei $G=(\Sigma,V,S,R)$ die CH-2-Grammatik mit $\Sigma = \{a,b\}$, $V=\{A,B,C,D,E,S\}$ und der folgenden Regelmenge $R$:
