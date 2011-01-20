@@ -2192,6 +2192,8 @@ Formulieren Sie DOMINATING SET als \emph{Integer Program}
 Hinweis: Nehmen Sie dabei an, dass alle Koeffizienten $a_{ij}, b_i, c_j, B$ sowie die Variablen $x_i$ in $\mathbb{Z}$ liegen. Das bedeutet, dass auch negative Koeffizienten erlaubt sind.  
 \end{frame}
 
+\section{10. Tutoriumsvorschlag}
+\subsection{Chomsky-Normalform}
 \frame{
 \frametitle{Chomsky-Normalform}
 CYK wird verwendet zur Lösung des Wortproblems für kontextfreie Sprachen (CH-2).
@@ -2250,10 +2252,6 @@ Y &\rightarrow \textcolor{blue}{CC}Y \mid \lambda\\
 \end{columns}
 \end{exampleblock}
 }
-
-
-
-
 
 \frame{
 \frametitle{Umwandlung in Chomsky-Normalform}
@@ -2447,6 +2445,63 @@ Bestimme eine Grammatik $G'$ für $L(G)$ in Chomsky-Normalform.
 
 \begin{frame}
 Modifiziere den CYK-Algorithmus so, dass er nicht einfach nur feststellt, ob eine Eingabe in der Sprache enthalten ist, sondern zusätzlich einen Syntaxbaum ermittelt.
+\end{frame}
+
+\section{11. Tutoriumsvorschlag}
+\begin{frame}
+Zeigen Sie, dass folgende Sprachen nicht kontextfrei sind:
+\begin{enumerate}
+ \item $L=\{a^ib^jc^id^j \mid i,j \geq 1 \}$
+ \item $L=\{ww \mid w \text{ ist in }\{a, b\}^* \text{ enthalten.}\}$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lösungshinweise für Teilaufgabe a}
+ Wähle $n$ wie im Pumping-Lemma und $z=a^nb^nc^nd^n$. 
+ Zeige dann, dass für jede Zerlegung $z=uvwxy$ gemäß dem Pumping-Lemma $uv^0wx^0y$ nicht in $L$ ist.
+\end{frame}
+\begin{frame}
+ \frametitle{Lösungshinweise für Teilaufgabe b}      
+ Teilaufgabe b) kann theoretisch mit dem Pumping-Lemma gezeigt werden (indem man als Wort $a^nb^na^nb^n$ wählt), dazu bekommt man aber eine ziemlich hässliche Fallunterscheidung.
+       Einfacher ist es, Ogden's Lemma zu benutzen: 
+       \begin{itemize}
+        \item Wähle $z=a^nb^na^nb^n$ mit $n$ gemäß Ogden's Lemma.              
+        \item Markiere die mittleren beiden Blöcke
+        \item Betrachte eine Zerlegung von $z$ gemäß Ogden's Lemma
+        \item Dann gehört mindestens einer der Buchstaben von $vx$ zu diesen mittleren Blöcken.
+        \end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Fallunterscheidung für Teilaufgabe b}
+\begin{itemize}
+        \item Fall 1: $vx$ enthält mindestens einen Buchstaben aus dem ersten $b$ Block. 
+              Dann kann $vx$ keinen Buchstaben aus dem letzten $b$ Block enthalten. 
+              Zeige jetzt, dass $uv^0wx^0y$ nicht in $L$ ist: 
+              \begin{itemize}
+                \item Annahme: $uwy=tt$
+                \item $|uwy| \geq 2n$, daraus folgt, dass $t$ mit $b^n$ endet.
+                \item Da $vx$ fehlt, gibt es aber keinen zweiten Block der Form $b^n$ in $uwy$, damit kann $t$ nicht nochmal in $uwy$ vorkommen.
+                      Also ist $uwy$ nicht in $L$.
+              \end{itemize}
+        \item Fall 2: $vx$ enthält mindestens einen Buchstaben aus dem zweiten $a$ Block. 
+              Dann kann analog zu Fall 1 argumentiert werden. 
+       \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Greibach-Normalform}
+Sei die Grammatik $G$ gegeben durch
+\begin{itemize}
+ \item $\Sigma = \{0, 1\}$
+ \item $V = \{A_1, A_2, A_3\}$
+ \item $S = A_1$
+ \item $R = \{A_1 \rightarrow A_2A_3, A_2 \rightarrow A_3A_1, A_2 \rightarrow 1, A_3 \rightarrow A_1A_2, A_3 \rightarrow 0\}$
+\end{itemize}
+
+Bringen Sie $G$ in Greibach-Normalform.
+
+\textbf{Lösung:} Siehe Skript.
 \end{frame}
 
 \input{includes/disclaimer}
