@@ -423,6 +423,7 @@ Sei $A=(Q,\Sigma, \delta, s, \{q_f\})$ ein NEA, derart dass es keine zu $s$ hinf
 
 \end{frame}
 
+\subsection{Konstruktion eines regulären Ausdrucks}
 \begin{frame}
 \frametitle{Konstruktion eines RA aus einem DEA}
 Wir wissen, jeder DEA hat einen Regulären Ausdruck, der genau die Sprache beschreibt, die der Automat akzeptiert, wie konstruiert man nun diesen RA aus dem DEA?\\[0.6cm]
@@ -841,7 +842,7 @@ Hier sind $q_2$ und $q_3$ äquivalent. Warum?
 }
 
 
-
+\subsection{Nerode-Relation}
 \begin{frame}
  \frametitle{Nerode-Relation}
  \begin{block}{Definition 2.25}
@@ -868,10 +869,13 @@ zur Sprache
 
 an, und konstruieren Sie den Automaten der Nerode-Relation.
 \end{frame}
+
+\section{Turingmaschinen und Berechenbarkeit}
+\subsection{Registermaschine}
 \begin{frame}
 \vspace{-2cm}
 \begin{block}{Registermaschine}
-Annährend realistisches Rechnermodell. Bestehend aus:
+Annähernd realistisches Rechnermodell. Bestehend aus:
  \begin{itemize}
   \item Befehlszähler (b)
   \item Akkumulator 
@@ -908,6 +912,7 @@ Der Speicher der Registermaschine ist unendlich und eindeutig adressierbar.
  %TODO RAM
 \end{frame}
 
+\subsection{Turingmaschine}
 \begin{frame}
 \frametitle{Turingmaschine}
 Eine Registermaschine ist zwar physikalischen Rechnern ähnlich, aber unhandlich um damit Beweise zu führen.
@@ -985,8 +990,7 @@ des Wortes {\tt 101}?
 getrennte Binärworte aus $\{0,1\}^*$ addiert.
 \end{frame}
 
-%Entscheidbarkeit
-\section*{}
+\subsection{Entscheidbarkeit}
 \begin{frame}
  \frametitle{Definitionen zur TM (Vorlesung)}
  \begin{enumerate}
@@ -1042,6 +1046,7 @@ getrennte Binärworte aus $\{0,1\}^*$ addiert.
 %TODO Beispiel für nicht entscheidbare Probleme
 %TODO Beispiel für Entscheidbarkeit
 
+\subsection{Universelle Turingmaschine}
 \begin{frame}
 \frametitle{Universelle Turingmaschine}
 \begin{block}{Gödelnummer}
@@ -1076,7 +1081,6 @@ entscheidbar.
 \end{enumerate}
 \end{frame}
 
-\section*{}
 \begin{frame}
  \frametitle{Aufgabe zur Semi-Entscheidbarkeit}
 Sei $L$ eine semi-entscheidbare Sprache, die nicht entscheidbar ist. Ist die
@@ -1093,7 +1097,7 @@ dann $L$ entscheidbar ist.
  Zeigen Sie, dass das Halteproblem semi-entscheidbar ist.
 \end{frame}
 
-% TM Erweiterungen
+\subsection{Erweiterungen von Turingmaschinen}
 \begin{frame}
 \frametitle{Erweiterungen von Turingmaschinen}
 \begin{block}{Erweiterungen}
@@ -1228,10 +1232,10 @@ Zeigen Sie informell, dass diese von einer einfachen
 Turingmaschine mit Zeitaufwand $O(T^2(n))$ simuliert werden kann.\\
 \end{frame}
 
-% Satz von Rice
+\subsection{Satz von Rice}
 \begin{frame}
 \frametitle{Satz von Rice}
-Der Satz von Rice sagt aus, dass es unmöglich ist eine nichttriviale Eigenschaft von Turingmaschinen algorithmisch zu entscheiden.
+Der Satz von Rice sagt aus, dass es unmöglich ist, eine nichttriviale Eigenschaft von Turingmaschinen algorithmisch zu entscheiden.
 \begin{block}{Formale Version}
 Es sei R die Klasse aller Turing-berechenbaren Funktionen und $S$ eine beliebige nichttriviale (das bedeutet $S \neq \emptyset$ und $S \neq R$) Teilmenge davon. Dann ist die Sprache
 $$ C_S = \{ i |\text{ die von $M_i$ berechnete Funktion liegt in $S$} \} $$
@@ -1254,6 +1258,8 @@ Kann man die Entscheidbarkeit der folgenden Mengen mithilfe des Satzes von Rice 
 \item Alle Turingmaschinen die überhaupt etwas auf das Band schreiben.
 \end{itemize}
 \end{frame}
+
+\subsection{Postsches Korrespondenzproblem}
 \begin{frame}
 \frametitle{Postsches Korrespondenzproblem}
 Gegeben sei einer Folge von Paaren $((x_1, y_1), (x_2, y_2), \ldots, (x_n,y_n))$ von nichtleeren Worten über einem endlichen Alphabet. Dies nennt man eine \textbf{Instanz} des PKP.
@@ -1299,6 +1305,7 @@ $ I_1 = $(2,4,3,4,4,2,1,2,4,3,4,3,4,4,3,4,4,2,1,4,\\
 \end{center}
 \end{frame}
 
+\section{Probleme}
 \begin{frame}
  \frametitle{Probleme}
  \begin{block}{Definition (Skript)}
@@ -1381,6 +1388,7 @@ Betrachten Sie die Menge der Pfade, die von $s$ nach $t$ führen, und formuliere
 Formulieren Sie ein zu Ihrem Optimierungsproblem gehörendes Entscheidungsproblem.
 \end{frame}
 
+\subsection{Kodierungsschemata}
 \begin{frame}
  \frametitle{Kodierungsschemata (VL)}
  \begin{block}{Definition Kodierungsschema}
@@ -1460,7 +1468,7 @@ $10\#101\#11 \#001\#010 \#010\#010 \#011\#001 \#100\#010 \#101\#010$
 \end{block}
 \end{frame}
 
-% TM klasse P
+\subsection{Die Klasse P}
 \begin{frame}
 \frametitle{Die Klasse $\mathcal{P}$}
 Die Klasse $\mathcal{P}$ ist definiert als die Menge aller Sprachen, die von einer (deterministischen) Turingmaschine, deren Zeitkomplexität höchstens polynomial ist, entschieden werden können.\\[6pt]
@@ -1493,7 +1501,7 @@ Beschreiben Sie kurz in Worten die Arbeitsweise einer \textbf{deterministischen}
 Geben Sie die Laufzeit Ihrer Turing-Maschine asymptotisch an. Ist $L_1$ in $\mathcal{P}$? Begründen Sie gegebenenfalls, warum $L_1$ in $\mathcal{P}$ ist.
 \end{frame}
 
-% NDTMs mit Orakelmodul
+\subsection{Nichtdeterministische Turingmaschinen}
 \begin{frame}
 \frametitle{Nichtdeterministische Turingmaschinen}
 
@@ -1513,6 +1521,7 @@ Es gibt weitere dazu äquivalente Definitionen von NDTMs:
 \end{frame}
 % NP als Klasse
 
+\subsection{Die Klasse NP}
 \begin{frame}
 \frametitle{$\mathcal{NP}$}
 \begin{block}{$\mathcal{NP}$}
@@ -1587,6 +1596,7 @@ $L_2$ ist das "schwerere" Problem. Kann man $L_2$ entscheiden, so kann man mit p
 
 
 % NP vollständigkeit
+\subsection{NP-Vollständigkeit}
 \begin{frame}
 \frametitle{$\mathcal{NP}$-Schwere}
 \begin{block}{$\mathcal{NP}$-Schwere}
@@ -1596,7 +1606,7 @@ Eine Sprache $L_1$ ist $\mathcal{NP}$-schwer gdw.
 \textbf{Anmerkung}: In diesem Sinne sind die $\mathcal{NP}$-schweren Probleme schwerer oder mindestens so schwer zu lösen wie alle Probleme in $\mathcal{NP}$.
 \end{frame}
 
-% Polyreduktion ist Trasitiv, daher ist NPC cool
+% Polyreduktion ist Transitiv, daher ist NPC cool
 \begin{frame}
 \frametitle{Transitivität von Polyreduktionen und $\mathcal{NP}$}
 Polynomiale Transformationen sind transitiv, d.h. wenn $L_1 \propto L_2$ und $L_2 \propto L_3$ dann gilt auch $L_1 \propto L_3$.\\[8pt]
@@ -2193,6 +2203,10 @@ Hinweis: Nehmen Sie dabei an, dass alle Koeffizienten $a_{ij}, b_i, c_j, B$ sowi
 \end{frame}
 
 \section{10. Tutoriumsvorschlag}
+\subsection{Chomsky-Hierarchie}
+\frame{
+}
+
 \subsection{Chomsky-Normalform}
 \frame{
 \frametitle{Chomsky-Normalform}
