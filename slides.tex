@@ -2205,6 +2205,19 @@ Hinweis: Nehmen Sie dabei an, dass alle Koeffizienten $a_{ij}, b_i, c_j, B$ sowi
 \section{10. Tutoriumsvorschlag}
 \subsection{Chomsky-Hierarchie}
 \frame{
+\frametitle{Chomsky-Hierarchie}
+Die Chomsky-Hierarchie ist eine Unterteilung von Grammatiken und den davon erzeugten Sprachen.
+\begin{block}{Definition}
+ Eine Grammatik ist ein Regelsystem, mit dem sich die Wörter einer Sprache erzeugen lassen. Sie besteht aus vier Komponenten:
+ \begin{itemize}
+  \item ein endliches \textbf{Alphabet} $\Sigma$ (auch Terminale genannt)
+  \item eine endliche Menge $V$ mit $V \cap \Sigma = \emptyset$ von \textbf{Variablen} (auch Nichtterminale genannt)
+  \item einem \textbf{Startsymbol} $S \in V$
+  \item eine endliche Menge von \textbf{Ableitungsregeln} $R$ (auch Produktionen genannt).
+  Eine Ableitungsregel ist ein Paar ($l,r)$, wobei $l \in (V \cup \Sigma)^+$ und $r \in (V \cup \Sigma)^*$ ist.
+  Wir schreiben meist $l \rightarrow r$.
+ \end{itemize}
+\end{block}
 }
 
 \subsection{Chomsky-Normalform}
