@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{ulem}
+\usepackage{ifthen}
 \usepackage{amssymb}
 \usepackage{tikz}
 \usetikzlibrary{automata}
@@ -24,10 +25,11 @@
   \maketitle
 \end{frame}
 
-\begin{frame}
-  \frametitle{Übersicht}
-  \tableofcontents
-\end{frame}
+%%%%%%%%%%%%%%%%%%%
+% Switch to render everything or only newest part.
+\ifthenelse{1=1}{}{
+%%%%%%%%%%%%%%%%%%%
+
 
 \section{Organisatorisches}
 \begin{frame}
@@ -2588,6 +2590,9 @@ Ist das Wort $abcccc$ in der Sprache $\mathcal{L}(\textit{G})$?
 \end{enumerate}
 \end{frame}
 
+% end of ifthenelse WAY up there
+}
+%
 
 \section{11. Tutoriumsvorschlag}
 % Pumping Lemma für Kontextfreie Sprachen
@@ -2625,50 +2630,69 @@ Wenn wir in $z$ mindestens $n$ Buchstaben markieren, so lässt sich $z$ so als $
 \end{frame}
 
 \begin{frame}
+\frametitle{Beweisidee}
+%TODO
+\end{frame}
+
+\begin{frame}
 \frametitle{Zu Ogden und Pumping ...}
-%genau wie anderes
+\begin{itemize}
+\item Anwendung genau wie ``altes'' Pumping Lemma
+\item Wird verwendet um zu zeigen das Sprache nicht kontextfrei ist
+\item Dazu: Kontraposition bilden und folgern das Sprache nicht Kontextfrei
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Beispiel}
-
+%TODO
 \end{frame}
 
 % Greibach-Normalform
 
 \begin{frame}
 \frametitle{Definition}
-
+%TODO
 \end{frame}
 
 \begin{frame}
 \frametitle{Zur Greibach Normalform}
-
+\begin{itemize}
+\item Weitere Normalform für CH-2 Grammatiken
+\item Zur Konstruktion von Kellerautomaten aus Grammatiken
+\item Es kann stärker aber äquivalent verlangt werden, dass auf der rechten Seite höchstens zwei Variablen vorkommen.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Beispiel mit umwandlung}
 % ist wahrscheinlich laaaaang
+%TODO
 \end{frame}
 
 % Kellerautomaten
 
 \begin{frame}
 \frametitle{Definition}
+%TODO
 
 \end{frame}
 
 \begin{frame}
 \frametitle{Zu Kellerautomaten}
+%TODO
 
 \end{frame}
 
 \begin{frame}
 \frametitle{Beispiel}
+%TODO
 
 \end{frame}
 
 
+%TODO: Aufgaben einsortieren
+%TODO: Aufgabe zu Kellerautomaten
 
 \begin{frame}
 Zeigen Sie, dass folgende Sprachen nicht kontextfrei sind:
