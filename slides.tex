@@ -4,6 +4,8 @@
 \KITfoot{Tutoriumsmaterial von Simon Stroh und Moritz v. Looz}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{ifthen}
 \usepackage{amssymb}
 \usepackage{tikz}
 \usetikzlibrary{automata}
@@ -23,10 +25,11 @@
   \maketitle
 \end{frame}
 
-\begin{frame}
-  \frametitle{Übersicht}
-  \tableofcontents
-\end{frame}
+%%%%%%%%%%%%%%%%%%%
+% Switch to render everything or only newest part.
+\ifthenelse{1=1}{}{
+%%%%%%%%%%%%%%%%%%%
+
 
 \section{Organisatorisches}
 \begin{frame}
@@ -2205,8 +2208,7 @@ Hinweis: Nehmen Sie dabei an, dass alle Koeffizienten $a_{ij}, b_i, c_j, B$ sowi
 \section{10. Tutoriumsvorschlag}
 \subsection{Chomsky-Hierarchie}
 \frame{
-\frametitle{Chomsky-Hierarchie}
-Die Chomsky-Hierarchie ist eine Unterteilung von Grammatiken und den davon erzeugten Sprachen.
+\frametitle{Grammatiken}
 \begin{block}{Definition}
  Eine Grammatik ist ein Regelsystem, mit dem sich die Wörter einer Sprache erzeugen lassen. Sie besteht aus vier Komponenten:
  \begin{itemize}
@@ -2220,23 +2222,95 @@ Die Chomsky-Hierarchie ist eine Unterteilung von Grammatiken und den davon erzeu
 \end{block}
 }
 
+\frame{
+\frametitle{Beispiel}
+\begin{exampleblock}{Beispiel: Sprache der Palindrome}
+\begin{align*}
+V = &\{S\}\\
+\Sigma = &\{0,1\}\\
+R = &\{ S \rightarrow \varepsilon \mid 0 \mid 1,\\
+       &S \rightarrow 0S0 \mid 1S1 \} 
+\end{align*}
+\end{exampleblock}
+}
+
+\frame{
+\frametitle{Chomsky-Hierarchie}
+Wir definieren Klassen von Sprachen, die von Grammatiken mit bestimmten Einschränkungen erzeugt werden:
+\begin{itemize}
+\item CH-3 Regulär/Rechtslinear
+\item CH-2 Kontextfrei
+\item CH-1 Kontextsensitiv/Längenbeschränkt
+\item CH-0 Beliebig (rekursiv aufzählbar)
+\end{itemize}
+Es gilt: $$CH-3 \subset CH-2 \subset CH-1 \subset CH-0$$
+Frage: Welche Sprachen liegen nicht in CH-0 ?
+}
+
+\frame{
+\frametitle{CH-0}
+\begin{itemize}
+\item Sprachen die von einer Beliebigen Grammatik erzeugt werden.
+\item Genau die Sprachen die DTM \& NTM akzeptieren können
+\end{itemize}
+}
+
+\frame{
+\frametitle{CH-1}
+Kontextsensitive / Längenbeschränkte Sprachen
+\begin{itemize}
+\item Sprachen die von Grammatiken erzeugt werden, deren Ableitungen eine kürzere linke als rechte Seite haben. D.h. Produktionen machen das Wort immer länger.
+\item Genau die Sprachen die von linear beschränken Turingmaschinen erkannt werden (Vorgriff?)
+\end{itemize}
+}
+
+\frame{
+\frametitle{CH-2}
+Kontextfreie Sprachen
+\begin{itemize}
+\item Grammatiken deren Ableitungsregeln auf der Linken Seite immer genau ein Nichtterminalsymbol haben.
+\item Genau die Sprachen die von Kellerautomaten erkannt werden (vorgriff)
+\end{itemize}
+}
+
+\frame{
+\frametitle{CH-3}
+\begin{itemize}
+\item Grammatiken deren Ableitungsregeln ausschließlich die folgende Form haben:
+$$A\rightarrow v \mbox{ mit } A \in V \mbox{ und } v = \varepsilon \mbox{ oder } v = aB \mbox{ mit } a \in \sum \mbox{,} B \in V$$
+\item Genau die regulären Sprachen
+\end{itemize}
+}
+
+\frame{
+\frametitle{Probleme}
+Es gibt einige Interesante Probleme, mit deren Entscheidbarkeit, Komplexität bzw Abgeschlossenheit wir uns noch befassen (jeweils für die Klassen)
+\begin{itemize}
+\item Das Wortproblem
+\item Vereinigung
+\item Schnitt
+\item Komplement
+\item Konkatenation
+\item Kleenscher Abschluss (* Operator)
+\end{itemize}
+}
+
+
 \subsection{Chomsky-Normalform}
 \frame{
 \frametitle{Chomsky-Normalform}
 CYK wird verwendet zur Lösung des Wortproblems für kontextfreie Sprachen (CH-2).
-Um CYK anzuwenden, muss die gegebene Grammatik erst in Chomsky-Normalform gebracht werden.
+Um CYK anzuwenden, muss die gegebene Grammatik erst in Chomsky-Normalform gebracht werden. Das ist für jede CH-2 Grammatik möglich.
 \
 \begin{exampleblock}{Chomsky-Normalform}
 Eine CH-2-Grammatik \textit{G} $= \mathcal{(T,V,S,P) }$ ist in Chomsky-Normalform,  wenn jede Produktion aus $\mathcal{P}$ eine der folgenden Formen hat:
 \begin{itemize}
-\item $\mathcal{S} \rightarrow \lambda$
 \item  $A \rightarrow BC$
 \item  $A \rightarrow a$
 \end{itemize}
-Wobei gilt $\mathcal{S}$ ist Startsymbol $\in \mathcal{V}$, $A,B,C\in\mathcal{V}$ und $a \in \mathcal{T}$.
-Falls $\mathcal{S} \rightarrow \lambda$ dazugehört, darf $\mathcal{S}$ nicht auf der rechten Seite einer Produktion vorkommen.
+Wobei gilt $A,B,C\in\mathcal{V}$ und $a \in \mathcal{T}$.
+Um das Leere Wort in der Sprache zu erlauben, lässt sich die Grammatik leicht mit neuem Startsymbol$S'$ ergänzen mit der Regel $$ S' \rightarrow S \mid \varepsilon $$
 \end{exampleblock}
-\emph{Bemerkung}: Da $\mathcal{S} \in \mathcal{V}$, ist somit natürlich auch $\mathcal{S} \rightarrow BC \mid a$ möglich.
 }
 
 
@@ -2251,13 +2325,14 @@ wird jedes Vorkommen von $\textcolor{red}{a}$ durch ein \emph{neues} Nichttermin
 und die Produktion $\textcolor{blue}{A} \rightarrow \textcolor{red}{a}$ wird hinzugefügt.
 \end{enumerate}
 
-\begin{exampleblock}{Umwandlungsbeispiel (Schritt 1 von 3)}
+\begin{exampleblock}{Umwandlungsbeispiel (Schritt 1 von 4)}
 \begin{columns}[c]
 \begin{column}{0.3\textwidth}
 \begin{align*}
 \mathcal{S} &\rightarrow XY\\
-X &\rightarrow \textcolor{red}{a}X\textcolor{red}{b} \mid \lambda\\
-Y &\rightarrow \textcolor{red}{cc}Y \mid \lambda
+X &\rightarrow \textcolor{red}{a}X\textcolor{red}{b} \mid Z \mid \varepsilon\\
+Y &\rightarrow \textcolor{red}{cc}Y \mid \varepsilon\\
+Z &\rightarrow X\\
 \end{align*}
 \end{column}
 %
@@ -2269,8 +2344,9 @@ $\Rightarrow$
 \begin{column}{0.3\textwidth}
 \begin{align*}
 \mathcal{S} &\rightarrow XY\\
-X &\rightarrow \textcolor{blue}{A}X\textcolor{blue}{B} \mid \lambda\\
-Y &\rightarrow \textcolor{blue}{CC}Y \mid \lambda\\
+X &\rightarrow \textcolor{blue}{A}X\textcolor{blue}{B} \mid Z \mid \varepsilon\\
+Y &\rightarrow \textcolor{blue}{CC}Y \mid \varepsilon\\
+Z &\rightarrow X\\
 \textcolor{blue}{A} &\rightarrow \textcolor{red}{a}\\
 \textcolor{blue}{B} &\rightarrow \textcolor{red}{b}\\
 \textcolor{blue}{C} &\rightarrow \textcolor{red}{c}\\
@@ -2284,21 +2360,22 @@ Y &\rightarrow \textcolor{blue}{CC}Y \mid \lambda\\
 \frametitle{Umwandlung in Chomsky-Normalform}
 \begin{enumerate}
 \setcounter{enumi}{1}
-\item %Die Grammatik $\lambda$-frei machen, d. h. $\lambda$ darf nur bei $\mathcal{S} \rightarrow \lambda$ vorkommen.
-In diesem Schritt werden alle Produktionen der Form $\textcolor{red}{V} \rightarrow \textcolor{red}{\lambda}$
+\item %Die Grammatik $\varepsilon$-frei machen, d. h. $\varepsilon$ darf nur bei $\mathcal{S} \rightarrow \varepsilon$ vorkommen.
+In diesem Schritt werden alle Produktionen der Form $\textcolor{red}{V} \rightarrow \textcolor{red}{\varepsilon}$
 f"ur $V \in \mathcal{V}, V \not= \mathcal{S}$ entfernt. Dazu müssen diese Produktion aber
 vorher \emph{rekursiv} durch ihre ``Vorwegnahme'' mit den anderen Produktionen
 ``verschmolzen'' werden, es wird also für jede Produktion mit einem der obigen $V$
 auf der rechten Seite eine \textcolor{blue}{neue Produktion} ohne dieses $V$ hinzugefügt.
 \end{enumerate}
 
-\begin{exampleblock}{Umwandlungsbeispiel (Schritt 2 von 3)}
+\begin{exampleblock}{Umwandlungsbeispiel (Schritt 2 von 4)}
 \begin{columns}[c]
 \begin{column}{0.3\textwidth}
 \begin{align*}
 \mathcal{S} &\rightarrow XY\\
-\textcolor{red}{X} &\rightarrow AXB \mid \textcolor{red}{\lambda}\\
-\textcolor{red}{Y} &\rightarrow CCY \mid \textcolor{red}{\lambda}\\
+\textcolor{red}{X} &\rightarrow AXB \mid Z \mid \textcolor{red}{\varepsilon}\\
+\textcolor{red}{Y} &\rightarrow CCY \mid \textcolor{red}{\varepsilon}\\
+Z &\rightarrow X\\
 A &\rightarrow a\\
 B &\rightarrow b\\
 C &\rightarrow c\\
@@ -2312,9 +2389,10 @@ $\Rightarrow$
 %
 \begin{column}{0.3\textwidth}
 \begin{align*}
-\textcolor{blue}{\mathcal{S}} &\rightarrow XY \mid \textcolor{blue}{X} \mid  \textcolor{blue}{Y} \mid \textcolor{blue}{\lambda}\\
-\textcolor{blue}{X} &\rightarrow AXB \mid \textcolor{blue}{AB} \\
+\textcolor{blue}{\mathcal{S}} &\rightarrow XY \mid \textcolor{blue}{X} \mid  \textcolor{blue}{Y} \mid \textcolor{blue}{\sout{\varepsilon}}\\
+\textcolor{blue}{X} &\rightarrow AXB \mid \textcolor{blue}{AB} \mid Z \\
 \textcolor{blue}{Y} &\rightarrow CCY \mid \textcolor{blue}{CC}\\
+Z &\rightarrow X\\
 A &\rightarrow a\\
 B &\rightarrow b\\
 C &\rightarrow c\\
@@ -2330,21 +2408,20 @@ C &\rightarrow c\\
 \frametitle{Umwandlung in Chomsky-Normalform}
 \begin{enumerate}
 \setcounter{enumi}{2}
-\item Für rechte Seiten mit nur \textcolor{red}{einer
-einzigen oder mehr als zwei Variablen} gilt:
-Bei einzelnen Variablen werden diese Produktionen wieder durch ihre ``Vorwegnahme'' mit
-den anderen Produktionen ``verschmolzen''. Für Produktionen mit mehr als zwei
+\item
+Für Produktionen mit mehr als zwei
 Variablen rechts werden \textcolor{blue}{ \emph{neue} Nichterminale} eingeführt
 und dazu \textcolor{blue}{passende Produktionen} hinzugefügt.
 \end{enumerate}
 
-\begin{exampleblock}{Umwandlungsbeispiel (Schritt 3 von 3)}
+\begin{exampleblock}{Umwandlungsbeispiel (Schritt 3 von 4)}
 \begin{columns}[c]
 \begin{column}{0.3\textwidth}
 \begin{align*}
-\mathcal{S} &\rightarrow XY \mid \textcolor{red}{X} \mid  \textcolor{red}{Y} \mid \lambda\\
-X &\rightarrow \textcolor{red}{AXB} \mid AB \\
+\mathcal{S} &\rightarrow XY \mid X \mid  Y \\
+X &\rightarrow \textcolor{red}{AXB} \mid AB \mid Z \\
 Y &\rightarrow \textcolor{red}{CCY} \mid CC\\
+Z &\rightarrow X\\
 A &\rightarrow a\\
 B &\rightarrow b\\
 C &\rightarrow c\\
@@ -2358,9 +2435,10 @@ $\Rightarrow$
 %
 \begin{column}{0.3\textwidth}
 \begin{align*}
-\mathcal{S} &\rightarrow XY \mid \textcolor{blue}{FB} \mid \textcolor{blue}{AB} \mid  \textcolor{blue}{GY}\mid \textcolor{blue}{CC} \mid \lambda\\
-X &\rightarrow \textcolor{blue}{FB} \mid AB \\
+\mathcal{S} &\rightarrow XY \mid X \mid  Y\\
+X &\rightarrow \textcolor{blue}{FB} \mid AB \mid Z \\
 Y &\rightarrow \textcolor{blue}{GY} \mid CC\\
+Z &\rightarrow X\\
 \textcolor{blue}{F} &\rightarrow \textcolor{blue}{AX}\\
 \textcolor{blue}{G} &\rightarrow \textcolor{blue}{CC}\\
 A &\rightarrow a\\
@@ -2372,15 +2450,118 @@ C &\rightarrow c\\
 \end{exampleblock}
 }
 
-\newcommand{\cyksymbol}[3]
-{
-  \draw (#2*#1-#1*0.5,-0.25) node {#3};
+\frame{
+\frametitle{Umwandlung in Chomsky-Normalform}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item
+Für Produktionen mit einer Variablen rechts werden Zyklen gesucht, 
+für gefundene Zyklen werden alle vorkomnisse aller Variablen des Zykluses durch einen Repräsentanten ausgetauscht. Danach werden triviale Produktionen entfernt.
+\end{enumerate}
+
+\begin{exampleblock}{Umwandlungsbeispiel (Schritt 4a von 4)}
+\begin{columns}[c]
+\begin{column}{0.3\textwidth}
+\begin{align*}
+\mathcal{S} &\rightarrow XY \mid X \mid  Y\\
+\textcolor{red}{X} &\rightarrow FB \mid AB \mid \textcolor{red}{Z} \\
+Y &\rightarrow GY \mid CC\\
+\textcolor{red}{Z} &\rightarrow \textcolor{red}{X}\\
+F &\rightarrow AX\\
+G &\rightarrow CC\\
+A &\rightarrow a\\
+B &\rightarrow b\\
+C &\rightarrow c\\
+\end{align*}
+\end{column}
+%
+\
+\begin{column}{0.05\textwidth}
+$\Rightarrow$
+\end{column}
+%
+\begin{column}{0.3\textwidth}
+\begin{align*}
+\mathcal{S} &\rightarrow XY \mid X \mid  Y\\
+\textcolor{blue}{X} &\rightarrow \textcolor{blue}{FB} \mid AB \mid \sout{\textcolor{blue}{X}} \\
+Y &\rightarrow GY \mid CC\\
+\sout{\textcolor{blue}{X}} &\rightarrow \sout{\textcolor{blue}{X}}\\
+F &\rightarrow AX\\
+G &\rightarrow CC\\
+A &\rightarrow a\\
+B &\rightarrow b\\
+C &\rightarrow c\\
+\end{align*}
+\end{column}
+\end{columns}
+\end{exampleblock}
 }
-\newcommand{\cykfield}[4]
-{
-  \draw 	(#2*#1-#1+#3*#1*0.5-#1*0.5 , #3*0.5-0.5) rectangle
-		(#2*#1 +#3*#1*0.5-#1*0.5,  #3*0.5    );
-  \draw 	(#2*#1-#1+#3*#1*0.5       ,#3*0.5-0.5+0.25) node{$#4$};
+
+\frame{
+\frametitle{Umwandlung in Chomsky-Normalform}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item
+Sind alle Zyklen beseitigt, werden im letzen schritt alle Regeln die rechts eine einzelne Variable haben durch ``Vorziehen'' der Regeln eliminiert. (Sollte $\varepsilon$ produktion Fehlen, wird diese nun eingefügt.
+\end{enumerate}
+
+\begin{exampleblock}{Umwandlungsbeispiel (Schritt 4b von 4)}
+\begin{columns}[c]
+\begin{column}{0.3\textwidth}
+\begin{align*}
+\mathcal{S} &\rightarrow XY \mid \textcolor{red}{X} \mid  \textcolor{red}{Y}\\
+X &\rightarrow FB \mid AB \\
+Y &\rightarrow GY \mid CC\\
+F &\rightarrow AX\\
+G &\rightarrow CC\\
+A &\rightarrow a\\
+B &\rightarrow b\\
+C &\rightarrow c\\
+\end{align*}
+\end{column}
+%
+\
+\begin{column}{0.05\textwidth}
+$\Rightarrow$
+\end{column}
+%
+\begin{column}{0.3\textwidth}
+\begin{align*}
+\mathcal{S} &\rightarrow XY \mid \textcolor{blue}{FB} \mid \textcolor{blue}{AB} \mid \textcolor{blue}{GY} \mid \textcolor{blue}{CC}\\
+X &\rightarrow FB \mid AB \\
+Y &\rightarrow GY \mid CC\\
+F &\rightarrow AX\\
+G &\rightarrow CC\\
+A &\rightarrow a\\
+B &\rightarrow b\\
+C &\rightarrow c\\
+\end{align*}
+\end{column}
+\end{columns}
+\end{exampleblock}
+}
+
+\begin{frame}
+Sei $G=(\Sigma,V,S,R)$ die CH-2-Grammatik mit $\Sigma = \{a,b\}$, $V=\{A,B,C,D,E,S\}$ und der folgenden Regelmenge $R$:
+\begin{eqnarray*}
+S & \rightarrow & A \;|\; aAa  \;|\; bBb  \;|\; \varepsilon \\
+A & \rightarrow & C \;|\; a \\
+B & \rightarrow & C \;|\; b \\
+C & \rightarrow & CDE \;|\; \varepsilon \\
+D & \rightarrow & A \;|\; B \;|\; ab \\
+E & \rightarrow & S
+\end{eqnarray*}
+Bestimme eine Grammatik $G'$ für $L(G)$ in Chomsky-Normalform.
+\end{frame}
+
+\frame{
+\frametitle{CYK Überblick}
+CYK ist ein Algorithmus um das Wortproblem in CH-2 zu lösen. Um den Algorithmus anzuwenden, muss eine Grammatik in Chomsky-Normalform vorliegen.\\
+Grundidee:
+\begin{itemize}
+\item Überprüfe für jedes Teilwort in aufsteigenden Länge aus welchen nichtterminalen es erzeugt werden kann.
+\item $\rightarrow$ Tafel
+\end{itemize}
 }
 
 \frame{
@@ -2399,67 +2580,6 @@ C &\rightarrow c\\
 Ist das Wort $abcccc$ in der Sprache $\mathcal{L}(\textit{G})$?
 }
 
-\frame{
-\frametitle{CYK}
-\begin{center}
-\begin{tikzpicture}[line width=1pt]
-\def\breite{1.3}
-
-\cyksymbol{\breite}{1}{a}
-\cyksymbol{\breite}{2}{b}
-\cyksymbol{\breite}{3}{c}
-\cyksymbol{\breite}{4}{c}
-\cyksymbol{\breite}{5}{c}
-\cyksymbol{\breite}{6}{c}
-
-\cykfield{\breite}{1}{1}{A}
-\cykfield{\breite}{2}{1}{B}
-\cykfield{\breite}{3}{1}{C}
-\cykfield{\breite}{4}{1}{C}
-\cykfield{\breite}{5}{1}{C}
-\cykfield{\breite}{6}{1}{C}
-
-\cykfield{\breite}{1}{2}{\mathcal{S},X}
-\cykfield{\breite}{2}{2}{}
-\cykfield{\breite}{3}{2}{\mathcal{S},Y,G}
-\cykfield{\breite}{4}{2}{\mathcal{S},Y,G}
-\cykfield{\breite}{5}{2}{\mathcal{S},Y,G}
-
-
-\cykfield{\breite}{1}{3}{}
-\cykfield{\breite}{2}{3}{}
-\cykfield{\breite}{3}{3}{}
-\cykfield{\breite}{4}{3}{}
-
-
-\cykfield{\breite}{1}{4}{\mathcal{S}}
-\cykfield{\breite}{2}{4}{}
-\cykfield{\breite}{3}{4}{\mathcal{S},Y}
-
-\cykfield{\breite}{1}{5}{}
-\cykfield{\breite}{2}{5}{}
-
-\cykfield{\breite}{1}{6}{\mathcal{S}}
-\end{tikzpicture}
-\end{center}
-
-In der Spitze steht das Startsymbol $\mathcal{S}$, also kann man das Wort mit den gegebenen Produktionen ableiten.
-Es ist somit in der Sprache enthalten.
-}
-
-\begin{frame}
-Sei $G=(\Sigma,V,S,R)$ die CH-2-Grammatik mit $\Sigma = \{a,b\}$, $V=\{A,B,C,D,E,S\}$ und der folgenden Regelmenge $R$:
-\begin{eqnarray*}
-S & \rightarrow & A \;|\; aAa  \;|\; bBb  \;|\; \varepsilon \\
-A & \rightarrow & C \;|\; a \\
-B & \rightarrow & C \;|\; b \\
-C & \rightarrow & CDE \;|\; \varepsilon \\
-D & \rightarrow & A \;|\; B \;|\; ab \\
-E & \rightarrow & S
-\end{eqnarray*}
-Bestimme eine Grammatik $G'$ für $L(G)$ in Chomsky-Normalform.
-\end{frame}
-
 \begin{frame}
 \begin{enumerate}
 \item Bestimme eine möglichst kurze Grammatik $G_R$ für reguläre Ausdrücke über dem Alphabet $\Sigma = \{0,1\}$ mit maximalem Chomsky-Typ.
@@ -2470,11 +2590,124 @@ Bestimme eine Grammatik $G'$ für $L(G)$ in Chomsky-Normalform.
 \end{enumerate}
 \end{frame}
 
-\begin{frame}
-Modifiziere den CYK-Algorithmus so, dass er nicht einfach nur feststellt, ob eine Eingabe in der Sprache enthalten ist, sondern zusätzlich einen Syntaxbaum ermittelt.
-\end{frame}
+% end of ifthenelse WAY up there
+}
+%
 
 \section{11. Tutoriumsvorschlag}
+% Pumping Lemma für Kontextfreie Sprachen
+\begin{frame}
+\frametitle{Pumping-Lemma für kontextfreie Sprachen}
+\begin{exampleblock}{Lemma}
+Für jede kontextfreie Srache $L$ gibt es eine Konstante $n \in \mathbb{N}$,
+so dass sich jedes Wort $z \in L$ mit $|z| \geq n$ so als
+$$ z = uvwxy $$
+schreiben lässt, dass
+\begin{itemize}
+\item $|vx| \geq 1$,
+\item $|vwx| \leq n$ und
+\item für alle $i \geq 0$ das Wort $uv^iwx^iy \in L$ ist.
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+% Ogdens Lemma
+\begin{frame}
+\frametitle{Ogden's Lemma für kontextfreie Sprachen}
+\begin{exampleblock}{Lemma}
+Für jede kontextfreie Sprache $L$
+gibt es eine Konstante $n \in \mathbb{N}$ so dass für jedes Wort $z \in L$ mit $|z| \geq n$ gilt:\\
+Wenn wir in $z$ mindestens $n$ Buchstaben markieren, so lässt sich $z$ so als $z = uvwxy$ schreiben,
+\begin{itemize}
+\item dass von den mindestens $n$ markierten Buchstaben
+\begin{itemize}
+\item mindestens einer zu $vx$ gehört und
+\item höchstens $n$ zu $vwx$ gehören und
+\end{itemize}
+\item für alle $i \geq 0$ das Wort $uv^iwx^iy \in L$ ist.
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{Beweisidee}
+%TODO
+\end{frame}
+
+\begin{frame}
+\frametitle{Zu Ogden und Pumping ...}
+\begin{itemize}
+\item Anwendung genau wie ``altes'' Pumping Lemma
+\item Wird verwendet um zu zeigen das Sprache nicht kontextfrei ist
+\item Dazu: Kontraposition bilden und folgern das Sprache nicht Kontextfrei
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Beispiel}
+%TODO
+\end{frame}
+
+% Greibach-Normalform
+
+\begin{frame}
+\frametitle{Greibach Normalform}
+\begin{exampleblock}{Definition}
+Eine kontextfreie Grammatik ist in \textbf{Greibach-Normalform}, wenn all Ableitungsregeln von der Form 
+$$ A \rightarrow a\alpha \text{ mit } A \in V\text{,} a\in \Sigma \text{ und } \alpha \in V^*$$
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{Zur Greibach Normalform}
+\begin{itemize}
+\item Weitere Normalform für CH-2 Grammatiken, d.h. jede Grammatik kann in Greibachnormalform gebracht werden
+\item Zur Konstruktion von Kellerautomaten aus Grammatiken
+\item Es kann stärker aber äquivalent verlangt werden, dass auf der rechten Seite höchstens zwei Variablen vorkommen.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Beispiel mit Umwandlung}
+% ist wahrscheinlich laaaaang
+%TODO
+\end{frame}
+
+% Kellerautomaten
+
+\begin{frame}
+\frametitle{Definition}
+Ein (nichtdeterministischer) \textbf{Kellerautomat} (NPDA bzw PDA, Pushdown Automaton) besteht aus $(Q, \Sigma, \Gamma, q_0, Z_0,\delta, F)$, wobei
+\begin{itemize}
+\item $Q$ endliche Zustandsmenge
+\item $\Sigma$ endliches Eingabealphabet
+\item $\Gamma$ endliches STACK-Alphabet
+\item $q_0 \in Q$ Anfangszustand
+\item $Z_0 \in \Gamma$ Initialisierung des STACK
+\item $\delta : Q \times ( \Sigma \cup \{\varepsilon\}) \times \Gamma \rightarrow 2^{Q \times \Gamma^*}$
+\begin{itemize}
+\item $\delta(q, a, Z) \subseteq \{(q,\gamma) : q \in Q, \gamma \in \Gamma^*\}$
+\item $\delta(q, \varepsilon, Z) \subseteq \{(q,\gamma) : q \in Q, \gamma \in \Gamma^*\}$
+\end{itemize}
+\item $F \subseteq Q$ Menge der akzeptierenden Endzustände, $F=\emptyset$ ist möglich.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Zu Kellerautomaten}
+%TODO
+\end{frame}
+
+\begin{frame}
+\frametitle{Beispiel}
+%TODO
+
+\end{frame}
+
+
+%TODO: Aufgaben einsortieren
+%TODO: Aufgabe zu Kellerautomaten
+
 \begin{frame}
  \frametitle{Pumping Lemma für kontextfreie Sprachen}
  Das Pumping Lemma, bekannt von den regulären Sprachen, kann für die kontextfreien Sprachen angepasst werden.
