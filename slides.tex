@@ -2588,11 +2588,49 @@ Ist das Wort $abcccc$ in der Sprache $\mathcal{L}(\textit{G})$?
 \end{enumerate}
 \end{frame}
 
-%\begin{frame}
-%Modifiziere den CYK-Algorithmus so, dass er nicht einfach nur feststellt, ob eine Eingabe in der Sprache enthalten ist, sondern zusätzlich einen Syntaxbaum ermittelt.
-%\end{frame}
 
 \section{11. Tutoriumsvorschlag}
+% Pumping Lemma für Kontextfreie Sprachen
+\begin{frame}
+\frametitle{Pumping-Lemma für kontextfreie Sprachen}
+\begin{exampleblock}{Lemma}
+Für jede kontextfreie Srache $L$ gibt es eine Konstante $n \in \mathbb{N}$,
+so dass sich jedes Wort $z \in L$ mit $|z| \geq n$ so als
+$$ z = uvwxy $$
+schreiben lässt, dass
+\begin{itemize}
+\item $|vx| \geq 1$,
+\item $|vwx| \leq n$ und
+\item für alle $i \geq 0$ das Wort $uv^iwx^iy \in L$ ist.
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+% Ogdens Lemma
+\begin{frame}
+\frametitle{Ogden's Lemma für kontextfreie Sprachen}
+\begin{exampleblock}{Lemma}
+Für jede kontextfreie Sprache $L$
+gibt es eine Konstante $n \in \mathbb{N}$ so dass für jedes Wort $z \in L$ mit $|z| \geq n$ gilt:\\
+Wenn wir in $z$ mindestens $n$ Buchstaben markieren, so lässt sich $z$ so als $z = uvwxy$ schreiben,
+\begin{itemize}
+\item dass von den mindestens $n$ markierten Buchstaben
+\begin{itemize}
+\item mindestens einer zu $vx$ gehört und
+\item höchstens $n$ zu $vwx$ gehören und
+\end{itemize}
+\item für alle $i \geq 0$ das Wort $uv^iwx^iy \in L$ ist.
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+
+% Greibach-Normalform
+
+
+% Kellerautomaten
+
+
 \begin{frame}
 Zeigen Sie, dass folgende Sprachen nicht kontextfrei sind:
 \begin{enumerate}
