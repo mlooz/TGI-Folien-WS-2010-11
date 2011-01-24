@@ -2651,14 +2651,17 @@ Wenn wir in $z$ mindestens $n$ Buchstaben markieren, so lässt sich $z$ so als $
 % Greibach-Normalform
 
 \begin{frame}
-\frametitle{Definition}
-%TODO
+\frametitle{Greibach Normalform}
+\begin{exampleblock}{Definition}
+Eine kontextfreie Grammatik ist in \textbf{Greibach-Normalform}, wenn all Ableitungsregeln von der Form 
+$$ A \rightarrow a\alpha \text{ mit } A \in V\text{,} a\in \Sigma \text{ und } \alpha \in V^*$$
+\end{exampleblock}
 \end{frame}
 
 \begin{frame}
 \frametitle{Zur Greibach Normalform}
 \begin{itemize}
-\item Weitere Normalform für CH-2 Grammatiken
+\item Weitere Normalform für CH-2 Grammatiken, d.h. jede Grammatik kann in Greibachnormalform gebracht werden
 \item Zur Konstruktion von Kellerautomaten aus Grammatiken
 \item Es kann stärker aber äquivalent verlangt werden, dass auf der rechten Seite höchstens zwei Variablen vorkommen.
 \end{itemize}
@@ -2674,8 +2677,20 @@ Wenn wir in $z$ mindestens $n$ Buchstaben markieren, so lässt sich $z$ so als $
 
 \begin{frame}
 \frametitle{Definition}
-%TODO
-
+Ein (nichtdeterministischer) \textbf{Kellerautomat} (NPDA bzw PDA, Pushdown Automaton) besteht aus $(Q, \Sigma, \Gamma, q_0, Z_0,\delta, F)$, wobei
+\begin{itemize}
+\item $Q$ endliche Zustandsmenge
+\item $\Sigma$ endliches Eingabealphabet
+\item $\Gamma$ endliches STACK-Alphabet
+\item $q_0 \in Q$ Anfangszustand
+\item $Z_0 \in \Gamma$ Initialisierung des STACK
+\item $\delta : Q \times ( \Sigma \cup \{\varepsilon\}) \times \Gamma \rightarrow 2^{Q \times \Gamma^*}$
+\begin{itemize}
+\item $\delta(q, a, Z) \subseteq \{(q,\gamma) : q \in Q, \gamma \in \Gamma^*\}$
+\item $\delta(q, \varepsilon, Z) \subseteq \{(q,\gamma) : q \in Q, \gamma \in \Gamma^*\}$
+\end{itemize}
+\item $F \subseteq Q$ Menge der akzeptierenden Endzustände, $F=\emptyset$ ist möglich.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
