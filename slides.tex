@@ -424,6 +424,7 @@ Sei $A=(Q,\Sigma, \delta, s, \{q_f\})$ ein NEA, derart dass es keine zu $s$ hinf
 
 \end{frame}
 
+\subsection{Konstruktion eines regulären Ausdrucks}
 \begin{frame}
 \frametitle{Konstruktion eines RA aus einem DEA}
 Wir wissen, jeder DEA hat einen Regulären Ausdruck, der genau die Sprache beschreibt, die der Automat akzeptiert, wie konstruiert man nun diesen RA aus dem DEA?\\[0.6cm]
@@ -842,7 +843,7 @@ Hier sind $q_2$ und $q_3$ äquivalent. Warum?
 }
 
 
-
+\subsection{Nerode-Relation}
 \begin{frame}
  \frametitle{Nerode-Relation}
  \begin{block}{Definition 2.25}
@@ -869,10 +870,13 @@ zur Sprache
 
 an, und konstruieren Sie den Automaten der Nerode-Relation.
 \end{frame}
+
+\section{Turingmaschinen und Berechenbarkeit}
+\subsection{Registermaschine}
 \begin{frame}
 \vspace{-2cm}
 \begin{block}{Registermaschine}
-Annährend realistisches Rechnermodell. Bestehend aus:
+Annähernd realistisches Rechnermodell. Bestehend aus:
  \begin{itemize}
   \item Befehlszähler (b)
   \item Akkumulator 
@@ -909,6 +913,7 @@ Der Speicher der Registermaschine ist unendlich und eindeutig adressierbar.
  %TODO RAM
 \end{frame}
 
+\subsection{Turingmaschine}
 \begin{frame}
 \frametitle{Turingmaschine}
 Eine Registermaschine ist zwar physikalischen Rechnern ähnlich, aber unhandlich um damit Beweise zu führen.
@@ -986,8 +991,7 @@ des Wortes {\tt 101}?
 getrennte Binärworte aus $\{0,1\}^*$ addiert.
 \end{frame}
 
-%Entscheidbarkeit
-\section*{}
+\subsection{Entscheidbarkeit}
 \begin{frame}
  \frametitle{Definitionen zur TM (Vorlesung)}
  \begin{enumerate}
@@ -1043,6 +1047,7 @@ getrennte Binärworte aus $\{0,1\}^*$ addiert.
 %TODO Beispiel für nicht entscheidbare Probleme
 %TODO Beispiel für Entscheidbarkeit
 
+\subsection{Universelle Turingmaschine}
 \begin{frame}
 \frametitle{Universelle Turingmaschine}
 \begin{block}{Gödelnummer}
@@ -1077,7 +1082,6 @@ entscheidbar.
 \end{enumerate}
 \end{frame}
 
-\section*{}
 \begin{frame}
  \frametitle{Aufgabe zur Semi-Entscheidbarkeit}
 Sei $L$ eine semi-entscheidbare Sprache, die nicht entscheidbar ist. Ist die
@@ -1094,7 +1098,7 @@ dann $L$ entscheidbar ist.
  Zeigen Sie, dass das Halteproblem semi-entscheidbar ist.
 \end{frame}
 
-% TM Erweiterungen
+\subsection{Erweiterungen von Turingmaschinen}
 \begin{frame}
 \frametitle{Erweiterungen von Turingmaschinen}
 \begin{block}{Erweiterungen}
@@ -1229,10 +1233,10 @@ Zeigen Sie informell, dass diese von einer einfachen
 Turingmaschine mit Zeitaufwand $O(T^2(n))$ simuliert werden kann.\\
 \end{frame}
 
-% Satz von Rice
+\subsection{Satz von Rice}
 \begin{frame}
 \frametitle{Satz von Rice}
-Der Satz von Rice sagt aus, dass es unmöglich ist eine nichttriviale Eigenschaft von Turingmaschinen algorithmisch zu entscheiden.
+Der Satz von Rice sagt aus, dass es unmöglich ist, eine nichttriviale Eigenschaft von Turingmaschinen algorithmisch zu entscheiden.
 \begin{block}{Formale Version}
 Es sei R die Klasse aller Turing-berechenbaren Funktionen und $S$ eine beliebige nichttriviale (das bedeutet $S \neq \emptyset$ und $S \neq R$) Teilmenge davon. Dann ist die Sprache
 $$ C_S = \{ i |\text{ die von $M_i$ berechnete Funktion liegt in $S$} \} $$
@@ -1255,6 +1259,8 @@ Kann man die Entscheidbarkeit der folgenden Mengen mithilfe des Satzes von Rice 
 \item Alle Turingmaschinen die überhaupt etwas auf das Band schreiben.
 \end{itemize}
 \end{frame}
+
+\subsection{Postsches Korrespondenzproblem}
 \begin{frame}
 \frametitle{Postsches Korrespondenzproblem}
 Gegeben sei einer Folge von Paaren $((x_1, y_1), (x_2, y_2), \ldots, (x_n,y_n))$ von nichtleeren Worten über einem endlichen Alphabet. Dies nennt man eine \textbf{Instanz} des PKP.
@@ -1300,6 +1306,7 @@ $ I_1 = $(2,4,3,4,4,2,1,2,4,3,4,3,4,4,3,4,4,2,1,4,\\
 \end{center}
 \end{frame}
 
+\section{Probleme}
 \begin{frame}
  \frametitle{Probleme}
  \begin{block}{Definition (Skript)}
@@ -1382,6 +1389,7 @@ Betrachten Sie die Menge der Pfade, die von $s$ nach $t$ führen, und formuliere
 Formulieren Sie ein zu Ihrem Optimierungsproblem gehörendes Entscheidungsproblem.
 \end{frame}
 
+\subsection{Kodierungsschemata}
 \begin{frame}
  \frametitle{Kodierungsschemata (VL)}
  \begin{block}{Definition Kodierungsschema}
@@ -1461,7 +1469,7 @@ $10\#101\#11 \#001\#010 \#010\#010 \#011\#001 \#100\#010 \#101\#010$
 \end{block}
 \end{frame}
 
-% TM klasse P
+\subsection{Die Klasse P}
 \begin{frame}
 \frametitle{Die Klasse $\mathcal{P}$}
 Die Klasse $\mathcal{P}$ ist definiert als die Menge aller Sprachen, die von einer (deterministischen) Turingmaschine, deren Zeitkomplexität höchstens polynomial ist, entschieden werden können.\\[6pt]
@@ -1494,7 +1502,7 @@ Beschreiben Sie kurz in Worten die Arbeitsweise einer \textbf{deterministischen}
 Geben Sie die Laufzeit Ihrer Turing-Maschine asymptotisch an. Ist $L_1$ in $\mathcal{P}$? Begründen Sie gegebenenfalls, warum $L_1$ in $\mathcal{P}$ ist.
 \end{frame}
 
-% NDTMs mit Orakelmodul
+\subsection{Nichtdeterministische Turingmaschinen}
 \begin{frame}
 \frametitle{Nichtdeterministische Turingmaschinen}
 
@@ -1514,6 +1522,7 @@ Es gibt weitere dazu äquivalente Definitionen von NDTMs:
 \end{frame}
 % NP als Klasse
 
+\subsection{Die Klasse NP}
 \begin{frame}
 \frametitle{$\mathcal{NP}$}
 \begin{block}{$\mathcal{NP}$}
@@ -1588,6 +1597,7 @@ $L_2$ ist das "schwerere" Problem. Kann man $L_2$ entscheiden, so kann man mit p
 
 
 % NP vollständigkeit
+\subsection{NP-Vollständigkeit}
 \begin{frame}
 \frametitle{$\mathcal{NP}$-Schwere}
 \begin{block}{$\mathcal{NP}$-Schwere}
@@ -1597,7 +1607,7 @@ Eine Sprache $L_1$ ist $\mathcal{NP}$-schwer gdw.
 \textbf{Anmerkung}: In diesem Sinne sind die $\mathcal{NP}$-schweren Probleme schwerer oder mindestens so schwer zu lösen wie alle Probleme in $\mathcal{NP}$.
 \end{frame}
 
-% Polyreduktion ist Trasitiv, daher ist NPC cool
+% Polyreduktion ist Transitiv, daher ist NPC cool
 \begin{frame}
 \frametitle{Transitivität von Polyreduktionen und $\mathcal{NP}$}
 Polynomiale Transformationen sind transitiv, d.h. wenn $L_1 \propto L_2$ und $L_2 \propto L_3$ dann gilt auch $L_1 \propto L_3$.\\[8pt]
@@ -2193,21 +2203,21 @@ Formulieren Sie DOMINATING SET als \emph{Integer Program}
 Hinweis: Nehmen Sie dabei an, dass alle Koeffizienten $a_{ij}, b_i, c_j, B$ sowie die Variablen $x_i$ in $\mathbb{Z}$ liegen. Das bedeutet, dass auch negative Koeffizienten erlaubt sind.  
 \end{frame}
 
-% Grammatiken
+\section{10. Tutoriumsvorschlag}
+\subsection{Chomsky-Hierarchie}
 \frame{
-\frametitle{Definition}
-\begin{exampleblock}{Definition}
-        Eine Grammatik $G$ ist ein 4-Tupel
-        \[ (\mathcal{\sum}, \mathcal{V}, S, \mathcal{R}).  \]
-            
-        \begin{itemize}
-        \item $\mathcal{\sum}$:  endliches Terminalalphabet  
-        \item $\mathcal{V}$:  endliches Nichtterminal/Variablenalphabet  
-        \item $S$:    Startsymbol  
-        \item $\mathcal{R}$:  endlich viele Produktionen
-        \end{itemize}
-\end{exampleblock}
-Wir schreiben $L(G)$ für die Sprache die von der Grammatik $G$ erzeugt wird.
+\frametitle{Grammatiken}
+\begin{block}{Definition}
+ Eine Grammatik ist ein Regelsystem, mit dem sich die Wörter einer Sprache erzeugen lassen. Sie besteht aus vier Komponenten:
+ \begin{itemize}
+  \item ein endliches \textbf{Alphabet} $\Sigma$ (auch Terminale genannt)
+  \item eine endliche Menge $V$ mit $V \cap \Sigma = \emptyset$ von \textbf{Variablen} (auch Nichtterminale genannt)
+  \item einem \textbf{Startsymbol} $S \in V$
+  \item eine endliche Menge von \textbf{Ableitungsregeln} $R$ (auch Produktionen genannt).
+  Eine Ableitungsregel ist ein Paar ($l,r)$, wobei $l \in (V \cup \Sigma)^+$ und $r \in (V \cup \Sigma)^*$ ist.
+  Wir schreiben meist $l \rightarrow r$.
+ \end{itemize}
+\end{block}
 }
 
 \frame{
@@ -2283,6 +2293,8 @@ Es gibt einige Interesante Probleme, mit deren Entscheidbarkeit, Komplexität bz
 \end{itemize}
 }
 
+
+\subsection{Chomsky-Normalform}
 \frame{
 \frametitle{Chomsky-Normalform}
 CYK wird verwendet zur Lösung des Wortproblems für kontextfreie Sprachen (CH-2).
@@ -2341,10 +2353,6 @@ Z &\rightarrow X\\
 \end{columns}
 \end{exampleblock}
 }
-
-
-
-
 
 \frame{
 \frametitle{Umwandlung in Chomsky-Normalform}
@@ -2583,6 +2591,63 @@ Ist das Wort $abcccc$ in der Sprache $\mathcal{L}(\textit{G})$?
 %\begin{frame}
 %Modifiziere den CYK-Algorithmus so, dass er nicht einfach nur feststellt, ob eine Eingabe in der Sprache enthalten ist, sondern zusätzlich einen Syntaxbaum ermittelt.
 %\end{frame}
+
+\section{11. Tutoriumsvorschlag}
+\begin{frame}
+Zeigen Sie, dass folgende Sprachen nicht kontextfrei sind:
+\begin{enumerate}
+ \item $L=\{a^ib^jc^id^j \mid i,j \geq 1 \}$
+ \item $L=\{ww \mid w \text{ ist in }\{a, b\}^* \text{ enthalten.}\}$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lösungshinweise für Teilaufgabe a}
+ Wähle $n$ wie im Pumping-Lemma und $z=a^nb^nc^nd^n$. 
+ Zeige dann, dass für jede Zerlegung $z=uvwxy$ gemäß dem Pumping-Lemma $uv^0wx^0y$ nicht in $L$ ist.
+\end{frame}
+\begin{frame}
+ \frametitle{Lösungshinweise für Teilaufgabe b}      
+ Teilaufgabe b) kann theoretisch mit dem Pumping-Lemma gezeigt werden (indem man als Wort $a^nb^na^nb^n$ wählt), dazu bekommt man aber eine ziemlich hässliche Fallunterscheidung.
+       Einfacher ist es, Ogden's Lemma zu benutzen: 
+       \begin{itemize}
+        \item Wähle $z=a^nb^na^nb^n$ mit $n$ gemäß Ogden's Lemma.              
+        \item Markiere die mittleren beiden Blöcke
+        \item Betrachte eine Zerlegung von $z$ gemäß Ogden's Lemma
+        \item Dann gehört mindestens einer der Buchstaben von $vx$ zu diesen mittleren Blöcken.
+        \end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Fallunterscheidung für Teilaufgabe b}
+\begin{itemize}
+        \item Fall 1: $vx$ enthält mindestens einen Buchstaben aus dem ersten $b$ Block. 
+              Dann kann $vx$ keinen Buchstaben aus dem letzten $b$ Block enthalten. 
+              Zeige jetzt, dass $uv^0wx^0y$ nicht in $L$ ist: 
+              \begin{itemize}
+                \item Annahme: $uwy=tt$
+                \item $|uwy| \geq 2n$, daraus folgt, dass $t$ mit $b^n$ endet.
+                \item Da $vx$ fehlt, gibt es aber keinen zweiten Block der Form $b^n$ in $uwy$, damit kann $t$ nicht nochmal in $uwy$ vorkommen.
+                      Also ist $uwy$ nicht in $L$.
+              \end{itemize}
+        \item Fall 2: $vx$ enthält mindestens einen Buchstaben aus dem zweiten $a$ Block. 
+              Dann kann analog zu Fall 1 argumentiert werden. 
+       \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Greibach-Normalform}
+Sei die Grammatik $G$ gegeben durch
+\begin{itemize}
+ \item $\Sigma = \{0, 1\}$
+ \item $V = \{A_1, A_2, A_3\}$
+ \item $S = A_1$
+ \item $R = \{A_1 \rightarrow A_2A_3, A_2 \rightarrow A_3A_1, A_2 \rightarrow 1, A_3 \rightarrow A_1A_2, A_3 \rightarrow 0\}$
+\end{itemize}
+
+Bringen Sie $G$ in Greibach-Normalform.
+
+\textbf{Lösung:} Siehe Skript.
+\end{frame}
 
 \input{includes/disclaimer}
 \end{document}
