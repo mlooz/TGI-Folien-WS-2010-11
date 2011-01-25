@@ -2722,9 +2722,47 @@ $$ A \rightarrow a\alpha \text{ mit } A \in V\text{,} a\in \Sigma \text{ und } \
 
 \begin{frame}
 \frametitle{Beispiel mit Umwandlung}
-% ist wahrscheinlich laaaaang
-%TODO
+\begin{exampleblock}{Nebenbemerkung}
+Im folgenden stehen kleinbuchstaben für Terminale, Großbuchstaben für einzelne Nichtterminale und griechische Buchstaben für (eventuell) mehrere Nichtterminale 
+\end{exampleblock}
+Die Grammatik sei zunächst in Chomsky Normalform.
 \end{frame}
+
+\begin{frame}
+\frametitle{Schritt 1}
+Es gebe die Nichtterminale $\{A_0, \ldots, A_N\}$
+\begin{enumerate}
+\item für alle $i$ in $1, \ldots, N$
+\begin{enumerate}
+\item für alle $j$ in $1, \ldots, i$
+\begin{enumerate}
+\item Simuliere alle Regeln für $A_j$ bei Produktionen der Form $A_i \rightarrow A_j\alpha$ mit $j < i$ auf der rechten Seite.
+\item für Produktionen der Form $A_i \rightarrow A_i\alpha$ führe eine neue Variable ein (wie siehe nächste Folie).
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{$A_i \rightarrow A_i\alpha$}
+Für Regeln der Form 
+$$A \rightarrow A\alpha_1 \mid \ldots \mid A\alpha_r$$
+$$A \rightarrow \beta_1 \mid \ldots \mid \beta_s$$
+(wobei $\beta_i$ nicht mit $A$ beginnt) führe ein neues Nichtterminal $\beta$ ein. Ersetze nun die Regeln
+$$A \rightarrow A\alpha_1 \mid \ldots \mid A\alpha_r$$
+durch
+$$A \rightarrow \beta_1B \mid \ldots \mid \beta_sB$$
+$$B \rightarrow \alpha_1 \mid \ldots \mid \alpha_r$$
+$$B \rightarrow \alpha_1B \mid \ldots \mid \alpha_rB$$
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Schritt 2}
+Gehen nun die Produktionen absteigend nach $k$ sortiert durch und simuliere bei alle Regeln mit $A_k \rightarrow A_j\alpha$ die Produktionen für $A_j$ auf der rechten Seite.\\
+Da alle Regeln die mit einem $A_i$ anfangen der Greibach-Normalform genügen, kann man dieses Verfahren nun bei den neuen Regeln für $B_1,\ldots$ auch anwenden, danach ist die Grammatik in Greibach-Normalform.
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Greibach-Normalform}
@@ -2764,6 +2802,7 @@ Ein (nichtdeterministischer) \textbf{Kellerautomat} (NPDA bzw PDA, Pushdown Auto
 \begin{frame}
 \frametitle{Zu Kellerautomaten}
 \begin{itemize}
+\item Akzeptieren wenn \emph{entweder} der Stack leer ist, \emph{oder} wenn der Automat in einen akzeptierenden Zustand kommt
 \item Sind im allgemeinen Nichtdeterministisch
 \item Man kann Endzustände auch aus der Definition weglassen und alternativ verlangen der Automat akzeptiert genau bei leerem Keller
 \item Man kann sogar alle Zustände bis auf einen weglassen und alles in die Kellerbelegung kodieren
