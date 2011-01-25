@@ -2809,18 +2809,42 @@ Ein (nichtdeterministischer) \textbf{Kellerautomat} (NPDA bzw PDA, Pushdown Auto
 
 \begin{frame}
 \frametitle{Zu Kellerautomaten}
-%TODO
+\begin{itemize}
+\item Sind im allgemeinen Nichtdeterministisch
+\item Man kann Endzustände auch aus der Definition weglassen und alternativ verlangen der Automat akzeptiert genau bei leerem Keller
+\item Man kann sogar alle Zustände bis auf einen weglassen und alles in die Kellerbelegung kodieren
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Beispiel}
-%TODO
-
+$M = (Q, \Sigma, \Gamma, q_0, Z_0, \delta, F)$
+\begin{itemize}
+\item $Q = \{q_0, q_1, q_2\}$, $Z_0 = \{\#\}$
+\item $\Sigma = \{a,b\}$
+\item $\Gamma = \{\#,X\}$
+\item $F = \{q_2\}$
+\end{itemize}
+\begin{figure}
+\begin{tikzpicture}[node distance=2cm,shorten >=1pt,auto]
+\node[state,initial]   (q_0)                {$q_0$};
+\node[state]           (q_1) [right of=q_0] {$q_1$};
+\node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+\path[->]	(q_0) 	edge 			node {$(b,X,\varepsilon)$}				(q_1)
+			edge [loop above]	node {$\stackrel{(a,X,XX)}{(a,\#,X\#)}$}	 	() %stackrel is wrong here.
+		(q_1)	edge			node {$(\varepsilon,\#,\varepsilon)$}			(q_2)
+			edge [loop above]	node {$(b,X,\varepsilon)$}				();
+\end{tikzpicture}
+\end{figure}
 \end{frame}
 
-%TODO: Aufgabe zu Kellerautomaten
-
-%TODO: Kellerautomaten
+\begin{frame}
+\frametitle{Aufgaben}
+\begin{itemize}
+\item Welche Sprache akzeptiert der Beispielautomat der vorigen Folie
+\item TODO%TODO
+\end{itemize}
+\end{frame}
 
 \input{includes/disclaimer}
 \end{document}
