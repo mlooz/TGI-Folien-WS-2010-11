@@ -2557,10 +2557,13 @@ Bestimme eine Grammatik $G'$ für $L(G)$ in Chomsky-Normalform.
 \frame{
 \frametitle{CYK Überblick}
 CYK ist ein Algorithmus um das Wortproblem in CH-2 zu lösen. Um den Algorithmus anzuwenden, muss eine Grammatik in Chomsky-Normalform vorliegen.\\
-Grundidee:
+Grundidee zur Überprüfungen von einem Wort der Länge $n$:
 \begin{itemize}
-\item Überprüfe für jedes Teilwort in aufsteigenden Länge aus welchen nichtterminalen es erzeugt werden kann.
-\item $\rightarrow$ Tafel
+\item Wir betrachen $V_{i,j} = $ Menge der Nichtterminale aus denen das Teilwort der Position $i$ bis $j$ abgeleitet werden kann
+\item Die Lösung ob $V_{i,j}$ ableitbar ist lässt sich entscheiden durch betrachen aller möglichen $V_{i,k}$ und $V_{k+1,j}$
+\item $V_{i,i}$ sind trivial
+\item Bottom up lässt sich dadurch $V_{1,n}$ berechnen
+\item Ist $S \in V_{i,n}$, so lässt sich das Wort ableiten.
 \end{itemize}
 }
 
