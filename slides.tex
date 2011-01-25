@@ -2772,8 +2772,24 @@ Ein (nichtdeterministischer) \textbf{Kellerautomat} (NPDA bzw PDA, Pushdown Auto
 
 \begin{frame}
 \frametitle{Beispiel}
-%TODO
-
+$M = (Q, \Sigma, \Gamma, q_0, Z_0, \delta, F)$
+\begin{itemize}
+\item $Q = \{q_0, q_1, q_2\}$, $Z_0 = \{\#\}$
+\item $\Sigma = \{a,b\}$
+\item $\Gamma = \{\#,a\}$
+\item $F = \{q_2\}$
+\end{itemize}
+\begin{figure}
+\begin{tikzpicture}[node distance=2cm,shorten >=1pt,auto]
+\node[state,initial]   (q_0)                {$q_0$};
+\node[state]           (q_1) [right of=q_0] {$q_1$};
+\node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+\path[->]	(q_0) 	edge 			node {$(b,a,\varepsilon)$}				(q_1)
+			edge [loop above]	node {$\stackrel{(a,a,aa)}{(b,a,\varepsilon)}$} 	()
+		(q_1)	edge			node {$(\varepsilon,\#,\varepsilon)$}			(q_2)
+			edge [loop above]	node {$(b,a,\varepsilon)$}				();
+\end{tikzpicture}
+\end{figure}
 \end{frame}
 
 \begin{frame}
