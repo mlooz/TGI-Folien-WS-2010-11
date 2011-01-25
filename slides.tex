@@ -2557,10 +2557,13 @@ Bestimme eine Grammatik $G'$ für $L(G)$ in Chomsky-Normalform.
 \frame{
 \frametitle{CYK Überblick}
 CYK ist ein Algorithmus um das Wortproblem in CH-2 zu lösen. Um den Algorithmus anzuwenden, muss eine Grammatik in Chomsky-Normalform vorliegen.\\
-Grundidee:
+Grundidee zur Überprüfungen von einem Wort der Länge $n$:
 \begin{itemize}
-\item Überprüfe für jedes Teilwort in aufsteigenden Länge aus welchen nichtterminalen es erzeugt werden kann.
-\item $\rightarrow$ Tafel
+\item Wir betrachen $V_{i,j} = $ Menge der Nichtterminale aus denen das Teilwort der Position $i$ bis $j$ abgeleitet werden kann
+\item Die Lösung ob $V_{i,j}$ ableitbar ist lässt sich entscheiden durch betrachen aller möglichen $V_{i,k}$ und $V_{k+1,j}$
+\item $V_{i,i}$ sind trivial
+\item Bottom up lässt sich dadurch $V_{1,n}$ berechnen
+\item Ist $S \in V_{i,n}$, so lässt sich das Wort ableiten.
 \end{itemize}
 }
 
@@ -2631,7 +2634,13 @@ Wenn wir in $z$ mindestens $n$ Buchstaben markieren, so lässt sich $z$ so als $
 
 \begin{frame}
 \frametitle{Beweisidee}
-%TODO
+\begin{itemize}
+\item Jeder Knoten im Ableitungsbaum (wie wir ihn in CYK sehen) steht für ein Nichtterminalsymbol
+\item Ab einer gewissen Höhe des Baumes (bzw. Länge des Wortes) muss ein Nichtterminal im Baum mehrmals in einer Reihe vorkommen
+\item Man kann also aus einem Nichtterminalsymbol dasselbe Symbol wieder ableiten
+\item Da das Wort durch jede Ableitung (außer zu Terminalsymbolen) länger wird, gibt es eine ``schleife'' beim Ableiten
+\item Diese Schleife kann man also ``Pumpen'', also beliebig oft (oder auch garnicht) durchlaufen
+\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -2645,7 +2654,9 @@ Wenn wir in $z$ mindestens $n$ Buchstaben markieren, so lässt sich $z$ so als $
 
 \begin{frame}
 \frametitle{Beispiel}
-%TODO
+Sei $L = \{a^ib^jc^kd^l | i \neq 0 \Rightarrow j = k = l\}$. Wir zeigen $L$ ist nicht Kontextfrei mit Ogdens Lemma.
+Für gegebenes $n$ muss das Lemma also für jedes Wort mit $n$ markierten Buchstaben erfüllt sein. Betrachte $z = ab^nc^nd^n \in L$ und markiere $b^n$.
+Zu $vx$ muss also immer ein $b$ gehören und in $vwx$ dürfen höchsten $n$ markierte Buchstaben vorkommen. Offensichtlich dürfen in $v$ und $x$ jeweils nur eine Art von Symbol vorkommen. Da aber in $v$ oder $x$ mindestens ein $b$ vorkommen muss, und die Anzahl der $b$ und $c$ und $d$ gleich bleiben muss, ist das Lemma nicht erfüllt. Daher kann $L$ nicht kontextfrei sein.
 \end{frame}
 
 % Greibach-Normalform
