@@ -2634,7 +2634,13 @@ Wenn wir in $z$ mindestens $n$ Buchstaben markieren, so lässt sich $z$ so als $
 
 \begin{frame}
 \frametitle{Beweisidee}
-%TODO
+\begin{itemize}
+\item Jeder Knoten im Ableitungsbaum (wie wir ihn in CYK sehen) steht für ein Nichtterminalsymbol
+\item Ab einer gewissen Höhe des Baumes (bzw. Länge des Wortes) muss ein Nichtterminal im Baum mehrmals in einer Reihe vorkommen
+\item Man kann also aus einem Nichtterminalsymbol dasselbe Symbol wieder ableiten
+\item Da das Wort durch jede Ableitung (außer zu Terminalsymbolen) länger wird, gibt es eine ``schleife'' beim Ableiten
+\item Diese Schleife kann man also ``Pumpen'', also beliebig oft (oder auch garnicht) durchlaufen
+\end{itemize}
 \end{frame}
 
 \begin{frame}
