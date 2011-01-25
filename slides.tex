@@ -2776,7 +2776,7 @@ $M = (Q, \Sigma, \Gamma, q_0, Z_0, \delta, F)$
 \begin{itemize}
 \item $Q = \{q_0, q_1, q_2\}$, $Z_0 = \{\#\}$
 \item $\Sigma = \{a,b\}$
-\item $\Gamma = \{\#,a\}$
+\item $\Gamma = \{\#,X\}$
 \item $F = \{q_2\}$
 \end{itemize}
 \begin{figure}
@@ -2784,16 +2784,20 @@ $M = (Q, \Sigma, \Gamma, q_0, Z_0, \delta, F)$
 \node[state,initial]   (q_0)                {$q_0$};
 \node[state]           (q_1) [right of=q_0] {$q_1$};
 \node[state,accepting] (q_2) [right of=q_1] {$q_2$};
-\path[->]	(q_0) 	edge 			node {$(b,a,\varepsilon)$}				(q_1)
-			edge [loop above]	node {$\stackrel{(a,a,aa)}{(b,a,\varepsilon)}$} 	()
+\path[->]	(q_0) 	edge 			node {$(b,X,\varepsilon)$}				(q_1)
+			edge [loop above]	node {$\stackrel{(a,X,XX)}{(a,\#,X\#)}$}	 	() %stackrel is wrong here.
 		(q_1)	edge			node {$(\varepsilon,\#,\varepsilon)$}			(q_2)
-			edge [loop above]	node {$(b,a,\varepsilon)$}				();
+			edge [loop above]	node {$(b,X,\varepsilon)$}				();
 \end{tikzpicture}
 \end{figure}
 \end{frame}
 
 \begin{frame}
 \frametitle{Aufgaben}
+\begin{itemize}
+\item Welche Sprache akzeptiert der Beispielautomat der vorigen Folie
+\item TODO%TODO
+\end{itemize}
 \end{frame}
 
 \input{includes/disclaimer}
