@@ -2654,7 +2654,9 @@ Wenn wir in $z$ mindestens $n$ Buchstaben markieren, so lässt sich $z$ so als $
 
 \begin{frame}
 \frametitle{Beispiel}
-%TODO
+Sei $L = \{a^ib^jc^kd^l | i \neq 0 \Rightarrow j = k = l\}$. Wir zeigen $L$ ist nicht Kontextfrei mit Ogdens Lemma.
+Für gegebenes $n$ muss das Lemma also für jedes Wort mit $n$ markierten Buchstaben erfüllt sein. Betrachte $z = ab^nc^nd^n \in L$ und markiere $b^n$.
+Zu $vx$ muss also immer ein $b$ gehören und in $vwx$ dürfen höchsten $n$ markierte Buchstaben vorkommen. Offensichtlich dürfen in $v$ und $x$ jeweils nur eine Art von Symbol vorkommen. Da aber in $v$ oder $x$ mindestens ein $b$ vorkommen muss, und die Anzahl der $b$ und $c$ und $d$ gleich bleiben muss, ist das Lemma nicht erfüllt. Daher kann $L$ nicht kontextfrei sein.
 \end{frame}
 
 % Greibach-Normalform
