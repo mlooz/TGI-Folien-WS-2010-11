@@ -2725,7 +2725,7 @@ sind.
 \begin{frame}
 \frametitle{Umwandlung in Greibach-Normalform}
 \begin{exampleblock}{Nebenbemerkung}
-Im folgenden stehen kleinbuchstaben für Terminale, Großbuchstaben für einzelne Nichtterminale und griechische Buchstaben für (eventuell) mehrere Nichtterminale 
+Im folgenden stehen Kleinbuchstaben für Terminale, Großbuchstaben für einzelne Nichtterminale und griechische Buchstaben für (eventuell) mehrere Nichtterminale 
 \end{exampleblock}
 Die Grammatik sei zunächst in Chomsky Normalform.
 \end{frame}
@@ -2845,6 +2845,62 @@ $M = (Q, \Sigma, \Gamma, q_0, Z_0, \delta, F)$
 \frametitle{Aufgaben}
 \begin{itemize}
 \item Welche Sprache akzeptiert der Beispielautomat der vorigen Folie?
+\end{itemize}
+\end{frame}
+
+\section{12. Tutoriumsvorschlag}
+\subsection{Kellerautomat aus Greibach-Normalform}
+\begin{frame}
+ \frametitle{Kellerautomat aus Greibach-Normalform}
+ \begin{block}{Erinnerung Greibach-Normalform}
+  Eine kontextfreie Grammatik ist in \textbf{Greibach-Normalform}, wenn alle Ableitungsregeln von der Form   
+  \[ A \rightarrow a\alpha \text{ mit } A \in V\text{,} a\in \Sigma \text{ und } \alpha \in V^*\]
+  sind.
+ \end{block}
+ \pause
+ \begin{block}{Erinnerung Übergangsfunktion des Kellerautomaten}
+ Die Eingabe enthält einen Zustand, ein $a \in \Sigma \cup \{\varepsilon\}$ und ein Zeichen des Stacks.
+ \[\delta : Q \times ( \Sigma \cup \{\varepsilon\}) \times \Gamma \rightarrow 2^{Q \times \Gamma^*}\]
+ \vspace{-0.5cm}
+ \end{block}
+ \pause
+ Wie könnte man mit einer Grammatik $G$ in Greibach-Normalform einen Kellerautomaten konstruieren, der $L(G)$ erkennt?
+\end{frame}
+
+\begin{frame}
+ \begin{block}{Überlegung}
+ Gegeben sei eine kontextfreie Grammatik $G = (\Sigma, V, S, R)$ in Greibach-Normalform.\\
+ Konstruiere einen Kellerautomaten $PDA = (Q, \Sigma', \Gamma, q_0, Z_0, \delta, F)$ mit:
+ \begin{itemize}
+  \item $Q = \{q_0\}$
+  \item $F = \emptyset$
+  \item $\Sigma' = \Sigma$
+  \item $\Gamma = V$
+  \item $Z_0 = S$
+  \item $\delta$ siehe nächste Folie
+ \end{itemize}
+ \end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Beispielkonstruktion des Kellerautomaten}
+Beispiel aus dem Skript:
+\begin{itemize}
+ \item $V=\{A_1, A_2, A_3, B_3\}$
+ \item $\Sigma = A_1$
+ \item $S = A_1$
+ \item $R = \{A_1 \rightarrow 1A_3, A_1 \rightarrow 0B_3A_1A_3, A_1 \rightarrow 1A_3A_2A_1A_3, A_1 \rightarrow 0A_1A_3, A_1 \rightarrow 1A_3A_2B_3A_1A_3,
+ A_2 \rightarrow 0B_3, A_2 \rightarrow 1A_3A_2A_1, A_2 \rightarrow 0A_1, 1A_3A_2B_3A_1, A_2 \rightarrow 1,
+ A_3 \rightarrow 0B_3, A_3 \rightarrow 1A_3A_2B_3, A_3 \rightarrow 1A_3A_2, A_3 \rightarrow 0,
+ B_3 \rightarrow 1A_3A_2A_2, B_3 \rightarrow 0B_3A_1A_3A_3A_2, B_3 \rightarrow 1A_3A_2A_1A_3A_3A_2, B_3 \rightarrow 0A_1A_3A_3A_2,
+ B_3 \rightarrow 1A_3A_2B_3A_1A_3A_3A_2, B_3 \rightarrow 1A_3A_3A_2B_3, B_3 \rightarrow 0B_3A_1A_3A_3A_2B_3, B_3 \rightarrow 1A_3A_2A_1A_3A_3A_2B_3
+ B_3 \rightarrow 0A_1A_3A_3A_2B_3, B_3 \rightarrow 1A_3A_2B_3A_1A_3A_3A_2B_3
+ \}$
 \end{itemize}
 \end{frame}
 
