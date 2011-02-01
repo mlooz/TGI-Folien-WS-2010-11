@@ -2885,8 +2885,6 @@ $M = (Q, \Sigma, \Gamma, q_0, Z_0, \delta, F)$
  Der Automat akzeptiert durch leeren Stack.
 \end{frame}
 
-%TODO: Beispiel Tripelkonstruktion
-
 \begin{frame}
 Greibach-Normalform der Aufgabe von letztem Mal:
 \begin{itemize}
@@ -2938,6 +2936,26 @@ Die ursprüngliche Grammatik hatte nur fünf Regeln.
 \end{frame}
 
 \begin{frame}
+ \frametitle{Tripelkonstruktion}
+ \begin{itemize}
+  \item Umkehrung der Konstruktionsrichtung
+  \item Aus einem PDA $\mathcal{A} = (Q, \Sigma, \Gamma, \delta, q_0, Z_0)$ wird eine Grammatik \textit(G) mit $L_{\mathcal{A}} = L(G)$ erzeugt.
+ \end{itemize} 
+ \begin{itemize}
+  \item $V := \{[q, X, p]p, q \in Q, X \in \Gamma \} \cup S$
+  \item $R := $
+  \begin{itemize}
+   \item $S \rightarrow [q_0, Z_0, q]$ für alle $q \in Q$
+   \item $[q, X, q_{m+1}] \rightarrow a[q_1, Y_1, q_2] ... [q_m, Y_m, q_{m+1}]$ für alle $q_2$, ..., $q_{m+1} \in Q$,
+   falls $(q_1, Y_1, ..., Y_m) \in \delta(q, a, X)$
+  \end{itemize}
+ \end{itemize}
+
+\end{frame}
+
+%TODO: Beispiel Tripelkonstruktion
+
+\begin{frame}
  \frametitle{Wiederholung Chomsky-Hierarchie}
  $u \in V^+$, $v \in (\Sigma \cup V)$, $A \in V$, $a \in \Sigma$.
   Ausnahme: S kommt bei Chomsky-1-Grammatiken nicht auf rechten Seiten vor.
@@ -2956,6 +2974,12 @@ Die ursprüngliche Grammatik hatte nur fünf Regeln.
  \end{table}
 \pause
 Welche dieser Sprachenklassen sind unter der Komplementbildung abgeschlossen?
+\end{frame}
+
+\begin{frame}
+ \frametitle{Anmerkung zum aktuellen Übungsblatt}
+ Die Greibach-Normalform muss nicht mit der Methode aus dem Skript erzeugt werden,
+ die Anwendungsreihenfolge der Regeln (i) und (ii) kann selbst gewählt werden.
 \end{frame}
 
 \input{includes/disclaimer}
