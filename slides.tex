@@ -2593,10 +2593,6 @@ Ist das Wort $abcccc$ in der Sprache $\mathcal{L}(\textit{G})$?
 \end{enumerate}
 \end{frame}
 
-% end of ifthenelse WAY up there
-}
-%
-
 \section{11. Tutoriumsvorschlag}
 % Pumping Lemma für Kontextfreie Sprachen
 \subsection{Pumping Lemma für kontextfreie Sprachen}
@@ -2848,7 +2844,12 @@ $M = (Q, \Sigma, \Gamma, q_0, Z_0, \delta, F)$
 \end{itemize}
 \end{frame}
 
+% end of ifthenelse WAY up there
+}
+%
+
 \section{12. Tutoriumsvorschlag}
+%TODO: Beispiel Kellerautomat
 \subsection{Kellerautomat aus Greibach-Normalform}
 \begin{frame}
  \frametitle{Kellerautomat aus Greibach-Normalform}
@@ -2868,40 +2869,93 @@ $M = (Q, \Sigma, \Gamma, q_0, Z_0, \delta, F)$
 \end{frame}
 
 \begin{frame}
- \begin{block}{Überlegung}
- Gegeben sei eine kontextfreie Grammatik $G = (\Sigma, V, S, R)$ in Greibach-Normalform.\\
- Konstruiere einen Kellerautomaten $PDA = (Q, \Sigma', \Gamma, q_0, Z_0, \delta, F)$ mit:
+ \begin{block}{Konstruktion des Kellerautomaten}
+ Gegeben sei eine kontextfreie Grammatik \(G = (\Sigma, V, S, R)\) in Greibach-Normalform.\\
+ Konstruiere einen Kellerautomaten \(PDA = (Q, \Sigma', \Gamma, q_0, Z_0, \delta, F)\) mit:
  \begin{itemize}
-  \item $Q = \{q_0\}$
-  \item $F = \emptyset$
-  \item $\Sigma' = \Sigma$
-  \item $\Gamma = V$
-  \item $Z_0 = S$
-  \item $\delta$ siehe nächste Folie
+  \item $Q := \{q_0\}$
+  \item $F := \emptyset$
+  \item $\Sigma' := \Sigma$
+  \item $\Gamma := V$
+  \item $Z_0 := S$
+  \item $\delta(q_0, a, A) :=  \{(q_0,\alpha) | (A \rightarrow a \alpha) \in R \}$
  \end{itemize}
  \end{block}
+ \pause
+ Der Automat akzeptiert durch leeren Stack.
 \end{frame}
 
-\begin{frame}
- \frametitle{}
-\end{frame}
-
+%TODO: Beispiel Tripelkonstruktion
 
 \begin{frame}
-\frametitle{Beispielkonstruktion des Kellerautomaten}
-Beispiel aus dem Skript:
+Greibach-Normalform der Aufgabe von letztem Mal:
 \begin{itemize}
  \item $V=\{A_1, A_2, A_3, B_3\}$
  \item $\Sigma = A_1$
  \item $S = A_1$
  \item $R = \{A_1 \rightarrow 1A_3, A_1 \rightarrow 0B_3A_1A_3, A_1 \rightarrow 1A_3A_2A_1A_3, A_1 \rightarrow 0A_1A_3, A_1 \rightarrow 1A_3A_2B_3A_1A_3,
- A_2 \rightarrow 0B_3, A_2 \rightarrow 1A_3A_2A_1, A_2 \rightarrow 0A_1, 1A_3A_2B_3A_1, A_2 \rightarrow 1,
+ A_2 \rightarrow 0B_3, A_2 \rightarrow 1A_3A_2A_1, A_2 \rightarrow 0A_1, A_2 \rightarrow 1A_3A_2B_3A_1, A_2 \rightarrow 1,
  A_3 \rightarrow 0B_3, A_3 \rightarrow 1A_3A_2B_3, A_3 \rightarrow 1A_3A_2, A_3 \rightarrow 0,
  B_3 \rightarrow 1A_3A_2A_2, B_3 \rightarrow 0B_3A_1A_3A_3A_2, B_3 \rightarrow 1A_3A_2A_1A_3A_3A_2, B_3 \rightarrow 0A_1A_3A_3A_2,
  B_3 \rightarrow 1A_3A_2B_3A_1A_3A_3A_2, B_3 \rightarrow 1A_3A_3A_2B_3, B_3 \rightarrow 0B_3A_1A_3A_3A_2B_3, B_3 \rightarrow 1A_3A_2A_1A_3A_3A_2B_3
  B_3 \rightarrow 0A_1A_3A_3A_2B_3, B_3 \rightarrow 1A_3A_2B_3A_1A_3A_3A_2B_3
  \}$
 \end{itemize}
+\pause
+Die ursprüngliche Grammatik hatte nur fünf Regeln.
+\end{frame}
+
+\begin{frame}
+ \frametitle{Kellerautomat}
+\(PDA = (Q, \Sigma', \Gamma, q_0, Z_0, \delta, F)\) mit:
+ \begin{itemize}
+  \item $Q := \{q_0\}$
+  \item $F := \emptyset$
+  \item $\Sigma' := \Sigma$
+  \item $\Gamma := V$
+  \item $Z_0 := A_1$
+  \item $\delta$ siehe nächste Folie
+ \end{itemize}
+ \begin{block}{Umwandlung}
+ Aus \(A_1 \rightarrow 1A_3, A_1 \rightarrow 1A_3A_2A_1A_3, A_1 \rightarrow 1A_3A_2B_3A_1A_3\)
+ wird \(\delta(q_0, A_1, 1) = \{(q_0, A_3), (q_0, A_3A_2A_1A_3), (q_0, A_3A_2B_3A_1A_3) \}\)
+ \end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{$\delta$}
+\begin{itemize}
+ \item \(\delta(q_0, A_1, 0) = \{ (q_0, B_3A_1A_3), (q_0, A_1A_3)\}\)
+ \item \(\delta(q_0, A_1, 1) = \{(q_0, A_3), (q_0, A_3A_2A_1A_3), (q_0, A_3A_2B_3A_1A_3) \}\)
+ \item \(\delta(q_0, A_2, 0) = \{(q_0, B_3), (q_0, A_1)\}\)
+ \item \(\delta(q_0, A_2, 1) = \{(q_0, A_3A_2A_1), (q_0, A_3A_2B_3A_1), (q_0, \varepsilon)\}\)
+ \item \(\delta(q_0, A_3, 0) = \{(q_0, B_3), (q_0, \varepsilon)\}\)
+ \item \(\delta(q_0, A_3, 1) = \{(q_0, A_3A_2B_3), (q_0, A_3A_2, A_3)\}\)
+ \item $\delta(q_0, B_3, 0) = \{(q_0, B_3A_1A_3A_3A_2), (q_0, A_1A_3A_3A_2), (q_0, B_3A_1A_3A_3A_2B_3),$ $ (q_0, A_1A_3A_3A_2B_3)\}$
+ \item \(\delta(q_0, B_3, 1) = \{(q_0, A_3A_2A_2), (q_0, A_3A_2A_1A_3A_3A_2), (q_0, A_3A_2B_3A_1A_3A_3A_2),$ $
+ (q_0, A_3A_3A_2B_3), (q_0, A_3A_2A_1A_3A_3A_2B_3), (q_0, A_3A_2B_3A_1A_3A_3A_2B_3)\}\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Wiederholung Chomsky-Hierarchie}
+ $u \in V^+$, $v \in (\Sigma \cup V)$, $A \in V$, $a \in \Sigma$.
+  Ausnahme: S kommt bei Chomsky-1-Grammatiken nicht auf rechten Seiten vor.
+ \begin{table}
+ \begin{center}
+ \begin{tabular}{| l | c | p{1.4cm} | c | c | c | l |}
+ \hline
+ & & & \multicolumn{3}{|c|}{Abgeschlossen} &\\
+ Typ & Bezeichnung & Regeln & $\cup$ & $\cap$ & $\cdot$ & Modell\\ \hline
+ 0 & semientscheidbar & alles & ja & ja & ja & TM \\ \hline
+ 1 & kontextsensitiv & $u \rightarrow v$ $|u| \leq |v|$ & ja & ja & ja &  LBA \\ \hline
+ 2 & kontextfrei & $A \rightarrow v$ & ja & nein & ja & Kellerautomat \\ \hline
+ 3 & regulär & $A \rightarrow a$  $A \rightarrow aB$ & ja & ja & ja & endlicher Automat \\ \hline
+ \end{tabular}
+ \end{center}
+ \end{table}
+\pause
+Welche dieser Sprachenklassen sind unter der Komplementbildung abgeschlossen?
 \end{frame}
 
 \input{includes/disclaimer}
