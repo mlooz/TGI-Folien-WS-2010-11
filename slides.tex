@@ -2982,5 +2982,44 @@ Welche dieser Sprachenklassen sind unter der Komplementbildung abgeschlossen?
  die Anwendungsreihenfolge der Regeln (i) und (ii) kann selbst gewählt werden.
 \end{frame}
 
+\section{13. Tutoriumsvorschlag}
+\begin{frame}
+Geben Sie einen zu folgendem NEA äquivalenten DEA an:
+
+\begin{center}
+ \includegraphics[width=5cm]{NEA}
+\end{center}
+\end{frame}
+
+\begin{frame}
+Beweisen Sie die $\mathcal{NP}$-Vollständigkeit des Problems HITTING SET:
+\begin{quote}
+  Gegeben eine Menge $M$ und eine Menge $T$ von Teilmengen von $M$,
+  $K \in \mathbb{N}$. Gibt es eine Teilmenge $M' \subseteq M$ mit $|M'| \leq K$ so,
+  dass $M'$ mindestens ein Element jeder Teilmenge $t \in T$ enthält?
+\end{quote}
+\textbf{Lösungshinweis:}
+ Reduziere von VERTEX COVER (s. korrekte Variante auf Tutvorschlag 7 ;-) ).
+\end{frame}
+
+\begin{frame}
+Zeigen Sie, dass es keinen absoluten Approximationsalgorithmus für die Optimierungsvariante von
+INDEPENDENT SET gibt, falls $\mathcal{P} \neq \mathcal{NP}$.\footnote{vgl. Tutoriumsvorschlag 7}
+\textbf{Lösungsskizze:}
+\begin{itemize}
+ \item Nimm an, es gäbe einen abs. Approx-Algo APX (mit konstanter Gütegarantie $k$) für INDEPENDENT SET und zeige, dass man damit INDEPENDENT SET auch optimal in Polynomialzeit lösen könnte
+ \item Um eine Instanz $G$ von INDEPENDENT SET zu lösen, konstruiere einen Graphen $G'$, der aus $k+1$ Kopien von $G$ besteht
+ \item Benutze APX, um in $G'$ ein INDEPENDENT SET $I$ zu finden und betrachte den Teilgraphen in $G'$, der die meisten Knoten aus $I$ enthält
+ \item Zeige, dass $I$ eingeschränkt auf diesen Teilgraphen ein INDEPENDENT SET maximaler Größe ist. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+Bringen Sie die folgende Grammatik in CNF:
+
+$$S \rightarrow ASA \mid aB, \quad A \rightarrow B \mid S, \quad
+B \rightarrow b \mid \varepsilon.$$
+\end{frame}
+
 \input{includes/disclaimer}
 \end{document}
