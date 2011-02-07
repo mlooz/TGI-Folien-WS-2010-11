@@ -202,13 +202,26 @@ Damit ist ein Automat zu $\{a^ib^j | i \leq j\}$ leicht zu konstruieren.
 \item $\{w | w\mbox{ enthält nicht die Zeichenkette } abc \mbox{ oder }cba\}$
 \item Sei $\Sigma = \{0,1,+,=\}$ und $L = \{x=y+z | x,y,z \}$
 \end{enumerate}
-\item Zeige, dass eine Sprache entscheidbar ist gdw. eine Turingmaschine existiert, die bei Eingabe eines Wortes der Sprache das Lexikografisch nächste Wort ausgibt.
+\item Zeige, dass eine Sprache entscheidbar ist gdw. eine Turingmaschine existiert, die bei Eingabe eines Wortes der Sprache das lexikografisch nächste Wort ausgibt.
 \item Zeige, dass eine Sprache semientscheidbar ist gdw. eine Turingmaschine existiert, die bei Eingabe eines Wortes der Sprache, das nächste Wort der Sprache bezüglich einer festen Ordnung ausgibt.
-\item Formuliere das Problem der Entscheidung ob ein Endlicher Automat und ein regulärer Ausdruck äquivalent sind als Sprache und zeige, dass diese Sprache entscheidbar ist.
+\item Formuliere das Problem der Entscheidung ob ein endlicher Automat und ein regulärer Ausdruck äquivalent sind als Sprache und zeige, dass diese Sprache entscheidbar ist.
 \item Finde eine Lösung für folgendes PCP: $\{(ab,abab),(b,a),(aba,b),(aa,a)\}$
-\item Zeige, dass eine TM die auf den Teil des Bandes, auf dem die Eingabe steht nicht schreiben kann, nur reguläre Sprachen erkennen kann.
+\item Zeige, dass eine TM die auf den Teil des Bandes, auf dem die Eingabe, steht nicht schreiben kann, nur reguläre Sprachen erkennen kann.
 \end{enumerate}
-}{.}
+}{
+\begin{enumerate}
+ \item 
+ \item 
+ \item 
+ \item 
+ \item 
+ \item \[
+(ab)(ab)(aba)(b)(b)(aa)(aa)\]
+\[(abab)(abab)(b)(a)(a)(a)(a)
+\]
+ \item 
+\end{enumerate}
+}
 \section{Komplexitätsklassen}
 \aufgaben{.
 \begin{enumerate}
@@ -216,8 +229,8 @@ Damit ist ein Automat zu $\{a^ib^j | i \leq j\}$ leicht zu konstruieren.
 \item Zeige: aus $A \propto co-A$ und $A$ semientscheidbar folgt, dass $A$ entscheidbar ist. Zeige auch: $A$ muss semientscheidbar sein durch Angabe einer Sprache $B$ mit $B \propto co-B$, aber $B$ nicht entscheidbar.
 \item Gibt es eine unentscheidbare Teilmenge von $1^*$?
 \item Zeige das $\mathcal{P}$ und $\mathcal{NP}$ jeweils unter Konkatenation und Vereinigung abgeschlossen sind. 
-\item Zeige, dass wenn $\mathcal{P} = \mathcal{NP}$ gilt, dass ein polyzeit Algorithmus zum faktorisieren von Zahlen existiert.
-\item Zeige, dass wenn $\mathcal{P} = \mathcal{NP}$ gilt, dass ein polyzeit Algorithmus zum finden der größten Clique in einem Graphen existiert
+\item Zeige, dass wenn $\mathcal{P} = \mathcal{NP}$ gilt, ein Algorithmus mit polynomiell beschränkter Laufzeit zum Faktorisieren von Zahlen existiert.
+\item Zeige, dass wenn $\mathcal{P} = \mathcal{NP}$ gilt, ein Algorithmus mit polynomiell beschränkter Laufzeit zum Finden der größten Clique in einem Graphen existiert
 \item Sei DOPPEL-SAT $= \{\Phi | \Phi\mbox{ hat mindestens zwei erfüllende Belegungen}\}$, zeige das DOPPEL-SAT $\in \mathcal{NPC}$
 \end{enumerate}
 }{.
