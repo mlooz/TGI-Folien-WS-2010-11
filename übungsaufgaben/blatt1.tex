@@ -6,18 +6,42 @@
 \usetikzlibrary{automata}
 \newboolean{sol}
 \newboolean{ex}
-\setboolean{ex}{true}
+\setboolean{ex}{false}
 \setboolean{sol}{true}
-
 \usepackage{float}
+
+\newcommand{\aufgaben}[2]{
+\ifthenelse{\boolean{ex}}{
+\ifthenelse{\boolean{sol}}{
+	\subsection{Aufgaben}
+}}{}
+\ifthenelse{\boolean{ex}}{#1}{}
+\ifthenelse{\boolean{ex}}{
+\ifthenelse{\boolean{sol}}{
+	\subsection{Lösungen}
+}}{}
+\ifthenelse{\boolean{sol}}{#2}{}
+}
+
 \begin{document}
-\title{Übungsaufgaben}
+\ifthenelse{\boolean{ex}}{
+	\ifthenelse{\boolean{sol}}{
+		\title{Übungsaufgaben mit Lösung}
+	}{
+		\title{Übungsaufgaben}
+	}
+}{
+	\ifthenelse{\boolean{sol}}{
+		\title{Lösungen}
+	}{
+		\title{Leeres Blatt}
+	}
+}
 \author{Simon Stroh und Moritz von Looz}
 \maketitle
 \section{Endliche Automaten}
-\ifthenelse{\boolean{ex}}{
-\subsection{Aufgaben}
-Gegeben sei folgender nichtdeterministischer endlicher Automat:
+\aufgaben{.
+ Gegeben sei folgender nichtdeterministischer endlicher Automat:
 \begin{center}
 \begin{figure}[H]
 \begin{tikzpicture}[node distance=2cm,shorten >=1pt,auto]
@@ -42,9 +66,7 @@ Gegeben sei folgender nichtdeterministischer endlicher Automat:
 \item Bilde einen regulären Ausdruck der die gleiche Sprache akzeptiert wie der Automat.
 \item Folgt aus $L$ regulär das $L^R$ regulär ist? (Dabei ist $L^R$ die Menge der wörter in $L$, rückwärts)
 \end{enumerate}
-}{}
-\ifthenelse{\boolean{sol}}{
-\subsection{Lösungen}
+}{.%ab hier lösungen.
 \begin{enumerate}
 \item 
 \begin{enumerate}
@@ -141,7 +163,7 @@ $q_4'$:& \{$q_0, q_1, q_2, q_3$\} & \{$q_0, q_1, q_2, q_3$\} & \{$q_0, q_2$\} \\
 \item $(0 \cup 1)(0 \cup 1)^*0$ erfüllt die Bedingung
 \item Ja, Beweis etwa über strukturelle Induktion. %TODO?
 \end{enumerate}
-}{}
+}
 \section{Pumping Lemma}
 \ifthenelse{\boolean{ex}}{
 \subsection{Aufgaben}
@@ -169,6 +191,7 @@ Zeige oder Wiederlege die regulärität folgender Sprachen:
 \end{enumerate}
 }{}
 \section{Turingmaschinen und Entscheidbarkeit}
+\aufgaben{.
 \begin{enumerate}
 \item Wieviele verschiedene Sprachen gibt es? Wie steht das im Verhältnis zu der Anzahl der Turingmaschinen? Kann man dadurch eine Aussage über die Existenz von nichtentscheidbaren Sprachen machen?
 \item Schreibe jeweils eine Turingmaschine, die die folgenden Sprachen erkennt:
@@ -184,7 +207,9 @@ Zeige oder Wiederlege die regulärität folgender Sprachen:
 \item Finde eine Lösung für folgendes PCP: $\{(ab,abab),(b,a),(aba,b),(aa,a)\}$
 \item Zeige das eine TM die auf den Teil des Bandes, auf dem die Eingabe steht nicht schreiben kann, nur reguläre Sprachen erkennen kann.
 \end{enumerate}
+}{.}
 \section{Komplexitätsklassen}
+\aufgaben{.
 \begin{enumerate}
 \item Folgt aus $A \propto B$ und $B$ regulär, dass A auch regulär ist? 
 \item Zeige: aus $A \propto co-A$ und $A$ semientscheidbar folgt, dass $A$ entscheidbar ist. Zeige auch: $A$ muss semientscheidbar sein durch Angabe einer Sprache $B$ mit $B \propto co-B$, aber $B$ nicht entscheidbar.
@@ -194,4 +219,6 @@ Zeige oder Wiederlege die regulärität folgender Sprachen:
 \item Zeige, dass wenn $\mathcal{P} = \mathcal{NP}$ gilt, dass ein polyzeit Algorithmus zum finden der größten Clique in einem Graphen existiert
 \item Sei DOPPEL-SAT $= \{\Phi | \Phi\mbox{ hat mindestens zwei erfüllende Belegungen}\}$, zeige das DOPPEL-SAT $\in \mathcal{NPC}$
 \end{enumerate}
+}{.
+}
 \end{document}
