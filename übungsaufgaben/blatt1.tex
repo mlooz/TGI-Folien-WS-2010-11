@@ -64,7 +64,7 @@
 \item Bilde einen äquivalenten, minimalen DEA.
 \item Was sind die Äquivalenzklassen für diesen Automaten bezüglich der Nerode-Relation?
 \item Bilde einen regulären Ausdruck der die gleiche Sprache akzeptiert wie der Automat.
-\item Folgt aus $L$ regulär das $L^R$ regulär ist? (Dabei ist $L^R$ die Menge der wörter in $L$, rückwärts)
+\item Folgt aus $L$ regulär das $L^R$ regulär ist? (Dabei ist $L^R$ die Menge der Wörter in $L$, rückwärts)
 \end{enumerate}
 }{.%ab hier lösungen.
 \begin{enumerate}
@@ -167,7 +167,7 @@ $q_4'$:& \{$q_0, q_1, q_2, q_3$\} & \{$q_0, q_1, q_2, q_3$\} & \{$q_0, q_2$\} \\
 \section{Pumping Lemma}
 \ifthenelse{\boolean{ex}}{
 \subsection{Aufgaben}
-Zeige oder Wiederlege die regulärität folgender Sprachen:
+Zeige oder Wiederlege die Regulärität folgender Sprachen:
 \begin{enumerate}
 \item $\{a^ib^j | i \leq j\}$
 \item $\{w | w\mbox{ enthält nicht die Zeichenkette } abc \mbox{ oder }cba\}$
@@ -181,13 +181,14 @@ Zeige oder Wiederlege die regulärität folgender Sprachen:
 \ifthenelse{\boolean{sol}}{
 \subsection{Lösungen}
 \begin{enumerate}
-\item Pumping 
+\item Widerlege mithilfe des Pumping Lemmas.
 \item Die Sprache ist regulär: Konstruktion eines NEA der die Sprache, die die Zeichenketten $abc$ oder $cba$ enthält ist trivial. Das Komplement ist also regulär.
-\item nein
-\item nein
-\item ja
-\item nein
-\item nein
+\item Mithilfe der ersten Sprache. Wäre $\{a^ib^j | i \geq j\}$ regulär, könnte man den dazugehörigen Automaten umbauen zu einem, der das Komplement erkennt. 
+Damit ist ein Automat zu $\{a^ib^j | i \leq j\}$ leicht zu konstruieren.
+\item Widerlege mit Pumping Lemma
+\item Beweis ähnlich wie die zweite Sprache: Ein Akzeptor zum Komplement ist einfach zu konstruieren, damit ist das Komplement regulär und auch diese Sprache.
+\item Argumentiere wieder über das Komplement und das Pumping Lemma
+\item Widerlege mit Pumping Lemma
 \end{enumerate}
 }{}
 \section{Turingmaschinen und Entscheidbarkeit}
@@ -205,7 +206,7 @@ Zeige oder Wiederlege die regulärität folgender Sprachen:
 \item Zeige, dass eine Sprache semientscheidbar ist gdw. eine Turingmaschine existiert, die bei Eingabe eines Wortes der Sprache, das nächste Wort der Sprache bezüglich einer festen Ordnung ausgibt.
 \item Formuliere das Problem der Entscheidung ob ein Endlicher Automat und ein regulärer Ausdruck äquivalent sind als Sprache und zeige, dass diese Sprache entscheidbar ist.
 \item Finde eine Lösung für folgendes PCP: $\{(ab,abab),(b,a),(aba,b),(aa,a)\}$
-\item Zeige das eine TM die auf den Teil des Bandes, auf dem die Eingabe steht nicht schreiben kann, nur reguläre Sprachen erkennen kann.
+\item Zeige, dass eine TM die auf den Teil des Bandes, auf dem die Eingabe steht nicht schreiben kann, nur reguläre Sprachen erkennen kann.
 \end{enumerate}
 }{.}
 \section{Komplexitätsklassen}
