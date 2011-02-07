@@ -6,7 +6,7 @@
 \usetikzlibrary{automata}
 \newboolean{sol}
 \newboolean{ex}
-\setboolean{ex}{false}
+\setboolean{ex}{true}
 \setboolean{sol}{true}
 \usepackage{float}
 
@@ -14,12 +14,12 @@
 \ifthenelse{\boolean{ex}}{
 \ifthenelse{\boolean{sol}}{
 	\subsection{Aufgaben}
-}}{}
+}{}}{}
 \ifthenelse{\boolean{ex}}{#1}{}
 \ifthenelse{\boolean{ex}}{
 \ifthenelse{\boolean{sol}}{
 	\subsection{Lösungen}
-}}{}
+}{}}{}
 \ifthenelse{\boolean{sol}}{#2}{}
 }
 
