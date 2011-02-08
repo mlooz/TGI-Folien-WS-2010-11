@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{ifthen}
+\usepackage[top=4cm,bottom=3cm,left=3cm,right=3cm]{geometry}
+\usetikzlibrary{automata}
+\newboolean{sol}
+\newboolean{ex}
+
+
+%%%% Config here
+
+% Show excercises
+\setboolean{ex}{true}
+% Show solutions
+\setboolean{sol}{true}
+%%%
+
+\usepackage{float}
+\newcommand{\aufgaben}[2]{
+\ifthenelse{\boolean{ex}}{
+\ifthenelse{\boolean{sol}}{
+	\subsection{Aufgaben}
+}{}}{}
+\ifthenelse{\boolean{ex}}{#1}{}
+\ifthenelse{\boolean{ex}}{
+\ifthenelse{\boolean{sol}}{
+	\subsection{Lösungen}
+}{}}{}
+\ifthenelse{\boolean{sol}}{#2}{}
+}
+
+\begin{document}
+\ifthenelse{\boolean{ex}}{
+	\ifthenelse{\boolean{sol}}{
+		\title{Übungsaufgaben 2 mit Lösung}
+	}{
+		\title{Übungsaufgaben 2}
+	}
+}{
+	\ifthenelse{\boolean{sol}}{
+		\title{Lösungen 2}
+	}{
+		\title{Leeres Blatt 2}
+	}
+}
+\author{Simon Stroh und Moritz von Looz}
+\maketitle
+\section{Irgendwas}
+\aufgaben{.
+Eine Aufgabe
+}{.
+Eine Lösung
+}
+\end{document}
