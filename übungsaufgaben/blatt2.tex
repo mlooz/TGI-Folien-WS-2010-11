@@ -48,7 +48,7 @@
 \author{Simon Stroh und Moritz von Looz}
 \maketitle
 \section{Ch-2 Sprachen} 
-\aufgaben{.
+\aufgaben{
 \begin{enumerate}
 \item Zeige das die Menge der Sprachen aus CH-2 unter Vereinigung abgeschlossen sind.
 \item Zeige unter Verwendung der Sprachen $\{a^mb^nc^n \mid  m,n > 0\}$ und $\{a^nb^nc^m \mid  m,n > 0\}$, dass die Menge die kontextfreien Sprachen nicht unter Schnittbildung abgeschlossen ist.
@@ -58,7 +58,7 @@
 Die Menge der Kontextfreien Sprachen ist unter dem Keeleschen-Stern Operator abgeschlossen. Für eine Grammatik $G$ mit Startsymbol $S$ welche die Sprache $A$ generiert, füge die Regel $S \rightarrow SS$ ein, damit generiert $G'$ jetzt $A^*$
 \end{quote}
 \end{enumerate}
-}{.
+}{
 \begin{enumerate}
 \item Seien $G$, $H$ Grammitken für Sprachen aus CH-2 mit Startsymbolen $S_G$, $S_H$. Konstruiere Grammatik $G'$ mit Startsymbol $S$ und den Regeln aus $G$, $H$ sowie der Regel $S \rightarrow S_G \mid  S_H$.
 \item Beide Sprachen sind offensichtlich kontextfrei (eine Grammatik ist leicht anzugeben). Der Schnitt ist die bekanntermaßen nicht kontextfreie Grammatik $\{a^nb^nc^n\mid  n > 0\}$
@@ -67,12 +67,12 @@ Die Menge der Kontextfreien Sprachen ist unter dem Keeleschen-Stern Operator abg
 \end{enumerate}
 }
 \section{Chomsky Normalform / CYK}
-\aufgaben{.
+\aufgaben{
 \begin{enumerate}
 \item Gib eine Grammatik an, die die Sprache $L_1 = \{a^ib^jc^k \mid  i = j oder j = k$ erzeugt
 \item Gib eine Grammatik in Chomsky Normalform an, die die Sprache $L_2 = \{a^nb^n \mid  n \geq 1\}$ erzeugt
 \end{enumerate}
-}{.
+}{
 \begin{enumerate}
 \item Konstruiere die Vereinigung wie in Aufgabe 1.1 für die Sprachen aus Aufgabe 1.2
 \item Die Grammatik sei durch die Produktionen gegeben:
@@ -85,15 +85,20 @@ B&\rightarrow b \\
 \end{enumerate}
 }
 \section{Ogdens und Pumping Lemma}
-\aufgaben{.
-Eine Aufgabe
-}{.
-Eine Lösung
+\aufgaben{
+Sind folgende Sprachen Kontextfrei?
+\begin{enumerate}
+\item $\{w\#t | w\mbox{ ist Teilstring von }t \mbox{ und } w,t \in \{0,1\}^*\}$
+\end{enumerate}
+}{
+\begin{enumerate}
+\item Benutze Pumping Lemma für wort $0^n1^n\#0^n1^n$.
+\end{enumerate}
 }
 \section{Greibach Normalform und Kellerautomaten}
-\aufgaben{.
+\aufgaben{
 Eine Aufgabe
-}{.
+}{
 Eine Lösung
 }
 
