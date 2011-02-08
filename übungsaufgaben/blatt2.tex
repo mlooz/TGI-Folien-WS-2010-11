@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{tikz}
+\usepackage{amsmath}
 \usepackage{ifthen}
 \usepackage[top=4cm,bottom=3cm,left=3cm,right=3cm]{geometry}
 \usetikzlibrary{automata}
@@ -46,10 +47,33 @@
 }
 \author{Simon Stroh und Moritz von Looz}
 \maketitle
-\section{Irgendwas}
+\section{Chomsky Normalform / CYK}
+\aufgaben{.
+\begin{enumerate}
+\item Gib eine Grammatik in Chomsky Normalform an, die die Sprache $L_1 = \{a^nb^n | n \geq 1\}$ erzeugt
+\end{enumerate}
+}{.
+\begin{enumerate}
+\item Die Grammatik sei durch die Produktionen gegeben:
+\begin{align*}
+S&\rightarrow AB|AX\\
+X&\rightarrow SB\\
+A&\rightarrow a \\
+B&\rightarrow b \\
+\end{align*}
+\end{enumerate}
+}
+\section{Ogdens und Pumping Lemma}
 \aufgaben{.
 Eine Aufgabe
 }{.
 Eine Lösung
 }
+\section{Greibach Normalform und Kellerautomaten}
+\aufgaben{.
+Eine Aufgabe
+}{.
+Eine Lösung
+}
+
 \end{document}
