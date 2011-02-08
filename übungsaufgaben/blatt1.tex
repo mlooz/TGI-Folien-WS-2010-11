@@ -6,10 +6,17 @@
 \usetikzlibrary{automata}
 \newboolean{sol}
 \newboolean{ex}
-\setboolean{ex}{true}
-\setboolean{sol}{true}
-\usepackage{float}
 
+
+%%%% Config here
+
+% Show excercises
+\setboolean{ex}{true}
+% Show solutions
+\setboolean{sol}{true}
+%%%
+
+\usepackage{float}
 \newcommand{\aufgaben}[2]{
 \ifthenelse{\boolean{ex}}{
 \ifthenelse{\boolean{sol}}{
@@ -165,8 +172,7 @@ $q_4'$:& \{$q_0, q_1, q_2, q_3$\} & \{$q_0, q_1, q_2, q_3$\} & \{$q_0, q_2$\} \\
 \end{enumerate}
 }
 \section{Pumping Lemma}
-\ifthenelse{\boolean{ex}}{
-\subsection{Aufgaben}
+\aufgaben{
 Zeige oder Wiederlege die Regulärität folgender Sprachen:
 \begin{enumerate}
 \item $\{a^ib^j | i \leq j\}$
@@ -177,9 +183,7 @@ Zeige oder Wiederlege die Regulärität folgender Sprachen:
 \item $\{w | w\mbox{ ist kein Palindrom }\}$
 \item Sei $\Sigma = \{0,1,+,=\}$ und $L = \{x=y+z | x,y,z \mbox{ Sind binäre Integer und }x = y + z\}$
 \end{enumerate}
-}{}
-\ifthenelse{\boolean{sol}}{
-\subsection{Lösungen}
+}{
 \begin{enumerate}
 \item Widerlege mithilfe des Pumping Lemmas.
 \item Die Sprache ist regulär: Konstruktion eines NEA der die Sprache, die die Zeichenketten $abc$ oder $cba$ enthält ist trivial. Das Komplement ist also regulär.
@@ -190,7 +194,7 @@ Damit ist ein Automat zu $\{a^ib^j | i \leq j\}$ leicht zu konstruieren.
 \item Argumentiere wieder über das Komplement und das Pumping Lemma
 \item Widerlege mit Pumping Lemma
 \end{enumerate}
-}{}
+}
 \section{Turingmaschinen und Entscheidbarkeit}
 \aufgaben{.
 \begin{enumerate}
@@ -210,16 +214,16 @@ Damit ist ein Automat zu $\{a^ib^j | i \leq j\}$ leicht zu konstruieren.
 \end{enumerate}
 }{
 \begin{enumerate}
- \item 
- \item 
- \item 
- \item 
- \item 
+ \item Es gibt überabzählbar viele verschiedene Sprachen, aber nur abzählbar viele Turingmaschienen. Es muss also Sprachen geben die eine Turingmaschiene nicht entscheiden kann.
+ \item Diese Aufgabe ist dem geneigten Leser überlassen.
+ \item Konstruiere einen Entscheider: Dieser zählt alle Wörter in der Sprache in lexikographischer Reihenfolge auf. Findet er das Wort, akzeptiert er, sobald er ein Wort aufzählt, das länger ist als die Eingabe lehnt er ab.
+ \item Aufzählbar $\Rightarrow$ Semientscheidbar: Konstruiere einen Entscheider wie bei 3., der aber nie ablehnt. Semientscheidbar $\Rightarrow$ Aufzählbar. Konstruiere TM die alle Wörter in der Sprache aufzählt, indem sie Semientscheider für alle Wörter simuliert. 
+ \item Wende Verfahren aus der VL an um RA in Automaten umzuwandeln und Automaten zu minimieren.
  \item \[
 (ab)(ab)(aba)(b)(b)(aa)(aa)\]
 \[(abab)(abab)(b)(a)(a)(a)(a)
 \]
- \item 
+ \item Diese Aufgabe ist dem geneigten Leser überlassen.
 \end{enumerate}
 }
 \section{Komplexitätsklassen}
@@ -234,5 +238,14 @@ Damit ist ein Automat zu $\{a^ib^j | i \leq j\}$ leicht zu konstruieren.
 \item Sei DOPPEL-SAT $= \{\Phi | \Phi\mbox{ hat mindestens zwei erfüllende Belegungen}\}$, zeige das DOPPEL-SAT $\in \mathcal{NPC}$
 \end{enumerate}
 }{.
+\begin{enumerate}
+\item Nein, jede Sprache aus $P$ kann man in polyzeit Lösen.
+\item Ist $A$ Semientscheidbar, kann man über die Reduktion auch $co-A$ Semientscheiden. Damit kann man $A$ entscheiden. Die Angabe der Sprache ist dem geneigten Leser überlassen.
+\item Ja: Kodiere Gödelnummern unär, die nummern haltenden TMs sind unentscheidbar.
+\item \textbf{Vereinigung:} Jeweils mehrere Maschienen abwechselnd simulieren, wenn eine akzeptiert, akzeptieren. \textbf{Konkatenation:} Alle möglichen Aufteilungen gleichzeitig simulieren.
+\item Konstruiere NDTM die Faktorisiert durch Raten
+\item Binäre Suche mit NDTM (die in Polyzeit läuft)
+\item Konstruiere aus SAT Instanz äquivalente maDOPPEL-SAT Instanz durch ODER-Verknüpfen der Klausel mit einem neuen Literal.
+\end{enumerate}
 }
 \end{document}
